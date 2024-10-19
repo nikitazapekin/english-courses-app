@@ -1,0 +1,87 @@
+@import "../../theme/theme";
+
+.header {
+    background-color: $black;
+    padding: 13px 0;
+
+    &__inner {
+        display: flex;
+        flex-direction: row;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        justify-content: space-between;
+
+    }
+
+    &__preview {
+        display: flex;
+        column-gap: 65px;
+        align-items: center;
+    }
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+
+    &__list {
+        display: flex;
+        column-gap: 21px;
+        align-items: center;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        cursor: pointer;
+        color: $white;
+    }
+
+    &__btn {
+        padding: 10px 11px;
+        background-color: $purple;
+        border-radius: 10px;
+
+    }
+}
+
+.search {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(200px, 611px);
+    height: 43px;
+
+    &__input {
+
+        border-radius: 21px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding-left: 21px;
+
+        font-weight: 400;
+        @include fontSize(20px);
+
+        &::placeholder {
+            // padding-left: 21px;
+
+        }
+    }
+
+    &__btn {
+        position: absolute;
+        border-radius: 50%;
+        background-color: $black;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 11px;
+    }
+}
