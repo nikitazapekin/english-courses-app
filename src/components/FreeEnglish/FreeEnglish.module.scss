@@ -1,0 +1,19 @@
+@import "../../theme/theme";
+.free {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &__title {
+        font-weight: 700;
+     @include fontSize(48px);
+        font-family: "Inter", sans-serif;
+    }
+}

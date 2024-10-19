@@ -9,9 +9,10 @@ const Homepage = () => {
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
-             
-                <FreeEnglish />
+
+            
                 <WelcomeSection />
+                <FreeEnglish />
             </div>
             <Footer />
         </div>

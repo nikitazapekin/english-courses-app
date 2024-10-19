@@ -18,25 +18,32 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                    <nav className={styles.navigation}>
-                        <ul className={styles.navigation__list}>
-                            <li className={styles.navigation__item}>
-                                <div className={styles.navigation__text}>
-                                    Каталог
-                                </div>
-                            </li>
-                            <li className={styles.navigation__item}>
-                                <div className={`${styles.navigation__btn} ${styles.navigation__text}`}>
-                                    Записаться на урок
-                                </div>
-                            </li>
-                            <li className={styles.navigation__item}>
-                                <div className={styles.navigation__text}>
-                                    Войти
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
+                <nav className={styles.navigation}>
+                    <ul className={styles.navigation__list}>
+                        <li className={styles.navigation__item}>
+
+                            <div className={styles.navigation__text}>
+                                Каталог
+                            </div>
+                            {/*
+                                <select>
+                                    <option>Test</option>
+                                    <option>Test1</option>
+                                </select>
+                                    */}
+                        </li>
+                        <li className={styles.navigation__item}>
+                            <div className={`${styles.navigation__btn} ${styles.navigation__text}`}>
+                                Записаться на урок
+                            </div>
+                        </li>
+                        <li className={styles.navigation__item}>
+                            <div className={styles.navigation__text}>
+                                Войти
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </header>
     );

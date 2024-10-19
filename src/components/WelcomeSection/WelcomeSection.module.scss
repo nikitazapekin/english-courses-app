@@ -3,8 +3,9 @@
 .welcome {
     &__wrapper {
         background-color: $gray;
+       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
     }
-
+    
     &__inner {
         display: flex;
 
@@ -13,6 +14,7 @@
         padding: 0px 15px;
         margin: 0 auto;
         justify-content: space-between;
+
     }
 
     &__preview {
@@ -53,6 +55,12 @@
         &:hover {
             background-color: $btn-active;
         }
+    }
+    &__image {
+        align-self: flex-end;
+        width: 50%;
+        transform: translateY(20%);
+   
     }
 }
 

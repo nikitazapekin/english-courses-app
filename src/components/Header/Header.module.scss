@@ -3,6 +3,8 @@
 .header {
     background-color: $black;
     padding: 13px 0;
+    position: relative;
+    z-index: 2;
 
     &__inner {
         display: flex;

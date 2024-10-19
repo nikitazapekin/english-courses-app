@@ -1,4 +1,5 @@
 import styles from "./WelcomeSection.module.scss"
+import Bird from "../../assets/bird.png"
 const WelcomeSection = () => {
     return (
         <div className={styles.welcome}>
@@ -19,14 +20,16 @@ const WelcomeSection = () => {
                             Начать учиться!
                         </div>
                     </div>
-                    <img src="" alt="Preview" 
+                    <img src={Bird} alt="Preview" 
                     className={styles.welcome__image}
                     />
+
+             
                 </div>
             </div>
-            <div className={styles.triangle__top}>
+          {/*}  <div className={styles.triangle__top}>
 
-            </div>
+            </div> */}
         </div>
     );
 }
