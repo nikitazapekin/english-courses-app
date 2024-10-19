@@ -3,7 +3,6 @@ import Instagram from '../../assets/networks/Instagram.png';
 import LinkedIn from '../../assets/networks/LinkedIn.png';
 import WhatsUp from '../../assets/networks/WhatsUp.png';
 import Youtube from '../../assets/networks/Youtube.png';
-
 export const networks = [
     Facebook,
     Instagram,
@@ -11,7 +10,6 @@ export const networks = [
     WhatsUp,
     Youtube
 ];
-
 export const columns = {
     col1: [
         "Английский для подростков",

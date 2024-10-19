@@ -31,6 +31,7 @@ const Footer = () => {
                             <h2 className={styles.about__title}>
                                 Занятия
                             </h2>
+                            <hr />
                             {columns.col1.map((item, index) => (
                                 <p key={index} className={styles.about__text}>
                                     {item}
@@ -45,6 +46,7 @@ const Footer = () => {
                             <h2 className={styles.about__title}>
                                 Программы
                             </h2>
+                            <hr />
                             {columns.col2.map((item, index) => (
                                 <p key={index} className={styles.about__text}>
                                     {item}
@@ -59,6 +61,7 @@ const Footer = () => {
                             <h2 className={styles.about__title}>
                                 О школе
                             </h2>
+                            <hr />
                             {columns.col3.map((item, index) => (
                                 <p key={index} className={styles.about__text}>
                                     {item}
