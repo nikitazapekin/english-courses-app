@@ -35,7 +35,6 @@ const Header = () => {
                                     Войти
                                 </div>
                             </li>
-
                         </ul>
                     </nav>
             </div>
