@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer";
 import FreeEnglish from "../components/FreeEnglish/FreeEnglish";
 import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import Certificate from "../components/Certificate/Certificate";
+import CommonQuestions from "../components/CommonQuestions/CommonQuestions";
 const Homepage = () => {
     return (
         <div className={styles.wrapper}>
@@ -15,6 +16,7 @@ const Homepage = () => {
                 <WelcomeSection />
                 <FreeEnglish />
                 <Certificate />
+                <CommonQuestions />
             </div>
             <Footer />
         </div>
