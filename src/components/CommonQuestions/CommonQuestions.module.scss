@@ -3,6 +3,15 @@
 .common {
   margin-bottom: 40px;
 
+  &__title {
+    font-weight: 700;
+    @include fontSize(48px);
+    color: $black;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+
+  }
+
   &__inner {
     max-width: 1125px;
     margin: 0 auto;
@@ -19,7 +28,7 @@
   cursor: pointer;
   border-radius: 5px;
 
-  
+
   &__inner {
     font-weight: 400;
     font-size: 36px;
@@ -33,62 +42,27 @@
     font-size: 36px;
     padding: 14px 29px;
     border-radius: 25px;
-    //color: #f4f2f2;
+   
     transition: 0.4s ease-in-out;
-  
+
     &:hover {
-      background-color: $gray;
+      background-color: $purple;
     }
   }
 
   &__text {
-    // padding: 10px;
+
     margin: 0;
-    font-size: 16px;
+    @include fontSize(20px);
     background-color: $gray;
     padding: 14px 29px;
+    color: $white;
+    font-family: "Inter", sans-serif;
     border-top: 1px solid $white;
   }
 
 }
 
 .card[open] .card__inner {
-  background-color: #878a87;
+  background-color: $purple;
 }
-
-/*
-
-details {
-  width: 100%;
-
-  padding: 10px;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-summary {
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-  list-style: none;
-}
-
-details[open] summary {
-  background-color: #45a049;
-}
-
-details p {
-  padding: 10px;
-  margin: 0;
-  font-size: 16px;
-  background-color: white;
-  border-top: 1px solid #ccc;
-}
-
-.common {}
-*/
