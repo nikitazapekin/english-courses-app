@@ -13,8 +13,6 @@ const CommonQuestions = () => {
                         <p className={styles.card__text}>{item.about}</p>
                     </details>
                 ))}
-
-
             </div>
         </div>);
 }

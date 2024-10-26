@@ -1,3 +1,4 @@
+/*
 @mixin smallMobiles {
 	@media (max-width: 420px) {
 		@content;
@@ -27,3 +28,59 @@
 		@content;
 	}
 }
+
+*/
+
+
+@mixin smMobiles {
+	@media (max-width: 320px) {
+		@content;
+	}
+}
+
+@mixin mobiles {
+	@media (max-width: 480px) {
+		@content;
+	}
+}
+
+@mixin tablets {
+	@media (max-width: 768px) {
+		@content;
+	}
+}
+
+
+@mixin bigTablets {
+	@media (max-width: 1024px) {
+		@content;
+	}
+}
+
+
+
+@mixin smPc {
+	@media (max-width: 1280px) {
+		@content;
+	}
+}
+
+
+@mixin pc {
+	@media (max-width: 1440px) {
+		@content;
+	}
+}
+
+
+
+
+
+/*
+320px (мобильные устройства) – маленькие экраны смартфонов.
+480px – небольшие смартфоны или устройства в горизонтальной ориентации.
+768px (планшеты) – размер для планшетов в портретной ориентации или больших смартфонов.
+1024px (планшеты и небольшие ноутбуки) – планшеты в ландшафтной ориентации и небольшие экраны ноутбуков.
+1280px – стандартные ноутбуки.
+1440px – экраны больших ноутбуков и настольных мониторов.
+*/

@@ -5,7 +5,6 @@ const Footer = () => {
         <footer className={styles.footer}>
             <div className={styles.footer__inner}>
                 <div className={styles.footer__header}>
-
                     <div className={styles.preview}>
                         <div className={styles.contacts}>
                             <div className={styles.contacts__block}>
@@ -37,11 +36,7 @@ const Footer = () => {
                                     {item}
                                 </p>
                             ))}
-
                         </div>
-
-
-
                         <div className={styles.about__block}>
                             <h2 className={styles.about__title}>
                                 Программы
@@ -54,9 +49,6 @@ const Footer = () => {
                             ))}
 
                         </div>
-
-
-
                         <div className={styles.about__block}>
                             <h2 className={styles.about__title}>
                                 О школе
@@ -79,6 +71,7 @@ const Footer = () => {
                     {networks.map((item, index) => (
                         <img src={item}
                             key={index}
+                            className={styles.networks__network}
                             alt="Network" />
                     ))}
 

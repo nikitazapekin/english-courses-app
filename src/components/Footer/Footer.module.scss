@@ -75,6 +75,9 @@
     display: flex;
     column-gap: 13px;
     justify-content: flex-end;
+    &__network {
+        cursor: pointer;
+    }
 }
 
 .copyright {
