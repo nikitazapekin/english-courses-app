@@ -28,12 +28,16 @@
         background-color: $blue;
         border-top-right-radius: 31px;
         border-bottom-right-radius: 31px;
-        padding: 29px 27px;
         height: 100%;
-        overflow: hidden;
         position: relative;
-    }
+        overflow: hidden;
+        &__wrapper {
+            height: 100%;
+            padding: 29px 27px;
 
+        }
+    }
+    
     &__content {
         display: flex;
         flex-direction: column;
@@ -101,7 +105,12 @@
         color: $black;
         font-family: "Inter", sans-serif;
     }
-
+&__image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translateY(80px);
+}
     /*
 
     &__info {
