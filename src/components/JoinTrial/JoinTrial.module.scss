@@ -11,6 +11,8 @@
         justify-content: center;
         display: grid;
         grid-template-columns: minmax(200px, 493px) minmax(200px, 493px);
+        //  background-color: purple;
+        //   height: 100%;
 
     }
 
@@ -20,6 +22,87 @@
         background-color: $white;
         padding: 85px 27px;
     }
+
+
+    &__info {
+        background-color: $blue;
+        border-top-right-radius: 31px;
+        border-bottom-right-radius: 31px;
+        padding: 29px 27px;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        height: 100%;
+
+
+
+
+    }
+
+    &__decor {
+        display: flex;
+        column-gap: 37px;
+
+    }
+
+    &__decorBottom {
+        align-self: flex-end;
+    }
+
+    &__circle {
+        background-color: $circle;
+        border-radius: 50%;
+    }
+
+    &__circleB {
+        width: 86px;
+        height: 86px;
+
+        &:nth-child(2) {
+            margin-bottom: 54px;
+        }
+    }
+
+    &__circleS {
+        width: 46px;
+        height: 46px;
+    }
+
+    &__circleEnd {
+        align-self: flex-end;
+    }
+
+    &__list {
+        margin-top: 21px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 31px;
+    }
+
+    &__item {
+        display: flex;
+        column-gap: 8px;
+    }
+
+    &__icon {
+        align-self: center;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    /*
 
     &__info {
         border-top-right-radius: 31px;
@@ -87,11 +170,11 @@
   // align-items: flex-end;
   //  align-self: flex-end;
    }
-
    &__content {
     display:  flex;
     flex-direction: row;
-   }
+}
+*/
 }
 
 

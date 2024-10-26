@@ -33,65 +33,37 @@ const JoinTrial = () => {
                 <div className={styles.join__info}>
 
 
-<div className={styles.join__content}>
-
-                    <div className={`${styles.join__decor} ${styles.join__decorFirst}`}>
-                        <div className={`${styles.join__circle} ${styles.join__circleB}  `} />
-                        <div className={`${styles.join__circle} ${styles.join__circleS}  ${styles.join__circleEnd}`} />
-                    </div>
-
-
-                    <ul className={styles.join__list}>
-                        {list.map(item => (
-                            <li className={styles.join__item}>
-                                <img src={Cross}
-                                    className={styles.join__image}
-                                    alt="icon"
-                                />
-                                <p className={styles.join__text}>
-                                    {item}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
-
-                    <div className={`${styles.join__decor}  ${styles.join__decorBottom}`}>
-                        {/*}  <img src={Bird}
-                            className={styles.join__bird}
-                            alt="Bird" />
-                            */}
-                        <div className={`${styles.join__circle} ${styles.join__circleS}`} />
-                        <div className={`${styles.join__circle} ${styles.join__circleB}`} />
-                    </div>
+                    <div className={styles.join__content}>
+                        <div className={`${styles.join__decor}`}>
+                            <div className={`${styles.join__circle} ${styles.join__circleB}`} />
+                            <div className={`${styles.join__circle} ${styles.join__circleS} ${styles.join__circleEnd}`} />
                         </div>
 
-                    {/*}
-                    <div className={`${styles.join__decor} ${styles.join__decorFirst}`}>
-                        <div className={`${styles.join__circle} ${styles.join__circleB}  `} />
-                        <div className={`${styles.join__circle} ${styles.join__circleS}  ${styles.join__circleEnd}`} />
-                    </div>
 
-                    <ul className={styles.join__list}>
-                        {list.map(item => (
-                            <li className={styles.join__item}>
-                                <img src={Cross}
-                                    className={styles.join__image}
-                                    alt="icon"
-                                />
-                                <p className={styles.join__text}>
-                                    {item}
-                                </p>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className={`${styles.join__decor}  `}>
-                        <img src={Bird}
-                            className={styles.join__bird}
-                            alt="Bird" />
-                        <div className={`${styles.join__circle} ${styles.join__circleS}`} />
-                        <div className={`${styles.join__circle} ${styles.join__circleB}`} />
+                        <ul className={styles.join__list}>
+                            {list.map((item, index) => (
+                                <li key={index} className={styles.join__item} >
+                                    <img src={Cross}
+                                        className={styles.join__icon}
+                                        alt="Icon"
+                                    />
+                                    <p className={styles.join__text}>
+                                        {item}
+                                    </p>
+                                </li>
+                            ))}
+                        </ul>
+
+
+
+                        <div className={`${styles.join__decor} ${styles.join__decorBottom} `}>
+                            <div className={`${styles.join__circle} ${styles.join__circleS} ${styles.join__circleEnd}  `} />
+                            <div className={`${styles.join__circle} ${styles.join__circleB}`} />
+                        </div>
+
+
+
                     </div>
-*/}
                 </div>
             </div>
         </div>
