@@ -35,7 +35,7 @@
     &__about {
         font-weight: 400;
         max-width: 441px;
-        color: #f4f2f2;
+        color: $white;
         @include fontSize(32px);
     }
 
@@ -48,7 +48,7 @@
         align-items: center;
         background-color: $purple;
         transition: 0.4s ease-in-out;
-        color: #f4f2f2;
+        color: $white;
         border-radius: 10px;
         cursor: pointer;
 

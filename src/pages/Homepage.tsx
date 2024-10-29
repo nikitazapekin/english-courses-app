@@ -7,6 +7,7 @@ import WelcomeSection from "../components/WelcomeSection/WelcomeSection";
 import Certificate from "../components/Certificate/Certificate";
 import CommonQuestions from "../components/CommonQuestions/CommonQuestions";
 import JoinTrial from "../components/JoinTrial/JoinTrial";
+import CoursesHomepage from "../components/CoursesHomepage/CoursesHomepage";
 const Homepage = () => {
     return (
         <div className={styles.wrapper}>
@@ -16,6 +17,7 @@ const Homepage = () => {
 
                 <WelcomeSection />
                 <FreeEnglish />
+                <CoursesHomepage />
                 <Certificate />
                 <CommonQuestions />
                 <JoinTrial />

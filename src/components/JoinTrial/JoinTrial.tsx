@@ -33,8 +33,7 @@ const JoinTrial = () => {
                 <div className={styles.join__info}>
 
                     <div className={styles.join__info__wrapper}>
-                 {/*
-                    */}
+ 
 
                         <div className={styles.join__content}>
                             <div className={`${styles.join__decor}`}>
@@ -57,14 +56,10 @@ const JoinTrial = () => {
                                 ))}
                             </ul>
 
-
-
                             <div className={`${styles.join__decor} ${styles.join__decorBottom} `}>
                                 <div className={`${styles.join__circle} ${styles.join__circleS} ${styles.join__circleEnd}  `} />
                                 <div className={`${styles.join__circle} ${styles.join__circleB}`} />
                             </div>
-
-
                         </div>
                     <img className={styles.join__image}
                         src={Bird}

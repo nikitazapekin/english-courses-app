@@ -1,0 +1,32 @@
+@import "../../theme/theme";
+
+.courses {
+&__wrapper {
+   clip-path: polygon(0 0, 100% 82px, 100% 100%, 0 calc(100% - 82px));
+   //clip-path: polygon(0 82px, 100% 0, 100% calc(100% - 82px), 0 100%);
+    //  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
+    background-color: $gray;
+}
+    &__title {
+        font-weight: 400;
+        @include fontSize(40px);
+        text-align: center;
+        color: $white;
+    }
+
+    &__inner {
+
+        display: flex;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+    &__cards {
+        display: flex;
+
+    }
+
+}
