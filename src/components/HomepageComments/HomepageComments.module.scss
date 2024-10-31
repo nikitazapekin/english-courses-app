@@ -1,0 +1,150 @@
+@import "../../theme/theme";
+
+.comments {
+    &__inner {
+        max-width: 1300px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        margin: 0 auto;
+
+
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(48px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        max-width: 1142px;
+    }
+
+    &__content {
+
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: flex-start;
+        width: 100%;
+
+    }
+
+    &__line {
+        display: flex;
+        column-gap: 20px;
+        width: 100%;
+    }
+}
+
+.info {
+    background-color: $commnetsBlue;
+    border-radius: 20px;
+    max-width: 335px;
+    height: 335px;
+    padding: 28px 20px;
+
+    &__image {
+        align-self: start;
+    }
+
+    &__title {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+
+        @include fontSize(36px);
+
+        color: $white;
+    }
+
+    &__describtion {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        margin-top: 20px;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__preview {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.comment {
+
+    border-radius: 20px;
+
+    height: 335px;
+    padding: 20px 30px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+row-gap: 37px;
+    &__header {
+        display: flex;
+        column-gap: 18px;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+
+        &__title {
+            font-weight: 700;
+            @include fontSize(24px);
+            color: $black;
+            font-family: "Inter", sans-serif;
+        }
+
+        &__date {
+            font-weight: 400;
+            @include fontSize(20px);
+            color: $grayDate;
+            font-family: "Inter", sans-serif;
+        }
+
+    }
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+       color: $black;
+        font-family: "Inter", sans-serif;
+        
+    }
+
+    &__avatar {
+        align-self: flex-start;
+    }
+
+    &__bronze {
+        background-color: $bronze;
+    }
+
+    &__stars {
+        display: flex;
+        column-gap: 6px;
+    }
+
+    &__star {
+
+        position: relative;
+        display: inline-block;
+        width: 29px;
+        height: 29px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+        border-radius: 1px;
+
+    }
+}

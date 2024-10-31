@@ -8,6 +8,7 @@ import Certificate from "../components/Certificate/Certificate";
 import CommonQuestions from "../components/CommonQuestions/CommonQuestions";
 import JoinTrial from "../components/JoinTrial/JoinTrial";
 import CoursesHomepage from "../components/CoursesHomepage/CoursesHomepage";
+import HomepageComments from "../components/HomepageComments/HomepageComents";
 const Homepage = () => {
     return (
         <div className={styles.wrapper}>
@@ -20,8 +21,9 @@ const Homepage = () => {
                 <CoursesHomepage />
                 <Certificate />
                 <CommonQuestions />
+                <HomepageComments />
                 <JoinTrial />
-           {/*
+                {/*
                */}
             </div>
             {/*

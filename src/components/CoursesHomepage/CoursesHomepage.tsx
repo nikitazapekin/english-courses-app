@@ -105,6 +105,11 @@ const CoursesHomepage = () => {
 
                         </div>
                     </div>
+
+
+                    <p className={styles.courses__more}>
+                        Посмотреть ещё
+                    </p>
                 </div>
             </div>
         </section>
