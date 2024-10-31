@@ -4,6 +4,7 @@ import Person2 from "../../assets/persons/Person2.png"
 import Person3 from "../../assets/persons/Person3.png"
 import Person4 from "../../assets/persons/Person4.png"
 import Person5 from "../../assets/persons/Person5.png"
+//import Person6 from "../../assets/persons/Person6.jpg"
 import NavigateCardBtn from "../NavigateCardBtn/NavigateCardBtn"
 const CoursesHomepage = () => {
     return (
@@ -16,7 +17,7 @@ const CoursesHomepage = () => {
                     </h2>
                     <div className={styles.courses__cards}>
                         <div className={styles.courses__line}>
-                            <div className={styles.cardS}>
+                            <div className={`${styles.cardS} ${styles.cardS__gray}`}>
                                 <h3 className={styles.cardS__title}>
                                     Английский для
                                     жизни
@@ -34,7 +35,7 @@ const CoursesHomepage = () => {
 
 
 
-                            <div className={styles.cardS}>
+                            <div className={`${styles.cardS} ${styles.cardS__bronze}`}>
                                 <h3 className={styles.cardS__title}>
                                     Английский для
                                     маркетологов
@@ -49,24 +50,57 @@ const CoursesHomepage = () => {
                                     />
                                 </div>
                             </div>
-
-
-
-                            <div className={styles.cardS}>
+                            <div className={`${styles.cardS} ${styles.cardS__bronzeL}`}>
                                 <h3 className={styles.cardS__title}>
-
+                                    Английский для
+                                    Финансистов
                                 </h3>
                                 <div className={styles.cardS__content}>
 
                                     <NavigateCardBtn link={"#"} />
                                     <img className={styles.cardS__image}
-                                        src={Person1}
+                                        src={Person3}
+                                        alt="person"
+
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div className={styles.courses__line}>
+                            <div className={`${styles.cardB} ${styles.cardB__black}`}>
+                                <h3 className={`${styles.cardS__title} ${styles.cardB__titleWhite}`}>
+                                    Английский для
+                                    IT-специалистов
+                                </h3>
+                                <div className={styles.cardS__content}>
+
+                                    <NavigateCardBtn link={"#"} />
+                                    <img className={styles.cardS__image}
+                                        src={Person4}
                                         alt="person"
 
                                     />
                                 </div>
                             </div>
 
+                            <div className={`${styles.cardB} ${styles.cardS__gray}`}>
+                                <h3 className={styles.cardS__title}>
+                                    Английский для
+                                    финансистов
+                                </h3>
+                                <div className={styles.cardS__content}>
+
+                                    <NavigateCardBtn link={"#"} />
+                                    <img className={styles.cardS__image}
+                                        src={Person5}
+                                        alt="person"
+
+                                    />
+                                </div>
+                            </div>
 
 
                         </div>

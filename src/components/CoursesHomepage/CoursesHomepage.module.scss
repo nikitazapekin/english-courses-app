@@ -1,17 +1,19 @@
 @import "../../theme/theme";
 
 .courses {
-&__wrapper {
-   clip-path: polygon(0 0, 100% 82px, 100% 100%, 0 calc(100% - 82px));
-   //clip-path: polygon(0 82px, 100% 0, 100% calc(100% - 82px), 0 100%);
-    //  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
-    background-color: $gray;
-}
+    &__wrapper {
+        clip-path: polygon(0 0, 100% 82px, 100% 100%, 0 calc(100% - 82px));
+        //clip-path: polygon(0 82px, 100% 0, 100% calc(100% - 82px), 0 100%);
+        //  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
+        background-color: $gray;
+    }
+
     &__title {
         font-weight: 400;
         @include fontSize(40px);
         text-align: center;
         color: $white;
+        margin-top: 179px;
     }
 
     &__inner {
@@ -22,11 +24,82 @@
         margin: 0 auto;
         flex-direction: column;
         row-gap: 20px;
+        padding-bottom: 173px;
     }
 
     &__cards {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 60px;
 
     }
+
+    &__line {
+        display: flex;
+        column-gap: 60px;
+
+    }
+
+}
+
+.cardS {
+    border-radius: 20px;
+    min-height: 395px;
+    max-width: 338px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+
+    &__gray {
+        background-color: $light-gray ;
+    }
+
+    &__bronze {
+        background-color: $bronze;
+    }
+
+    &__bronzeL {
+        background-color: $bronzeL;
+    }
+
+    &__content {
+
+        display: flex;
+        align-items: flex-end;
+        // height: 100%;
+        justify-content: space-between;
+     //   background-color: red;
+
+    }
+
+    &__image {
+        justify-self: flex-end;
+        max-height: 270px;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(36px);
+        color: $black;
+        padding: 16px 20px;
+        margin: 0 auto;
+    }
+}
+
+.cardB {
+    border-radius: 20px;
+    max-width: 536px;
+    min-height: 395px;
+    &__titleWhite {
+        color: $white;
+    }
+&__black {
+background-color: $blackCard;
+}
+&__gray {
+
+}
 
 }
