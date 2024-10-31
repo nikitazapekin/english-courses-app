@@ -20,9 +20,9 @@ const JoinTrial = () => {
                                 </p>
                             </div>
                             <div className={styles.form__fields}>
-                                <input name="name" className={styles.form__field} placeholder="Ваше имя" required />
-                                <input name="name" className={styles.form__field} placeholder="Ваша электронная почта" required />
-                                <input name="name" className={styles.form__field} placeholder="Ваш телефон" required />
+                                <input name="name" type="text" className={styles.form__field} placeholder="Ваше имя" required />
+                                <input name="name" type="email" className={styles.form__field} placeholder="Ваша электронная почта" required />
+                                <input name="name" type="tel" className={styles.form__field} placeholder="Ваш телефон" required />
                             </div>
                             <button type="submit" className={styles.form__btn}>
                                 Отправить
@@ -31,10 +31,7 @@ const JoinTrial = () => {
                     </form>
                 </div>
                 <div className={styles.join__info}>
-
                     <div className={styles.join__info__wrapper}>
- 
-
                         <div className={styles.join__content}>
                             <div className={`${styles.join__decor}`}>
                                 <div className={`${styles.join__circle} ${styles.join__circleB}`} />

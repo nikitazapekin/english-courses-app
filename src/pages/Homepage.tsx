@@ -9,6 +9,7 @@ import CommonQuestions from "../components/CommonQuestions/CommonQuestions";
 import JoinTrial from "../components/JoinTrial/JoinTrial";
 import CoursesHomepage from "../components/CoursesHomepage/CoursesHomepage";
 import HomepageComments from "../components/HomepageComments/HomepageComents";
+import Tutors from "../components/Tutors/Tutors";
 const Homepage = () => {
     return (
         <div className={styles.wrapper}>
@@ -20,6 +21,7 @@ const Homepage = () => {
                 <FreeEnglish />
                 <CoursesHomepage />
                 <Certificate />
+                <Tutors />
                 <CommonQuestions />
                 <HomepageComments />
                 <JoinTrial />
