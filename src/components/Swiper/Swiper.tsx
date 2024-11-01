@@ -1,14 +1,16 @@
 
- 
+
 import { useState, useRef, MouseEvent } from "react";
- 
+
 import styles from "./Swiper.module.scss";
 
 interface SwiperProps {
     items: Array<{
-        title: string,
-    
-    }>
+        title: string;
+        experience: string;
+        describtion: string;
+        img: string;
+    }>;
 }
 
 const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
@@ -48,8 +50,8 @@ const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
             ref={swiperRef}
             className={styles.swiperRootContainer}
         >
-         
-             
+
+
             <div className={styles.swiperItemsContainer}>
                 {items.map((item, index) => (
                     <div key={index} className={styles.swiperItem}>

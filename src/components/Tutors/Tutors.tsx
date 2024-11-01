@@ -1,7 +1,9 @@
 import Swiper from "../Swiper/Swiper";
 import styles from "./Tutors.module.scss"
+import Tutor from "../../assets/swiper/tutor1.png"
 const Tutors = () => {
     const elems = [
+    /*
         { title: "Test" },
         { title: "Test" },
         { title: "Test" },
@@ -9,35 +11,27 @@ const Tutors = () => {
         { title: "Test" },
         { title: "Test" },
         { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
+         
+        */
+        {
+            title: "Ирина",
+            img: Tutor,
+            experience: "5 лет опыта",
+            describtion: "Американец, носитель английского языка. Закончил Бостонский университет, Berlin College of Translation. Спикер и основатель языкового клуба."
+        },
+        {
+            title: "Ирина",
+            img: Tutor,
+            experience: "5 лет опыта",
+            describtion: "Американец, носитель английского языка. Закончил Бостонский университет, Berlin College of Translation. Спикер и основатель языкового клуба."
+        },
+        {
+            title: "Ирина",
+            img: Tutor,
+            experience: "5 лет опыта",
+            describtion: "Американец, носитель английского языка. Закончил Бостонский университет, Berlin College of Translation. Спикер и основатель языкового клуба."
+        }
+
     ];
 
     return (
