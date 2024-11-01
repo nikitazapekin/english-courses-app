@@ -42,38 +42,47 @@ const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
         }
     }
     return (
-        <div
-            onMouseDown={handleOnMouseDown}
-            onMouseMove={handleOnMouseMove}
-            onMouseUp={handleOnMouseUp}
-            onScroll={handleOnScroll}
-            ref={swiperRef}
-            className={styles.swiperRootContainer}
-        >
+        <div className={styles.wrapper}>
+
+            <div
+                onMouseDown={handleOnMouseDown}
+                onMouseMove={handleOnMouseMove}
+                onMouseUp={handleOnMouseUp}
+                onScroll={handleOnScroll}
+                ref={swiperRef}
+                className={styles.swiperRootContainer}
+            >
 
 
-            <div className={styles.swiperItemsContainer}>
-                {items.map((item, index) => (
-                    <div key={index} className={styles.swiperItem}>
-                        {/*
+                <div className={styles.swiperItemsContainer}>
+                    {items.map((item, index) => (
+                        <div key={index} className={styles.swiperItem}>
+                            {/*
                         <p
                         className={styles.swiperItem__text}
                         >{item.title}</p>
                         */}
-                        <img src={item.img}
-                            className={styles.swiperItem__img}
-                            alt="Tutor" />
-                        <h3 className={styles.swiperItem__title}>
-                            {item.title}
-                        </h3>
-                        <h4 className={styles.swiperItem__experience}>
-                            {item.experience}
-                        </h4>
-                        <p className={styles.swiperItem__text}>
-                            {item.describtion}
-                        </p>
-                    </div>
-                ))}
+                            <img src={item.img}
+                                className={styles.swiperItem__img}
+                                alt="Tutor" />
+                            <h3 className={styles.swiperItem__title}>
+                                {item.title}
+                            </h3>
+                            <h4 className={styles.swiperItem__experience}>
+                                {item.experience}
+                            </h4>
+                            <p className={styles.swiperItem__text}>
+                                {item.describtion}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className={styles.dots}>
+                <div className={`${styles.dot} ${styles.dot__active}`} />
+                <div className={styles.dot} />
+                <div className={styles.dot} />
             </div>
         </div>
     );

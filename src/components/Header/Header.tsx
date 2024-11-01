@@ -1,6 +1,7 @@
 import styles from "./Header.module.scss"
 import Logo from "../../assets/logo.png"
 import Search from "../../assets/search.png"
+import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <header className={styles.header}>
@@ -38,9 +39,22 @@ const Header = () => {
                             </div>
                         </li>
                         <li className={styles.navigation__item}>
-                            <div className={styles.navigation__text}>
-                                Войти
-                            </div>
+                            {/*
+                      
+                      <div className={styles.navigation__text}>
+                      Войти
+                      </div>
+                      */}
+
+                      {/*
+                            
+                            */}
+                            <Link to="/sign-in"
+                            className={styles.navigation__text}
+                            >
+                            Войти
+                            </Link>
+
                         </li>
                     </ul>
                 </nav>
