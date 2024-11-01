@@ -30,7 +30,14 @@ const Tutors = () => {
             img: Tutor,
             experience: "5 лет опыта",
             describtion: "Американец, носитель английского языка. Закончил Бостонский университет, Berlin College of Translation. Спикер и основатель языкового клуба."
-        }
+        },
+        {
+            title: "Ирина",
+            img: Tutor,
+            experience: "5 лет опыта",
+            describtion: "Американец, носитель английского языка. Закончил Бостонский университет, Berlin College of Translation. Спикер и основатель языкового клуба."
+        },
+
 
     ];
 
