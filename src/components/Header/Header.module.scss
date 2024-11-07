@@ -5,7 +5,9 @@
     padding: 13px 0;
     position: relative;
     z-index: 2;
-
+@include mobiles {
+    padding: 10px 0;
+}
 
     &__inner {
         display: flex;

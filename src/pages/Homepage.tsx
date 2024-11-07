@@ -32,8 +32,8 @@ const Homepage = () => {
                 */}
             </div>
             {/*
-            <Footer />
             */}
+            <Footer />
         </div>
     );
 }
