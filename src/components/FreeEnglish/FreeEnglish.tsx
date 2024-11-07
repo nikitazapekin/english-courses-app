@@ -13,7 +13,7 @@ const FreeEnglish = () => {
         <div className={styles.free__lines}>
 
 
-          <div className={styles.line}>
+      
             <div className={styles.line__stroke}>
               <div className={styles.line__content}>
                 <img className={styles.line__lightning} src={Lightning} alt="Lightning" />
@@ -48,7 +48,7 @@ const FreeEnglish = () => {
               </div>
 
             </div>
-          </div>
+       
 
 
 

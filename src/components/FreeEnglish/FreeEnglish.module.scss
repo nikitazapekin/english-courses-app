@@ -16,19 +16,35 @@
         font-weight: 700;
         @include fontSize(48px);
         font-family: "Inter", sans-serif;
+
+        @include tablets {
+            @include fontSize(32px);
+            margin-bottom: 40px;
+        }
     }
 
     &__lines {
         display: flex;
         flex-direction: column;
         row-gap: 86px;
+
+        @include tablets {
+
+            row-gap: 40px;
+        }
+
     }
 }
 
 .line {
+
     &__stroke {
         display: flex;
         justify-content: space-between;
+
+        &:nth-child(2) {
+            align-self: center;
+        }
     }
 
     &__content {
@@ -47,7 +63,10 @@
     &__image {
         align-self: center;
         max-width: 260px;
-        // height: 260px;
+
+        @include tablets {
+            display: none;
+        }
     }
 
     &__text {
@@ -55,5 +74,9 @@
         font-weight: 400;
         @include fontSize(32px);
         color: $black;
+
+        @include tablets {
+            @include fontSize(24px);
+        }
     }
 }
