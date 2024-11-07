@@ -2,6 +2,7 @@
 
 .common {
   margin-bottom: 40px;
+  padding: 0 15px;
 
   &__title {
     font-weight: 700;
@@ -9,6 +10,9 @@
     color: $black;
     text-align: center;
     font-family: "Inter", sans-serif;
+    @include tablets {
+      @include fontSize(32px);
+    }
 
   }
 
@@ -33,7 +37,9 @@
     font-weight: 400;
     font-size: 36px;
     cursor: pointer;
-
+    @include tablets {
+      @include fontSize(20px);
+    }
     background-color: $black;
     color: $white;
     border-radius: 5px;
@@ -60,6 +66,8 @@
     font-family: "Inter", sans-serif;
     border-top: 1px solid $white;
     border-radius: 25px;
+    
+
   }
 
 }

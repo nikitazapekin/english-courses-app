@@ -23,10 +23,10 @@ const Homepage = () => {
                 <FreeEnglish />
                 <CoursesHomepage />
                 <Tutors />
-                <CommonQuestions />
                 <HomepageComments />
                 <JoinTrial />
                 */}
+                <CommonQuestions />
                 <Certificate />
             </div>
             {/*
