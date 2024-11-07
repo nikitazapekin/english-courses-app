@@ -3,16 +3,7 @@ import styles from "./Tutors.module.scss"
 import Tutor from "../../assets/swiper/tutor1.png"
 const Tutors = () => {
     const elems = [
-    /*
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-        { title: "Test" },
-         
-        */
+ 
         {
             title: "Ирина",
             img: Tutor,

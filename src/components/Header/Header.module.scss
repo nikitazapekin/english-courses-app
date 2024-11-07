@@ -115,6 +115,10 @@
         padding: 32px 16px;
         display: flex;
         column-gap: 58px;
+        @include mobiles {
+            flex-direction: column;
+            row-gap: 25px;
+        }
     }
 
     &__btn {

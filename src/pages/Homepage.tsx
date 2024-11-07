@@ -16,22 +16,24 @@ const Homepage = () => {
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
-
-                <Tutors />
-                {/*
-                <JoinTrial />
+            {/*
+                <WelcomeSection />
                 
                 <FreeEnglish />
-                <WelcomeSection />
-<HomepageComments />
                 <CoursesHomepage />
-                <CommonQuestions />
+                <Tutors />
                 <Certificate />
+                <CommonQuestions />
+                <JoinTrial />
+                <HomepageComments />
+                */}
+                {/*
+                
                 */}
             </div>
             {/*
-            */}
             <Footer />
+            */}
         </div>
     );
 }
