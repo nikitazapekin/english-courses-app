@@ -22,12 +22,12 @@ const Homepage = () => {
                 <WelcomeSection />
                 <FreeEnglish />
                 <CoursesHomepage />
-                <Certificate />
                 <Tutors />
                 <CommonQuestions />
                 <HomepageComments />
                 <JoinTrial />
-               */}
+                */}
+                <Certificate />
             </div>
             {/*
             */}
