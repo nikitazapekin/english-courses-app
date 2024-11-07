@@ -1,4 +1,5 @@
 @import "../../theme/theme";
+
 .free {
     &__inner {
         display: flex;
@@ -13,7 +14,46 @@
 
     &__title {
         font-weight: 700;
-     @include fontSize(48px);
+        @include fontSize(48px);
         font-family: "Inter", sans-serif;
+    }
+
+    &__lines {
+        display: flex;
+        flex-direction: column;
+        row-gap: 86px;
+    }
+}
+
+.line {
+    &__stroke {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+    }
+
+    &__center {
+        justify-self: center;
+    }
+
+    &__lightning {
+        align-self: center;
+    }
+
+    &__image {
+        align-self: center;
+        max-width: 260px;
+        // height: 260px;
+    }
+
+    &__text {
+        max-width: 683px;
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
     }
 }

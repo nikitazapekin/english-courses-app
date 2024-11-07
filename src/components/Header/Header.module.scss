@@ -6,6 +6,7 @@
     position: relative;
     z-index: 2;
 
+
     &__inner {
         display: flex;
         flex-direction: row;
@@ -13,6 +14,13 @@
         padding: 0px 15px;
         margin: 0 auto;
         justify-content: space-between;
+        column-gap: 22px;
+
+        @include tablets {
+            display: none;
+        }
+
+
 
     }
 
@@ -20,6 +28,10 @@
         display: flex;
         column-gap: 65px;
         align-items: center;
+    }
+
+    &__logo {
+        cursor: pointer;
     }
 }
 
@@ -44,7 +56,9 @@
         padding: 10px 11px;
         background-color: $purple;
         border-radius: 10px;
+        text-align: center;
         transition: 0.4s ease-in-out;
+
         &:hover {
             background-color: $btn-active;
         }
@@ -69,10 +83,7 @@
         font-weight: 400;
         @include fontSize(20px);
 
-        &::placeholder {
-        
-
-        }
+        &::placeholder {}
     }
 
     &__btn {
@@ -89,5 +100,129 @@
         align-items: center;
         justify-content: center;
         margin-right: 11px;
+    }
+}
+
+.burger {
+    display: none;
+
+    @include tablets {
+        display: block;
+    }
+
+    &__inner {
+        width: 100%;
+        padding: 32px 16px;
+        display: flex;
+        column-gap: 58px;
+    }
+
+    &__btn {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        row-gap: 11px;
+        width: 50px;
+    }
+
+    &__line {
+        width: 50px;
+        height: 4px;
+        background-color: $white;
+
+    }
+}
+
+.panel {
+    width: 100%;
+    height: 100vh;
+    background-color: $black;
+    transform: translateX(-100%);
+    transition: 0.4s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+ display: flex;
+ flex-direction: column;
+    &__open {
+        transform: translateX(0%);
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+        &__border {
+            padding: 12px 18px;
+            background-color: $purple;
+            border-radius: 10px;
+            transition: 0.4s;
+            &:hover {
+                background-color: $btn-active;
+            }
+        }
+    }
+
+    &__line {
+        width: 50px;
+        height: 4px;
+        background-color: $white;
+        position: absolute;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        padding: 24px 46px 0 46px;
+        align-items: center;
+    }
+
+  
+
+    &__btn {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+
+    }
+
+    &__line1 {
+        transform: rotate(45deg) translateY(-50%);
+        //    transform: rotate(45deg);
+
+        position: absolute;
+        top: 50%;
+        left: 0;
+    }
+
+    &__line2 {
+        transform: rotate(-45deg) translateY(-50%);
+
+        position: absolute;
+
+        top: 50%;
+        left: 0;
+        //  transform: rotate(-45deg) translateY(-3px) translateX(5px);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 26px;
+        align-items: center;
+        margin-top: 57px;
+      //  background-color: red;
+       // height: 100%;
+    }
+
+    &__image {
+
+        align-self: flex-end;
+     //   align-self: flex-end;
+      // justify-self: flex-end;
     }
 }
