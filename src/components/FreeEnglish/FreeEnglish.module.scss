@@ -21,6 +21,9 @@
             @include fontSize(32px);
             margin-bottom: 40px;
         }
+        @include mobiles {
+          text-align: center;
+        }
     }
 
     &__lines {

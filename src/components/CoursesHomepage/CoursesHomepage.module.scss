@@ -11,7 +11,8 @@
         @include fontSize(40px);
         text-align: center;
         color: $white;
-        margin-top: 179px;
+        margin-top: 139px;
+      
     }
 
     &__inner {
@@ -23,6 +24,12 @@
         flex-direction: column;
         row-gap: 20px;
         padding-bottom: 173px;
+     //   min-height: 2500px;
+        @include mobiles {
+            padding: 0 10px;
+        //    min-height: 1300px;
+          //  background-color: red;
+        }
     }
 
     &__cards {
@@ -64,6 +71,7 @@
         color: $white;
         text-align: center;
         cursor: pointer;
+        margin-bottom: 139px;
     }
 }
 
@@ -124,6 +132,9 @@
     &__image {
         justify-self: flex-end;
         max-height: 270px;
+        @include mobiles {
+            max-width: 200px;
+        }
     }
 
     &__title {

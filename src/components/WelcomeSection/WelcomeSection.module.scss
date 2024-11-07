@@ -18,7 +18,9 @@
         @include bigTablets {
             flex-direction: column;
             align-items: center;
+            min-height: 720px;
         }
+      
 
     }
 
@@ -84,6 +86,9 @@
 
         @include bigTablets {
             width: 62%;
+        }
+        @include mobiles {
+            width: 90%;
         }
 
     }

@@ -16,11 +16,11 @@ const Homepage = () => {
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
-            {/*
                 <WelcomeSection />
-                
                 <FreeEnglish />
                 <CoursesHomepage />
+            {/*
+                
                 <Tutors />
                 <Certificate />
                 <CommonQuestions />
