@@ -17,13 +17,13 @@ const Homepage = () => {
             <Header />
             <div className={styles.content}>
 
-                <HomepageComments />
+                <JoinTrial />
                 {/*
 
                 <WelcomeSection />
                 <FreeEnglish />
                 <Tutors />
-                <JoinTrial />
+<HomepageComments />
                 <CoursesHomepage />
                 <CommonQuestions />
                 <Certificate />

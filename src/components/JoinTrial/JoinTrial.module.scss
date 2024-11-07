@@ -1,7 +1,7 @@
 @import "../../theme/theme";
 
 .join {
-    padding: 115px 0;
+    padding: 115px 15px;
     margin-bottom: 80px;
     background-color: $gray;
     display: flex;
@@ -85,7 +85,7 @@
     }
 
     &__list {
-        margin-top: 21px;
+        margin: 21px 0 21px 0;
         display: flex;
         flex-direction: column;
         row-gap: 31px;
@@ -188,21 +188,4 @@
     }
 
 }
-
-/*
-.form {
-    
-    padding: 85px 27px;
-    display: grid;
-    grid-template-columns: minmax(200px, 493px);
-    &__content {
-
-    }
-    &__title {
-        font-weight: 700;
-        @include fontSize(48px);
-        color: $black;
-        max-width: 493px;
-    }
-}
-    */
+ 
