@@ -2,6 +2,7 @@
 
 .comments {
     margin-bottom: 80px;
+    padding: 0 15px;
 
     &__inner {
         max-width: 1300px;
@@ -19,6 +20,9 @@
         color: $black;
         font-family: "Inter", sans-serif;
         max-width: 1142px;
+        @include tablets {
+            @include fontSize(32px);
+        }
     }
 
     &__content {
@@ -35,13 +39,25 @@
         display: flex;
         column-gap: 20px;
         width: 100%;
+
+        @include smPc {
+            flex-wrap: wrap;
+            row-gap: 20px;
+
+        }
     }
 }
 
 .info {
     background-color: $commnetsBlue;
     border-radius: 20px;
-    max-width: 335px;
+    //  max-width: 335px;
+    flex: 0 0 335px;
+
+    @include smPc {
+        flex: 0 0 100%;
+    }
+
     height: 335px;
     padding: 28px 20px;
 
@@ -78,8 +94,8 @@
 
     min-height: 335px;
     padding: 20px 30px;
-    width: 100%;
-
+    //  width: 100%;
+    flex: 1 1 100%;
     display: flex;
     flex-direction: column;
     row-gap: 17px;
@@ -120,20 +136,33 @@
 
     &__avatar {
         align-self: flex-start;
+
+        @include smPc {
+            width: 90px;
+        }
     }
 
     &__bronze {
         background-color: $bronze;
+        flex: 1 1 100%;
+
     }
+
     &__bronzeL {
         background-color: $bronzeL;
+        flex: 1 1 341px;
     }
+
     &__gray {
         background-color: $light-gray;
+        flex: 1 1 341px;
     }
+
     &__blue {
         background-color: $blue;
+        flex: 1 1 421px;
     }
+
 
     &__stars {
         display: flex;
@@ -160,9 +189,10 @@
         border-radius: 1px;
 
     }
+
     &__starWrapper {
         overflow: hidden;
-        width: 50%;  
+        width: 50%;
         height: 29px;
-      }
+    }
 }

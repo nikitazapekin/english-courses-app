@@ -67,15 +67,6 @@ const HomepageComments = () => {
 
                     </div>
                     <div className={styles.comments__line}>
-
-
-
-
-
-
-
-
-
                     <div className={`${styles.comment} ${styles.comment__gray}`}>
                             <div className={styles.comment__header}>
                                 <img src={Avatar4}

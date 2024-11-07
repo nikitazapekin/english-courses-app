@@ -17,17 +17,17 @@ const Homepage = () => {
             <Header />
             <div className={styles.content}>
 
+                <HomepageComments />
                 {/*
 
                 <WelcomeSection />
                 <FreeEnglish />
                 <Tutors />
-                <HomepageComments />
                 <JoinTrial />
-                */}
                 <CoursesHomepage />
                 <CommonQuestions />
                 <Certificate />
+                */}
             </div>
             {/*
             */}
