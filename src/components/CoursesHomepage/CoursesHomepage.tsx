@@ -23,7 +23,6 @@ const CoursesHomepage = () => {
                                     жизни
                                 </h3>
                                 <div className={styles.cardS__content}>
-
                                     <NavigateCardBtn link={"#"} />
                                     <img className={styles.cardS__image}
                                         src={Person1}
@@ -69,7 +68,7 @@ const CoursesHomepage = () => {
 
 
 
-                        <div className={styles.courses__line}>
+                        <div className={styles.courses__line1}>
                             <div className={`${styles.cardB} ${styles.cardB__black}`}>
                                 <h3 className={`${styles.cardS__title} ${styles.cardB__titleWhite}`}>
                                     Английский для

@@ -45,7 +45,7 @@
     border-radius: 5px;
     list-style: none;
     font-weight: 400;
-    font-size: 36px;
+    @include fontSize(36px);
     padding: 14px 29px;
     border-radius: 25px;
    

@@ -21,11 +21,11 @@ const Homepage = () => {
 
                 <WelcomeSection />
                 <FreeEnglish />
-                <CoursesHomepage />
                 <Tutors />
                 <HomepageComments />
                 <JoinTrial />
                 */}
+                <CoursesHomepage />
                 <CommonQuestions />
                 <Certificate />
             </div>
