@@ -19,6 +19,12 @@
 
         display: flex;
         justify-content: space-between;
+        column-gap: 41px;
+        @include bigTablets {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 41px;
+        }
     }
 }
 
@@ -49,6 +55,9 @@
         display: flex;
         flex-direction: column;
         row-gap: 14px;
+        @include tablets {
+            max-width: 177px;
+        }
     }
 
     &__title {
@@ -75,6 +84,7 @@
     display: flex;
     column-gap: 13px;
     justify-content: flex-end;
+
     &__network {
         cursor: pointer;
     }

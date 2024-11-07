@@ -12,7 +12,7 @@ import HomepageComments from "../components/HomepageComments/HomepageComents";
 import Tutors from "../components/Tutors/Tutors";
 const Homepage = () => {
     return (
-        
+
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
@@ -30,8 +30,8 @@ const Homepage = () => {
                */}
             </div>
             {/*
-            <Footer />
             */}
+            <Footer />
         </div>
     );
 }

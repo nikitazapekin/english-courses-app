@@ -7,11 +7,7 @@ import type { ThunkAction, Action } from '@reduxjs/toolkit';
  import HomepageSlice  from "./slices/Homepage.slice"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice
-/*	appSlice: appSlice,
-	selectedElementsSlice: selectedElementsSlice,
-	[githubApi.reducerPath]: githubApi.reducer,
-	[usersGithubApi.reducerPath]: usersGithubApi.reducer,
-    */
+
 });
 
 export const store = configureStore({
