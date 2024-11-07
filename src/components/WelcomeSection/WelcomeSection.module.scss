@@ -3,9 +3,9 @@
 .welcome {
     &__wrapper {
         background-color: $gray;
-       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
     }
-    
+
     &__inner {
         display: flex;
 
@@ -14,6 +14,11 @@
         padding: 0px 15px;
         margin: 0 auto;
         justify-content: space-between;
+
+        @include bigTablets {
+            flex-direction: column;
+            align-items: center;
+        }
 
     }
 
@@ -30,6 +35,12 @@
         color: $white;
         max-width: 405px;
         font-family: "Inter", sans-serif;
+
+        @include bigTablets {
+            margin-top: 46px;
+            @include fontSize(48px);
+            text-align: center;
+        }
     }
 
     &__about {
@@ -37,6 +48,10 @@
         max-width: 441px;
         color: $white;
         @include fontSize(32px);
+        @include bigTablets {
+            @include fontSize(24px);
+            text-align: center;
+        }
     }
 
     &__btn {
@@ -55,12 +70,22 @@
         &:hover {
             background-color: $btn-active;
         }
+        
+        @include bigTablets {
+            @include fontSize(24px);
+            
+        }
     }
+
     &__image {
         align-self: flex-end;
         width: 50%;
         transform: translateY(20%);
-   
+
+        @include bigTablets {
+            width: 62%;
+        }
+
     }
 }
 
