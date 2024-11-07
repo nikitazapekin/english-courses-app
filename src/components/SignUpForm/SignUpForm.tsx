@@ -6,17 +6,42 @@ import styles from "./SignUpForm.module.scss"
 import Vk from "../../assets/networks/vk.png"
 import Discord from "../../assets/networks/discord.png"
 import Google from "../../assets/networks/google.png"
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schema } from "./schema"
+import { useForm } from "react-hook-form";
+import { RegisterInterface } from "./types"
+import { useSelector } from "react-redux";
+import { formsSelector } from "../../store/selectors/Forms.selector";
 const SignUpForm = () => {
     const navigate = useNavigate();
+    const countries = useSelector(formsSelector)
     const handleNavigate = () => {
-navigate("/sign-in")
+        navigate("/sign-in")
     }
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        setValue,
+        watch,
+        formState: { errors },
+    } = useForm<RegisterInterface>({
+        resolver: yupResolver(schema),
+        context: { countries },
+    });
+    const submitForm = (data: RegisterInterface) => {
+
+        navigate("/");
+        reset();
+
+    };
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
             <div className={styles.form__inner}>
                 <div className={styles.form__header}>
                     <div className={styles.form__btns}>
-                        <p className={styles.form__btn}  onClick={handleNavigate}>
+                        <p className={styles.form__btn} onClick={handleNavigate}>
                             Вход
                         </p>
                         <p className={styles.form__btn} >
@@ -28,7 +53,7 @@ navigate("/sign-in")
                 </div>
 
                 <h2 className={styles.form__title}>
-                Регистрация через почту и пароль
+                    Регистрация через почту и пароль
                 </h2>
                 <div className={styles.form__fields}>
                     <div className={styles.form__field}>
@@ -37,10 +62,12 @@ navigate("/sign-in")
 
                         </p>
                         <div className={styles.form__input__wrapper}>
-                            <input className={styles.form__input} type="text"
+                            <input
+                                {...register("name")}
+                                className={styles.form__input} type="text"
                                 name="name"
-                                     placeholder="Введите имя"
-                                     required
+                                placeholder="Введите имя"
+                                required
                             />
                             <img className={styles.form__icon} src={User} />
 
@@ -56,7 +83,9 @@ navigate("/sign-in")
 
                         </p>
                         <div className={styles.form__input__wrapper}>
-                            <input className={styles.form__input} type="email"
+                            <input
+                                {...register("email")}
+                                className={styles.form__input} type="email"
                                 name="email"
                                 placeholder="Введите почту"
                                 required
@@ -73,10 +102,12 @@ navigate("/sign-in")
 
                         </p>
                         <div className={styles.form__input__wrapper}>
-                            <input className={styles.form__input} type="password"
+                            <input
+                                {...register("password")}
+                                className={styles.form__input} type="password"
                                 name="password"
-                                     placeholder="Введите пароль"
-                                     required
+                                placeholder="Введите пароль"
+                                required
                             />
                             <img className={styles.form__icon} src={Lock} />
 
@@ -89,18 +120,79 @@ navigate("/sign-in")
                             error
 
                         </p>
-                        <div className={styles.form__input__wrapper}>
-                            <input className={styles.form__input} type="password"
+                        <div
+                            className={styles.form__input__wrapper}>
+                            <input
+                                {...register("confirmPassword")}
+                                className={styles.form__input} type="password"
                                 name="password"
-                                     placeholder="Введите пароль еще раз"
-                                     required
+                                placeholder="Введите пароль еще раз"
+                                required
                             />
                             <img className={styles.form__icon} src={Lock} />
 
                         </div>
+
                     </div>
 
- 
+
+
+
+
+
+
+                    <div className={styles.form__field}>
+                        <p className={styles.form__error}>
+                            error
+
+                        </p>
+                        <div
+                            className={styles.form__input__wrapper}>
+
+                            <input
+                                className={styles.form__input}
+                                {...register("country")}
+                                type="text" id="country" list="countriesList" autoComplete="on" name="country" placeholder="Введите страну" />
+
+                            <datalist id="countriesList">
+                                {countries.map((country) => (
+                                    <option key={country}>{country}</option>
+                                ))}
+                            </datalist>
+                            <img className={styles.form__icon} src={Lock} />
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <div className={styles.form__field}>
+                        <p className={styles.form__error}>
+                            error
+
+                        </p>
+                        <div
+                            className={`${styles.form__input__wrapper} ${styles.form__confirm}`}>
+
+                            <input
+                                {...register("agreeToTerms")}
+                                type="checkbox"
+                                className={styles.form__checkbox}
+                                id="agreeToTerms"
+                            />
+                            <p className={styles.form__text}>
+                                I agree to the terms of service
+                            </p>
+                        </div>
+
+
+
+                    </div>
 
 
                 </div>
@@ -117,21 +209,21 @@ navigate("/sign-in")
                     <p className={styles.form__or__text}>Или</p>
                     <hr className={styles.form__line} />
                 </div>
-                    <p className={styles.form__or__text}>
-              Регистрация через социальные сети
-                    </p>
+                <p className={styles.form__or__text}>
+                    Регистрация через социальные сети
+                </p>
 
-                    <div className={styles.form__networks}>
-                        <div className={styles.form__network}>
-                            <img className={styles.form__network__image} src={Discord} alt="discord" />
-                        </div>
-                        <div className={styles.form__network}>
-                            <img className={styles.form__network__image} src={Google} alt="discord" />
-                        </div>
-                        <div className={styles.form__network}>
-                            <img className={styles.form__network__image} src={Vk} alt="discord" />
-                        </div>
+                <div className={styles.form__networks}>
+                    <div className={styles.form__network}>
+                        <img className={styles.form__network__image} src={Discord} alt="discord" />
                     </div>
+                    <div className={styles.form__network}>
+                        <img className={styles.form__network__image} src={Google} alt="discord" />
+                    </div>
+                    <div className={styles.form__network}>
+                        <img className={styles.form__network__image} src={Vk} alt="discord" />
+                    </div>
+                </div>
 
 
 

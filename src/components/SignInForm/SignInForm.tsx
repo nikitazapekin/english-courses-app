@@ -74,7 +74,7 @@ navigate("/sign-up")
                     <div className={`${styles.form__input__wrapper} ${styles.form__input__checkbox}`}>
                     <input className={styles.form__input__checkbox} type="checkbox"
                                 name="remember"
-                                     
+                                    
                             />
                             <p className={styles.form__checkbox}>Запомнить меня</p>
                         </div>

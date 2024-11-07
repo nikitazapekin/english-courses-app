@@ -116,7 +116,7 @@
     &__error {
         text-align: right;
         @include fontSize(20px);
-        color:  rgb(182, 13, 13);
+        color: rgb(182, 13, 13);
         font-family: "Inter", sans-serif;
     }
 
@@ -163,7 +163,7 @@
         display: flex;
         column-gap: 30px;
         justify-content: center;
- 
+
     }
 
     &__network {
@@ -173,15 +173,40 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+
         &:nth-child(1) {
             background-color: $discord;
         }
+
         &:nth-child(2) {
             background-color: $google;
 
         }
+
         &:nth-child(3) {
             background-color: $vk;
         }
     }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        font-family: "Inter", sans-serif;
+        color: $black;
+    }
+
+    &__confirm {
+        display: flex;
+        column-gap: 20px;
+    }
+    
+    &__checkbox {
+        width: 23px;
+        height: 23px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
 }
