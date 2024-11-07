@@ -142,8 +142,9 @@
     position: absolute;
     left: 0;
     top: 0;
- display: flex;
- flex-direction: column;
+    display: flex;
+    flex-direction: column;
+
     &__open {
         transform: translateX(0%);
     }
@@ -153,11 +154,13 @@
         @include fontSize(32px);
         color: $white;
         font-family: "Inter", sans-serif;
+
         &__border {
             padding: 12px 18px;
             background-color: $purple;
             border-radius: 10px;
             transition: 0.4s;
+
             &:hover {
                 background-color: $btn-active;
             }
@@ -178,7 +181,7 @@
         align-items: center;
     }
 
-  
+
 
     &__btn {
         display: flex;
@@ -206,7 +209,7 @@
 
         top: 50%;
         left: 0;
-        //  transform: rotate(-45deg) translateY(-3px) translateX(5px);
+     
     }
 
     &__content {
@@ -215,14 +218,15 @@
         row-gap: 26px;
         align-items: center;
         margin-top: 57px;
-      //  background-color: red;
-       // height: 100%;
+     
     }
 
     &__image {
 
+        margin-top: auto;
         align-self: flex-end;
-     //   align-self: flex-end;
-      // justify-self: flex-end;
+        max-width: 600px;
+        width: 100%;
+ 
     }
 }
