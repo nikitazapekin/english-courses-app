@@ -2,7 +2,8 @@ import Header from "../components/Header/Header";
 import SignUpForm from "../components/SignUpForm/SignUpForm";
 import styles from "../theme/wrappers.module.scss"
 import "../theme/normalize.scss"
-const SignUp = () => {
+import Footer from "../components/Footer/Footer";
+const SignUpPage = () => {
     return (<>
         <div className={styles.wrapper}>
             <Header />
@@ -10,9 +11,9 @@ const SignUp = () => {
 
                 <SignUpForm />
             </div>
-
+            <Footer />
         </div>
     </>);
 }
 
-export default SignUp;
+export default SignUpPage;

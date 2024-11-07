@@ -5,7 +5,12 @@ import Lock from "../../assets/icons/lock.png"
 import Vk from "../../assets/networks/vk.png"
 import Discord from "../../assets/networks/discord.png"
 import Google from "../../assets/networks/google.png"
+import { useNavigate } from "react-router-dom"
 const SignInForm = () => {
+    const navigate = useNavigate();
+    const handleNavigate = () => {
+navigate("/sign-up")
+    }
     return (
         <form className={styles.form}>
             <div className={styles.form__inner}>
@@ -15,7 +20,7 @@ const SignInForm = () => {
                         <p className={styles.form__btn}>
                             Вход
                         </p>
-                        <p className={styles.form__btn}>
+                        <p className={styles.form__btn} onClick={handleNavigate}>
                             Регистрация
                         </p>
                     </div>
@@ -35,7 +40,8 @@ const SignInForm = () => {
                         <div className={styles.form__input__wrapper}>
                             <input className={styles.form__input} type="text"
                                 name="name"
-                                     placeholder="Введите имя"
+                                     placeholder="Введите имя или email"
+                                     required
                             />
                             <img className={styles.form__icon} src={User} />
 
@@ -54,6 +60,7 @@ const SignInForm = () => {
                             <input className={styles.form__input} type="email"
                                 name="email"
                                 placeholder="Введите почту"
+                                required
                             />
                             <img className={styles.form__icon} src={Mail} />
 
@@ -61,30 +68,21 @@ const SignInForm = () => {
                     </div>
 
 
+                 
 
 
-                    <div className={styles.form__field}>
-                        <p className={styles.form__error}>
-                            error
-
-                        </p>
-                        <div className={styles.form__input__wrapper}>
-                            <input className={styles.form__input} type="password"
-                                name="password"
-                                     placeholder="Введите пароль"
+                    <div className={`${styles.form__input__wrapper} ${styles.form__input__checkbox}`}>
+                    <input className={styles.form__input__checkbox} type="checkbox"
+                                name="remember"
+                                     
                             />
-                            <img className={styles.form__icon} src={Lock} />
-
+                            <p className={styles.form__checkbox}>Запомнить меня</p>
                         </div>
-                    </div>
-
-
- 
 
 
                 </div>
 
-                <div className={styles.form__line} />
+                <hr className={styles.form__line} />
 
                 <button className={styles.form__submit}
                     type="submit"
@@ -92,9 +90,10 @@ const SignInForm = () => {
 
                 <div className={styles.form__or}>
 
-                    <div className={styles.form__line} />
+                    <hr className={styles.form__line} />
                     <p className={styles.form__or__text}>Или</p>
-                    <div className={styles.form__line} />
+                    <hr className={styles.form__line} />
+                </div>
                     <p className={styles.form__or__text}>
                   Войти через социальные сети
                     </p>
@@ -110,7 +109,6 @@ const SignInForm = () => {
                             <img className={styles.form__network__image} src={Vk} alt="discord" />
                         </div>
                     </div>
-                </div>
 
 
 

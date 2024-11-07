@@ -25,14 +25,10 @@ const Homepage = () => {
                 <CommonQuestions />
                 <JoinTrial />
                 <HomepageComments />
-            {/*
-                */}
-                {/*
-                
-                */}
+           
+             
             </div>
-            {/*
-            */}
+           
             <Footer />
         </div>
     );
