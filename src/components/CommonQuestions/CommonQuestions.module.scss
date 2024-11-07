@@ -3,7 +3,9 @@
 .common {
   margin-bottom: 40px;
   padding: 0 15px;
-
+@include mobiles {
+  padding: 0 10px;
+}
   &__title {
     font-weight: 700;
     @include fontSize(48px);

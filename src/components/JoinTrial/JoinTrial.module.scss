@@ -11,8 +11,10 @@
         justify-content: center;
         display: grid;
         grid-template-columns: minmax(200px, 493px) minmax(200px, 493px);
-        //  background-color: purple;
-        //   height: 100%;
+        
+        @include smallTablets {
+grid-template-columns: minmax(300px, 100%);
+        }
 
     }
 
@@ -21,6 +23,10 @@
         border-bottom-left-radius: 31px;
         background-color: $white;
         padding: 85px 27px;
+        @include smallTablets {
+            border-bottom-left-radius: 0;
+            border-top-right-radius: 31px;
+        }
     }
 
 
@@ -31,6 +37,11 @@
         height: 100%;
         position: relative;
         overflow: hidden;
+        @include smallTablets {
+            border-bottom-left-radius: 31px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 31px;
+        }
 
         &__wrapper {
             height: 100%;
@@ -89,6 +100,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 31px;
+        margin-bottom: 31px;
     }
 
     &__item {
@@ -138,6 +150,9 @@
         color: $black;
         max-width: 493px;
         font-family: "Inter", sans-serif;
+        @include tablets {
+            @include fontSize(24px);
+        }
     }
 
     &__btn {

@@ -19,13 +19,13 @@ const Homepage = () => {
                 <WelcomeSection />
                 <FreeEnglish />
                 <CoursesHomepage />
-            {/*
-                
                 <Tutors />
                 <Certificate />
+                
                 <CommonQuestions />
                 <JoinTrial />
                 <HomepageComments />
+            {/*
                 */}
                 {/*
                 

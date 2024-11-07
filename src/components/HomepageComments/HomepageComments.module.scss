@@ -167,6 +167,9 @@
     &__stars {
         display: flex;
         column-gap: 6px;
+        @include mobiles {
+            column-gap: 0;
+        }
     }
 
     &__star {
