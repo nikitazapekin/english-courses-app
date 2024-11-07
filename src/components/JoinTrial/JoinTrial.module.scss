@@ -11,9 +11,9 @@
         justify-content: center;
         display: grid;
         grid-template-columns: minmax(200px, 493px) minmax(200px, 493px);
-        
+
         @include smallTablets {
-grid-template-columns: minmax(300px, 100%);
+            grid-template-columns: minmax(300px, 100%);
         }
 
     }
@@ -23,6 +23,7 @@ grid-template-columns: minmax(300px, 100%);
         border-bottom-left-radius: 31px;
         background-color: $white;
         padding: 85px 27px;
+
         @include smallTablets {
             border-bottom-left-radius: 0;
             border-top-right-radius: 31px;
@@ -37,6 +38,7 @@ grid-template-columns: minmax(300px, 100%);
         height: 100%;
         position: relative;
         overflow: hidden;
+
         @include smallTablets {
             border-bottom-left-radius: 31px;
             border-top-right-radius: 0;
@@ -130,12 +132,12 @@ grid-template-columns: minmax(300px, 100%);
 
 
 .form {
- 
+
     &__content {
         display: flex;
         flex-direction: column;
         row-gap: 33px;
-        
+
     }
 
     &__header {
@@ -150,6 +152,7 @@ grid-template-columns: minmax(300px, 100%);
         color: $black;
         max-width: 493px;
         font-family: "Inter", sans-serif;
+
         @include tablets {
             @include fontSize(24px);
         }
@@ -203,4 +206,3 @@ grid-template-columns: minmax(300px, 100%);
     }
 
 }
- 
