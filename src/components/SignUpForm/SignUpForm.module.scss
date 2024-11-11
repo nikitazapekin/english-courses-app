@@ -48,6 +48,12 @@
         color: $black;
         font-family: "Inter", sans-serif;
     }
+    &__checkbox {
+        font-weight: 700;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
 
     &__line {
         background-color: $grayForm;
