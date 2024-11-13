@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <ErrorBoundary>
         <Provider store={store}>
-
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>

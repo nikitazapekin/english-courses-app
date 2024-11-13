@@ -8,6 +8,8 @@ import { HomepageSelector } from "../../store/selectors/Homepage.selector";
 import { useDispatch } from "react-redux";
 import { setOpenBurger } from "../../store/slices/Homepage.slice";
 import BirdPanel from "../../assets/BirdPanel.png"
+import { useDebouncedCallback } from "use-debounce";
+import { useState, ChangeEvent } from "react";
 const Header = () => {
     const navigate = useNavigate()
     const isOpen = useSelector(HomepageSelector)
@@ -17,9 +19,49 @@ const Header = () => {
     }
 
     const handleOpen = () => {
-        console.log("click")
+     
         dispatch(setOpenBurger(!isOpen))
     }
+
+
+ 
+const handleCatalog = () => {
+navigate("/catalog")
+}
+ 
+const loadSuggestions = async (inputValue: string): Promise<string[]> => {
+    console.log("Loading suggestions for:", inputValue);
+    return inputValue ? ["Suggestion 1", "Suggestion 2", "Suggestion 3"] : [];
+};
+
+
+function debounce<T extends (...args: any[]) => void>(func: T, delay: number): (...args: Parameters<T>) => void {
+    let timer: ReturnType<typeof setTimeout>;
+    return function (...args: Parameters<T>) {
+        clearTimeout(timer);
+        
+        timer = setTimeout(() => func(...args), delay);
+    };
+}
+
+const updateSuggestion = debounce(async (inputValue: string) => {
+    console.log("Debounced function called with:", inputValue);
+    if (inputValue.length > 0) {
+        const result = await loadSuggestions(inputValue);
+     //   setSuggestions(result);
+        console.log("Suggestions set to:", result);
+    } else {
+      //  setSuggestions([]);
+        console.log("Suggestions cleared");
+    }
+}, 1000);
+
+const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+   // setValue(newValue);
+    console.log("Input changed to:", newValue);
+    updateSuggestion(newValue);
+};
     return (
         <header className={styles.header}>
             <div className={styles.header__inner}>
@@ -42,15 +84,10 @@ const Header = () => {
                     <ul className={styles.navigation__list}>
                         <li className={styles.navigation__item}>
 
-                            <div className={styles.navigation__text}>
+                            <div className={styles.navigation__text} onClick={handleCatalog}>
                                 Каталог
                             </div>
-                            {/*
-                                <select>
-                                    <option>Test</option>
-                                    <option>Test1</option>
-                                </select>
-                                    */}
+                          
                         </li>
                         <li className={styles.navigation__item}>
                             <div className={`${styles.navigation__btn} ${styles.navigation__text}`}>
@@ -91,6 +128,7 @@ const Header = () => {
                     </div>
                     <div className={styles.search}>
                         <input type="text"
+                        onChange={onChange}
                             placeholder="Найти..."
                             className={styles.search__input} />
                         <div className={styles.search__btn}>
