@@ -106,12 +106,14 @@
     }
 
     &__image {
-        //align-self: flex-start;
-        max-width: 613px;
-        //    max-height: 500px;
-        /* 
-    */
+    //    display: grid;
+      //  grid-template-columns: minmax(200px, 600px);
         position: absolute;
+      //  align-self: flex-start;
+        max-width: 613px;
+      
+   // width: 100%;
+     //   position: absolute;
         left: 0;
         bottom: 0;
         //  max-width: 413px;

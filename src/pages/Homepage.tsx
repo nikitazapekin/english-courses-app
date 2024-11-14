@@ -18,9 +18,9 @@ const Homepage = () => {
             <div className={styles.content}>
                 <WelcomeSection />
                 <FreeEnglish />
-                <CoursesHomepage />
                 <Tutors />
                 <Certificate />
+                <CoursesHomepage />
                 
                 <CommonQuestions />
                 <JoinTrial />
