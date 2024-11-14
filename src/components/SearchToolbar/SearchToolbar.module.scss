@@ -4,11 +4,24 @@
     display: flex;
     flex-direction: column;
     row-gap: 22px;
+
+    @include pc {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 20px;
+
+    }
+
     &__subtitle {
         font-weight: 700;
         @include fontSize(20px);
         color: $black;
         font-family: "Inter", sans-serif;
+
+        @include pc {
+            display: none;
+
+        }
     }
 
     &__text {
@@ -16,5 +29,10 @@
         @include fontSize(20px);
         color: $black;
         font-family: "Inter", sans-serif;
+
+        @include pc {
+            white-space: nowrap;
+
+        }
     }
 }

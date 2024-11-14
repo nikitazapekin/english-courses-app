@@ -1,6 +1,24 @@
 @import "../../theme/theme";
 
 .courses {
+    @include pc {
+        margin: 0 auto;
+    }
+
+    width: 100%;
+
+    &__inner {
+      //  background-color: red;
+        display: flex;
+        flex-direction: column;
+
+        @include pc {
+            max-width: 100%;
+            width: 100%;
+           
+        }
+    }
+
     &__header {
         display: flex;
         justify-content: space-between;
@@ -28,6 +46,14 @@
         grid-column-gap: 30px;
         grid-row-gap: 16px;
         margin-top: 17px;
+        @include pc {
+            justify-content: space-between;
+       //     grid-template-columns: repeat(3, 1fr);
+        //    align-self: ;
+            //   grid-column-gap: 16px;
+        }
+
+        @include bigTablets // display
 
     }
 }
@@ -37,13 +63,23 @@
 
 
     display: flex;
-    flex: 0 0 260px;
+    //   flex: 0 0 260px;
+    width: 260px;
     flex-direction: column;
 
     cursor: pointer;
     position: relative;
     perspective: 300px;
     transition: 0.4s ease-in-out;
+
+    @include pc {
+        //    width: 240px;
+
+
+
+    }
+
+
 
     &:hover {
         transform: rotateY(20deg) rotateX(10deg);

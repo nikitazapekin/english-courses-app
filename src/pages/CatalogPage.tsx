@@ -10,8 +10,10 @@ const CatalogPage = () => {
 
                 <Header />
                 <div className={styles.content}>
-                    <CoursesSlider />
+                    {/*
+                    */}
 
+                    <CoursesSlider />
                     <CategoriesComponent />
                 </div>
                 <Footer />
