@@ -12,7 +12,7 @@
         text-align: center;
         color: $white;
         margin-top: 139px;
-      
+
     }
 
     &__inner {
@@ -24,11 +24,11 @@
         flex-direction: column;
         row-gap: 20px;
         padding-bottom: 173px;
-     //   min-height: 2500px;
+
+        //   min-height: 2500px;
         @include mobiles {
             padding: 0 10px;
-        //    min-height: 1300px;
-          //  background-color: red;
+
         }
     }
 
@@ -52,6 +52,7 @@
         }
 
     }
+
     &__line1 {
         display: flex;
         column-gap: 60px;
@@ -64,6 +65,7 @@
         }
 
     }
+
     &__more {
         font-weight: 400;
         @include fontSize(32px);
@@ -78,31 +80,35 @@
 .cardS {
     border-radius: 20px;
     min-height: 395px;
-    //  max-width: 338px;
+
     flex: 0 0 338px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    perspective: 300px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        transform: rotateY(30deg) rotateX(10deg);
+    }
 
     @include smPc {
         &:nth-child(1) {
             flex: 1 0 343px;
-            //     max-width: 343px;
-            //     width: 100%;
+
         }
 
         &:nth-child(2) {
             flex: 1 0 343px;
-            //    max-width: 343px;
-            //    width: 100%;
+
 
         }
 
         &:nth-child(3) {
             flex: 0 0 100%;
-            //    max-width: 343px;
-            //    width: 100%;
+
 
         }
     }
@@ -132,6 +138,7 @@
     &__image {
         justify-self: flex-end;
         max-height: 270px;
+
         @include mobiles {
             max-width: 200px;
         }
@@ -142,31 +149,39 @@
         @include fontSize(36px);
         color: $black;
         padding: 16px 20px;
-        //          font-family: "Inter", sans-serif;
+
         margin: 0 auto;
     }
 }
 
 .cardB {
     border-radius: 20px;
-  //  max-width: 536px;
-  flex: 0 0 536px;
+
+    flex: 0 0 536px;
     min-height: 395px;
-@include smPc {
-    &:nth-child(1) {
 
-        flex: 1 0 343px;
-}
-//     max-width: 343px;
-//     width: 100%;
+    perspective: 300px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
 
-&:nth-child(2) {
-    flex: 1 0 343px;
-        //    max-width: 343px;
-        //    width: 100%;
-        
+    &:hover {
+        transform: rotateY(30deg) rotateX(10deg);
     }
-}
+
+    @include smPc {
+        &:nth-child(1) {
+
+            flex: 1 0 343px;
+        }
+
+
+        &:nth-child(2) {
+            flex: 1 0 343px;
+
+
+        }
+    }
+
     &__titleWhite {
         color: $white;
     }

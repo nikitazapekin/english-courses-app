@@ -1,8 +1,14 @@
 import styles from "./WelcomeSection.module.scss"
 import Bird from "../../assets/bird.png"
 const WelcomeSection = () => {
+    const scrollToJoin = () => {
+        const element = document.getElementById("joinSection");
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
     return (
-        <div className={styles.welcome}>
+        <section className={styles.welcome}>
             <div className={styles.welcome__wrapper}>
 
                 <div className={styles.welcome__inner}>
@@ -16,7 +22,7 @@ const WelcomeSection = () => {
                             Добро пожаловать в онлайн
                             школу Edme
                         </p>
-                        <div className={styles.welcome__btn}>
+                        <div className={styles.welcome__btn} onClick={scrollToJoin}>
                             Начать учиться!
                         </div>
                     </div>
@@ -27,10 +33,8 @@ const WelcomeSection = () => {
              
                 </div>
             </div>
-          {/*}  <div className={styles.triangle__top}>
-
-            </div> */}
-        </div>
+        
+        </section>
     );
 }
 

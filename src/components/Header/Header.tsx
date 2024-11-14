@@ -40,13 +40,13 @@ const Header = () => {
     }
 
     const [searchQuery, setSearchQuery] = useState("");
-    const [filteredCourses, setFilteredCourses] = useState<Array<{id: number, title: string}>>([]);
+    const [filteredCourses, setFilteredCourses] = useState<Array<{ id: number, title: string }>>([]);
     const debouncedSearch = useDebouncedCallback((query) => {
         const lowerCaseQuery = query.toLowerCase();
         const filtered = courses.filter((course) =>
             course.title.toLowerCase().includes(lowerCaseQuery)
         );
-        if(filtered.length!=courses.length) {
+        if (filtered.length != courses.length) {
 
             setFilteredCourses(filtered);
         } else {
@@ -81,7 +81,7 @@ const Header = () => {
                             className={styles.search__input} />
 
                         <div className={styles.search__params}>
-                            {filteredCourses!.slice(0,5).map((item) => (
+                            {filteredCourses!.slice(0, 5).map((item) => (
                                 <div className={styles.search__param} key={item.id}>
                                     {item.title}
                                 </div>
@@ -135,7 +135,17 @@ const Header = () => {
                         <input type="text"
 
                             placeholder="Найти..."
-                            className={styles.search__input} />
+                            className={styles.search__input}
+                            onChange={handleSearchChange}
+                        />
+
+                        <div className={styles.search__params}>
+                            {filteredCourses!.slice(0, 5).map((item) => (
+                                <div className={styles.search__param} key={item.id}>
+                                    {item.title}
+                                </div>
+                            ))}
+                        </div>
                         <div className={styles.search__btn}>
                             <img src={Search} alt="Icon"
                                 className={styles.search__icon}

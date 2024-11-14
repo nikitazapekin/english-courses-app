@@ -4,7 +4,7 @@ import Cross from "../../assets/cross.png"
 import Bird from "../../assets/SmallBird.png"
 const JoinTrial = () => {
     return (
-        <div className={styles.join}>
+        <section className={styles.join} id="joinSection">
             <div className={styles.join__inner}>
                 <div className={styles.join__preview}>
                     <form className={styles.form}>
@@ -70,7 +70,7 @@ const JoinTrial = () => {
 
 
             </div>
-        </div>
+        </section>
     );
 }
 
