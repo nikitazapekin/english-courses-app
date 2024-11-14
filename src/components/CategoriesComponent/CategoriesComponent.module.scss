@@ -1,0 +1,19 @@
+@import "../../theme/theme";
+.categories {
+    &__inner {
+      
+            display: flex;
+            max-width: 1430px;
+            padding: 0px 15px;
+            margin: 0 auto; 
+            column-gap: 55px;
+            margin-top: 35px;
+    }
+    &__content {
+
+        display: flex;
+        flex-direction: column;
+        max-width: 1138px;
+        width: 100%;
+    }
+}

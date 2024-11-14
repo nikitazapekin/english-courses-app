@@ -1,7 +1,8 @@
 @import "../../theme/theme";
 
 .slider {
-    background-color: $sliderGreen;
+    // background-color: $sliderGreen;
+    transition: 0.4s ease-in-out;
     min-height: 518px;
 
     &__inner {
@@ -9,26 +10,43 @@
         max-width: 1430px;
         padding: 0px 15px;
         margin: 0 auto;
-     //   justify-content: center;
-     justify-content: space-between;
-     column-gap: 20px;
+        justify-content: space-between;
+        column-gap: 20px;
+
+    }
+
+
+    &__carousel {
+        display: flex;
+        min-width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-height: 100%;
+        max-width: 100%;
+        transition: 0.4s ease-in-out;
+
     }
 
     &__panel {
-        max-width: 1005px;
-        //   background-color: red;
+        min-height: 518px;
+
+        position: relative;
+
         width: 100%;
-        //  height: 300px;
+        max-width: 100%;
+
+        overflow: hidden;
+
     }
 
     &__button {
-        padding: 21px 21px;
+
         cursor: pointer;
         background-color: $light-gray;
         border-radius: 50%;
-        width: 86px;
+        min-width: 86px;
         height: 86px;
-
         font-weight: 700;
         @include fontSize(32px);
         color: $black;
@@ -36,6 +54,15 @@
         align-items: center;
         justify-content: center;
         align-self: center;
+
+        transition: 0.4s ease-in-out;
+
+        &:hover {
+
+            background-color: $blue;
+            @include fontSize(40px);
+
+        }
 
     }
 
@@ -50,14 +77,21 @@
     }
 
     &__item {
+
         display: flex;
+
+        min-width: 100%;
+        min-height: 100%;
         flex-direction: column;
-//background-color: red;
+        width: 100%;
+        position: relative;
+
         &__content {
-     align-self: flex-end;
-     display: flex;
-     flex-direction: column;
- 
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+
+
         }
     }
 
@@ -68,10 +102,19 @@
         color: $white;
         max-width: 587px;
         margin-bottom: 16px;
+
     }
 
     &__image {
-        align-self: flex-start;
+        //align-self: flex-start;
+        max-width: 613px;
+        //    max-height: 500px;
+        /* 
+    */
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        //  max-width: 413px;
     }
 
     &__try {
@@ -84,7 +127,7 @@
         font-weight: 700;
         @include fontSize(32px);
         color: $black;
-align-self: flex-end;
+        align-self: flex-end;
 
     }
 }

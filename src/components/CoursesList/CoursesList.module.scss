@@ -1,0 +1,18 @@
+@import "../../theme/theme";
+.courses {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+    }
+    &__title {
+        margin-top: 35px;
+        font-family: "Inter", sans-serif;
+    }
+    &__select {
+        align-self: flex-end;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+@include fontSize(24px);
+color: $black;
+    }
+}

@@ -8,17 +8,17 @@ const Footer = () => {
                     <div className={styles.preview}>
                         <div className={styles.contacts}>
                             <div className={styles.contacts__block}>
-                                <h2 className={styles.contacts__title}>
+                                <a href="tel:+375292557677" className={styles.contacts__title}>
                                     +375 (29) 255-76-77
-                                </h2>
+                                </a>
                                 <p className={styles.contacts__text}>
                                     Контактный центр
                                 </p>
                             </div>
                             <div className={styles.contacts__block}>
-                                <h2 className={styles.contacts__title}>
+                                <a href="mailto:edme@gmail.com" className={styles.contacts__title}>
                                     edme@gmail.com
-                                </h2>
+                                </a>
                                 <p className={styles.contacts__text}>
                                     Электронная почта
                                 </p>
