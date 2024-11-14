@@ -57,11 +57,7 @@ const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
                 <div className={styles.swiperItemsContainer}>
                     {items.map((item, index) => (
                         <div key={index} className={styles.swiperItem}>
-                            {/*
-                        <p
-                        className={styles.swiperItem__text}
-                        >{item.title}</p>
-                        */}
+                          
                             <img src={item.img}
                                 className={styles.swiperItem__img}
                                 alt="Tutor" />

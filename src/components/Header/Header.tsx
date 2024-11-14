@@ -1,3 +1,5 @@
+
+
 import styles from "./Header.module.scss"
 import Logo from "../../assets/logo.png"
 import Search from "../../assets/search.png"
@@ -9,7 +11,21 @@ import { useDispatch } from "react-redux";
 import { setOpenBurger } from "../../store/slices/Homepage.slice";
 import BirdPanel from "../../assets/BirdPanel.png"
 import { useDebouncedCallback } from "use-debounce";
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
+
+
+const courses = [
+    { id: 1, title: "Курс для программистов" },
+    { id: 2, title: "Английский для начинающих" },
+    { id: 3, title: "Разговорный английский" },
+    { id: 4, title: "Английский для бизнеса" },
+    { id: 5, title: "Подготовка к IELTS" },
+    { id: 6, title: "Технический английский" },
+    { id: 7, title: "Английский для путешествий" },
+    { id: 8, title: "Английский для детей" },
+    { id: 9, title: "Английский для инженеров" },
+];
+
 const Header = () => {
     const navigate = useNavigate()
     const isOpen = useSelector(HomepageSelector)
@@ -19,49 +35,38 @@ const Header = () => {
     }
 
     const handleOpen = () => {
-     
+
         dispatch(setOpenBurger(!isOpen))
     }
 
+    const [searchQuery, setSearchQuery] = useState("");
+    const [filteredCourses, setFilteredCourses] = useState<Array<{id: number, title: string}>>([]);
+    const debouncedSearch = useDebouncedCallback((query) => {
+        const lowerCaseQuery = query.toLowerCase();
+        const filtered = courses.filter((course) =>
+            course.title.toLowerCase().includes(lowerCaseQuery)
+        );
+        if(filtered.length!=courses.length) {
 
- 
-const handleCatalog = () => {
-navigate("/catalog")
-}
- 
-const loadSuggestions = async (inputValue: string): Promise<string[]> => {
-    console.log("Loading suggestions for:", inputValue);
-    return inputValue ? ["Suggestion 1", "Suggestion 2", "Suggestion 3"] : [];
-};
-
-
-function debounce<T extends (...args: any[]) => void>(func: T, delay: number): (...args: Parameters<T>) => void {
-    let timer: ReturnType<typeof setTimeout>;
-    return function (...args: Parameters<T>) {
-        clearTimeout(timer);
-        
-        timer = setTimeout(() => func(...args), delay);
+            setFilteredCourses(filtered);
+        } else {
+            setFilteredCourses([]);
+        }
+    }, 300);
+    useEffect(() => {
+        console.log(filteredCourses)
+    }, [filteredCourses])
+    const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setSearchQuery(value);
+        debouncedSearch(value);
     };
-}
 
-const updateSuggestion = debounce(async (inputValue: string) => {
-    console.log("Debounced function called with:", inputValue);
-    if (inputValue.length > 0) {
-        const result = await loadSuggestions(inputValue);
-     //   setSuggestions(result);
-        console.log("Suggestions set to:", result);
-    } else {
-      //  setSuggestions([]);
-        console.log("Suggestions cleared");
+
+    const handleCatalog = () => {
+        navigate("/catalog")
     }
-}, 1000);
 
-const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-   // setValue(newValue);
-    console.log("Input changed to:", newValue);
-    updateSuggestion(newValue);
-};
     return (
         <header className={styles.header}>
             <div className={styles.header__inner}>
@@ -72,7 +77,16 @@ const onChange = (event: ChangeEvent<HTMLInputElement>) => {
                     <div className={styles.search}>
                         <input type="text"
                             placeholder="Найти..."
+                            onChange={handleSearchChange}
                             className={styles.search__input} />
+
+                        <div className={styles.search__params}>
+                            {filteredCourses!.slice(0,5).map((item) => (
+                                <div className={styles.search__param} key={item.id}>
+                                    {item.title}
+                                </div>
+                            ))}
+                        </div>
                         <div className={styles.search__btn}>
                             <img src={Search} alt="Icon"
                                 className={styles.search__icon}
@@ -87,7 +101,7 @@ const onChange = (event: ChangeEvent<HTMLInputElement>) => {
                             <div className={styles.navigation__text} onClick={handleCatalog}>
                                 Каталог
                             </div>
-                          
+
                         </li>
                         <li className={styles.navigation__item}>
                             <div className={`${styles.navigation__btn} ${styles.navigation__text}`}>
@@ -95,16 +109,7 @@ const onChange = (event: ChangeEvent<HTMLInputElement>) => {
                             </div>
                         </li>
                         <li className={styles.navigation__item}>
-                            {/*
-                      
-                      <div className={styles.navigation__text}>
-                      Войти
-                      </div>
-                      */}
 
-                            {/*
-                            
-                            */}
                             <Link to="/sign-in"
                                 className={styles.navigation__text}
                             >
@@ -128,7 +133,7 @@ const onChange = (event: ChangeEvent<HTMLInputElement>) => {
                     </div>
                     <div className={styles.search}>
                         <input type="text"
-                        onChange={onChange}
+
                             placeholder="Найти..."
                             className={styles.search__input} />
                         <div className={styles.search__btn}>
