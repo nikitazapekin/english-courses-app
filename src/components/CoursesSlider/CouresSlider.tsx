@@ -1,6 +1,7 @@
 import styles from "./CoursesSlider.module.scss"
 import Children from "../../assets/coursesSlider/Childrens.png"
 import Students from "../../assets/coursesSlider/Students.png"
+import Doctors from "../../assets/coursesSlider/Doctor.png"
 import { useEffect, useRef, useState } from "react"
 
 
@@ -18,6 +19,14 @@ const data = [
         image: Students,
         title: "Английский для студентов",
         about: "Поможем студентам вузов в освоении профессиональной лексики"
+    },
+
+
+    {
+        color: "#b5c054",
+        image: Doctors,
+        title: "Английский для медработников",
+        about: "Освойте медицинскую профессиональную терминолонию"
     },
 
 ]
@@ -74,7 +83,7 @@ const CoursesSlider = () => {
 
                                 <div className={styles.slider__item__content}>
                                     <p className={styles.slider__about}>
-                                     {item.about}
+                                        {item.about}
                                     </p>
                                     <button className={styles.slider__try}>
                                         Попробовать
