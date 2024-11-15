@@ -120,4 +120,12 @@
         padding: 11px 22px 0 0;
         transform: rotate(7deg);
     }
+
+    &__rating,   &__releaseDate{
+        font-weight: 400;
+        @include fontSize(16px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+    
 }

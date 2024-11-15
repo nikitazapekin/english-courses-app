@@ -58,7 +58,6 @@ const CoursesSlider = () => {
 
     useEffect(() => {
         setCurrentColor(data[currentIndex].color)
-        //  console.log(currentPositon)
     }, [currentIndex])
 
 
@@ -73,10 +72,8 @@ const CoursesSlider = () => {
                 <div className={styles.slider__panel}>
 
                     <div className={styles.slider__carousel} style={{ transform: `translateX(-${currentPositon}px)` }}>
-
-
                         {data.map((item, index) => (
-                            <div ref={slideRef} className={styles.slider__item}>
+                            <div ref={slideRef} className={styles.slider__item} key={index}>
                                 <h2 className={styles.slider__title}>
                                     {item.title}
                                 </h2>
@@ -93,41 +90,7 @@ const CoursesSlider = () => {
                             </div>
                         )
                         )}
-                        {/*
-                        <div ref={slideRef} className={styles.slider__item}>
-                        <h2 className={styles.slider__title}>
-                                Английский для самых маленьких
-                            </h2>
-
-                            <div className={styles.slider__item__content}>
-                                <p className={styles.slider__about}>
-                                    Научим детей подросткового возраста
-                                    базовому английскому языку
-                                </p>
-                                <button className={styles.slider__try}>
-                                    Попробовать
-                                </button>
-                            </div>
-                            <img src={Children} alt="Children" className={styles.slider__image} />
-                        </div>
-
-                        <div className={styles.slider__item}>
-                            <h2 className={styles.slider__title}>
-                                Английский для студентов
-                            </h2>
-
-                            <div className={styles.slider__item__content}>
-                                <p className={styles.slider__about}>
-                                    Поможем студентам вузов в освоении профессиональной лексики
-                                </p>
-                                <button className={styles.slider__try}>
-                                    Попробовать
-                                </button>
-                            </div>
-                            <img src={Students} alt="Children" className={styles.slider__image} />
-                        </div>
-                        */}
-
+                     
 
 
                     </div>

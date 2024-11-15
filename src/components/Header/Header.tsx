@@ -66,6 +66,13 @@ const Header = () => {
     const handleCatalog = () => {
         navigate("/catalog")
     }
+    const scrollToJoin = () => {
+        navigate("/")
+        const element = document.getElementById("joinSection");
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
+    };
 
     return (
         <header className={styles.header}>
@@ -104,7 +111,7 @@ const Header = () => {
 
                         </li>
                         <li className={styles.navigation__item}>
-                            <div className={`${styles.navigation__btn} ${styles.navigation__text}`}>
+                            <div className={`${styles.navigation__btn} ${styles.navigation__text}`} onClick={scrollToJoin}>
                                 Записаться на урок
                             </div>
                         </li>

@@ -106,17 +106,14 @@
     }
 
     &__image {
-    //    display: grid;
-      //  grid-template-columns: minmax(200px, 600px);
-        position: absolute;
-      //  align-self: flex-start;
+   
+        position: absolute;    
         max-width: 613px;
       
-   // width: 100%;
-     //   position: absolute;
+  
         left: 0;
         bottom: 0;
-        //  max-width: 413px;
+   
     }
 
     &__try {
@@ -130,6 +127,10 @@
         @include fontSize(32px);
         color: $black;
         align-self: flex-end;
+        transition: 0.4s ease-in-out;
+        &:hover {
+            background-color: $yellow-active;
+        }
 
     }
 }

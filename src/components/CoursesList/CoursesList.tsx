@@ -3,6 +3,7 @@ import styles from "./CoursesList.module.scss";
 import Card from "../../assets/cards/card1.png";
 import Design from "../../assets/cards/design.png";
 import CoursesListDots from "./CoursesListDots";
+import { Link } from "react-router-dom";
 
 type SortOption = "price" | "rating" | "releaseDate";
 
@@ -202,6 +203,7 @@ const CoursesList: React.FC = () => {
 
                 <div className={styles.courses__cards}>
                     {cards.map((item, index) => (
+                        <Link to="/card">
                         <div className={styles.card} key={index}>
                             <div className={styles.card__preview} style={{ backgroundColor: item.color }}>
                                 <p className={styles.card__name}>{item.name}</p>
@@ -212,6 +214,7 @@ const CoursesList: React.FC = () => {
                             <p className={styles.card__rating}>Рейтинг: {item.rating}</p>
                             <p className={styles.card__releaseDate}>Дата выпуска: {item.releaseDate}</p>
                         </div>
+                        </Link>
                     ))}
                 </div>
 

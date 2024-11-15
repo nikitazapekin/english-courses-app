@@ -4,6 +4,7 @@ import Person2 from "../../assets/persons/Person2.png"
 import Person3 from "../../assets/persons/Person3.png"
 import Person4 from "../../assets/persons/Person4.png"
 import Person5 from "../../assets/persons/Person5.png"
+import { Link } from "react-router-dom"
 //import Person6 from "../../assets/persons/Person6.jpg"
 import NavigateCardBtn from "../NavigateCardBtn/NavigateCardBtn"
 const CoursesHomepage = () => {
@@ -106,9 +107,9 @@ const CoursesHomepage = () => {
                     </div>
 
 
-                    <p className={styles.courses__more}>
+                    <Link to={"/catalog"} className={styles.courses__more}>
                         Посмотреть ещё
-                    </p>
+                    </Link>
                 </div>
             </div>
         </section>

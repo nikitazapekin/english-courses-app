@@ -6,3 +6,6 @@ export const SIGN_UP = "/sign-up"
 
 
 export const CATALOG  = "/catalog"
+
+
+export const  CARD_PAGE = "/card"

@@ -1,4 +1,4 @@
- 
+
 import { useNavigate } from "react-router-dom";
 import Mail from "../../assets/icons/mail.png"
 import User from "../../assets/icons/user.png"
@@ -14,6 +14,7 @@ import { RegisterInterface } from "./types"
 import { useSelector } from "react-redux";
 import { getPasswordStrength } from "../../helpers/getPaswordStrenth";
 import { formsSelector } from "../../store/selectors/Forms.selector";
+import  Placeholder from "../../assets/icons/location.png"
 const SignUpForm = () => {
     const navigate = useNavigate();
     const countries = useSelector(formsSelector)
@@ -61,7 +62,7 @@ const SignUpForm = () => {
                 <div className={styles.form__fields}>
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
-                        {errors.name?.message}
+                            {errors.name?.message}
 
                         </p>
                         <div className={styles.form__input__wrapper}>
@@ -71,7 +72,7 @@ const SignUpForm = () => {
                                 name="name"
                                 placeholder="Введите имя"
                                 required
-                             
+
                             />
                             <img className={styles.form__icon} src={User} />
 
@@ -83,7 +84,7 @@ const SignUpForm = () => {
 
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
-                        {errors.email?.message}
+                            {errors.email?.message}
 
                         </p>
                         <div className={styles.form__input__wrapper}>
@@ -93,7 +94,7 @@ const SignUpForm = () => {
                                 name="email"
                                 placeholder="Введите почту"
                                 required
-                             
+
                             />
                             <img className={styles.form__icon} src={Mail} />
 
@@ -103,7 +104,7 @@ const SignUpForm = () => {
 
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
-                        {errors.password?.message}
+                            {errors.password?.message}
                         </p>
                         <div className={styles.form__input__wrapper}>
                             <input
@@ -112,24 +113,29 @@ const SignUpForm = () => {
                                 name="password"
                                 placeholder="Введите пароль"
                                 required
-                              
+
                             />
                             <img className={styles.form__icon} src={Lock} />
 
                         </div>
                     </div>
 
-                    <progress
-                className={`${styles.form__progress} ${getPasswordStrength(passwordValue).class}` }
+                    <div className={styles.form__field}>
+                        <p className={styles.form__text}>
+                       Пароль {getPasswordStrength(passwordValue).message}
+                        </p>
+                        <progress
+                            className={`${styles.form__progress} ${getPasswordStrength(passwordValue).class}`}
 
-                max={100}
-                value={getPasswordStrength(passwordValue).value}
-              />
+                            max={100}
+                            value={getPasswordStrength(passwordValue).value}
+                        />
+                    </div>
 
 
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
-                        {errors.confirmPassword?.message}
+                            {errors.confirmPassword?.message}
 
                         </p>
                         <div
@@ -140,23 +146,16 @@ const SignUpForm = () => {
                                 name="password"
                                 placeholder="Введите пароль еще раз"
                                 required
-                             
+
                             />
                             <img className={styles.form__icon} src={Lock} />
 
                         </div>
 
                     </div>
-
-
-
-
-
-
-
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
-                        {errors.country?.message}
+                            {errors.country?.message}
                         </p>
                         <div
                             className={styles.form__input__wrapper}>
@@ -172,7 +171,7 @@ const SignUpForm = () => {
                                     <option key={country}>{country}</option>
                                 ))}
                             </datalist>
-                            <img className={styles.form__icon} src={Lock} />
+                            <img className={styles.form__icon} src={Placeholder} />
 
                         </div>
 
@@ -185,7 +184,7 @@ const SignUpForm = () => {
 
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
-                        {errors.agreeToTerms?.message}
+                            {errors.agreeToTerms?.message}
 
                         </p>
                         <div
@@ -199,7 +198,7 @@ const SignUpForm = () => {
                                 required
                             />
                             <p className={styles.form__text}>
-                                I agree to the terms of service
+                              Я согласен(а) с персональной обработкой данных 
                             </p>
                         </div>
 
@@ -247,5 +246,4 @@ const SignUpForm = () => {
 }
 
 export default SignUpForm;
-/*
- */
+ 
