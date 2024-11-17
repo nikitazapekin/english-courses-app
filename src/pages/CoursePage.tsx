@@ -4,6 +4,9 @@ import Footer from "../components/Footer/Footer";
 import CoursePreview from "../components/CoursePreview/CoursePreview";
 import ForWhatSection from "../components/ForWhatSection/ForWhatSection";
 import AboutCourse from "../components/AboutCourse/AboutCourse";
+import CourseCertificate from "../components/CourseCertificate/CourseCertificate";
+import AboutAuthor from "../components/AboutAuthor/AboutAuthor";
+import CourseFor from "../components/CourseFor/CourseFor";
 const CoursePage = () => {
     return (
         <div className={styles.wrapper}>
@@ -13,6 +16,9 @@ const CoursePage = () => {
                 <CoursePreview />
                 <ForWhatSection />
                 <AboutCourse />
+                <CourseCertificate />
+                <AboutAuthor />
+                <CourseFor />
             </div>
 
             <Footer />

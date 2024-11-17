@@ -1,0 +1,54 @@
+@import "../../theme/theme";
+
+.course {
+    margin-top: 30px;
+    &__inner {
+        display: flex;
+        max-width: 1074px;
+        padding: 0px 15px;
+        margin: 0 auto;
+
+        align-items: center;
+
+        @include mobiles {
+            padding: 0 10px;
+
+        }
+    }
+
+    &__wrapper {
+
+        background-color: $blue;
+        width: 100%;
+        border-radius: 74px;
+        display: flex;
+        justify-content: space-between;
+        padding: 36px 80px;
+        column-gap: 30px;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(36px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__about {
+        font-weight: 400;
+        @include fontSize(24px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        max-width: 421px;
+    }
+
+    &__content {
+        align-self: center;
+    }
+    &__image {
+
+        flex: 0 1 421px;
+      //  width: 39%;
+     //   display: none;
+    }
+}
