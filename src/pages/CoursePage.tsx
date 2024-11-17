@@ -7,6 +7,7 @@ import AboutCourse from "../components/AboutCourse/AboutCourse";
 import CourseCertificate from "../components/CourseCertificate/CourseCertificate";
 import AboutAuthor from "../components/AboutAuthor/AboutAuthor";
 import CourseFor from "../components/CourseFor/CourseFor";
+import CourseConsultation from "../components/CourseConsultation/CourseConsultation";
 const CoursePage = () => {
     return (
         <div className={styles.wrapper}>
@@ -19,6 +20,7 @@ const CoursePage = () => {
                 <CourseCertificate />
                 <AboutAuthor />
                 <CourseFor />
+                <CourseConsultation />
             </div>
 
             <Footer />
