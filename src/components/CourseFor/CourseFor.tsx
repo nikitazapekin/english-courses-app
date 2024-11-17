@@ -6,17 +6,20 @@ const data = [
     {
         title: "Программистов",
         describtion: "Данный курс будет полезен и ориентирован на разработчиков с целью повышения квалификации",
-        image: Programmer
+        image: Programmer,
+        icon: "</>"
     },
     {
         title: "Преподавателей",
         describtion: "Преподаватели могут запросто освоить необходимые знания для подтверждения своих компетенций",
-        image: Tutor
+        image: Tutor,
+        icon: "📚"
     },
     {
         title: "Студентов",
         describtion: "Данный курс поможет в подготовке студентов технических специализаций освоить нужные знания",
-        image: Student
+        image: Student,
+        icon: "🎓"
     },
 ]
 const CourseFor = () => {
@@ -31,15 +34,21 @@ const CourseFor = () => {
 
                         <div className={styles.course__card} key={index}>
                             <span>
+                                <div className={styles.course__image__wrapper}>
+                                    <img src={item.image} alt="Logo" className={styles.course__image} />
+                                    <p className={styles.course__image__icon}>
+                                        {item.icon}
+                                    </p>
+                                </div>
+                                <h3 className={styles.course__name}>
+                                    {item.title}
+                                </h3>
+                                <p className={styles.course__about}>
+                                    {item.describtion}
+                                </p>
 
-                            <img src={item.image} alt="Logo" className={styles.course__image} />
-                            <h3 className={styles.course__name}>
-                                {item.title}
-                            </h3>
-                            <p className={styles.course__about}>
-                                {item.describtion}
-                            </p>
-                            <i></i>
+                                <i className={styles.square} />
+                                <i className={styles.square1} />
                             </span>
                         </div>
                     ))}
