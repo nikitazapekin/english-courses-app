@@ -1,11 +1,13 @@
 
 import { Component } from "react";
-import {  CARD_PAGE, CATALOG, MAIN_PAGE, SIGN_IN, SIGN_UP } from "./consts";
+import {  CARD_PAGE, CATALOG, MAIN_PAGE, PERSONAL_PAGE, SIGN_IN, SIGN_UP } from "./consts";
 import Homepage from "../pages/Homepage";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
 import CatalogPage from "../pages/CatalogPage";
 import CoursePage from "../pages/CoursePage";
+import path from "path";
+import PersonalPage from "../pages/PersonalPage";
 
 
 export const publicRoutes = [
@@ -35,6 +37,11 @@ export const publicRoutes = [
    {
     path: CARD_PAGE,
     Component: CoursePage
+   },
+   {
+path: PERSONAL_PAGE,
+Component: PersonalPage
+
    }
 
 ];

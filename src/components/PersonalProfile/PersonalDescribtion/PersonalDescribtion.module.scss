@@ -1,0 +1,75 @@
+@import "../../../theme/theme";
+
+.describtion {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__country {
+        display: flex;
+        column-gap: 14px;
+        // margin-top: 8px;
+
+        &__text {
+            font-weight: 400;
+            @include fontSize(24px);
+            color: $black;
+        }
+
+        &__image {
+            align-self: center;
+        }
+    }
+
+    &__telephone {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+    &__subtitle {
+        font-weight: 700;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__networks {
+        display: flex;
+        column-gap: 30px;
+     
+    }
+    &__network {
+        height: 50px;
+        width: 174px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+        &__purple {
+                 background-color: $discord;
+        }
+        &__white {
+            background-color: $google;
+   }
+
+   &__blue {
+    
+    background-color: $vk;
+}
+    }
+}
