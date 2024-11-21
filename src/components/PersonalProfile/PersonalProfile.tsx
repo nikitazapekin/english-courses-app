@@ -5,6 +5,7 @@ import Discord from "../../assets/networks/discord.png"
 import Vk from "../../assets/networks/vk.png"
 import Google from "../../assets/networks/google.png"
 import PersonalDescribtion from "./PersonalDescribtion/PersonalDescribtion";
+import PersonalCourses from "./PersonalCourses/PersonalCourses";
 const PersonalProfile = () => {
     return (
         <section className={styles.personal}>
@@ -62,6 +63,7 @@ const PersonalProfile = () => {
                     </div>
                     */}
                 </div>
+                <PersonalCourses />
             </div>
         </section>
     );
