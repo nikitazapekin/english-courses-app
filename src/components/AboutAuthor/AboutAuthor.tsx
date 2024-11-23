@@ -45,6 +45,9 @@ const AboutAuthor = () => {
                         </div>
                     </div>
                 </div>
+
+
+              
             </div>
         </section>);
 }

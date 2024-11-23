@@ -10,7 +10,7 @@ const PersonalProfile = () => {
     return (
         <section className={styles.personal}>
             <div className={styles.personal__inner}>
-                <PersonalHeader />
+                <PersonalHeader title={"Мой профиль"} />
                 <div className={styles.personal__info}>
                     <div className={styles.personal__actions}>
                         <AvatarComponent />

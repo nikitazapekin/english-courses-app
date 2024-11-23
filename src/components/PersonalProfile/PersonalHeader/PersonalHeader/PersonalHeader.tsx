@@ -1,17 +1,35 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./PersonalHeader.module.scss"
 const btns = [
-    "История покупок",
-    "Редактировать"
+    {
+        text: "История покупок",
+        link: "/personal/history"
+    },
+    {
+        text: "Редактировать",
+        link: "/personal/edit"
+    }
+
 ]
-const PersonalHeader = () => {
+
+interface HeaderProps {
+    title: string
+}
+const PersonalHeader = ({title}:HeaderProps) => {
+    const navigate = useNavigate()
+    const handleNavigate = (link: string) => {
+        navigate(link)
+    }
     return (<div className={styles.header}>
         <h1 className={styles.header__title}>
-            Мой профиль
+            {title}
         </h1>
         <ul className={styles.header__btns}>
             {btns.map((item, index) => (
-                <li className={styles.header__btn} key={index}>
-                    {item}
+                <li className={styles.header__btn} key={index}
+                    onClick={() => handleNavigate(item.link)}
+                >
+                    {item.text}
                 </li>
             ))}
         </ul>

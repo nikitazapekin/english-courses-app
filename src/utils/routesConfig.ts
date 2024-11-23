@@ -1,6 +1,6 @@
 
 import { Component } from "react";
-import {  CARD_PAGE, CATALOG, MAIN_PAGE, PERSONAL_PAGE, SIGN_IN, SIGN_UP } from "./consts";
+import {  CARD_PAGE, CATALOG, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SIGN_IN, SIGN_UP } from "./consts";
 import Homepage from "../pages/Homepage";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
@@ -8,7 +8,7 @@ import CatalogPage from "../pages/CatalogPage";
 import CoursePage from "../pages/CoursePage";
 import path from "path";
 import PersonalPage from "../pages/PersonalPage";
-
+import PersonalEditPage from "../pages/PersonalEditPage";
 
 export const publicRoutes = [
   {
@@ -42,6 +42,13 @@ export const publicRoutes = [
 path: PERSONAL_PAGE,
 Component: PersonalPage
 
-   }
+   },
 
+
+   {
+    path: PERSONAL_PAGE_EDIT,
+    Component: PersonalEditPage
+    
+       }
+    
 ];
