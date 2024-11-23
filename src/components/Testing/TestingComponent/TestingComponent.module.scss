@@ -109,4 +109,12 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
     }
+
+    &__image {
+        max-height: 300px;
+        object-position: center;
+        border-radius: 30px;
+
+
+    }
 }
