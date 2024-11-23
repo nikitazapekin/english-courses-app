@@ -12,7 +12,7 @@ const ProgressBar = ({ length, results }: ProgressBarProps) => {
         <div className={styles.progress}>
           
             {Array.from({ length }).map((_, index) => (
-                <div className={styles.progress__item} />
+                <div className={`${styles.progress__item} ${ results[index].isTrue ?  styles.progress__green : styles.progress__red }`} />
 
               
             ))}

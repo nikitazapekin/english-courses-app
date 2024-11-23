@@ -10,8 +10,14 @@
     margin-top: 30px;
     overflow: hidden;
     display: flex;
-    column-gap: 4px;
+  //  column-gap: 4px;
 
+    &__green {
+        background-color: $sliderGreen;
+    }
+    &__red {
+     //   background-color: $red;
+    }
     &__item {
         flex: 1;
         border-left: 1px solid $black;
