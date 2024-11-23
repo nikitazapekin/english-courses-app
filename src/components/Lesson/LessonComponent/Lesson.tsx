@@ -13,15 +13,15 @@ const LessonComponent = () => {
         <div className={styles.lesson__inner}>
             <div className={styles.lesson__title}>
                 <p className={styles.lesson__number}>
-                    Урок       {courseMaterials[Number(theme) - 1].lesson}
+                    Урок       {courseMaterials[Number(theme)].lesson}
                 </p>
                 <h1 className={styles.lesson__name}>
-                    {courseMaterials[Number(theme) - 1].title}.
+                    {courseMaterials[Number(theme)].title}
                 </h1>
 
             </div>
             <p className={styles.lesson__subtitle}>
-                {courseMaterials[Number(theme) - 1].timestampt}
+                {courseMaterials[Number(theme)].timestampt}
             </p>
 
 
@@ -29,13 +29,13 @@ const LessonComponent = () => {
                 <LessonHeader />
 
 
-                <iframe className={styles.lesson__video} src={courseMaterials[Number(theme) - 1].video}
+                <iframe className={styles.lesson__video} src={courseMaterials[Number(theme)].video}
                     title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen />
-                <DownloadFile title={courseMaterials[Number(theme) - 1].material.text}
-                    icon={courseMaterials[Number(theme) - 1].material.icon}
-                    size={courseMaterials[Number(theme) - 1].material.size}
-                    file={courseMaterials[Number(theme) - 1].material.link}
+                <DownloadFile title={courseMaterials[Number(theme)].material.text}
+                    icon={courseMaterials[Number(theme)].material.icon}
+                    size={courseMaterials[Number(theme)].material.size}
+                    file={courseMaterials[Number(theme)].material.link}
                 />
                 <div className={styles.lesson__testing}>
                     Тематический тест по теме

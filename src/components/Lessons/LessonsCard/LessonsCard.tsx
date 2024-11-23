@@ -16,7 +16,7 @@ const LessonsCard = ({ item }: LessonsCardProps) => {
         <div className={styles.card__inner}>
             <div className={styles.card__header}>
                 <p className={styles.card__lesson}>
-                    Урок {item.id}
+                    Урок {item.id+1}
                 </p>
                 <p className={styles.card__title}>
                     {item.title}
