@@ -1,8 +1,9 @@
 @import "../../../theme/theme";
 
 .lessons {
-   // margin-bottom: 60px;
-   padding-bottom: 60px;
+    // margin-bottom: 60px;
+    padding-bottom: 60px;
+
     &__inner {
 
         display: flex;
@@ -27,9 +28,23 @@
         @include fontSize(48px);
         color: $white;
     }
+
     &__list {
         display: flex;
         flex-direction: column;
         row-gap: 34px;
+    }
+
+    &__panel {
+        display: flex;
+        justify-content: flex-end;
+column-gap: 20px;
+        &__text {
+            font-weight: 400;
+            @include fontSize(24px);
+            color: $white;
+            font-family: "Inter", sans-serif;
+            cursor: pointer;
+        }
     }
 }

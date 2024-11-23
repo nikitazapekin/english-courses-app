@@ -11,9 +11,9 @@ export const lessons = [
         id: 1
     },
     {
-        title: "Тематическое тестирование на тему: Present simple, present continuous",
+        title: " Present simple, present continuous",
         timestampt: "22 минуты",
-      questions: "22 минуты",
+     
         id: 2
     },
     {
@@ -46,5 +46,41 @@ export const lessons = [
         timestampt: "22 минуты",
         id: 8
     }
+
+]
+
+
+export const testing = [ 
+    {
+        title: "Тестирование на тему Present simple, present continuous",
+        timestampt: "30 вопросов",
+        id: 0
+    },
+    {
+        title: "Тестирование на тему Present simple, present continuous",
+        timestampt: "30 вопросов",
+        id: 1
+    },
+    {
+        title: "Тестирование на тему Present simple, present continuous",
+        timestampt: "30 вопросов",
+        id: 2
+    },
+    {
+        title: "Тестирование на тему Present simple, present continuous",
+        timestampt: "30 вопросов",
+        id: 3
+    },
+
+    {
+        title: "Тестирование на тему Present simple, present continuous",
+        timestampt: "30 вопросов",
+        id: 4
+    },
+    {
+        title: "Тестирование на тему Present simple, present continuous",
+        timestampt: "30 вопросов",
+        id: 5
+    },
 
 ]

@@ -4,19 +4,34 @@ interface LessonsCardProps {
     item: {
         title: string,
         timestampt: string,
-        id: number
+        id: number,
     }
+    isLessons: boolean
 }
-const LessonsCard = ({ item }: LessonsCardProps) => {
+const LessonsCard = ({ item, isLessons  }: LessonsCardProps) => {
     const navigate = useNavigate()
     const handleNavigateLesson = (title: string, id: number) => {
-        navigate(`/card/lessons/${title}/${id}`)
+        if(isLessons) {
+
+            navigate(`/card/lessons/${title}/${id}`)
+        } else {
+            navigate(`/card/testing/${title}/${id}`)
+        }
     }
     return (<div className={styles.card} onClick={() => handleNavigateLesson(item.title, item.id)}>
         <div className={styles.card__inner}>
             <div className={styles.card__header}>
                 <p className={styles.card__lesson}>
-                    Урок {item.id+1}
+                    {isLessons ? (
+<>
+                        Урок {item.id+1}
+</>
+                    ) : (
+<>
+                        Тестирование {item.id+1}
+</>
+
+                    )}
                 </p>
                 <p className={styles.card__title}>
                     {item.title}
