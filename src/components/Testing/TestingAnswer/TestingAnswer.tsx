@@ -8,7 +8,7 @@ interface TestingAnswerProps {
     };
     index: number;
     onAnswerClick: (isTrue: boolean) => void;
-    handleIncrementQuestion: ()=> void
+    handleIncrementQuestion: () => void;
 }
 
 const TestingAnswer = ({ item, index, onAnswerClick, handleIncrementQuestion }: TestingAnswerProps) => {
@@ -20,13 +20,12 @@ const TestingAnswer = ({ item, index, onAnswerClick, handleIncrementQuestion }: 
             setIsClicked(true);
             setIsCorrect(item.isTrue);
             onAnswerClick(item.isTrue);
-            handleIncrementQuestion()
+            handleIncrementQuestion();
         }
     };
 
     return (
         <div
-       
             className={`${styles.card} ${
                 isClicked
                     ? isCorrect
@@ -43,7 +42,6 @@ const TestingAnswer = ({ item, index, onAnswerClick, handleIncrementQuestion }: 
 };
 
 export default TestingAnswer;
-
 
 /*
 import React, { useState } from "react";

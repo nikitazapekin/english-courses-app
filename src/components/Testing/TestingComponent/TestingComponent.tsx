@@ -5,12 +5,11 @@ import { useParams } from "react-router-dom";
 import TestingAnswer from "../TestingAnswer/TestingAnswer";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-function generateArray(length: number): Array<{ index: number; isTrue: boolean }> {
-    const arr = [];
-    for (let i = 0; i < length; i++) {
-        arr.push({ index: i, isTrue: false });
-    }
-    return arr;
+function generateArray(length: number): Array<{ index: number; isTrue: boolean | null }> {
+    return Array.from({ length }, (_, i) => ({
+        index: i,
+        isTrue: null, // Изначально "неизвестно"
+    }));
 }
 
 const TestingComponent = () => {
@@ -18,11 +17,11 @@ const TestingComponent = () => {
     const { theme } = useParams<{ theme: string }>();
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
-    const taskMaterial = theme && !isNaN(Number(theme)) 
-        ? testingMaterial[Number(theme)] 
+    const taskMaterial = theme && !isNaN(Number(theme))
+        ? testingMaterial[Number(theme)]
         : null;
 
-    const [results, setResults] = useState<Array<{ index: number; isTrue: boolean }>>(
+    const [results, setResults] = useState<Array<{ index: number; isTrue: boolean | null }>>(
         taskMaterial ? generateArray(taskMaterial.tasks.length) : []
     );
 
@@ -42,8 +41,8 @@ const TestingComponent = () => {
 
     const updateResults = (index: number, isTrue: boolean) => {
         setResults((prevResults) =>
-            prevResults.map((result, i) =>
-                i === index ? { ...result, isTrue } : result
+            prevResults.map((result) =>
+                result.index === index ? { ...result, isTrue } : result
             )
         );
     };
