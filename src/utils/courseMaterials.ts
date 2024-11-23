@@ -1,0 +1,69 @@
+import FileIcon from "../assets/icons/file.png"
+interface courseMaterialsTypes {
+    id: number;
+    lesson: number;
+    title: string;
+    timestampt: string;
+    video: string;
+    material: {
+        link: string;
+        text: string;
+        size: string;
+        icon: string
+    };
+    comments: {
+        userId: number;
+        name: string;
+        comment: string;
+        rate: number;
+        avatar: string;
+    }[];
+}
+
+ 
+export const courseMaterials: courseMaterialsTypes[] = [
+    {
+        id: 1,
+        lesson: 1,
+        title: "Present simple, present continuous",
+        timestampt: "Длительность 25 минут",
+        video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
+        material: {
+            link: "",
+            text: "Present simple, present continuous (шпаргалка) ",
+            size: "300кб",
+            icon: FileIcon
+        },
+        comments: [
+            {
+                userId: 0,
+                name: "",
+                comment: "",
+                rate: 0,
+                avatar: ""
+            }
+        ]
+    },
+    {
+        id: 2,
+        lesson: 2,
+        title: "Фразовые глаголы",
+        timestampt: "Длительность 25 минут",
+        video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
+        material: {
+            link: "",
+            text: "Present simple, present continuous (шпаргалка) ",
+            size: "300кб",
+            icon: FileIcon
+        },
+        comments: [
+            {
+                userId: 0,
+                name: "",
+                comment: "",
+                rate: 0,
+                avatar: ""
+            }
+        ]
+    }
+]

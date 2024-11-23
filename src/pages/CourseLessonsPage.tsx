@@ -3,11 +3,12 @@ import Header from "../components/Header/Header";
 import LessonsList from "../components/Lessons/LessonsList/LessonsList";
 import styles from "../theme/wrappers.module.scss"
 import "../theme/global.scss"
+ 
 const CourseLessonsPage = () => {
     return (
 <>
         <div className={styles.wrapper}>
-        <div className={styles.darken} > </div>
+        <div className={styles.darken} />
             <Header />
 
             <div className={styles.content}>

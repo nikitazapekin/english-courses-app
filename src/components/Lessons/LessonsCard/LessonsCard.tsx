@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import styles from "./LessonsCard.module.scss"
 interface LessonsCardProps {
     item: {
@@ -7,7 +8,11 @@ interface LessonsCardProps {
     }
 }
 const LessonsCard = ({ item }: LessonsCardProps) => {
-    return (<div className={styles.card}>
+    const navigate = useNavigate()
+    const handleNavigateLesson = (title: string, id: number) => {
+        navigate(`/card/lessons/${title}/${id}`)
+    }
+    return (<div className={styles.card} onClick={() => handleNavigateLesson(item.title, item.id)}>
         <div className={styles.card__inner}>
             <div className={styles.card__header}>
                 <p className={styles.card__lesson}>
@@ -18,7 +23,7 @@ const LessonsCard = ({ item }: LessonsCardProps) => {
                 </p>
             </div>
             <p className={styles.card__timestampt}>
-            Продолжительность    {item.timestampt}
+                Продолжительность    {item.timestampt}
             </p>
         </div>
     </div>);

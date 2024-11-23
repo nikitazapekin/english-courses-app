@@ -1,0 +1,27 @@
+@import "../../../theme/theme";
+
+.file {
+    display: flex;
+    column-gap: 20px;
+    margin-top: 40px;
+    align-items: center;
+    cursor: pointer;
+
+    &__size {
+     @include fontSize(24px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        font-size: 700;
+      
+       
+    }
+
+    &__text {
+        @include fontSize(24px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        font-size: 400;
+    }
+}
+
+ 

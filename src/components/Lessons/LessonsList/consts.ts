@@ -5,8 +5,9 @@ export const lessons = [
         id: 1
     },
     {
-        title: "Тематическое те: Present simple, present continuous",
+        title: "Тематическое тестирование на тему: Present simple, present continuous",
         timestampt: "22 минуты",
+      questions: "22 минуты",
         id: 2
     },
     {
