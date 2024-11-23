@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styles from "./PersonalCourseCard.module.scss"
 interface PersonalCourseCardProps {
     title: string,
@@ -6,8 +7,12 @@ interface PersonalCourseCardProps {
     image: string
 }
 const PersonalCourseCard = ({ title, author, date, image }: PersonalCourseCardProps) => {
+    const navigate = useNavigate()
+    const handleNavigate = () => {
+        navigate(`/card/lessons/${title}`)
+    }
     return (
-        <div className={styles.card} >
+        <div className={styles.card}   >
             <img src={image} alt="Card" className={styles.card__image} />
 
             <div className={styles.card__content}>
@@ -20,7 +25,7 @@ const PersonalCourseCard = ({ title, author, date, image }: PersonalCourseCardPr
                 <p className={styles.card__author}>
                     {author}
                 </p>
-                <button className={styles.card__btn}>
+                <button className={styles.card__btn} onClick={handleNavigate}>
                     Программа
                 </button>
             </div>

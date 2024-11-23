@@ -4,7 +4,7 @@ const PersonalEditProfile = () => {
     return (
         <form className={styles.form}>
             <div className={styles.form__inner}>
-            <PersonalHeader title={"Настройки"} />
+                <PersonalHeader title={"Настройки"} />
 
                 <div className={styles.form__forms}>
 
@@ -13,7 +13,7 @@ const PersonalEditProfile = () => {
                             Имя
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="text" placeholder="Введите имя" />
                         </div>
                     </div>
@@ -24,7 +24,7 @@ const PersonalEditProfile = () => {
                             Фамилия
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="text" placeholder="Введите фамилию" />
                         </div>
                     </div>
@@ -38,7 +38,7 @@ const PersonalEditProfile = () => {
                             Отчество
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="text" placeholder="Введите отчество" />
                         </div>
                     </div>
@@ -51,7 +51,7 @@ const PersonalEditProfile = () => {
                             Страна
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="tel" placeholder="Введите страну" />
                         </div>
                     </div>
@@ -63,7 +63,7 @@ const PersonalEditProfile = () => {
                             Город
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="tel" placeholder="Введите город" />
                         </div>
                     </div>
@@ -77,7 +77,7 @@ const PersonalEditProfile = () => {
                             Телефон
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="tel" placeholder="Введите телефон" />
                         </div>
                     </div>
@@ -91,7 +91,7 @@ const PersonalEditProfile = () => {
                             Почта
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="tel" placeholder="Введите телефон" />
                         </div>
                     </div>
@@ -104,32 +104,40 @@ const PersonalEditProfile = () => {
                             Пароль
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="tel" placeholder="Введите пароль" />
                         </div>
                     </div>
 
                     <div className={styles.form__field}>
                         <p className={styles.form__text}>
-                           Подтвержите пароль
+                            Подтвержите пароль
                         </p>
                         <div className={styles.form__wrapper}>
-                            <img  className={styles.form__icon} src="" alt="Icon" />
+                            <img className={styles.form__icon} src="" alt="Icon" />
                             <input className={styles.form__input} type="tel" placeholder="Подтвержите пароль" />
                         </div>
                     </div>
                 </div>
 
-
+                <div className={styles.form__theme}>
+                    <select name="theme" id="theme" className={styles.form__theme__select}>
+                        <option>Темная</option>
+                        <option>Светлая</option>
+                    </select>
+                    <p className={styles.form__theme__text}>
+                        Выберите тему
+                    </p>
+                </div>
 
                 <div className={styles.form__btns}>
-                <button className={`${styles.form__btn} ${styles.form__btn__purple}`}>
-                         Сохранить
-                        </button>
-                        <button className={`${styles.form__btn} ${styles.form__btn__red}`}>
-                         Отмена
-                        </button>
-</div>
+                    <button className={`${styles.form__btn} ${styles.form__btn__purple}`}>
+                        Сохранить
+                    </button>
+                    <button className={`${styles.form__btn} ${styles.form__btn__red}`}>
+                        Отмена
+                    </button>
+                </div>
 
 
             </div>
