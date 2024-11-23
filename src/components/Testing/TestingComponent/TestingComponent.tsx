@@ -16,6 +16,7 @@ const TestingComponent = () => {
     const [time, setTime] = useState(0);
     const { theme } = useParams<{ theme: string }>();
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [resetSelection, setResetSelection] = useState(false);
 
     const taskMaterial = theme && !isNaN(Number(theme))
         ? testingMaterial[Number(theme)]
@@ -47,13 +48,21 @@ const TestingComponent = () => {
         );
     };
 
+    const handleIncrementQuestion = () => {
+        setCurrentQuestion((prev) => Math.min(prev + 1, taskMaterial!.tasks.length - 1));
+        setResetSelection(true); 
+    };
+
+   
+    useEffect(() => {
+        if (resetSelection) {
+            setTimeout(() => setResetSelection(false), 200); 
+        }
+    }, [resetSelection]);
+
     if (!theme || isNaN(Number(theme)) || !taskMaterial || !taskMaterial.tasks.length) {
         return <div>Тема не выбрана или заданий нет.</div>;
     }
-
-    const handleIncrementQuestion = () => {
-        setCurrentQuestion((prev) => Math.min(prev + 1, taskMaterial.tasks.length - 1));
-    };
 
     return (
         <div className={styles.test}>
@@ -88,6 +97,8 @@ const TestingComponent = () => {
                                 handleIncrementQuestion={handleIncrementQuestion}
                                 index={index}
                                 onAnswerClick={(isTrue) => updateResults(currentQuestion, isTrue)}
+                                isAnswered={results[currentQuestion].isTrue !== null}
+                                resetSelection={resetSelection} 
                             />
                         ))}
                     </div>
@@ -105,6 +116,7 @@ const TestingComponent = () => {
 };
 
 export default TestingComponent;
+
 
 
 /*

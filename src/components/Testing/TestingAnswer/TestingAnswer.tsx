@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./TestingAnswer.module.scss";
 
 interface TestingAnswerProps {
@@ -9,14 +9,31 @@ interface TestingAnswerProps {
     index: number;
     onAnswerClick: (isTrue: boolean) => void;
     handleIncrementQuestion: () => void;
+    isAnswered: boolean; 
+    resetSelection: boolean; 
 }
 
-const TestingAnswer = ({ item, index, onAnswerClick, handleIncrementQuestion }: TestingAnswerProps) => {
+const TestingAnswer = ({
+    item,
+    index,
+    onAnswerClick,
+    handleIncrementQuestion,
+    isAnswered,
+    resetSelection,
+}: TestingAnswerProps) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
+    useEffect(() => {
+        if (resetSelection) {
+        
+            setIsClicked(false);
+            setIsCorrect(null);
+        }
+    }, [resetSelection]);
+
     const handleClick = () => {
-        if (!isClicked) {
+        if (!isClicked && !isAnswered) {
             setIsClicked(true);
             setIsCorrect(item.isTrue);
             onAnswerClick(item.isTrue);
@@ -42,6 +59,7 @@ const TestingAnswer = ({ item, index, onAnswerClick, handleIncrementQuestion }: 
 };
 
 export default TestingAnswer;
+
 
 /*
 import React, { useState } from "react";
