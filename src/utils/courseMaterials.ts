@@ -29,7 +29,7 @@ export const courseMaterials: courseMaterialsTypes[] = [
         timestampt: "Длительность 25 минут",
         video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
         material: {
-            link: "",
+            link: "https://example.com/files/example.zip",
             text: "Present simple, present continuous (шпаргалка) ",
             size: "300кб",
             icon: FileIcon
@@ -51,7 +51,7 @@ export const courseMaterials: courseMaterialsTypes[] = [
         timestampt: "Длительность 25 минут",
         video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
         material: {
-            link: "",
+            link: "https://example.com/files/example.zip",
             text: "Present simple, present continuous (шпаргалка) ",
             size: "300кб",
             icon: FileIcon
@@ -75,7 +75,7 @@ export const courseMaterials: courseMaterialsTypes[] = [
         timestampt: "Длительность 25 минут",
         video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
         material: {
-            link: "",
+            link: "https://example.com/files/example.zip",
             text: "Present simple, present continuous (шпаргалка) ",
             size: "300кб",
             icon: FileIcon
@@ -99,7 +99,7 @@ export const courseMaterials: courseMaterialsTypes[] = [
         timestampt: "Длительность 25 минут",
         video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
         material: {
-            link: "",
+            link: "https://example.com/files/example.zip",
             text: "Present simple, present continuous (шпаргалка) ",
             size: "300кб",
             icon: FileIcon

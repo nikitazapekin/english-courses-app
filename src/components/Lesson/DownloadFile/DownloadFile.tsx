@@ -8,7 +8,7 @@ interface DownloadFileProps {
 }
 const DownloadFile = ({ title, size, icon, file }: DownloadFileProps) => {
     return (
-        <div className={styles.file}>
+        <a href={file} className={styles.file}>
             <img src={icon} alt="Icon" />
             <p className={styles.file__size}>
                 {size}
@@ -16,7 +16,7 @@ const DownloadFile = ({ title, size, icon, file }: DownloadFileProps) => {
             <p className={styles.file__text}>
                 {title}
             </p>
-        </div>);
+        </a>);
 }
 
 export default DownloadFile;
