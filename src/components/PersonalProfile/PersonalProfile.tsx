@@ -31,37 +31,7 @@ const PersonalProfile = () => {
                     </div>
 
                     <PersonalDescribtion />
-                    {/*
-                    <div className={styles.describtion}>
-                    <h3 className={styles.describtion__title}>
-                            Никита Запекин Андреевич
-                        </h3>
-                        <p className={styles.describtion__country}>
-                            Минск, Беларусь
-                        </p>
-                        <p className={styles.describtion__telephone}>
-                            +375297542229
-                        </p>
-                        <p className={styles.describtion__text}>
-                            Ответственый и амбициозный. Считаю, что главный фактор успеха в чем-либо - это желание
-                            достижения цели путем упорного труда и настойчивости.
-                        </p>
-                        <p className={styles.describtion__subtitle}>
-                            Привязать аккаунт к социальным сетям:
-                        </p>
-                        <div className={styles.describtion__networks}>
-                            <div className={styles.describtion__network}>
-                                <img src={Discord} alt="Discord" className={styles.describtion__network__image}  />
-                            </div>
-                            <div className={styles.describtion__network}>
-                            <img src={Google} alt="Google" className={styles.describtion__network__image}  />
-                            </div>
-                            <div className={styles.describtion__network}>
-                            <img src={Vk} alt="Vk" className={styles.describtion__network__image}  />
-                            </div>
-                        </div>
-                    </div>
-                    */}
+                   
                 </div>
                 <PersonalCourses />
             </div>

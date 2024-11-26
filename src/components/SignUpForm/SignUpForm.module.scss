@@ -148,6 +148,11 @@
         font-weight: 700;
         @include fontSize(20px);
 
+        transition: 0.4s ease-in-out;
+        &:hover {
+            background-color: $blue-active;
+        }
+
         color: $black;
     }
 

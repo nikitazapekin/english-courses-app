@@ -74,6 +74,10 @@ const Header = () => {
         }
     };
 
+    const handleSearch = () => {
+        navigate(`/search/${searchQuery}`)
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.header__inner}>
@@ -94,7 +98,7 @@ const Header = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className={styles.search__btn}>
+                        <div className={styles.search__btn} onClick={handleSearch}>
                             <img src={Search} alt="Icon"
                                 className={styles.search__icon}
                             />
