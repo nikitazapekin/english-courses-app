@@ -14,9 +14,8 @@
         flex: 1;
         border-left: 1px solid $black;
         height: 30px;
-        background-color: $gray; 
+        background-color: $light-gray; 
     }
-
     &__green {
         background-color: $sliderGreen;  
     }
@@ -26,37 +25,7 @@
     }
 
     &__gray {
-        background-color: $gray;  
+        background-color: $light-gray;  
     }
 }
-
-
-/*
-@import "../../../theme/theme";
-
-.progress {
-    width: 100%;
-    //  flex: 1 1 100%;
-    border-radius: 10px;
-    border: 1px solid $black;
-    height: 30px;
-    background-color: $light-gray;
-    margin-top: 30px;
-    overflow: hidden;
-    display: flex;
-  //  column-gap: 4px;
-
-    &__green {
-        background-color: $sliderGreen;
-    }
-    &__red {
-       background-color: $red;
-    }
-    &__item {
-        flex: 1;
-        border-left: 1px solid $black;
-        height: 30px;
-    }
-}
-
-*/
+ 

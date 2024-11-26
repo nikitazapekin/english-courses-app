@@ -11,7 +11,12 @@ interface TestingAnswerProps {
     handleIncrementQuestion: () => void;
     isAnswered: boolean; 
     resetSelection: boolean; 
+    handleDisplayResults: ()=> void,
+    length: number,
+    currentQuestionNumber: number
 }
+//handleDisplayResults={handleDisplayResults}
+//length={results.length}
 
 const TestingAnswer = ({
     item,
@@ -20,6 +25,9 @@ const TestingAnswer = ({
     handleIncrementQuestion,
     isAnswered,
     resetSelection,
+    handleDisplayResults,
+    length,
+    currentQuestionNumber
 }: TestingAnswerProps) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -37,52 +45,17 @@ const TestingAnswer = ({
             setIsClicked(true);
             setIsCorrect(item.isTrue);
             onAnswerClick(item.isTrue);
-            handleIncrementQuestion();
+            setTimeout(()=> {
+
+                handleIncrementQuestion();
+            }, 2000)
         }
     };
-
-    return (
-        <div
-            className={`${styles.card} ${
-                isClicked
-                    ? isCorrect
-                        ? styles.correct
-                        : styles.incorrect
-                    : ""
-            }`}
-            onClick={handleClick}
-        >
-            <p className={styles.card__index}>{index + 1}</p>
-            <p className={styles.card__text}>{item.text}</p>
-        </div>
-    );
-};
-
-export default TestingAnswer;
-
-
-/*
-import React, { useState } from "react";
-import styles from "./TestingAnswer.module.scss";
-
-interface TestingAnswerProps {
-    item: {
-        text: string;
-        isTrue: boolean;
-    };
-    index: number;
+    useEffect(()=> {
+if(currentQuestionNumber==length-1) {
+    handleDisplayResults()
 }
-
-const TestingAnswer = ({ item, index }: TestingAnswerProps) => {
-    const [isClicked, setIsClicked] = useState(false);
-    const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-
-    const handleClick = () => {
-        if (!isClicked) {
-            setIsClicked(true);
-            setIsCorrect(item.isTrue);
-        }
-    };
+    }, [currentQuestionNumber])
 
     return (
         <div
@@ -102,4 +75,4 @@ const TestingAnswer = ({ item, index }: TestingAnswerProps) => {
 };
 
 export default TestingAnswer;
- */
+ 
