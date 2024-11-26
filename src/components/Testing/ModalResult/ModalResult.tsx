@@ -2,6 +2,7 @@ import styles from "./ModalResult.module.scss"
 import MessageResult from "../../../assets/Testing/ResultMessage.png"
 import Star from "../../../assets/Testing/Star.png"
 import { formatTime } from "../../../helpers/formatTime"
+import { useNavigate } from "react-router-dom"
 interface ModalResultProps {
     isDisplay: boolean,
     time: number,
@@ -9,6 +10,10 @@ interface ModalResultProps {
     length: number
 }
 const ModalResult = ({isDisplay, time, count, length}: ModalResultProps) => {
+    const navigate = useNavigate()
+    const handleNavigate = () => {
+        navigate(-1)
+    }
     return (
         <div className={`${styles.modal} ${isDisplay ? "" : styles.modal__none}`}>
             <div className={styles.modal__inner}>
@@ -25,7 +30,7 @@ const ModalResult = ({isDisplay, time, count, length}: ModalResultProps) => {
                     <p className={styles.modal__time}>
                         Время: {formatTime(time)}!
                     </p>
-                    <button className={styles.modal__btn}>
+                    <button className={styles.modal__btn} onClick={handleNavigate}>
                         Продолжить
                     </button>
                     <p className={styles.modal__errors}>

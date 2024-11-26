@@ -52,8 +52,11 @@ const TestingAnswer = ({
         }
     };
     useEffect(()=> {
-if(currentQuestionNumber==length-1) {
-    handleDisplayResults()
+if(currentQuestionNumber+1==length) {
+    setTimeout(()=> {
+
+        handleDisplayResults()
+    }, 2000)
 }
     }, [currentQuestionNumber])
 
@@ -68,6 +71,7 @@ if(currentQuestionNumber==length-1) {
             }`}
             onClick={handleClick}
         >
+            
             <p className={styles.card__index}>{index + 1}</p>
             <p className={styles.card__text}>{item.text}</p>
         </div>
