@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import TestingAnswer from "../TestingAnswer/TestingAnswer";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import ModalResult from "../ModalResult/ModalResult";
-
+import { formatTime } from "../../../helpers/formatTime";
 function generateArray(length: number): Array<{ index: number; isTrue: boolean | null }> {
     return Array.from({ length }, (_, i) => ({
         index: i,
@@ -26,20 +26,20 @@ const TestingComponent = () => {
     const [results, setResults] = useState<Array<{ index: number; isTrue: boolean | null }>>(
         taskMaterial ? generateArray(taskMaterial.tasks.length) : []
     );
+ 
+       const [isDisplay, setIsDisplay] = useState(false)
+useEffect(() => {
+    if (isDisplay) {
+        return; 
+    }
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTime((prevTime) => prevTime + 1);
-        }, 1000);
+    const timer = setInterval(() => {
+        setTime((prevTime) => prevTime + 1);
+    }, 1000);
 
-        return () => clearInterval(timer);
-    }, []);
-
-    const formatTime = (seconds: number) => {
-        const minutes = Math.floor(seconds / 60);
-        const remainingSeconds = seconds % 60;
-        return `${String(minutes).padStart(2, "0")}:${String(remainingSeconds).padStart(2, "0")}`;
-    };
+    return () => clearInterval(timer);
+}, [isDisplay]);
+ 
 
     const updateResults = (index: number, isTrue: boolean) => {
         setResults((prevResults) =>
@@ -49,13 +49,10 @@ const TestingComponent = () => {
         );
     };
 
-    const [isDisplay, setIsDisplay] = useState(false)
     const handleIncrementQuestion = () => {
         setCurrentQuestion((prev) => Math.min(prev + 1, taskMaterial!.tasks.length - 1));
         setResetSelection(true);
-//if(currentQuestion==results.length) {
-  //          setIsDisplay(true)
-    //    }
+ 
     };
 const handleDisplayResults = () => {
     setIsDisplay(true)
@@ -74,7 +71,14 @@ const handleDisplayResults = () => {
     return (
         <div className={styles.test}>
 
-            <ModalResult isDisplay={isDisplay}/>
+            <ModalResult isDisplay={isDisplay}
+            time={time}
+            count={results.reduce(
+                (count, result) => (result.isTrue === true ? count + 1 : count),
+                0
+            )}
+            length={results.length}
+            />
             <div className={styles.test__inner}>
                 <div className={styles.test__title}>
                     <p className={styles.test__number}>Тест 1.</p>

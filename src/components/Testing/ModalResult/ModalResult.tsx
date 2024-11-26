@@ -1,10 +1,14 @@
 import styles from "./ModalResult.module.scss"
 import MessageResult from "../../../assets/Testing/ResultMessage.png"
 import Star from "../../../assets/Testing/Star.png"
+import { formatTime } from "../../../helpers/formatTime"
 interface ModalResultProps {
-    isDisplay: boolean
+    isDisplay: boolean,
+    time: number,
+    count: number,
+    length: number
 }
-const ModalResult = ({isDisplay}: ModalResultProps) => {
+const ModalResult = ({isDisplay, time, count, length}: ModalResultProps) => {
     return (
         <div className={`${styles.modal} ${isDisplay ? "" : styles.modal__none}`}>
             <div className={styles.modal__inner}>
@@ -16,10 +20,10 @@ const ModalResult = ({isDisplay}: ModalResultProps) => {
                         Результат
                     </h2>
                     <p className={styles.modal__result}>
-                        27 из 30 верно!
+                      {count} из {length} верно!
                     </p>
                     <p className={styles.modal__time}>
-                        Время 3:22!
+                        Время: {formatTime(time)}!
                     </p>
                     <button className={styles.modal__btn}>
                         Продолжить
