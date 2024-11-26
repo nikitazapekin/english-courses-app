@@ -28,6 +28,15 @@
         margin-top: 35px;
         font-family: "Inter", sans-serif;
     }
+    &__text {
+        margin-top: 35px;
+        @include fontSize(24px);
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        text-align: center;
+      align-self: center;
+    }
+
 
     &__select {
         align-self: flex-end;
