@@ -78,14 +78,14 @@
 
     &__item {
 
-        display: flex;
+    display: flex;
 
         min-width: 100%;
         min-height: 100%;
         flex-direction: column;
         width: 100%;
         position: relative;
-
+ 
         &__content {
             align-self: flex-end;
             display: flex;
@@ -104,22 +104,19 @@
         margin-bottom: 16px;
 
     }
-
+ 
     &__image {
    
-        max-width: 613px;
-        width: 100%;
+        max-width: 60%;
+width: 100%;
+     //   max-width: 613px;
+       // width: 100%;
         height: auto;
         align-self: flex-end;
- /*      position: absolute;    
-      
-  
-        left: 0;
-        bottom: 0;
-        */
+ 
    
     }
-
+ 
     &__try {
         padding: 7px 43px;
         background-color: $yellow;
@@ -138,18 +135,30 @@
 
     }
 
-
+ 
     &__line {
         display: flex;
         height: 100%;
+        column-gap: 20px;
        
    
     }
     &__blog {
         display: flex;
         flex-direction: column;
-
+max-width: 40%;
+width: 100%;
     }
  
+
+
+
+
+
+
+
+
+ 
+
 }
  
