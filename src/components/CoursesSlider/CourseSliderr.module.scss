@@ -35,7 +35,7 @@
 
         width: 100%;
         max-width: 100%;
-
+ 
         overflow: hidden;
 
     }
@@ -107,12 +107,16 @@
 
     &__image {
    
-        position: absolute;    
         max-width: 613px;
+        width: 100%;
+        height: auto;
+        align-self: flex-end;
+ /*      position: absolute;    
       
   
         left: 0;
         bottom: 0;
+        */
    
     }
 
@@ -133,4 +137,19 @@
         }
 
     }
+
+
+    &__line {
+        display: flex;
+        height: 100%;
+       
+   
+    }
+    &__blog {
+        display: flex;
+        flex-direction: column;
+
+    }
+ 
 }
+ 

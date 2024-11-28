@@ -12,6 +12,8 @@ const CatalogPage = () => {
                 <div className={styles.content}>
                   
 
+
+                   
                     <CoursesSlider />
                     <CategoriesComponent />
                 </div>

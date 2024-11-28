@@ -13,6 +13,7 @@ import CourseLessonsPage from "../pages/CourseLessonsPage";
 import LessonPage from "../pages/LessonPage";
 import TestingPage from "../pages/TestingPage";
 import SearchResultsPage from "../pages/SearchResultsPage";
+import NotFoundPage from "../pages/NotFoundPage";
 
 export const publicRoutes = [
   {
@@ -77,9 +78,12 @@ export const publicRoutes = [
     path: SEARCH_PAGE,
     Component: SearchResultsPage
 
-  }
+  },
 
 
-
+  {
+    path: "*",
+    Component: NotFoundPage,
+  },
 
 ];

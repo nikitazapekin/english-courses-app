@@ -20,6 +20,11 @@
         &:hover {
             background-color: $blue-active;
         }
+
+
+        @include mobiles {
+            padding: 10px 15px;
+        }
     }
 
     &__active {

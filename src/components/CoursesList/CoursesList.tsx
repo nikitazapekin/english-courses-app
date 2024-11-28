@@ -222,8 +222,8 @@ const CoursesList = ({ query }: CoursesListProps) => {
 
                 <div className={styles.courses__cards}>
                     {cards.map((item, index) => (
-                        <Link to="/card">
-                            <div className={styles.card} key={index}>
+                        <div className={styles.card} key={index}>
+                                <Link to="/card">
                                 <div className={styles.card__preview} style={{ backgroundColor: item.color }}>
                                     <p className={styles.card__name}>{item.name}</p>
                                     <img className={styles.card__image} src={item.image} alt={item.title} />
@@ -232,8 +232,8 @@ const CoursesList = ({ query }: CoursesListProps) => {
                                 <p className={styles.card__price}>{`${item.price}$`}</p>
                                 <p className={styles.card__rating}>Рейтинг: {item.rating}</p>
                                 <p className={styles.card__releaseDate}>Дата выпуска: {item.releaseDate}</p>
-                            </div>
                         </Link>
+                            </div>
                     ))}
 
                 </div>
