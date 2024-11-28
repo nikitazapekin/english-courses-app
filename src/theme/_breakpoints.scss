@@ -23,6 +23,12 @@
 	}
 }
 
+@mixin mediumTablets {
+	@media (max-width: 640px) {
+		@content;
+	}
+}
+
 @mixin bigTablets {
 	@media (max-width: 1024px) {
 		@content;
