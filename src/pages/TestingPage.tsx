@@ -8,9 +8,7 @@ const TestingPage = () => {
         <Header />
         <div className={styles.darken} />
         <div className={styles.content}>
-            {/*
-        <ModalResult />
-        */}
+       
 
             <TestingComponent />
         </div>

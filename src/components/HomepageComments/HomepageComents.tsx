@@ -85,7 +85,7 @@ const HomepageComments = () => {
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
-                                        <div className={styles.comment__star} />
+                                        <div className={styles.comment__starSliced} />
 
 
                                     </div>
@@ -152,7 +152,7 @@ const HomepageComments = () => {
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star}>
-                                        <div className={styles.comment__star} />
+                                        <div className={styles.comment__starSliced} />
                                         </div>
 
 
