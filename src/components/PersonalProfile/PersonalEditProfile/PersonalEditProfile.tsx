@@ -118,8 +118,25 @@ const PersonalEditProfile = () => {
                             <input className={styles.form__input} type="tel" placeholder="Подтвержите пароль" />
                         </div>
                     </div>
-                </div>
+ {/*
+<textarea className={styles.form__textarea} placeholder="Введите ваше описание" />
+*/}
 
+<div className={`${styles.form__field} ${styles.form__desc}`}>
+                        <p className={styles.form__text}>
+                         Введите описание
+                        </p>
+                        <div className={styles.form__wrapper}>
+                        
+<textarea className={styles.form__textarea} placeholder="Введите ваше описание" />
+                        </div>
+                    </div>
+</div>
+            
+ 
+
+
+ 
                 <div className={styles.form__theme}>
                     <select name="theme" id="theme" className={styles.form__theme__select}>
                         <option>Темная</option>

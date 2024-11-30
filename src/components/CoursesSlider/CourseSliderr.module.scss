@@ -119,7 +119,7 @@
         min-height: 100%;
         flex-direction: column;
         width: 100%;
-     //   position: relative;
+
 
         &__content {
             align-self: flex-end;
@@ -135,9 +135,9 @@
         @include fontSize(32px);
         text-align: right;
         color: $white;
-        max-width: 587px;
+        max-width: 787px;
         margin-bottom: 16px;
-
+width: 100%;
         @include bigTablets {
             margin: 0 auto;
             text-align: center;

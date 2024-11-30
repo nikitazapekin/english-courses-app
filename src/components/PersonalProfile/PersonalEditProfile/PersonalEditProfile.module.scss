@@ -18,22 +18,53 @@
             display: none;
         }
 
-
-
+        
     }
+
+    &__textarea {
+        width: 100%;
+        min-height: 200px;
+        cursor: pointer;
+        resize: none;
+     //   margin: 20px 0;
+
+
+     cursor: pointer;
+     outline: none;
+     border-radius: 20px;
+     border: none;
+     color: $gray;
+
+
+     background-color: $lightestGray;
+     padding: 10px 20px;
+
+     font-family: "Inter", sans-serif;
+
+     font-weight: 400;
+
+
+     @include fontSize(16px);
+    }
+    &__desc {
+        width: 100%;
+        grid-column: 1 / -1;
+
+        
+}
 
     &__forms {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 20px;
         grid-row-gap: 20px;
-
+width: 100%;
         justify-items: center;
         width: 100%;
 
         margin-top: 20px;
     }
-
+ 
     &__btns {
         align-self: center;
         display: flex;

@@ -70,7 +70,7 @@ const CoursesSlider = () => {
 
   useEffect(() => {
     setCurrentColor(data[currentIndex].color);
-    //resetAutoSlide();
+    resetAutoSlide();
 
 
     return () => {

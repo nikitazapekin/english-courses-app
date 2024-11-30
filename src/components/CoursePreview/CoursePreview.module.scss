@@ -1,11 +1,14 @@
 @import "../../theme/theme";
 
 .course {
+
+    
     &__inner {
 
         display: flex;
         max-width: 1430px;
         padding: 0px 15px;
+        width: 100%;
         margin: 0 auto;
         //  flex-direction: column;
         justify-content: space-between;
@@ -13,6 +16,7 @@
         //   background-color: red;
         margin-top: 70px;
 
+        column-gap: 20px;
         @include mobiles {
             padding: 0 10px;
 
@@ -84,5 +88,15 @@ color: $black;
         &:hover {
             background-color: $blue-active;
         }
+    }
+    &__logo {
+        max-width: 600px;
+      /*  height: auto;
+        align-self: flex-end;
+
+        width: 100%;
+        object-fit: cover;
+   //     aspect-ratio: 1 / 1;
+   */
     }
 }

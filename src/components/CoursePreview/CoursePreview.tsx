@@ -31,7 +31,7 @@ const CoursePreview = () => {
 
                         <div className={styles.course__category}>
                             <p className={styles.course__category__text}>
-                                Студенты
+                             Школьники
                             </p>
                             <img className={styles.course__category__icon}
                                 src={CourseIcon1}

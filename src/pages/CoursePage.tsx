@@ -15,12 +15,15 @@ const CoursePage = () => {
             <div className={styles.content}>
 
                 <CoursePreview />
+
                 <ForWhatSection />
                 <AboutCourse />
                 <CourseCertificate />
                 <AboutAuthor />
                 <CourseFor />
                 <CourseConsultation />
+                {/*
+                */}
             </div>
 
             <Footer />
