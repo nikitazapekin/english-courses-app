@@ -60,7 +60,9 @@ const SearchResultsComponent = () => {
                         {data.map((item, index) => (
                             <PersonalCourseCard key={index} title={item.title} author={item.author} date={item.date} image={item.image} />
                         ))}
+                        {/*
                         <PersonalDots />
+                        */}
                     </div>
                 </div>
             </div>
