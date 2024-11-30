@@ -16,15 +16,12 @@ const CoursePage = () => {
 
                 <CoursePreview />
 
-                {/*
                 <ForWhatSection />
-             <AboutCourse />
+                <AboutCourse />
                 <CourseCertificate />
                 <AboutAuthor />
                 <CourseFor />
                 <CourseConsultation />
-
-                */}
             </div>
 
             <Footer />

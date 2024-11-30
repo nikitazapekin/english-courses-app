@@ -14,7 +14,10 @@ const AboutAuthor = () => {
                     О авторе курса
                 </h2>
                 <div className={styles.about__content}>
+                    <div className={styles.about__author__wrapper}>
+
                     <img src={Irina} alt="Author" className={styles.about__author} />
+                    </div>
                     <div className={styles.info}>
                         <h3 className={styles.info__title}>
                             Ирина

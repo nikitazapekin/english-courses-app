@@ -80,7 +80,9 @@
 
         @include bigTablets {
             text-align: center;
+        margin: 0 auto;
         }
+        
     }
 
     &__categories {
@@ -89,9 +91,10 @@
         margin-top: 14px;
         flex-wrap: wrap;
         row-gap: 15px;
+
         @include bigTablets {
-         justify-content: center;
-                }
+            justify-content: center;
+        }
     }
 
     &__category {
@@ -125,11 +128,13 @@
         margin-top: 40px;
         transition: 0.4s ease-in-out;
         font-family: "Inter", sans-serif;
-white-space: wrap;
+        white-space: wrap;
+
         @include mobiles {
             padding: 10px 20px;
             @include fontSize(24px);
         }
+
         &:hover {
             background-color: $blue-active;
         }

@@ -8,8 +8,6 @@
         padding: 0px 15px;
         margin: 0 auto;
 
-        align-items: center;
-
         @include mobiles {
             padding: 0 10px;
 
@@ -25,6 +23,10 @@
         justify-content: space-between;
         padding: 36px 80px;
         column-gap: 30px;
+        @include tablets {
+            flex-direction: column;
+            padding: 86px 20px;
+        }
     }
 
     &__title {
@@ -32,6 +34,9 @@
         @include fontSize(36px);
         color: $black;
         font-family: "Inter", sans-serif;
+        @include tablets {
+          text-align: center;
+        }
     }
 
     &__about {
@@ -40,6 +45,9 @@
         color: $black;
         font-family: "Inter", sans-serif;
         max-width: 421px;
+        @include tablets {
+            text-align: center;
+          }
     }
 
     &__content {
@@ -48,7 +56,67 @@
     &__image {
 
         flex: 0 1 421px;
-      //  width: 39%;
-     //   display: none;
+    
     }
+    &__sqr {
+        position: relative;
+
+        &__top {
+
+            &::before {
+                position: absolute;
+                content: "";
+                left: 50px;
+                top: 0px;
+                width: 30px;
+                height: 30px;
+                background-color: $black;
+                border: 4px solid $orange;
+                transform: rotate(5deg);
+            }     
+        
+            &::after {
+                position: absolute;
+                content: "";
+                left: 0px;
+                top: 50px;
+                width: 30px;
+                height: 30px;
+                background-color: $black;
+                border: 4px solid $sliderGreen;
+                transform: rotate(25deg);
+            }    
+        }
+        &__bottom {
+            margin-top: auto;
+
+
+
+            &::before {
+                position: absolute;
+                content: "";
+            right: 50px;
+             bottom: 0px;
+                width: 30px;
+                height: 30px;
+                background-color: $black;
+                border: 4px solid $purple;
+                transform: rotate(5deg);
+            }     
+        
+            &::after {
+                position: absolute;
+                content: "";
+               right: 0px;
+               bottom: 50px;
+                width: 30px;
+                height: 30px;
+                background-color: $black;
+                border: 4px solid $red;
+                transform: rotate(25deg);
+            }    
+
+        }
+    }
+
 }

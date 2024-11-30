@@ -3,25 +3,25 @@
 .course {
     margin-top: 30px;
     background-color: $lightestGray;
-    padding: 80px 0;
-
+    padding: 80px 15px;
+@include mobiles {
+    padding: 80px 10px;
+}
     &__inner {
         display: flex;
         max-width: 1430px;
-        padding: 60px 15px;
+        padding: 60px 30px;
         margin: 0 auto;
-        //  column-gap: 55px;
-        //    margin-top: 35px;
+
         flex-direction: column;
         align-items: center;
         background-color: $white;
         border-radius: 100px;
         row-gap: 30px;
-
-        @include pc {
-            padding: 0px 10px;
-
-        }
+width: 100%;
+@include smPc {
+ //   padding: 60px 10px;
+}
     }
 
     &__content {
@@ -29,6 +29,19 @@
         width: 100%;
         column-gap: 150px;
         justify-content: center;
+
+        @include pc {
+            column-gap: 40px;
+        
+
+        }
+        @include smPc {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            row-gap: 30px;
+        
+        }
 
     }
 
@@ -39,6 +52,12 @@
         color: $black;
         font-family: "Inter", sans-serif;
         align-self: center;
+        @include smPc {
+          max-width:100%;
+          white-space: wrap;
+          text-align: center;
+          @include fontSize(32px);
+        }
     }
 
     &__personal {
@@ -64,21 +83,21 @@
     }
 
 
-    
+
     &__btn {
         justify-self: flex-start;
         margin-top: 30px;
         display: grid;
         grid-template-columns: minmax(200px, 396px);
-border: none;
-outline: none;
+        border: none;
+        outline: none;
         cursor: pointer;
         padding: 15px 0;
         text-align: center;
         border-radius: 6px;
-        z-index: 5;  
+        z-index: 5;
         position: relative;
-    
+
         &__text {
             font-weight: 700;
             @include fontSize(20px);
@@ -86,23 +105,24 @@ outline: none;
             z-index: 3;
             font-family: "Inter", sans-serif;
         }
+
         &::before {
             border-radius: 6px;
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: 1; 
-            background-color:$purple;
-      
+            z-index: 1;
+            background-color: $purple;
+
             content: "";
         }
-    
+
         &:after {
             border-radius: 6px;
             position: absolute;
             width: 100%;
             height: 100%;
-            z-index: -1; 
+            z-index: -1;
             background-color: $purpleDark;
             transform: translateX(5px) translateY(5px);
             content: "";
@@ -116,7 +136,10 @@ outline: none;
     max-width: 556px;
     width: 100%;
     row-gap: 30px;
-
+    @include smPc {
+        max-width: none;
+       
+      }
     &__input {
         width: 100%;
         cursor: pointer;
