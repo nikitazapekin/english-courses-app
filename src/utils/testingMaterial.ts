@@ -23,7 +23,7 @@ export const testingMaterial: testingMaterialsTypes[] = [
         title: "Тест 1. Проверка знаний времен Present simple и present continuous",
         tasks: [
             {
-                sentance: "This information ___ on the Internet.",
+                sentance: "This information  __  on the Internet.",
                image: Internet,
        
                 answers: [
@@ -74,7 +74,7 @@ export const testingMaterial: testingMaterialsTypes[] = [
 
 
             {
-                sentance: "This information ___ on the Internet.",
+                sentance: "This information __  on the Internet.",
                image: Internet,
        
                 answers: [
@@ -99,7 +99,7 @@ export const testingMaterial: testingMaterialsTypes[] = [
 
 
             {
-                sentance: "This information ___ on the Internet.",
+                sentance: "This information  __ on the Internet.",
                image: Internet,
        
                 answers: [
@@ -124,7 +124,7 @@ export const testingMaterial: testingMaterialsTypes[] = [
 
 
             {
-                sentance: "This information ___ on the Internet.",
+                sentance: "This information __  on the Internet.",
                image: Internet,
        
                 answers: [
@@ -149,7 +149,7 @@ export const testingMaterial: testingMaterialsTypes[] = [
 
 
             {
-                sentance: "This information ___ on the Internet.",
+                sentance: "This information __  on the Internet.",
                image: Internet,
        
                 answers: [

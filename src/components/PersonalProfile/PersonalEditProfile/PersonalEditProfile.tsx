@@ -118,9 +118,7 @@ const PersonalEditProfile = () => {
                             <input className={styles.form__input} type="tel" placeholder="Подтвержите пароль" />
                         </div>
                     </div>
- {/*
-<textarea className={styles.form__textarea} placeholder="Введите ваше описание" />
-*/}
+
 
 <div className={`${styles.form__field} ${styles.form__desc}`}>
                         <p className={styles.form__text}>

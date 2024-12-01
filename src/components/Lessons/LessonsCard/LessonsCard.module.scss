@@ -21,6 +21,9 @@
     &__header {
         display: flex;
         column-gap: 20px;
+        @include tablets {
+            flex-direction: column;
+        }
     }
 
     &__lesson {
@@ -28,6 +31,7 @@
         @include fontSize(32px);
         color: $black;
         font-family: "Inter", sans-serif;
+        white-space: nowrap;
     }
 
     &__title {
