@@ -3,8 +3,14 @@ import Header from "../components/Header/Header";
 import LessonsList from "../components/Lessons/LessonsList/LessonsList";
 import styles from "../theme/wrappers.module.scss"
 import "../theme/global.scss"
- 
+ import { useEffect } from "react";
 const CourseLessonsPage = () => {
+    useEffect(() => {
+       
+        window.scrollTo(0, 0);
+   
+    }, []);
+  
     return (
 <>
         <div className={styles.wrapper}>

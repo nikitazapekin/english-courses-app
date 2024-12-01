@@ -10,7 +10,14 @@ import JoinTrial from "../components/JoinTrial/JoinTrial";
 import CoursesHomepage from "../components/CoursesHomepage/CoursesHomepage";
 import HomepageComments from "../components/HomepageComments/HomepageComents";
 import Tutors from "../components/Tutors/Tutors";
+import { useEffect } from "react";
 const Homepage = () => {
+    useEffect(() => {
+       
+        window.scrollTo(0, 0);
+   
+    }, []);
+  
     return (
 
         <div className={styles.wrapper}>

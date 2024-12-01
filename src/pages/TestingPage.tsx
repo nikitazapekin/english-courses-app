@@ -3,7 +3,15 @@ import styles from "../theme/wrappers.module.scss"
 import Footer from "../components/Footer/Footer";
 import TestingComponent from "../components/Testing/TestingComponent/TestingComponent";
 import ModalResult from "../components/Testing/ModalResult/ModalResult";
+import { useEffect } from "react";
 const TestingPage = () => {
+
+    useEffect(() => {
+       
+        window.scrollTo(0, 0);
+   
+    }, []);
+  
     return (<div className={styles.wrapper}>
         <Header />
         <div className={styles.darken} />

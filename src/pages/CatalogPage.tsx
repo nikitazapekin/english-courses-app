@@ -3,17 +3,24 @@ import CoursesSlider from "../components/CoursesSlider/CouresSlider";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import styles from "../theme/wrappers.module.scss"
+import { useEffect } from "react";
 const CatalogPage = () => {
+    useEffect(() => {
+
+        window.scrollTo(0, 0);
+
+    }, []);
+
     return (
         <>
             <div className={styles.wrapper}>
 
                 <Header />
                 <div className={styles.content}>
-                  
 
 
-                   
+
+
                     <CoursesSlider />
                     <CategoriesComponent />
                 </div>
