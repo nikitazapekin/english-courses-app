@@ -1,6 +1,6 @@
 
 import { Component } from "react";
-import { CARD_PAGE, CATALOG, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE } from "./consts";
+import { CARD_PAGE, CATALOG, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TUTOR_PAGE } from "./consts";
 import Homepage from "../pages/Homepage";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
@@ -14,6 +14,7 @@ import LessonPage from "../pages/LessonPage";
 import TestingPage from "../pages/TestingPage";
 import SearchResultsPage from "../pages/SearchResultsPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import TutorPage from "../pages/TutorPage";
 
 export const publicRoutes = [
   {
@@ -77,6 +78,11 @@ export const publicRoutes = [
   {
     path: SEARCH_PAGE,
     Component: SearchResultsPage
+
+  },
+  {
+    path: TUTOR_PAGE,
+    Component:  TutorPage
 
   },
 

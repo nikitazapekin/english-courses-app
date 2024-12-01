@@ -17,21 +17,24 @@ const LessonHeader = () => {
             navigate(`/card/lessons/${courseMaterials[Number(theme)-1].title}/${Number(theme)-1}`)
         }
     }
-    return (<div className={styles.header}>
+    return (<>
+
+<p className={`${styles.header__current} ${styles.header__current__table}`}>
+        {Number(theme)+1} из 12 уроков
+        </p>
+
+
+    <div className={styles.header}>
         <div className={styles.header__btn} onClick={handlePrev}>
             <p className={styles.header__btn__bold}>
                 Предыдущий урок 
             </p>
             <p className={styles.header__btn__text}>
-           {/*
-                Базовые
-                разговорные
-                выражения
-                */}
+          
                        {Number(theme) !=0 ? courseMaterials[Number(theme)-1].title :   courseMaterials[ courseMaterials.length-1].title}
             </p>
         </div>
-        <p className={styles.header__current}>
+        <p className={`${styles.header__current}  ${styles.header__current__pc}`}>
         {Number(theme)+1} из 12 уроков
         </p>
         <div className={`${styles.header__btn} ${styles.header__btn__right} `} onClick={handleNext}>
@@ -39,16 +42,14 @@ const LessonHeader = () => {
                 Следующий урок
             </p>
             <p className={styles.header__btn__text}  >
-              {/*
-              Базовые
-              разговорные
-              выражения
-              */}
+               
               
                 {Number(theme) < courseMaterials.length-1 ? courseMaterials[Number(theme)+1].title :   courseMaterials[0].title}
             </p>
         </div>
-    </div>);
+    </div>
+    </>
+    );
 }
 
 export default LessonHeader;

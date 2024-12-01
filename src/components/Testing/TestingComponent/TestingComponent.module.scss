@@ -57,13 +57,20 @@
             font-weight: 400;
 
         }
-
+        @include mobiles {
+            @include fontSize(24px);
+        }
     }
 
     &__question {
         font-weight: 700;
         @include fontSize(32px);
         color: $black;
+        font-family: "Inter", sans-serif;
+        white-space: nowrap;
+        @include mobiles {
+            @include fontSize(24px);
+        }
     }
 
     &__title {
@@ -82,6 +89,11 @@
         @include smPc {
             @include fontSize(32px);
         }
+
+        @include tablets {
+            text-align: center;
+        }
+       
     }
 
     &__number {
