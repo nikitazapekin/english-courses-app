@@ -9,7 +9,7 @@ const PersonalProfile = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
     const handleOpenModal = () => {
-        setIsOpenModal(prev=>!prev)
+        setIsOpenModal(prev => !prev)
     }
     return (
         <section className={styles.personal}>
@@ -19,22 +19,30 @@ const PersonalProfile = () => {
                 <div className={styles.personal__info}>
                     <div className={styles.personal__actions}>
                         <AvatarComponent />
-                        <div className={styles.personal__balance}>
-                            <p className={styles.personal__balance__text}>
-                                Баланс:
-                            </p>
-                            <p className={styles.personal__balance__number}>
-                                200$
-                            </p>
+
+
+                        <div className={styles.personal__preview}>
+                            <div className={styles.personal__balance}>
+                                <p className={styles.personal__balance__text}>
+                                    Баланс:
+                                </p>
+                                <p className={styles.personal__balance__number}>
+                                    200$
+                                </p>
+                            </div>
+                            <button className={`${styles.personal__btn} ${styles.personal__btn__purple}`} onClick={handleOpenModal}>
+                                Пополнить
+                            </button>
+                            <button className={`${styles.personal__btn} ${styles.personal__btn__red}`}>
+                                Выйти
+                            </button>
                         </div>
-                        <button className={`${styles.personal__btn} ${styles.personal__btn__purple}`} onClick={handleOpenModal}>
-                            Пополнить
-                        </button>
-                        <button className={`${styles.personal__btn} ${styles.personal__btn__red}`}>
-                            Выйти
-                        </button>
+
+
+
                     </div>
-                    <PersonalDescribtion />  
+                    <PersonalDescribtion />
+              
                 </div>
                 <PersonalCourses />
             </div>

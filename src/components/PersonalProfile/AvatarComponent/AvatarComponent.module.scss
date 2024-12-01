@@ -4,6 +4,11 @@
     position: relative;
     cursor: pointer;
     max-width: 179px;
+    @include tablets {
+        max-width: 100%;
+        width: 100%;
+        
+    }
 
     &__input {
         position: absolute;
@@ -20,6 +25,12 @@
     width: 100%;
     object-fit: cover;
     aspect-ratio: 1 / 1;
+
+    @include tablets {
+        max-width: 100%;
+        width: 100%;
+
+    }
 
 }
     &__add {

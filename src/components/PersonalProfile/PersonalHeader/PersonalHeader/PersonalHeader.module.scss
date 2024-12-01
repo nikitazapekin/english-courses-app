@@ -6,12 +6,20 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 40px;
-
+column-gap: 10px;
+@include mobiles {
+    flex-direction: column;
+    row-gap: 10px;
+}
     &__title {
         font-weight: 700;
         @include fontSize(48px);
         color: $black;
         font-family: "Inter", sans-serif;
+
+        @include tablets {
+            @include fontSize(32px);
+        }
     }
 
     &__btns {
