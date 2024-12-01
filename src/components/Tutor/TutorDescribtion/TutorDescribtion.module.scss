@@ -33,13 +33,15 @@
 
 
 
-
+&__stars  {
+    align-self: center;
+}
     &__star {
 
         position: relative;
         display: inline-block;
-        width: 29px;
-        height: 29px;
+        width: 20px;
+        height: 20px;
         background: $orange;
         clip-path: polygon(50% 0%,
                 61% 35%,
@@ -59,8 +61,8 @@
 
         position: relative;
         display: inline-block;
-        width: 29px;
-        height: 29px;
+        width: 20px;
+        height: 20px;
         background: $orange;
         clip-path: polygon(50% 0%,
                 61% 35%,
@@ -94,9 +96,9 @@
 
     &__rate {
         display: flex;
-        column-gap: 20px;
+        column-gap: 10px;
         align-items: center;
-
+     
         &__text {
             font-weight: 400;
             @include fontSize(20px);

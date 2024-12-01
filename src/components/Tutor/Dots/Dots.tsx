@@ -1,5 +1,13 @@
+/*const Dots = () => {
+    return (  );
+}
+ 
+export default Dots;
+*/
+
+
 import React from "react";
-import styles from "./PersonalDots.module.scss";
+import styles from "./Dots.module.scss";
 
 interface PersonalDotsProps {
   totalPages: number;
@@ -7,7 +15,7 @@ interface PersonalDotsProps {
   onPageChange: (page: number) => void;
 }
 
-const PersonalDots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChange }) => {
+const Dots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChange }) => {
   const maxVisibleDots = 3; 
 
   const getVisiblePages = () => {
@@ -51,6 +59,6 @@ const PersonalDots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, on
   );
 };
 
-export default PersonalDots;
+export default Dots;
 
  

@@ -1,18 +1,19 @@
  
 import { useState, useRef, MouseEvent } from "react";
 
-import styles from "./Swiper.module.scss";
+import styles from "./TutorSwiper.module.scss";
 
 interface SwiperProps {
     items: Array<{
         title: string;
         experience: string;
-        describtion: string;
+     
         img: string;
     }>;
+    title: string
 }
 
-const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
+const TurorSwiper: React.FC<SwiperProps> = ({ items, title }: SwiperProps) => {
     const [startX, setStartX] = useState<number>(0);
     const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
     const [scrollLeft, setScrollLeft] = useState<number>(0);
@@ -41,6 +42,10 @@ const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
         }
     }
     return (
+        <>
+        <p className={styles.title}>
+{title}
+        </p>
         <div className={styles.wrapper}>
 
             <div
@@ -61,28 +66,22 @@ const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
                                 className={styles.swiperItem__img}
                                 alt="Tutor" />
                             <h3 className={styles.swiperItem__title}>
-                                {item.title}
+                            {item.title}
                             </h3>
                             <h4 className={styles.swiperItem__experience}>
                                 {item.experience}
                             </h4>
-                            <p className={styles.swiperItem__text}>
-                                {item.describtion}
-                            </p>
+                             
                         </div>
                     ))}
                 </div>
             </div>
 
-            <div className={styles.dots}>
-                <div className={`${styles.dot} ${styles.dot__active}`} />
-                <div className={styles.dot} />
-                <div className={styles.dot} />
-            </div>
+       
         </div>
+        </>
     );
 };
 
-export default Swiper;
-/*
-*/
+export default TurorSwiper;
+ 

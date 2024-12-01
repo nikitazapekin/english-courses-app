@@ -6,7 +6,8 @@ interface TutorProps {
     citate: string;
     rate: number;
     level: string,
-    specialization: string
+    specialization: string,
+    describtion: string
 }
 
 const TutorDescribtion = ({ title, country, citate, rate, level, specialization }: TutorProps) => {
@@ -42,6 +43,7 @@ const TutorDescribtion = ({ title, country, citate, rate, level, specialization 
                         <div className={styles.tutor__starSliced}></div>
                     )}
                 </div>
+                <p className={styles.tutor__rate__text}>(223)</p>
             </div>
                 <p className={styles.tutor__level}>
                     Уровень: {level}

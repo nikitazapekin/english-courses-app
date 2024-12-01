@@ -1,6 +1,15 @@
+@import "../../../theme/theme";
+
 .tutor {
     &__info {
         display: flex;
-        column-gap: 160px;
+        column-gap: 100px;
+    }
+    &__describtion {
+        margin-top: 20px;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        font-family: "Inter", sans-serif;
     }
 }
