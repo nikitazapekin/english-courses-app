@@ -4,6 +4,8 @@ import styles from "./TutorPreview.module.scss"
 import Tutor from "../../../assets/Tutor/tutor.jpeg"
 import TutorDescribtion from "../TutorDescribtion/TutorDescribtion";
 import Belarus from "../../../assets/Countries/Belarus.png"
+
+
 const tutor = {
     url: Tutor,
     title: "Кирилл",

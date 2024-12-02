@@ -11,6 +11,7 @@ import Prog2 from "../../assets/Tutor/programs/prog2.jpeg"
 import Prog3 from "../../assets/Tutor/programs/prog3.png"
 import Prog4 from "../../assets/Tutor/programs/prog4.jpeg"
 import OtherTutors from "./OtherTutors/OtherTutors";
+import TutorAdd from "./TutorAdd/TutorAdd";
 
 const items = [
 
@@ -107,6 +108,7 @@ const TutorComponent = () => {
 
     return (<div className={styles.tutor}>
         <div className={styles.tutor__inner}>
+            <TutorAdd />
             <TutorPreview />
 
             <TurorSwiper items={items} title={"Курсы и сертификаты"} />
