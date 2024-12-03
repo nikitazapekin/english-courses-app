@@ -9,18 +9,19 @@ import AboutAuthor from "../components/AboutAuthor/AboutAuthor";
 import CourseFor from "../components/CourseFor/CourseFor";
 import CourseConsultation from "../components/CourseConsultation/CourseConsultation";
 import { useEffect } from "react";
+import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
 const CoursePage = () => {
     useEffect(() => {
-       
+
         window.scrollTo(0, 0);
-   
+
     }, []);
-  
+
     return (
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
-
+                <TutorAdd />
                 <CoursePreview />
 
                 <ForWhatSection />

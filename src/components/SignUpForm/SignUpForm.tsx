@@ -1,4 +1,4 @@
-
+ 
 import { useNavigate } from "react-router-dom";
 import Mail from "../../assets/icons/mail.png"
 import User from "../../assets/icons/user.png"
@@ -15,7 +15,13 @@ import { useSelector } from "react-redux";
 import { getPasswordStrength } from "../../helpers/getPaswordStrenth";
 import { formsSelector } from "../../store/selectors/Forms.selector";
 import  Placeholder from "../../assets/icons/location.png"
-const SignUpForm = () => {
+import { useEffect } from "react";
+
+interface SignUpProps {
+    toasts: { id: string; message: string }[],
+    addToast: (message: string)=> void
+}
+const SignUpForm = ({toasts, addToast}: SignUpProps) => {
     const navigate = useNavigate();
     const countries = useSelector(formsSelector)
     const handleNavigate = () => {
@@ -35,11 +41,20 @@ const SignUpForm = () => {
     });
     const submitForm = (data: RegisterInterface) => {
 
-        navigate("/");
+  //      navigate("/");
+  navigate("/personal")
         reset();
 
     };
+
+    useEffect(()=> {
+        if (Object.keys(errors).length != 0) {
+        addToast("Пожалуйста, исправьте ошибки в форме.");
+        }
+        console.log(errors)
+    }, [errors])
     const passwordValue = watch("password", "");
+    const confirmPasswordValue = watch("confirmPassword", "");
     return (
         <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
             <div className={styles.form__inner}>
@@ -109,7 +124,7 @@ const SignUpForm = () => {
                         <div className={styles.form__input__wrapper}>
                             <input
                                 {...register("password")}
-                                className={styles.form__input} type="password"
+                                className={styles.form__input} type="text"
                                 name="password"
                                 placeholder="Введите пароль"
                                 required
@@ -142,8 +157,8 @@ const SignUpForm = () => {
                             className={styles.form__input__wrapper}>
                             <input
                                 {...register("confirmPassword")}
-                                className={styles.form__input} type="password"
-                                name="password"
+                                className={styles.form__input} type="text"
+                             
                                 placeholder="Введите пароль еще раз"
                                 required
 
