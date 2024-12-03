@@ -12,12 +12,11 @@ const SignInPage = () => {
     return (<div className={styles.wrapper}>
         <Header />
         <div className={styles.content}>
-        <SignInForm 
-        addToast={addToast}
-        toasts={toasts}
-        />
-
-
+            <SignInForm 
+            addToast={addToast}
+            toasts={toasts}
+            />
+ 
        
       <div className={styles.toastContainer}>
 
@@ -28,7 +27,7 @@ const SignInPage = () => {
             message={toast.message}
             onClose={() => console.log('Toast closed')}
             />
-        ))}
+            ))}
         </div>
         </div>
         <Footer />

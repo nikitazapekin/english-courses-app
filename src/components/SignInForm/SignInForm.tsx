@@ -11,12 +11,16 @@ import Vk from "../../assets/networks/vk.png"
 import Discord from "../../assets/networks/discord.png"
 import Google from "../../assets/networks/google.png"
 import { signInSchema } from "./schema";
- 
+ import { useToast } from "../../hooks/useToast";
+import Toast from "../Toast/Toast";
+import { useEffect } from "react";
 interface SignInProps {
     toasts: { id: string; message: string }[],
     addToast: (message: string)=> void
 }
-const SignInForm = ({ addToast}: SignInProps) => {
+ 
+    const SignInForm = ({toasts, addToast}: SignInProps) => {
+
     const navigate = useNavigate();
     const {
         register,
@@ -32,16 +36,15 @@ const SignInForm = ({ addToast}: SignInProps) => {
         navigate("/personal")
   
     };
-const handleAddToast = () => {
-    if (Object.keys(errors).length != 0) {
-      
-        addToast("Пожалуйста, исправьте ошибки в форме.");
-    }  
-}
+ 
     const handleNavigate = () => {
         navigate("/sign-up");
     };
-
+useEffect(()=> {
+    if (Object.keys(errors).length != 0) {
+    addToast("Пожалуйста, исправьте ошибки в форме.");
+    }
+}, [errors])
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.form__inner}>
@@ -99,8 +102,7 @@ const handleAddToast = () => {
                     </div>
                 </div>
                 <button className={styles.form__submit} type="submit" 
-          //       onClick={()=>addToast("Test")}
-          onClick={handleAddToast}
+
                 >Войти</button>
                 <div className={styles.form__or}>
                     <hr className={styles.form__line} />
@@ -124,7 +126,6 @@ const handleAddToast = () => {
 
             </div>
 
-      
         </form>
     );
 };
