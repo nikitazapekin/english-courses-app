@@ -18,6 +18,7 @@ const ToastManager: React.FC = () => {
         {toasts.map((toast) => (
           <Toast
             key={toast.id}
+            duration={5}
             message={toast.message}
             onClose={() => console.log('Toast closed')}
           />

@@ -11,8 +11,12 @@ import Vk from "../../assets/networks/vk.png"
 import Discord from "../../assets/networks/discord.png"
 import Google from "../../assets/networks/google.png"
 import { signInSchema } from "./schema";
-
-const SignInForm = () => {
+ 
+interface SignInProps {
+    toasts: { id: string; message: string }[],
+    addToast: (message: string)=> void
+}
+const SignInForm = ({ addToast}: SignInProps) => {
     const navigate = useNavigate();
     const {
         register,
@@ -24,11 +28,16 @@ const SignInForm = () => {
 
     const onSubmit = (data: SignInData) => {
 
-        console.log(data);
+      
         navigate("/personal")
-     
+  
     };
-
+const handleAddToast = () => {
+    if (Object.keys(errors).length != 0) {
+      
+        addToast("Пожалуйста, исправьте ошибки в форме.");
+    }  
+}
     const handleNavigate = () => {
         navigate("/sign-up");
     };
@@ -74,21 +83,14 @@ const SignInForm = () => {
                         </div>
                     </div>
 
-
-
-                
-
                     <div className={styles.form__field}>
-
                         <div
                             className={`${styles.form__input__wrapper} ${styles.form__confirm}`}>
-
                             <input
-
                                 type="checkbox"
                                 className={styles.form__checkbox}
                                 id="agreeToTerms"
-                                required
+                               
                             />
                             <p className={styles.form__text}>
                                 Запомнить меня
@@ -96,13 +98,16 @@ const SignInForm = () => {
                         </div>
                     </div>
                 </div>
-                <button className={styles.form__submit} type="submit">Войти</button>
+                <button className={styles.form__submit} type="submit" 
+          //       onClick={()=>addToast("Test")}
+          onClick={handleAddToast}
+                >Войти</button>
                 <div className={styles.form__or}>
                     <hr className={styles.form__line} />
                     <p className={styles.form__or__text}>Или</p>
                     <hr className={styles.form__line} />
                 </div>
-                <p className={styles.form__or__text}>Войти через социальные сети</p>
+                <p className={styles.form__or__text} >Войти через социальные сети</p>
    
 
                 <div className={styles.form__networks}>
@@ -118,6 +123,8 @@ const SignInForm = () => {
                 </div>
 
             </div>
+
+      
         </form>
     );
 };
