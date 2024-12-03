@@ -3,6 +3,77 @@
 .certificate {
     margin: 90px 0;
     padding: 0 16px;
+    perspective: 1000px; // Создает 3D-эффект
+
+    &__inner {
+        padding: 65px 57px;
+        background-color: $blue;
+
+        @include mobiles {
+            padding: 30px;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        max-width: 1400px;
+        column-gap: 41px;
+        margin: 0 auto;
+        border-radius: 74px;
+        transform-style: preserve-3d;
+        transition: transform 0.2s ease-out; // Анимация для плавности
+
+        @include bigTablets {
+            flex-direction: column;
+            align-items: center;
+        }
+
+    }
+
+    &:hover .certificate__inner {
+        transition: none; // Убираем анимацию при наведении
+    }
+
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        color: $black;
+        font-family: "Inter", sans-serif;
+        max-width: 612px;
+        margin-bottom: 10px;
+
+        @include bigTablets {
+            text-align: center;
+        }
+
+    }
+
+    &__about {
+        font-weight: 400;
+        font-size: 20px;
+        color: $black;
+        max-width: 612px;
+
+        @include bigTablets {
+            text-align: center;
+            margin: 25px 0 49px 0;
+        }
+
+    }
+
+    &__image {
+        align-self: center;
+        width: 44.8%;
+        min-width: 313px;
+    }
+}
+
+
+/*
+@import "../../theme/theme";
+
+.certificate {
+    margin: 90px 0;
+    padding: 0 16px;
 
     &__inner {
         padding: 65px 57px;
@@ -61,3 +132,5 @@
 
     }
 }
+
+*/

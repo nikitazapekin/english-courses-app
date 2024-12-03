@@ -5,7 +5,7 @@ import Person3 from "../../assets/persons/Person3.png"
 import Person4 from "../../assets/persons/Person4.png"
 import Person5 from "../../assets/persons/Person5.png"
 import { Link } from "react-router-dom"
-//import Person6 from "../../assets/persons/Person6.jpg"
+ 
 import NavigateCardBtn from "../NavigateCardBtn/NavigateCardBtn"
 const CoursesHomepage = () => {
     return (
