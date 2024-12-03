@@ -1,0 +1,37 @@
+@import "../../../theme/theme";
+
+.dots {
+    display: flex;
+    column-gap: 14px;
+    justify-content: center;
+    margin-bottom: 20px;
+width: 100%;
+margin-top: 20px;
+    &__dot {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $light-gray;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        transition: 0.4s ease-in-out;
+        &:hover {
+            background-color: $blue-active;
+        }
+        &__active {
+            background-color: $orangeLight;
+            &:hover {
+                background-color:$orangeLight;
+                    }
+        }
+        &__disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+          }
+    }
+}

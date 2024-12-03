@@ -124,7 +124,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
                         <div className={styles.form__input__wrapper}>
                             <input
                                 {...register("password")}
-                                className={styles.form__input} type="text"
+                                className={styles.form__input} type="password"
                                 name="password"
                                 placeholder="Введите пароль"
                                 required
@@ -157,7 +157,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
                             className={styles.form__input__wrapper}>
                             <input
                                 {...register("confirmPassword")}
-                                className={styles.form__input} type="text"
+                                className={styles.form__input}  type="password"
                              
                                 placeholder="Введите пароль еще раз"
                                 required

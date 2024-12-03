@@ -2,7 +2,7 @@
 
 
 import React from "react";
-import styles from "./Dots.module.scss";
+import styles from "./SearchDots.module.scss";
 
 interface PersonalDotsProps {
   totalPages: number;
@@ -10,7 +10,7 @@ interface PersonalDotsProps {
   onPageChange: (page: number) => void;
 }
 
-const Dots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChange }) => {
+const SearchDots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChange }) => {
   const maxVisibleDots = 3; 
 
   const getVisiblePages = () => {
@@ -54,6 +54,6 @@ const Dots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChan
   );
 };
 
-export default Dots;
+export default SearchDots;
 
  
