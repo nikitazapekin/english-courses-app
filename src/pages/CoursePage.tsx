@@ -21,7 +21,10 @@ const CoursePage = () => {
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
-                <TutorAdd />
+               
+              
+
+               
                 <CoursePreview />
 
                 <ForWhatSection />

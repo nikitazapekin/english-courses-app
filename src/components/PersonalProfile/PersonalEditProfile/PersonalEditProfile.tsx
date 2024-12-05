@@ -120,21 +120,21 @@ const PersonalEditProfile = () => {
                     </div>
 
 
-<div className={`${styles.form__field} ${styles.form__desc}`}>
+                    <div className={`${styles.form__field} ${styles.form__desc}`}>
                         <p className={styles.form__text}>
-                         Введите описание
+                            Введите описание
                         </p>
                         <div className={styles.form__wrapper}>
-                        
-<textarea className={styles.form__textarea} placeholder="Введите ваше описание" />
+
+                            <textarea className={styles.form__textarea} placeholder="Введите ваше описание" />
                         </div>
                     </div>
-</div>
-            
- 
+                </div>
 
 
- 
+
+
+
                 <div className={styles.form__theme}>
                     <select name="theme" id="theme" className={styles.form__theme__select}>
                         <option>Темная</option>

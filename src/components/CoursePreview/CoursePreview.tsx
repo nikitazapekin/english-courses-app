@@ -1,9 +1,11 @@
 import styles from "./CoursePreview.module.scss"
 import Logo from "../../assets/course/courseLogo.png"
 import CourseIcon1 from "../../assets/course/courseIcon1.png"
+import TutorAdd from "../Tutor/TutorAdd/TutorAdd"
 const CoursePreview = () => {
     return (
         <section className={styles.course}>
+              
             <div className={styles.course__inner}>
                 <div className={styles.course__content}>
 
