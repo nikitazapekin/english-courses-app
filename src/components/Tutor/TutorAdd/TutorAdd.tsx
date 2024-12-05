@@ -24,9 +24,12 @@ const TutorAdd = () => {
             </div>
         </div>
         <div className={styles.add__content}>
+            <div className={styles.add__fon}>
+
             <p className={styles.add__percent}>
                 %
             </p>
+            </div>
         </div>
     </div>);
 }

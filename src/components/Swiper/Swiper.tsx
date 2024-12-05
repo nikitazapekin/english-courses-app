@@ -73,12 +73,13 @@ const Swiper: React.FC<SwiperProps> = ({ items }: SwiperProps) => {
                     ))}
                 </div>
             </div>
-
+{/*
             <div className={styles.dots}>
                 <div className={`${styles.dot} ${styles.dot__active}`} />
                 <div className={styles.dot} />
                 <div className={styles.dot} />
             </div>
+*/}
         </div>
     );
 };

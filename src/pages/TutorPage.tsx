@@ -4,6 +4,7 @@ import TutorComponent from "../components/Tutor/Tutor";
 import styles from "../theme/wrappers.module.scss"
 import { useNavigate } from "react-router-dom";
 import { useEffect  } from "react";
+import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
 const TutorPage = () => {
 
    
@@ -21,6 +22,9 @@ const TutorPage = () => {
         <Header />
         <div className={styles.darken} />
         <div className={styles.content}>
+            {/*
+            <TutorAdd />
+            */}
             <TutorComponent />
         </div>
         <Footer />

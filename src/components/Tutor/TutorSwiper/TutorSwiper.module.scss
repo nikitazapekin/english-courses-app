@@ -5,7 +5,9 @@
   
     color: $white;
     font-family: "Inter", sans-serif;
-    
+    @include tablets {
+        @include fontSize(32px);
+    }
 
 }
 .wrapper {

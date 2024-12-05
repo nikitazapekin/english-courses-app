@@ -108,14 +108,19 @@ const TutorComponent = () => {
 
     return (<div className={styles.tutor}>
         <div className={styles.tutor__inner}>
-            <TutorAdd />
+       {/*
+       <TutorAdd />
+       */}
+       
+
             <TutorPreview />
-
-            <TurorSwiper items={items} title={"Курсы и сертификаты"} />
-
+            
+          <TurorSwiper items={items} title={"Курсы и сертификаты"} />
+          
             <TurorSwiper items={items1} title={"Образовательные программы"} />
-
+            
             <OtherTutors />
+ 
         </div>
     </div>);
 }
