@@ -1,3 +1,98 @@
+import React, { useState } from "react";
+import styles from "./LessonComments.module.scss";
+import Heart from "../../../assets/icons/heart.png";
+
+interface Response {
+    userId: number;
+    username: string;
+    comment: string;
+    date: string;
+    avatar: string;
+    likes: number;
+    isLiked: boolean;
+    isYourComment: boolean;
+}
+
+interface LessonCommentItem {
+    userId: number;
+    username: string;
+    comment: string;
+    date: string;
+    avatar: string;
+    likes: number;
+    isLiked: boolean;
+    isYourComment: boolean;
+    responses: Response[];
+}
+
+interface LessonCommentCardProps {
+    item: LessonCommentItem;
+    onAddComment: (text: string, replyToUser?: string) => void;
+    onLike: (commentId: number, isReply: boolean, parentCommentId?: number) => void;
+}
+
+const LessonCommentCard = ({ item, onAddComment, onLike }: LessonCommentCardProps) => {
+    const [replyText, setReplyText] = useState("");
+
+    const handleReply = () => {
+        if (replyText.trim()) {
+            onAddComment(replyText, item.username);
+            setReplyText("");
+        }
+    };
+
+    return (
+        <div className={styles.comment}>
+            <div className={styles.commentContent}>
+                <img src={item.avatar} alt="Avatar" className={styles.avatar} />
+                <div>
+                    <h4>{item.username}</h4>
+                    <p>{item.comment}</p>
+                    <div className={styles.footer}>
+                        <button onClick={() => onLike(item.userId, false)} className={styles.likeButton}>
+                            <img src={Heart} alt="Like" />
+                            {item.likes}
+                        </button>
+                        <button onClick={() => setReplyText(`@${item.username} `)}>Ответить</button>
+                    </div>
+                </div>
+            </div>
+
+            {item.responses.map((response) => (
+                <div key={response.userId} className={styles.response}>
+                    <img src={response.avatar} alt="Avatar" className={styles.avatar} />
+                    <div>
+                        <h4>{response.username}</h4>
+                        <p>{response.comment}</p>
+                        <div className={styles.footer}>
+                            <button
+                                onClick={() => onLike(response.userId, true, item.userId)}
+                                className={styles.likeButton}
+                            >
+                                <img src={Heart} alt="Like" />
+                                {response.likes}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            ))}
+
+            <div className={styles.replySection}>
+                <input
+                    value={replyText}
+                    onChange={(e) => setReplyText(e.target.value)}
+                    placeholder="Напишите ответ..."
+                />
+                <button onClick={handleReply}>Отправить</button>
+            </div>
+        </div>
+    );
+};
+
+export default LessonCommentCard;
+
+
+/*
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png"
 interface Response {
@@ -101,20 +196,4 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
 };
 
 export default LessonCommentCard;
-
-/*
-import styles from "./LessonComments.module.scss"
-interface LessonCommentCardProps {
-
-}
-const LessonCommentCard = ({item}: LessonCommentCardProps) => {
-    return ( 
-        <div className={styles.comment}>
-
-        </div>
-     );
-}
- 
-export default LessonCommentCard;
-
-*/
+ */
