@@ -211,12 +211,12 @@ interface LessonCommentCardProps {
 
 const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-    const [isOpenReply, setIsOpenReply] = useState<boolean>(false)
+   
     const handleOpen = () => {
         setIsOpen(prev=> true)
     }
     const handleClose= () => {
-        setIsOpenReply(prev=> false)
+        setIsOpen(prev=> false)
     }
     return (<>
         <div className={`${styles.comment} ${item.isYourComment ?  styles.yourComment : ""}`}>

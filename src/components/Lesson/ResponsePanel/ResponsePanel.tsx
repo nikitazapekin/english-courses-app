@@ -19,13 +19,14 @@ const ResponsePanel = ({id, to, handleClose}: ResponsePanelProps) => {
 dispatch(setReply({
 
     userId: Date.now(),  
-    username: `Вы пользователю ${to}`, 
+  //  username: `Вы пользователю ${to}`, 
+  username: "Вы",
     comment: text,  
     date: new Date().toLocaleDateString(), 
     avatar: "", 
     likes: 0, 
     isYourComment: true, 
-    to: "Test",
+    to: to,
     commentId: id,
 }))
    }

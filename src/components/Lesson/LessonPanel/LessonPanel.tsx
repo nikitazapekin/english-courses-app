@@ -46,10 +46,18 @@ export default LessonPanel;
  */
 import styles from "./LessonPanel.module.scss"
 import Personal from "../../../assets/Personal/Avatar.png"
+import { useEffect, useState } from "react"
 interface LessonPanelProps {
-    handleAddComment: ()=> void
+    handleAddComment: (text: string)=> void
 }
 const LessonPanel = ({handleAddComment}: LessonPanelProps) => {
+const [text, setText] =useState("")
+    const handleSend =()=> {
+        handleAddComment(text)
+    }
+    const handleChange = (event:  React.ChangeEvent<HTMLTextAreaElement>) => {
+setText(event.target.value)
+    }
     return (
         <section className={styles.panel}>
             <div className={styles.panel__inner}>
@@ -63,9 +71,10 @@ const LessonPanel = ({handleAddComment}: LessonPanelProps) => {
                 </div>
                 <div className={styles.panel__content}>
                     <textarea placeholder="Оставьте ваш комментарий" 
+                    onChange={(event)=>handleChange(event)}
                     className={styles.panel__area}
                     />
-                    <div className={styles.panel__btn} onClick={handleAddComment}>
+                    <div className={styles.panel__btn} onClick={ handleSend}>
                         Отправить
                     </div>
                 </div>

@@ -28,7 +28,7 @@ const data: LessonCommentItem[] = [
         avatar: Avatar,
         likes: 0,
         isYourComment: false,
-        commentId: 1,
+        commentId: 0,
         responces: [
             {
                 userId: 2,
@@ -71,7 +71,7 @@ const data: LessonCommentItem[] = [
         avatar: Avatar,
         likes: 0,
         isYourComment: true,
-        commentId: 2,
+        commentId: 1,
         responces: []
 
 
@@ -86,21 +86,22 @@ const LessonComponent = () => {
 
     const [comments, setComments] = useState<LessonCommentItem[]>(data);
 
-    const handleAddComment = () => {
+    const handleAddComment = (text: string) => {
 
         const newComment: LessonCommentItem = {
 
             userId: Date.now(),
-            username: "Test",
+            username: "Вы",
 
-            comment: "test",
+            comment: text,
             date: new Date().toLocaleDateString(),
             avatar: Avatar,
             likes: 0,
 
             isYourComment: true,
             responces: null,
-            commentId: 3
+     
+          commentId: data.length
             
         }
 

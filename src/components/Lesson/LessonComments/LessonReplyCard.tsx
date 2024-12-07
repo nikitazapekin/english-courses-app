@@ -12,6 +12,7 @@ export interface ResponseProps {
     avatar: string;
     likes: number;
     isYourComment:boolean
+    to: string
 } 
 commentId: number,
 }
@@ -48,7 +49,7 @@ const LessonReplyCard = ({itemReply, commentId}: ResponseProps ) => {
             className={styles.comment__content}
         >
             <div className={styles.comment__header}>
-                <h4 className={styles.comment__title}>{itemReply.username}</h4>
+                <h4 className={styles.comment__title}>{itemReply.username} в ответ {itemReply.to} </h4>
                 <p className={styles.comment__date}>{itemReply.date}</p>
 
             </div>
