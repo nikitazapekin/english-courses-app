@@ -13,15 +13,30 @@ export interface ResponseProps {
     likes: number;
     isYourComment:boolean
 } 
+commentId: number,
 }
 
 
-const LessonReplyCard = ({itemReply}: ResponseProps ) => {
-    const [isOpenReply, setIsOpenReply] = useState<boolean>(false)
+const LessonReplyCard = ({itemReply, commentId}: ResponseProps ) => {
+    const [isOpenReply, setIsOpenReply] = useState<{
+        reply: boolean
+        to: string
+    }>({
+        reply: false,
+        to: ""
+    })
    
-    const handleOpenReply= () => {
-        setIsOpenReply(prev=> !prev)
+    const handleOpenReply= (to: string) => {
+        setIsOpenReply({
+            reply: true,
+            to: to
+        })
     }
+    
+    const handleClose = () => {
+        setIsOpenReply(prev => ({ ...prev, reply: false }));
+    }
+    
     return (
 
         <div className={styles.reply__wrapper}>
@@ -53,7 +68,7 @@ const LessonReplyCard = ({itemReply}: ResponseProps ) => {
                 <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like}>
                     Нравится
                 </p>
-                <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like} onClick={handleOpenReply}>
+                <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like} onClick={()=>handleOpenReply(itemReply.username)}>
                    Ответить
                 </p>
 
@@ -63,9 +78,12 @@ const LessonReplyCard = ({itemReply}: ResponseProps ) => {
             </div>
         </div>
         </div>
-        {isOpenReply && (
+        {isOpenReply.reply && (
 
-        <ResponsePanel />
+        <ResponsePanel id={commentId}
+        to={isOpenReply.to}
+    handleClose={handleClose}
+        />
         )}
         </div>
 

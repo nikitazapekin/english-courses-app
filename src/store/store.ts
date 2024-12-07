@@ -6,10 +6,12 @@ import type { ThunkAction, Action } from '@reduxjs/toolkit';
 //import selectedElementsSlice from './slices/selectedElementsSlice';
  import HomepageSlice  from "./slices/Homepage.slice"
  import FormSlice from "./slices/Forms.slice"
+ import ReplyToSlice from "./slices/ReplyTo.slice"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
-    FormSlice: FormSlice
-
+    FormSlice: FormSlice,
+    
+ReplyToSlice: ReplyToSlice
 });
 
 export const store = configureStore({

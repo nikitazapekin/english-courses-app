@@ -5,7 +5,8 @@ export interface Response {
     date: string;
     avatar: string;
     likes: number;
-    isYourComment:boolean
+    isYourComment:boolean,
+    to: string
 }
 
 
@@ -18,6 +19,8 @@ export interface LessonCommentItem {
     likes: number;
     responces: Response[] | null;
     isYourComment:boolean,
+    commentId: number
+
   //  isLiked: false
     
 }
@@ -32,6 +35,7 @@ export interface CommentsProps {
     avatar: string;
     likes: number;
     responces: Response[] | null;
-    isYourComment:boolean
+    isYourComment:boolean,
+    commentId: number
     }[]
 }

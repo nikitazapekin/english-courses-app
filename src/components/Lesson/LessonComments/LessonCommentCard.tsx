@@ -213,10 +213,10 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isOpenReply, setIsOpenReply] = useState<boolean>(false)
     const handleOpen = () => {
-        setIsOpen(prev=> !prev)
+        setIsOpen(prev=> true)
     }
-    const handleOpenReply= () => {
-        setIsOpenReply(prev=> !prev)
+    const handleClose= () => {
+        setIsOpenReply(prev=> false)
     }
     return (<>
         <div className={`${styles.comment} ${item.isYourComment ?  styles.yourComment : ""}`}>
@@ -251,9 +251,7 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                        Ответить
                     </p>
                     <p  className={item.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
-                        {/*
-                        {item.responces!.length} ответов
-                        */}
+                        
                         0 ответов
                     </p>
                 </div>
@@ -261,61 +259,17 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
         </div>
         {isOpen && (
 
-            <ResponsePanel />
+            <ResponsePanel id={item.commentId} to={item.username} 
+            handleClose={handleClose}
+            />
         )}
 
 
 {item.responces   && item.responces.map(itemReply => (
-<LessonReplyCard itemReply={  itemReply } key={itemReply.userId}/>
+<LessonReplyCard itemReply={  itemReply } key={itemReply.userId}
+commentId={item.commentId}
+/>
 ))}    
-{/*
-        {item.responces && item.responces.map(itemReply => (
-            <div className={styles.reply__wrapper}>
-            <div className={`${styles.reply}  ${itemReply.isYourComment ?  styles.yourComment : ""}`} key={itemReply.userId}>
-          <img src={itemReply.avatar} alt="Logo"
-                className={styles.comment__image}
-            />
-            <div
-                className={styles.comment__content}
-            >
-                <div className={styles.comment__header}>
-                    <h4 className={styles.comment__title}>{itemReply.username}</h4>
-                    <p className={styles.comment__date}>{itemReply.date}</p>
-
-                </div>
-
-                <p className={styles.comment__text}>{itemReply.comment}</p>
-
-                <div className={styles.comment__footer}>
-                    <div className={styles.comment__heart}>
-                        <img src={Heart} alt="heart"
-                            className={styles.comment__heart__image}
-                        />
-                        <p className={itemReply.isYourComment ? styles.comment__heart__text__white : styles.comment__heart__text}>
-                            {itemReply.likes}
-                        </p>
-                    </div>
-
-                    <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like}>
-                        Нравится
-                    </p>
-                    <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like} onClick={handleOpenReply}>
-                       Ответить
-                    </p>
-
-                    <p   className={itemReply.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
-                      0  ответов
-                    </p>
-                </div>
-            </div>
-            </div>
-            {isOpenReply && (
-
-            <ResponsePanel />
-            )}
-            </div>
-            ))}
-            */}
     </>
     );
 };
