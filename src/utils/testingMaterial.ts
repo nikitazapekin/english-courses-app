@@ -1,6 +1,7 @@
 import Internet from "../assets/Testing/Internet.png"
 import Field from "../assets/Testing/Field.jpeg"
 import Dog from "../assets/Testing/Dog.jpg"
+import Cooking from "../assets/Testing/Cooking.jpeg"
 interface testingMaterialsTypes {
     id: number;
     lesson: number;
@@ -74,24 +75,24 @@ export const testingMaterial: testingMaterialsTypes[] = [
 
 
             {
-                sentance: "This information __  on the Internet.",
-               image: Internet,
+                sentance: "Jane __  dinner yesterday.",
+               image: Cooking,
        
                 answers: [
                     {
-                        text: "is easily finds",
+                        text: "cook",
                         isTrue: false,
                     },
                     {
-                        text: "is easily finds",
+                        text: "had been cooked",
                         isTrue: false,
                     },
                     {
-                        text: "is easily finds",
+                        text: "cooked",
                         isTrue: true,
                     },
                     {
-                        text: "is easily finds",
+                        text: "was cooking",
                         isTrue: false,
                     },
                 ],

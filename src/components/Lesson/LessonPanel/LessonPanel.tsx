@@ -1,3 +1,4 @@
+ 
 import React, { useState } from "react";
 import styles from "./LessonPanel.module.scss";
 import Personal from "../../../assets/Personal/Avatar.png";
@@ -31,20 +32,18 @@ const LessonPanel = ({ addComment }: LessonPanelProps) => {
                         value={commentText}
                         onChange={(e) => setCommentText(e.target.value)}
                         className={styles.panel__area}
-                    />
-                    <div className={styles.panel__btn} onClick={handleSend}>
+                        />
+                        <div className={styles.panel__btn} onClick={handleSend}>
                         Отправить
                     </div>
-                </div>
-            </div>
+                    </div>
+                    </div>
         </section>
     );
 };
 
 export default LessonPanel;
-
-
-
+ 
 /*
 import styles from "./LessonPanel.module.scss"
 import Personal from "../../../assets/Personal/Avatar.png"
@@ -73,5 +72,4 @@ const LessonPanel = () => {
 }
 
 export default LessonPanel;
-
 */

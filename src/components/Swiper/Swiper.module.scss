@@ -35,6 +35,8 @@
 .swiperItem {
 
     max-width: 597px;
+    width: 100%;
+   // min-width: 300px;
     padding: 33px 28px;
     border-radius: 27px;
     background-color: $light-gray;
@@ -46,9 +48,11 @@
         transform: rotateX(10deg) rotateY(20deg);
     }
     &__img {
-      min-width: 100%;
+    //  min-width: 100%;
+    width: 100%;
       object-fit: cover;
       border-radius: 6px;
+      height: auto;
     }
 
     &__title {

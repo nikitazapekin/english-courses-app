@@ -22,9 +22,7 @@ const TutorPage = () => {
         <Header />
         <div className={styles.darken} />
         <div className={styles.content}>
-            {/*
-            <TutorAdd />
-            */}
+         
             <TutorComponent />
         </div>
         <Footer />

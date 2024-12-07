@@ -47,8 +47,8 @@ const LessonComments = ({ comments, onAddComment, onLike }: LessonCommentsProps)
 };
 
 export default LessonComments;
-
 /*
+
 import styles from "./LessonComments.module.scss";
 import LessonCommentCard from "./LessonCommentCard";
 import Avatar from "../../../assets/avatars/avatar1.png"
@@ -143,4 +143,4 @@ const LessonComments = () => {
 export default LessonComments;
 
  
-*/
+        */

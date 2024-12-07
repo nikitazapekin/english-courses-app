@@ -1,3 +1,62 @@
+.line {
+    &__stroke {
+      display: flex;
+      justify-content: space-between;
+      position: relative; // Для контроля анимации
+  
+      // Анимации для разных сторон
+      &.animate-right {
+        animation: slide-in-right 1s ease forwards;
+      }
+      &.animate-left {
+        animation: slide-in-left 1s ease forwards;
+      }
+  
+      &:nth-child(1) {
+        &.animate {
+          animation: slide-in-right 1s ease forwards;
+        }
+      }
+  
+      &:nth-child(2) {
+        &.animate {
+          animation: slide-in-left 1s ease forwards;
+        }
+      }
+  
+      &:nth-child(3) {
+        &.animate {
+          animation: slide-in-right 1s ease forwards;
+        }
+      }
+    }
+  
+    // Анимации параллакса
+    @keyframes slide-in-right {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  
+    @keyframes slide-in-left {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+  
+
+/*
 @import "../../theme/theme";
 
 .free {
@@ -83,3 +142,5 @@
         }
     }
 }
+
+*/

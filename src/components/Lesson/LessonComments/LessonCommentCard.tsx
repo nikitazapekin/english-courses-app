@@ -1,3 +1,5 @@
+/*
+*/
 import React, { useState } from "react";
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png";
@@ -93,6 +95,7 @@ export default LessonCommentCard;
 
 
 /*
+
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png"
 interface Response {
@@ -196,4 +199,4 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
 };
 
 export default LessonCommentCard;
- */
+*/
