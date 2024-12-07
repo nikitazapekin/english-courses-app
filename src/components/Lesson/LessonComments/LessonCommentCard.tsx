@@ -1,5 +1,107 @@
-/*
+/*import React, { useState } from "react";
+import styles from "./LessonComments.module.scss";
+import Heart from "../../../assets/icons/heart.png";
+
+interface Response {
+    userId: number;
+    username: string;
+    comment: string;
+    date: string;
+    avatar: string;
+    likes: number;
+    isLiked: boolean;
+    isYourComment: boolean;
+}
+
+interface LessonCommentItem {
+    userId: number;
+    username: string;
+    comment: string;
+    date: string;
+    avatar: string;
+    likes: number;
+    isLiked: boolean;
+    isYourComment: boolean;
+    responses: Response[];
+}
+
+interface LessonCommentCardProps {
+    item: LessonCommentItem;
+    onAddComment: (text: string, replyToUser?: string) => void;
+    onLike: (commentId: number, isReply: boolean, parentCommentId?: number) => void;
+}
+
+const LessonCommentCard = ({ item, onAddComment, onLike }: LessonCommentCardProps) => {
+    const [replyText, setReplyText] = useState("");
+    const [showResponses, setShowResponses] = useState(false); // Состояние для отображения ответов
+
+    const handleReply = () => {
+        if (replyText.trim()) {
+            onAddComment(replyText, item.username);
+            setReplyText("");
+        }
+    };
+
+    return (
+        <div className={styles.comment}>
+            <div className={styles.commentContent}>
+                <img src={item.avatar} alt="Avatar" className={styles.avatar} />
+                <div>
+                    <h4>{item.username}</h4>
+                    <p>{item.comment}</p>
+                    <div className={styles.footer}>
+                        <button onClick={() => onLike(item.userId, false)} className={styles.likeButton}>
+                            <img src={Heart} alt="Like" />
+                            {item.likes}
+                        </button>
+                        <button onClick={() => setReplyText(`@${item.username} `)}>Ответить</button>
+                        {item.responses.length > 0 && (
+                            <button onClick={() => setShowResponses(!showResponses)}>
+                                {showResponses ? "Скрыть ответы" : `Показать ответы (${item.responses.length})`}
+                            </button>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+           
+            {!showResponses &&
+                item.responses.map((response) => (
+                    <div key={response.userId} className={styles.response}>
+                        <img src={response.avatar} alt="Avatar" className={styles.avatar} />
+                        <div>
+                            <h4>{response.username}</h4>
+                            <p>{response.comment}</p>
+                            <div className={styles.footer}>
+                                <button
+                                    onClick={() => onLike(response.userId, true, item.userId)}
+                                    className={styles.likeButton}
+                                >
+                                    <img src={Heart} alt="Like" />
+                                    {response.likes}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+
+            <div className={styles.replySection}>
+                <input
+                    value={replyText}
+                    onChange={(e) => setReplyText(e.target.value)}
+                    placeholder="Напишите ответ..."
+                />
+                <button onClick={handleReply}>Отправить</button>
+            </div>
+        </div>
+    );
+};
+
+export default LessonCommentCard;
 */
+
+/*
+
 import React, { useState } from "react";
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png";
@@ -92,12 +194,14 @@ const LessonCommentCard = ({ item, onAddComment, onLike }: LessonCommentCardProp
 };
 
 export default LessonCommentCard;
+*/
 
-
-/*
+ 
 
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png"
+import {CommentsProps, LessonCommentItem, Response  } from "../types"
+/*
 interface Response {
     userId: number;
     username: string;
@@ -115,10 +219,10 @@ interface LessonCommentItem {
     date: string;
     avatar: string;
     likes: number;
-    responces: Response[];
+    responces: Response[] ;
     isYourComment: boolean,
 }
-
+*/
 interface LessonCommentCardProps {
     item: LessonCommentItem;
 }
@@ -151,14 +255,20 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                     <p  className={item.isYourComment ? styles.comment__like__white : styles.comment__like}>
                         Нравится
                     </p>
+                    <p  className={item.isYourComment ? styles.comment__like__white : styles.comment__like}>
+                       Ответить
+                    </p>
                     <p  className={item.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
-                        {item.responces.length} ответов
+                        {/*
+                        {item.responces!.length} ответов
+                        */}
+                        0 ответов
                     </p>
                 </div>
             </div>
         </div>
 
-        {item.responces.map(itemReply => (
+        {item.responces && item.responces.map(itemReply => (
             <div className={`${styles.reply}  ${itemReply.isYourComment ?  styles.yourComment : ""}`} key={itemReply.userId}>
           <img src={itemReply.avatar} alt="Logo"
                 className={styles.comment__image}
@@ -187,6 +297,10 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                     <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like}>
                         Нравится
                     </p>
+                    <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like}>
+                       Ответить
+                    </p>
+
                     <p   className={itemReply.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
                       0  ответов
                     </p>
@@ -199,4 +313,4 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
 };
 
 export default LessonCommentCard;
-*/
+ 

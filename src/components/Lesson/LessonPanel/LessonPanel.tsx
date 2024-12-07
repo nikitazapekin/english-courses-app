@@ -1,4 +1,4 @@
- 
+/* 
 import React, { useState } from "react";
 import styles from "./LessonPanel.module.scss";
 import Personal from "../../../assets/Personal/Avatar.png";
@@ -43,11 +43,13 @@ const LessonPanel = ({ addComment }: LessonPanelProps) => {
 };
 
 export default LessonPanel;
- 
-/*
+ */
 import styles from "./LessonPanel.module.scss"
 import Personal from "../../../assets/Personal/Avatar.png"
-const LessonPanel = () => {
+interface LessonPanelProps {
+    handleAddComment: ()=> void
+}
+const LessonPanel = ({handleAddComment}: LessonPanelProps) => {
     return (
         <section className={styles.panel}>
             <div className={styles.panel__inner}>
@@ -63,7 +65,7 @@ const LessonPanel = () => {
                     <textarea placeholder="Оставьте ваш комментарий" 
                     className={styles.panel__area}
                     />
-                    <div className={styles.panel__btn}>
+                    <div className={styles.panel__btn} onClick={handleAddComment}>
                         Отправить
                     </div>
                 </div>
@@ -72,4 +74,5 @@ const LessonPanel = () => {
 }
 
 export default LessonPanel;
+/*
 */
