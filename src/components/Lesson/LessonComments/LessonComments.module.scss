@@ -104,8 +104,15 @@
 }
 
 .reply {
+  &__wrapper {
     width: calc(100% - 120px);
     margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  width: 100%;
+
   background-color: $light-gray;
   border-radius: 6px;
   padding: 10px;

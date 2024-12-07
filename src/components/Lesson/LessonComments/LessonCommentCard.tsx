@@ -201,33 +201,23 @@ export default LessonCommentCard;
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png"
 import {CommentsProps, LessonCommentItem, Response  } from "../types"
-/*
-interface Response {
-    userId: number;
-    username: string;
-    comment: string;
-    date: string;
-    avatar: string;
-    likes: number;
-    isYourComment: boolean,
-}
-
-interface LessonCommentItem {
-    userId: number;
-    username: string;
-    comment: string;
-    date: string;
-    avatar: string;
-    likes: number;
-    responces: Response[] ;
-    isYourComment: boolean,
-}
-*/
+import ResponsePanel from "../ResponsePanel/ResponsePanel";
+import { useState } from "react";
+import LessonReplyCard from "./LessonReplyCard";
+ 
 interface LessonCommentCardProps {
     item: LessonCommentItem;
 }
 
 const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
+    const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [isOpenReply, setIsOpenReply] = useState<boolean>(false)
+    const handleOpen = () => {
+        setIsOpen(prev=> !prev)
+    }
+    const handleOpenReply= () => {
+        setIsOpenReply(prev=> !prev)
+    }
     return (<>
         <div className={`${styles.comment} ${item.isYourComment ?  styles.yourComment : ""}`}>
             <img src={item.avatar} alt="Logo"
@@ -255,7 +245,9 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                     <p  className={item.isYourComment ? styles.comment__like__white : styles.comment__like}>
                         Нравится
                     </p>
-                    <p  className={item.isYourComment ? styles.comment__like__white : styles.comment__like}>
+                    <p  className={item.isYourComment ? styles.comment__like__white : styles.comment__like}
+                    onClick={handleOpen}
+                    >
                        Ответить
                     </p>
                     <p  className={item.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
@@ -267,8 +259,18 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                 </div>
             </div>
         </div>
+        {isOpen && (
 
+            <ResponsePanel />
+        )}
+
+
+{item.responces   && item.responces.map(itemReply => (
+<LessonReplyCard itemReply={  itemReply } key={itemReply.userId}/>
+))}    
+{/*
         {item.responces && item.responces.map(itemReply => (
+            <div className={styles.reply__wrapper}>
             <div className={`${styles.reply}  ${itemReply.isYourComment ?  styles.yourComment : ""}`} key={itemReply.userId}>
           <img src={itemReply.avatar} alt="Logo"
                 className={styles.comment__image}
@@ -297,7 +299,7 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                     <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like}>
                         Нравится
                     </p>
-                    <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like}>
+                    <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like} onClick={handleOpenReply}>
                        Ответить
                     </p>
 
@@ -307,7 +309,13 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                 </div>
             </div>
             </div>
-        ))}
+            {isOpenReply && (
+
+            <ResponsePanel />
+            )}
+            </div>
+            ))}
+            */}
     </>
     );
 };
