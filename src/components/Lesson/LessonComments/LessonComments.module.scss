@@ -44,7 +44,7 @@
         font-size: 400;
      }
      &__date {
-        @include fontSize(24px);
+        @include fontSize(20px);
         color: $black;
         font-family: "Inter", sans-serif;
         font-size: 400;

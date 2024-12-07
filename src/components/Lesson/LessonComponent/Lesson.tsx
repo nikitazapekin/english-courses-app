@@ -138,8 +138,9 @@ const {avatar, userId, username, date, comment, likes, isYourComment, to, commen
         to: to
         }
         console.log(reply)
-       if(commentId &&  userId && username && date && comment   && isYourComment && to && commentId) {
-
+        console.log(commentId)
+       if( userId && username && date && comment   && isYourComment && to && commentId>=0) {
+console.log("add")
            handleAddReply(commentId, reply)
         }
 }, [avatar, userId, username, date, comment, likes, isYourComment, to, commentId])
