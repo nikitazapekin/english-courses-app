@@ -32,7 +32,8 @@ interface SignInProps {
 
     const onSubmit = (data: SignInData) => {
 
-      
+        localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
+
         navigate("/personal")
   
     };

@@ -12,28 +12,29 @@ import { setOpenBurger } from "../../store/slices/Homepage.slice";
 import BirdPanel from "../../assets/BirdPanel.png"
 import { useDebouncedCallback } from "use-debounce";
 import { useState, ChangeEvent, useEffect } from "react";
-import AuthorithedHeader from "./UnauthorithedHeader/UnuthorithedHeader";
+import AuthorithedHeader from "./AuthorithedHeader/AuthorithedHeader";
+import UnauthorithedHeader from "./UnauthorithedHeader/UnuthorithedHeader";
 
 
-const courses = [
-    { id: 1, title: "Курс для программистов" },
-    { id: 2, title: "Английский для начинающих" },
-    { id: 3, title: "Разговорный английский" },
-    { id: 4, title: "Английский для бизнеса" },
-    { id: 5, title: "Подготовка к IELTS" },
-    { id: 6, title: "Технический английский" },
-    { id: 7, title: "Английский для путешествий" },
-    { id: 8, title: "Английский для детей" },
-    { id: 9, title: "Английский для инженеров" },
-];
-
+ 
 const Header = () => {
-  
+    const [isAuthorithed, setIsAuthorized] = useState(() => {
+        const storedValue = localStorage.getItem("isAuthorized");
+        return storedValue ? JSON.parse(storedValue) : false; // Если нет значения, по умолчанию false
+    });
+    
+    
     return (
 
-       <>
-       <AuthorithedHeader />
-       </>
+        <>
+            {isAuthorithed ? (
+                
+            <AuthorithedHeader />
+            ) : (
+                <UnauthorithedHeader />
+                )}
+ 
+                </>
     );
 }
 

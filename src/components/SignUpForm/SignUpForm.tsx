@@ -41,7 +41,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
     });
     const submitForm = (data: RegisterInterface) => {
 
-  //      navigate("/");
+        localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
   navigate("/personal")
         reset();
 
@@ -54,7 +54,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
         console.log(errors)
     }, [errors])
     const passwordValue = watch("password", "");
-    const confirmPasswordValue = watch("confirmPassword", "");
+  
     return (
         <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
             <div className={styles.form__inner}>

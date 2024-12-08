@@ -12,11 +12,16 @@
         row-gap: 10px;
     }
 
+    &__image {
+        border-radius: 20px;
+        align-self: center;
+    }
+
     &__content {
         display: flex;
         flex-direction: column;
         row-gap: 7px;
-    align-self: center;
+        align-self: center;
     }
 
     &__title {
@@ -32,12 +37,14 @@
         font-family: "Inter", sans-serif;
         color: $black;
     }
+
     &__author {
         font-weight: 400;
         @include fontSize(20px);
         font-family: "Inter", sans-serif;
         color: $black;
     }
+
     &__btn {
         background-color: $purple;
         cursor: pointer;
@@ -51,6 +58,7 @@
         border-radius: 5px;
         align-self: flex-start;
         transition: 0.4s ease-in-out;
+
         &:hover {
             background-color: $btn-active;
         }

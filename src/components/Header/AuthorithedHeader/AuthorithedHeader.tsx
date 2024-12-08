@@ -3,7 +3,7 @@ import styles from "../Header.module.scss"
 
 
 
- 
+
 import Logo from "../../../assets/logo.png"
 import Search from "../../../assets/search.png"
 import { Link, useNavigate } from "react-router-dom";
@@ -14,8 +14,8 @@ import { useDispatch } from "react-redux";
 import { setOpenBurger } from "../../../store/slices/Homepage.slice";
 import BirdPanel from "../../../assets/BirdPanel.png"
 import { useDebouncedCallback } from "use-debounce";
-import { useState, ChangeEvent  } from "react";
-
+import { useState, ChangeEvent } from "react";
+import ChatIcon from "../../../assets/icons/chat1.png"
 const courses = [
     { id: 1, title: "Курс для программистов" },
     { id: 2, title: "Английский для начинающих" },
@@ -30,7 +30,7 @@ const courses = [
 const AuthorithedHeader = () => {
 
 
-    
+
     const navigate = useNavigate()
     const isOpen = useSelector(HomepageSelector)
     const dispatch = useDispatch()
@@ -81,124 +81,138 @@ const AuthorithedHeader = () => {
     const handleSearch = () => {
         navigate(`/search/${searchQuery}`)
     }
+const handlePersonal =()=> {
+    navigate(`/personal`)
+}
 
-
-    return (  
+    return (
 
         <header className={styles.header}>
-        <div className={styles.header__inner}>
-            <div className={styles.header__preview}>
-                <img src={Logo} alt="Logo"
-                    className={styles.header__logo}
-                    onClick={handleNavigate} />
-                <div className={styles.search}>
-                    <input type="text"
-                        placeholder="Найти..."
-                        onChange={handleSearchChange}
-                        className={styles.search__input} />
+            <div className={styles.header__inner}>
+                <div className={styles.header__preview}>
+                    <img src={Logo} alt="Logo"
+                        className={styles.header__logo}
+                        onClick={handleNavigate} />
+                    <div className={styles.search}>
+                        <input type="text"
+                            placeholder="Найти..."
+                            onChange={handleSearchChange}
+                            className={styles.search__input} />
 
-                    <div className={styles.search__params}>
-                        {filteredCourses!.slice(0, 5).map((item) => (
-                            <div className={styles.search__param} key={item.id}>
-                                {item.title}
-                            </div>
-                        ))}
-                    </div>
-                    <div className={styles.search__btn} onClick={handleSearch}>
-                        <img src={Search} alt="Icon"
-                            className={styles.search__icon}
-                        />
-                    </div>
-                </div>
-            </div>
-            <nav className={styles.navigation}>
-                <ul className={styles.navigation__list}>
-                    <li className={styles.navigation__item}>
-
-                        <div className={styles.navigation__text} onClick={handleCatalog}>
-                            Каталог
+                        <div className={styles.search__params}>
+                            {filteredCourses!.slice(0, 5).map((item) => (
+                                <div className={styles.search__param} key={item.id}>
+                                    {item.title}
+                                </div>
+                            ))}
                         </div>
-
-                    </li>
-                    <li className={styles.navigation__item}>
-                        <div className={`${styles.navigation__btn} ${styles.navigation__text}`} onClick={scrollToJoin}>
-                            Записаться на урок
+                        <div className={styles.search__btn} onClick={handleSearch}>
+                            <img src={Search} alt="Icon"
+                                className={styles.search__icon}
+                            />
                         </div>
-                    </li>
-                    <li className={styles.navigation__item}>
-
-                        <Link to="/sign-in"
-                            className={styles.navigation__text}
-                        >
-                            Войти
-                        </Link>
-
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-
-
-        <div className={styles.burger}>
-            <div className={styles.burger__inner}>
-                <div className={styles.burger__btn} onClick={handleOpen}>
-
-                    <div className={styles.burger__line} />
-                    <div className={styles.burger__line} />
-                    <div className={styles.burger__line} />
+                    </div>
                 </div>
-                <div className={styles.search}>
-                    <input type="text"
+                <nav className={styles.navigation}>
+                    <ul className={styles.navigation__list}>
+                        <li className={styles.navigation__item}>
 
-                        placeholder="Найти..."
-                        className={styles.search__input}
-                        onChange={handleSearchChange}
-                    />
-
-                    <div className={styles.search__params}>
-                        {filteredCourses!.slice(0, 5).map((item) => (
-                            <div className={styles.search__param} key={item.id}>
-                                {item.title}
+                            <div className={styles.navigation__text} onClick={handleCatalog}>
+                                Каталог
                             </div>
-                        ))}
-                    </div>
-                    <div className={styles.search__btn}>
-                        <img src={Search} alt="Icon"
-                            className={styles.search__icon}
-                        />
-                    </div>
-                </div>
-            </div>
 
-            <div className={`${styles.panel} ${isOpen ? styles.panel__open : ""}`}>
-                <div className={styles.panel__header}>
-                    <img src={Logo} alt="logo" className={styles.panel__logo} />
-                    <div className={styles.panel__btn} onClick={handleOpen}>
-
-                        <div className={`${styles.panel__line} ${styles.panel__line1}`} />
-                        <div className={`${styles.panel__line} ${styles.panel__line2}`} />
-
-                    </div>
-                </div>
-                <ul className={styles.panel__content} >
-                    {btns.map((item, index) => (
-                        <li className={styles.panel__item} key={index}>
-                            <p className={`${styles.panel__text} ${item == "Записаться на урок" ? styles.panel__text__border : ""}`}>
-
-                                {item}
-                            </p>
                         </li>
-                    ))}
-                </ul>
 
-                <img src={BirdPanel} alt="Bird" className={styles.panel__image} />
 
+                        <li className={styles.navigation__item}>
+                            <div className={styles.navigation__image__wrapper}>
+
+                                <img className={styles.navigation__image}
+                                    src={ChatIcon}
+                                    alt="chat"
+                                />
+
+                            </div>
+                        </li>
+                   
+
+
+                        <li className={styles.navigation__item}>
+
+                            <div className={styles.navigation__text} onClick={handlePersonal}   >
+                                Профиль
+                            </div>
+
+                        </li>
+
+
+
+
+                    </ul>
+                </nav>
             </div>
-        </div>
-    </header>
+
+
+
+            <div className={styles.burger}>
+                <div className={styles.burger__inner}>
+                    <div className={styles.burger__btn} onClick={handleOpen}>
+
+                        <div className={styles.burger__line} />
+                        <div className={styles.burger__line} />
+                        <div className={styles.burger__line} />
+                    </div>
+                    <div className={styles.search}>
+                        <input type="text"
+
+                            placeholder="Найти..."
+                            className={styles.search__input}
+                            onChange={handleSearchChange}
+                        />
+
+                        <div className={styles.search__params}>
+                            {filteredCourses!.slice(0, 5).map((item) => (
+                                <div className={styles.search__param} key={item.id}>
+                                    {item.title}
+                                </div>
+                            ))}
+                        </div>
+                        <div className={styles.search__btn}>
+                            <img src={Search} alt="Icon"
+                                className={styles.search__icon}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className={`${styles.panel} ${isOpen ? styles.panel__open : ""}`}>
+                    <div className={styles.panel__header}>
+                        <img src={Logo} alt="logo" className={styles.panel__logo} />
+                        <div className={styles.panel__btn} onClick={handleOpen}>
+
+                            <div className={`${styles.panel__line} ${styles.panel__line1}`} />
+                            <div className={`${styles.panel__line} ${styles.panel__line2}`} />
+
+                        </div>
+                    </div>
+                    <ul className={styles.panel__content} >
+                        {btns.map((item, index) => (
+                            <li className={styles.panel__item} key={index}>
+                                <p className={`${styles.panel__text} ${item == "Записаться на урок" ? styles.panel__text__border : ""}`}>
+
+                                    {item}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <img src={BirdPanel} alt="Bird" className={styles.panel__image} />
+
+                </div>
+            </div>
+        </header>
 
     );
 }
- 
+
 export default AuthorithedHeader;

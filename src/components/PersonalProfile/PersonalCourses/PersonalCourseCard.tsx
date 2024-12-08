@@ -4,9 +4,12 @@ interface PersonalCourseCardProps {
     title: string,
     author: string,
     date: string,
-    image: string
+    image: string,
+    describtion: string, 
+    target: string,
+    price: string
 }
-const PersonalCourseCard = ({ title, author, date, image }: PersonalCourseCardProps) => {
+const PersonalCourseCard = ({ title, author, date, image , describtion, price, target}: PersonalCourseCardProps) => {
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate(`/card/lessons/${title}`)
@@ -24,6 +27,15 @@ const PersonalCourseCard = ({ title, author, date, image }: PersonalCourseCardPr
                 </p>
                 <p className={styles.card__author}>
                     {author}
+                </p>
+                <p className={styles.card__author}>
+                   Цена: {price}
+                </p>
+                <p className={styles.card__author}>
+                Курс подойдет для: {target}
+                </p>
+                <p className={styles.card__author}>
+                  {describtion}
                 </p>
                 <button className={styles.card__btn} onClick={handleNavigate}>
                     Программа

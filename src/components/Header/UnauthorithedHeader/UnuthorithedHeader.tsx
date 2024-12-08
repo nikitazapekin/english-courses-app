@@ -111,8 +111,12 @@ const UnauthorithedHeader = () => {
             </div>
             <nav className={styles.navigation}>
                 <ul className={styles.navigation__list}>
-                    <li className={styles.navigation__item}>
+                    <li>
 
+                    </li>
+              
+                    <li className={styles.navigation__item}>
+                    
                         <div className={styles.navigation__text} onClick={handleCatalog}>
                             Каталог
                         </div>
@@ -131,7 +135,8 @@ const UnauthorithedHeader = () => {
                             Войти
                         </Link>
 
-                    </li>
+                        </li>
+                        
                 </ul>
             </nav>
         </div>
