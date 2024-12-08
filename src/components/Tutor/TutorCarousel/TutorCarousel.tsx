@@ -46,9 +46,13 @@ const handlePrev = () => {
         setCurrentPosition(prev=> prev+wrapper.current!.offsetWidth*(groupItems.length-1))
     }
 }
-useEffect(()=> {
-    
-}, [])
+const [wrapperHeight, setWrapperHeight] = useState<number>(0);
+
+useEffect(() => {
+    if (wrapper.current) {
+        setWrapperHeight(wrapper.current.offsetHeight);
+    }
+}, []);
     return (
         <div className={styles.tutor}>
             <h2 className={styles.tutor__title}>{title}</h2>
@@ -56,7 +60,7 @@ useEffect(()=> {
                 <div className={styles.tutor__btn}
                 onClick={handlePrev}
                 >{"<"}</div>
-                <div className={styles.tutor__wrapper}>
+                <div className={styles.tutor__wrapper}  style={{ height: `${wrapperHeight}px` }}>
 
                     <div className={styles.tutor__carousel} style={{transform: `translateX(-${currentPosition+ "px"})`}}>
                         {
