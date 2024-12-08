@@ -3,6 +3,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import LessonComponent from "../components/Lesson/LessonComponent/Lesson";
  import { useEffect } from "react";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const LessonPage = () => {
     useEffect(() => {
        
@@ -16,6 +17,7 @@ const LessonPage = () => {
 
         <div className={styles.content}>
             <LessonComponent />
+            <HelpBtn />
 
         </div>
         <Footer />

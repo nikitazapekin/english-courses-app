@@ -3,10 +3,11 @@
 .join {
     padding: 115px 15px;
     margin-bottom: 80px;
-    background-color: $gray;
+    //  background-color: $gray;
     display: flex;
     justify-content: center;
 
+    //height: 100%;
     &__inner {
         justify-content: center;
         display: grid;
@@ -16,33 +17,36 @@
             grid-template-columns: minmax(300px, 100%);
         }
 
+
     }
 
     &__preview {
-        border-top-left-radius: 31px;
-        border-bottom-left-radius: 31px;
-        background-color: $white;
+        border-top-right-radius: 31px;
+        border-bottom-right-radius: 31px;
+        background-color: $gray;
         padding: 85px 27px;
 
         @include smallTablets {
-            border-bottom-left-radius: 0;
-            border-top-right-radius: 31px;
+            border-bottom-left-radius: 31px;
+            border-top-right-radius: 0px;
         }
     }
 
 
     &__info {
         background-color: $blue;
-        border-top-right-radius: 31px;
-        border-bottom-right-radius: 31px;
+        border-top-left-radius: 31px;
+        border-bottom-left-radius: 31px;
         height: 100%;
         position: relative;
         overflow: hidden;
 
         @include smallTablets {
             border-bottom-left-radius: 31px;
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 31px;
+            border-top-right-radius: 31px;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+          
         }
 
         &__wrapper {
@@ -108,6 +112,11 @@
     &__item {
         display: flex;
         column-gap: 8px;
+
+        &__block {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__icon {
@@ -119,13 +128,27 @@
         @include fontSize(20px);
         color: $black;
         font-family: "Inter", sans-serif;
+
+        &__title {
+            font-weight: 700;
+            @include fontSize(24px);
+            color: $black;
+            font-family: "Inter", sans-serif; 
+        }
+
     }
 
     &__image {
         position: absolute;
         left: 0;
         bottom: 0;
-        transform: translateY(80px);
+        transform: translateY(100px) translateX(-20px);
+        max-width: 300px;
+        width: 100%;
+        @include smallTablets {
+            max-width: 150px;
+            transform: translateY(45px) translateX(0px);
+        }
     }
 
 }
@@ -149,10 +172,10 @@
     &__title {
         font-weight: 700;
         @include fontSize(48px);
-        color: $black;
+        color: $white;
         max-width: 493px;
         font-family: "Inter", sans-serif;
-        font-family: "Inter", sans-serif;
+
 
         @include tablets {
             @include fontSize(24px);
@@ -163,7 +186,6 @@
         padding: 13px 0;
         border: none;
         outline: none;
-        font-family: "Inter", sans-serif;
         cursor: pointer;
         background-color: $blue-bold;
         font-weight: 400;
@@ -171,6 +193,8 @@
         color: #000;
         border-radius: 9px;
         transition: 0.4s ease-in-out;
+
+        font-family: "Inter", sans-serif;
 
         &:hover {
             background-color: $blue-active;
@@ -182,7 +206,7 @@
     &__about {
         font-weight: 400;
         @include fontSize(20px);
-        color: #000;
+        color: $white;
         font-family: "Inter", sans-serif;
     }
 
@@ -193,6 +217,28 @@
 
     }
 
+    &__select,
+    &__textarea {
+        height: 50px;
+        border: none;
+        outline: none;
+        border-radius: 9px;
+        cursor: pointer;
+        background-color: $light-gray;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $gray;
+        font-family: "Inter", sans-serif;
+        resize: none;
+        padding: 12px 15px;
+    }
+
+    &__textarea {
+        height: 200px;
+    }
+
     &__field {
         height: 50px;
         border: none;
@@ -201,11 +247,12 @@
         cursor: pointer;
         background-color: $light-gray;
 
-        font-family: "Inter", sans-serif;
+
         font-weight: 400;
         @include fontSize(20px);
         color: $gray;
         padding: 12px 15px;
+        font-family: "Inter", sans-serif;
     }
 
 }

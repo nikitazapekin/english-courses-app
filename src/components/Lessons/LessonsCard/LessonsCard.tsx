@@ -8,10 +8,10 @@ interface LessonsCardProps {
     }
     isLessons: boolean
 }
-const LessonsCard = ({ item, isLessons  }: LessonsCardProps) => {
+const LessonsCard = ({ item, isLessons }: LessonsCardProps) => {
     const navigate = useNavigate()
     const handleNavigateLesson = (title: string, id: number) => {
-        if(isLessons) {
+        if (isLessons) {
 
             navigate(`/card/lessons/${title}/${id}`)
         } else {
@@ -23,13 +23,13 @@ const LessonsCard = ({ item, isLessons  }: LessonsCardProps) => {
             <div className={styles.card__header}>
                 <p className={styles.card__lesson}>
                     {isLessons ? (
-<>
-                        Урок {item.id+1}
-</>
+                        <>
+                            Урок {item.id + 1}
+                        </>
                     ) : (
-<>
-                        Тестирование {item.id+1}
-</>
+                        <>
+                            Тестирование {item.id + 1}
+                        </>
 
                     )}
                 </p>

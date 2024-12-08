@@ -4,6 +4,7 @@ import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer";
 import SearchResultsComponent from "../components/SearchResults/SearchResultsComponent/SearchResultsPage";
 import { useEffect } from "react";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const SearchResultsPage = () => {
     useEffect(() => {
        
@@ -17,6 +18,7 @@ const SearchResultsPage = () => {
             <Header />
             <div className={styles.content}>
                 <SearchResultsComponent />
+                <HelpBtn />
             </div>
             <Footer />
         </div>

@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import TestingComponent from "../components/Testing/TestingComponent/TestingComponent";
 import ModalResult from "../components/Testing/ModalResult/ModalResult";
 import { useEffect } from "react";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const TestingPage = () => {
 
     useEffect(() => {
@@ -19,6 +20,7 @@ const TestingPage = () => {
        
 
             <TestingComponent />
+            <HelpBtn />
         </div>
         <Footer />
     </div>);

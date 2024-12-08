@@ -5,6 +5,7 @@ import "../theme/normalize.scss"
 import Footer from "../components/Footer/Footer";
 import { useToast } from "../hooks/useToast";
 import Toast from "../components/Toast/Toast";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const SignUpPage = () => {
     const { toasts, addToast } = useToast();
     return (<>
@@ -25,6 +26,7 @@ const SignUpPage = () => {
                     ))}
                 </div>
             </div>
+            <HelpBtn />
             <Footer />
         </div>
     </>);

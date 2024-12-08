@@ -4,6 +4,7 @@ import Header from "../components/Header/Header"
 import Footer from "../components/Footer/Footer";
 import PersonalProfile from "../components/PersonalProfile/PersonalProfile";
 import { useEffect } from "react";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const PersonalPage = () => {
     useEffect(() => {
        
@@ -17,6 +18,7 @@ const PersonalPage = () => {
             <Header />
             <div className={styles.content}>
                 <PersonalProfile />
+                <HelpBtn />
             </div>
             <Footer />
         </div>

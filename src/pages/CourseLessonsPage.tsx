@@ -4,6 +4,7 @@ import LessonsList from "../components/Lessons/LessonsList/LessonsList";
 import styles from "../theme/wrappers.module.scss"
 import "../theme/global.scss"
  import { useEffect } from "react";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const CourseLessonsPage = () => {
     useEffect(() => {
        
@@ -19,6 +20,7 @@ const CourseLessonsPage = () => {
 
             <div className={styles.content}>
                 <LessonsList />
+                <HelpBtn />
             </div>
             <Footer />
         </div>

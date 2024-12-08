@@ -10,6 +10,7 @@ import CourseFor from "../components/CourseFor/CourseFor";
 import CourseConsultation from "../components/CourseConsultation/CourseConsultation";
 import { useEffect } from "react";
 import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const CoursePage = () => {
     useEffect(() => {
 
@@ -33,6 +34,7 @@ const CoursePage = () => {
                 <AboutAuthor />
                 <CourseFor />
                 <CourseConsultation />
+                <HelpBtn />
             </div>
 
             <Footer />

@@ -16,6 +16,7 @@ const PerosnalEditPage = () => {
             <Header />
             <div className={styles.content}>
                 <PersonalEditProfile />
+                
             </div>
             <Footer />
         </div>

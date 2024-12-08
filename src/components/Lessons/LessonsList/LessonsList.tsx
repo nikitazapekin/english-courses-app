@@ -17,7 +17,9 @@ const LessonsList = () => {
                 <h1 className={styles.lessons__title}>
                     {id}
                 </h1>
-
+                <h1 className={styles.lessons__text}>
+                   Продвинутый курс английского языка для студентов высших учебных заведение технической специализации
+                </h1>
                 <div className={styles.lessons__panel}>
                     <p className={styles.lessons__panel__text} onClick={() => handleSelect(true)}>
                         Уроки

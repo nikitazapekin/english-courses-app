@@ -43,21 +43,4 @@ const AvatarComponent = () => {
 };
 
 export default AvatarComponent;
-
-/*
-import styles from "./AvatarComponent.module.scss"
-import Avatar from "../../../assets/Personal/Avatar.png"
-const AvatarComponent = () => {
-    return (
-        <div className={styles.avatar}>
-            <img className={styles.avatar__image} src={Avatar} alt="Avatar" />
-            <input type="file" className={styles.avatar__input} />
-            <div className={styles.avatar__add}>
-                +
-            </div>
-        </div>);
-}
-
-export default AvatarComponent;
-
-*/
+ 

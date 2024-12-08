@@ -5,6 +5,7 @@ import styles from "../theme/wrappers.module.scss"
 import { useNavigate } from "react-router-dom";
 import { useEffect  } from "react";
 import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const TutorPage = () => {
 
    
@@ -24,6 +25,7 @@ const TutorPage = () => {
         <div className={styles.content}>
          
             <TutorComponent />
+            <HelpBtn />
         </div>
         <Footer />
     </div>);

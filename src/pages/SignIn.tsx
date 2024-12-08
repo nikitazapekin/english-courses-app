@@ -6,6 +6,7 @@ import SignInForm from "../components/SignInForm/SignInForm";
 import ToastManager from "../components/Toast/ToastManages";
 import { useToast } from "../hooks/useToast";
 import Toast from "../components/Toast/Toast";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const SignInPage = () => {
 
    const { toasts, addToast } = useToast();
@@ -29,6 +30,7 @@ const SignInPage = () => {
             />
             ))}
         </div>
+        <HelpBtn />
         </div>
         <Footer />
     </div>

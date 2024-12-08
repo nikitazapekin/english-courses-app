@@ -5,11 +5,17 @@ import PersonalDescribtion from "./PersonalDescribtion/PersonalDescribtion";
 import PersonalCourses from "./PersonalCourses/PersonalCourses";
 import PaymentModal from "../PaymentModal/PaymentModal";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const PersonalProfile = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
     const handleOpenModal = () => {
         setIsOpenModal(prev => !prev)
+    }
+    const navigate = useNavigate()
+    const handleClick = () => {
+        localStorage.removeItem("isAuthorized")
+        navigate("/sign-up")
     }
     return (
         <section className={styles.personal}>
@@ -33,7 +39,7 @@ const PersonalProfile = () => {
                             <button className={`${styles.personal__btn} ${styles.personal__btn__purple}`} onClick={handleOpenModal}>
                                 Пополнить
                             </button>
-                            <button className={`${styles.personal__btn} ${styles.personal__btn__red}`}>
+                            <button className={`${styles.personal__btn} ${styles.personal__btn__red}`} onClick={handleClick}>
                                 Выйти
                             </button>
                         </div>

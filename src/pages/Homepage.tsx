@@ -11,6 +11,7 @@ import CoursesHomepage from "../components/CoursesHomepage/CoursesHomepage";
 import HomepageComments from "../components/HomepageComments/HomepageComents";
 import Tutors from "../components/Tutors/Tutors";
 import { useEffect } from "react";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 const Homepage = () => {
     useEffect(() => {
        
@@ -32,7 +33,7 @@ const Homepage = () => {
                 <CommonQuestions />
                 <JoinTrial />
                 <HomepageComments />
-           
+           <HelpBtn />
              
             </div>
            

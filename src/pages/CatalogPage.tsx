@@ -2,6 +2,7 @@ import CategoriesComponent from "../components/CategoriesComponent/CategotiesCom
 import CoursesSlider from "../components/CoursesSlider/CouresSlider";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
+import HelpBtn from "../components/HelpBtn/HelpBtn";
 import styles from "../theme/wrappers.module.scss"
 import { useEffect } from "react";
 const CatalogPage = () => {
@@ -23,6 +24,7 @@ const CatalogPage = () => {
 
                     <CoursesSlider />
                     <CategoriesComponent />
+                    <HelpBtn />
                 </div>
                 <Footer />
             </div>

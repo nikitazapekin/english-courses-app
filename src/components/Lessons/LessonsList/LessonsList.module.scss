@@ -12,7 +12,7 @@
         margin: 0 auto;
         flex-direction: column;
 
-        row-gap: 50px;
+        row-gap: 20px;
 
 
         @include mobiles {
@@ -28,6 +28,15 @@
         @include fontSize(48px);
         color: $white;
     }
+
+    &__text {
+      
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        @include fontSize(24px);
+        color: $white;
+    }
+
 
     &__list {
         display: flex;

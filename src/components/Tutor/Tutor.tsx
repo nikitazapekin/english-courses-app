@@ -12,6 +12,7 @@ import Prog3 from "../../assets/Tutor/programs/prog3.png"
 import Prog4 from "../../assets/Tutor/programs/prog4.jpeg"
 import OtherTutors from "./OtherTutors/OtherTutors";
 import TutorAdd from "./TutorAdd/TutorAdd";
+import TutorCarousel from "./TutorCarousel/TutorCarousel";
 
 const items = [
 
@@ -113,10 +114,14 @@ const TutorComponent = () => {
 
             <TutorPreview />
 
+
+<TutorCarousel items={items} title={"Курсы и сертификаты"} />
+<TutorCarousel items={items1} title={"Курсы и сертификаты"} />
+         {/*
             <TurorSwiper items={items} title={"Курсы и сертификаты"} />
 
             <TurorSwiper items={items1} title={"Образовательные программы"} />
-
+*/}
             <OtherTutors />
 
         </div>
