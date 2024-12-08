@@ -14,6 +14,12 @@ import OtherTutors from "./OtherTutors/OtherTutors";
 import TutorAdd from "./TutorAdd/TutorAdd";
 import TutorCarousel from "./TutorCarousel/TutorCarousel";
 
+import Avatar1 from "../../assets/avatars/avatar1.png"
+import Avatar2 from "../../assets/avatars/avatar2.png"
+import Avatar3 from "../../assets/avatars/avatar3.png"
+import Avatar4 from "../../assets/avatars/avatar4.png"
+
+ 
 const items = [
 
     {
@@ -104,6 +110,30 @@ const items1 = [
 
 
 ];
+
+
+const items2 = [
+
+    {
+        title: "Кирилл",
+        img: Avatar1,
+        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
+        rate: 4.5
+    },
+    {
+        title: "Кирилл",
+        img: Avatar1,
+        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
+        rate: 5
+    },
+    {
+        title: "Кирилл",
+        img: Avatar1,
+        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
+        rate: 5
+    },
+
+];
 const TutorComponent = () => {
 
 
@@ -117,11 +147,9 @@ const TutorComponent = () => {
 
 <TutorCarousel items={items} title={"Курсы и сертификаты"} />
 <TutorCarousel items={items1} title={"Курсы и сертификаты"} />
-         {/*
-            <TurorSwiper items={items} title={"Курсы и сертификаты"} />
+     
 
-            <TurorSwiper items={items1} title={"Образовательные программы"} />
-*/}
+<TutorCarousel items={items2} title={"Отзывы о репетиторе"} />
             <OtherTutors />
 
         </div>

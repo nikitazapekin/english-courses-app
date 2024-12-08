@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import styles from "./TutorCarousel.module.scss";
+import TutorCarouselCard from "./TutorCarouselCard";
 
 interface SwiperProps {
     items: Array<{
         title: string;
         experience: string;
         img: string;
+        rate?: number
     }>;
     title: string;
 }
@@ -21,67 +23,59 @@ const groupItems = (items: SwiperProps["items"], groupSize: number) => {
 
 const TutorCarousel = ({ title, items }: SwiperProps) => {
     const groupedItems = groupItems(items, 3);
-  
-const  [currentBatch, setCurrentBatch] = useState<number>(0);
-const [currentPosition, setCurrentPosition] = useState<number>(0)
+
+    const [currentBatch, setCurrentBatch] = useState<number>(0);
+    const [currentPosition, setCurrentPosition] = useState<number>(0)
 
     const wrapper = useRef<HTMLDivElement>(null)
-const handleNext =()=>  {
-    if(groupItems.length-1 !=currentBatch) {
+    const handleNext = () => {
+        if (groupItems.length - 1 != currentBatch) {
 
-        setCurrentPosition(prev=> prev+wrapper.current!.offsetWidth)
-        setCurrentBatch(prev=>prev+1)
-    } else  {
-        setCurrentPosition(0)
-        setCurrentBatch(0)
+            setCurrentPosition(prev => prev + wrapper.current!.offsetWidth)
+            setCurrentBatch(prev => prev + 1)
+        } else {
+            setCurrentPosition(0)
+            setCurrentBatch(0)
+        }
     }
-}
-const handlePrev = () => {
-    if(currentBatch!=0) {
+    const handlePrev = () => {
+        if (currentBatch != 0) {
 
-        setCurrentPosition(prev=> prev-wrapper.current!.offsetWidth)
-        setCurrentBatch(prev=>prev-1)
-    } else {
-        setCurrentBatch(groupItems.length-1)
-        setCurrentPosition(prev=> prev+wrapper.current!.offsetWidth*(groupItems.length-1))
+            setCurrentPosition(prev => prev - wrapper.current!.offsetWidth)
+            setCurrentBatch(prev => prev - 1)
+        } else {
+            setCurrentBatch(groupItems.length - 1)
+            setCurrentPosition(prev => prev + wrapper.current!.offsetWidth * (groupItems.length - 1))
+        }
     }
-}
-const [wrapperHeight, setWrapperHeight] = useState<number>(0);
+    const [wrapperHeight, setWrapperHeight] = useState<number>(0);
 
-useEffect(() => {
-    if (wrapper.current) {
-        setWrapperHeight(wrapper.current.offsetHeight);
-    }
-}, []);
+    useEffect(() => {
+        if (wrapper.current) {
+            setWrapperHeight(wrapper.current.offsetHeight);
+        }
+    }, []);
+
+ 
+   
+
     return (
         <div className={styles.tutor}>
             <h2 className={styles.tutor__title}>{title}</h2>
             <div className={styles.tutor__slider}>
                 <div className={styles.tutor__btn}
-                onClick={handlePrev}
+                    onClick={handlePrev}
                 >{"<"}</div>
-                <div className={styles.tutor__wrapper}  style={{ height: `${wrapperHeight}px` }}>
+                <div className={styles.tutor__wrapper} style={{ height: `${wrapperHeight}px` }}>
 
-                    <div className={styles.tutor__carousel} style={{transform: `translateX(-${currentPosition+ "px"})`}}>
+                    <div className={styles.tutor__carousel} style={{ transform: `translateX(-${currentPosition + "px"})` }}>
                         {
                             groupedItems.map((item, index) => (
                                 <div className={styles.item} key={index}
-                                ref={wrapper}
+                                    ref={wrapper}
                                 >
                                     {item.map((card, indexCard) => (
-                                        <div className={styles.card} key={indexCard}>
-
-                                            <img className={styles.card__image}
-                                                src={card.img}
-                                                alt="Card"
-                                            />
-                                            <p className={styles.card__title}>
-                                                {card.title}
-                                            </p>
-                                            <p className={styles.card__text}>
-                                                {card.experience}
-                                            </p>
-                                        </div>
+                                     <TutorCarouselCard card={card}  key={indexCard} /> 
                                     ))}
                                 </div>
 
@@ -90,7 +84,7 @@ useEffect(() => {
                     </div>
                 </div>
                 <div className={styles.tutor__btn}
-                onClick={handleNext}
+                    onClick={handleNext}
                 >{">"}</div>
             </div>
         </div>
@@ -98,80 +92,4 @@ useEffect(() => {
 };
 
 export default TutorCarousel;
-
-/*
-import styles from "./TutorCarousel.module.scss"
-interface SwiperProps {
-    items: Array<{
-        title: string;
-        experience: string;
-
-        img: string;
-    }>;
-    title: string
-}
-const TutorCarousel = ({ title, items }: SwiperProps) => {
-    return (
-        <div className={styles.tutor}>
-            <h2 className={styles.tutor__title}>
-                {title}
-            </h2>
-            <div className={styles.tutor__slider}>
-
-                <div>
-                    {"<"}
-                </div>
-                <div className={styles.tutor__wrapper}>
-
-                    <div className={styles.tutor__carousel}>
-                        {items.map((item, index) => (
-                            <div key={index} className={styles.swiperItem}>
-
-                                <img src={item.img}
-                                    className={styles.swiperItem__img}
-                                    alt="Tutor" />
-                                <h3 className={styles.swiperItem__title}>
-                                    {item.title}
-                                </h3>
-                                <h4 className={styles.swiperItem__experience}>
-                                    {item.experience}
-                                </h4>
-
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-
-                <div>
-                    {">"}
-                </div>
-
-            </div>
-        </div>);
-}
-
-export default TutorCarousel;
-
-*/
-/*
-     {groupedItems.map((group, groupIndex) => (
-         <div key={groupIndex} className={styles.group}>
-             {group.map((item, index) => (
-                 <div key={index} className={styles.swiperItem}>
-                     <img
-                         src={item.img}
-                         className={styles.swiperItem__img}
-                         alt="Tutor"
-                     />
-                     <h3 className={styles.swiperItem__title}>
-                         {item.title}
-                     </h3>
-                     <h4 className={styles.swiperItem__experience}>
-                     {item.experience}
-                     </h4>
-                 </div>
-             ))}
-         </div>
-     ))}
-             */
+ 
