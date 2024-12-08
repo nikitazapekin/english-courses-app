@@ -72,10 +72,7 @@ const LessonReplyCard = ({itemReply, commentId}: ResponseProps ) => {
                 <p  className={itemReply.isYourComment ? styles.comment__like__white : styles.comment__like} onClick={()=>handleOpenReply(itemReply.username)}>
                    Ответить
                 </p>
-
-                <p   className={itemReply.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
-                  0  ответов
-                </p>
+ 
             </div>
         </div>
         </div>

@@ -211,12 +211,15 @@ interface LessonCommentCardProps {
 
 const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
-   
+   const [isShowResponces, setIsShowResponces] =useState(false)
     const handleOpen = () => {
         setIsOpen(prev=> true)
     }
     const handleClose= () => {
         setIsOpen(prev=> false)
+    }
+    const handleShowResponces = ()=> {
+setIsShowResponces(prev=>!prev)
     }
     return (<>
         <div className={`${styles.comment} ${item.isYourComment ?  styles.yourComment : ""}`}>
@@ -250,9 +253,9 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                     >
                        Ответить
                     </p>
-                    <p  className={item.isYourComment ? styles.comment__reply__white : styles.comment__reply}>
+                    <p  className={item.isYourComment ? styles.comment__reply__white : styles.comment__reply} onClick={handleShowResponces}>
                         
-                        0 ответов
+                      {item.responces && item.responces.length} ответов
                     </p>
                 </div>
             </div>
@@ -263,13 +266,15 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
             handleClose={handleClose}
             />
         )}
+ 
+ {isShowResponces && item.responces?.map((reply) => (
+    <LessonReplyCard 
+        key={reply.userId} 
+        itemReply={reply} 
+        commentId={item.commentId} 
+    />
+))}
 
-
-{item.responces   && item.responces.map(itemReply => (
-<LessonReplyCard itemReply={  itemReply } key={itemReply.userId}
-commentId={item.commentId}
-/>
-))}    
     </>
     );
 };
