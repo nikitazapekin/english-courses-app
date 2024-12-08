@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect  } from "react";
 import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
 import HelpBtn from "../components/HelpBtn/HelpBtn";
+import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
 const TutorPage = () => {
 
    
@@ -26,6 +27,7 @@ const TutorPage = () => {
          
             <TutorComponent />
             <HelpBtn />
+            <NavigateBtn />
         </div>
         <Footer />
     </div>);

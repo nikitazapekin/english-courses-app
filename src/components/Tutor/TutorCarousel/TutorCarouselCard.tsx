@@ -12,7 +12,9 @@ interface CardProps {
 const TutorCarouselCard = ({ card }: CardProps) => {
     const [rate, setRate] = useState<number | undefined>(card.rate)
     const fullStars = card.rate ? Math.floor(card.rate) : null;
-    const hasHalfStar = rate ? rate % 1 === 0.5 : null;
+ 
+   const hasHalfStar = rate && Math.abs(rate % 1 - 0.5) < 0.001;
+
     return (<div className={styles.card} >
 
         <img className={styles.card__image}

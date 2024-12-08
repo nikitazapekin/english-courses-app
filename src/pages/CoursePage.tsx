@@ -11,6 +11,7 @@ import CourseConsultation from "../components/CourseConsultation/CourseConsultat
 import { useEffect } from "react";
 import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
 import HelpBtn from "../components/HelpBtn/HelpBtn";
+import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
 const CoursePage = () => {
     useEffect(() => {
 
@@ -35,6 +36,7 @@ const CoursePage = () => {
                 <CourseFor />
                 <CourseConsultation />
                 <HelpBtn />
+                <NavigateBtn />
             </div>
 
             <Footer />

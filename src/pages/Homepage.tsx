@@ -12,6 +12,7 @@ import HomepageComments from "../components/HomepageComments/HomepageComents";
 import Tutors from "../components/Tutors/Tutors";
 import { useEffect } from "react";
 import HelpBtn from "../components/HelpBtn/HelpBtn";
+import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
 const Homepage = () => {
     useEffect(() => {
        
@@ -33,6 +34,7 @@ const Homepage = () => {
                 <CommonQuestions />
                 <JoinTrial />
                 <HomepageComments />
+                <NavigateBtn />
            <HelpBtn />
              
             </div>
