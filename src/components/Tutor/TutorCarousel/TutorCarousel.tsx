@@ -49,12 +49,25 @@ const TutorCarousel = ({ title, items }: SwiperProps) => {
         }
     }
     const [wrapperHeight, setWrapperHeight] = useState<number>(0);
-
+/*
     useEffect(() => {
         if (wrapper.current) {
             setWrapperHeight(wrapper.current.offsetHeight);
         }
     }, []);
+    */
+useEffect(() => {
+    if (wrapper.current) {
+        const updateHeight = () => setWrapperHeight(wrapper.current!.offsetHeight);
+
+        updateHeight();
+
+        const resizeObserver = new ResizeObserver(updateHeight);
+        resizeObserver.observe(wrapper.current);
+
+        return () => resizeObserver.disconnect();
+    }
+}, []);
 
  
    
