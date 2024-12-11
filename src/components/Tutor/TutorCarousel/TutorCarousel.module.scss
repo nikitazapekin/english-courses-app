@@ -43,7 +43,7 @@
 
     &__btn {
         font-weight: 700;
-        font-size: 32px;
+      @include fontSize(32px);
         color: $black;
         font-family: "Inter", sans-serif;
         cursor: pointer;
@@ -54,6 +54,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+
+        @include mobiles  {
+            min-width: 46px;
+            height: 46px;
+            @include fontSize(32px);
+        }
     }
 
 
@@ -205,6 +212,10 @@
         text-align: center;
         color: $black;
         font-family: "Inter", sans-serif;
+
+        @include smPc {
+            @include fontSize(20px);
+        }
     }
 
     &__experience {
