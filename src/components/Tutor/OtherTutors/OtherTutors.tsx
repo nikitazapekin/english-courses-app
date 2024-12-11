@@ -2,6 +2,14 @@ import OtherTutorCard from "./OtherTutorCard";
 import styles from "./OtherTutors.module.scss"
 import Tutor from "../../../assets/Tutor/tutor.jpeg"
 import PersonalDots from "../Dots/Dots";
+
+import Tutor1 from "../../../assets/swiper/tutor1.png"
+
+
+import Tutor2 from "../../../assets/swiper/tutor2.jpeg"
+
+import Tutor3 from "../../../assets/swiper/tutor3.jpeg"
+
 import { useState } from "react";
 import Dots from "../Dots/Dots";
 const tutors = [
@@ -18,7 +26,7 @@ const tutors = [
         rate: 4.5,
         describtion: "Всем привет! Я являюсь репетитором англйиского языка ...",
         rateNumber: 100,
-        url: Tutor,
+        url: Tutor1,
 
     },
     {
@@ -26,7 +34,7 @@ const tutors = [
         rate: 4,
         describtion: "Всем привет! Я являюсь репетитором англйиского языка ...",
         rateNumber: 100,
-        url: Tutor,
+        url: Tutor1,
 
     },
     {
@@ -34,7 +42,7 @@ const tutors = [
         rate: 4,
         describtion: "Всем привет! Я являюсь репетитором англйиского языка ...",
         rateNumber: 100,
-        url: Tutor,
+        url: Tutor3,
 
     },
     {
