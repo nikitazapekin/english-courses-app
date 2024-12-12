@@ -2,7 +2,11 @@ import styles from "./ChatComponent.module.scss"
 import ChatList from "./ChatList/ChatList";
 import Avatar from "../../assets/avatars/avatar1.png"
 import { useState } from "react";
- 
+import Swiper from "./ChatSwiper/ChatSwiper";
+import ChatHeader from "./ChatHeader/ChatHeader";
+import ChatPanel from "./ChatPanel/ChatPanel";
+import ChatMessages from "./ChatMessages/ChatMessages";
+
 const data = [
     {
         id: 1,
@@ -147,27 +151,99 @@ const data = [
 
     },
 ]
+
+const swiperItems = [
+
+    {
+        id: 1,
+        title: "Alexander",
+        img: Avatar,
+
+
+    },
+
+
+    {
+        id: 2,
+        title: "Alexander",
+        img: Avatar,
+
+
+    },
+
+
+    {
+        id: 3,
+        title: "Alexander",
+        img: Avatar,
+
+
+    },
+
+
+    {
+        id: 4,
+        title: "Alexander",
+        img: Avatar,
+
+
+    },
+
+    {
+        id: 5,
+        title: "Alexander",
+        img: Avatar,
+
+
+    },
+
+
+    {
+        id: 6,
+        title: "Alexander",
+        img: Avatar,
+
+
+    },
+]
 const ChatComponent = () => {
 
     const [isSelected, setIsSelected] = useState<boolean>(false)
+    const handleSelect = () => {
+        setIsSelected(true)
+    }
     return (
-    
-    <>
-    <div className={styles.chat}>
 
-        <div className={styles.chat__panel}>
-            <ChatList data={data} />
-        </div>
-        <div className={`${styles.chat__content} ${!isSelected ?  styles.chat__content__none : ""}`}>
+        <>
+            <div className={styles.chat}>
+
+                <div className={styles.chat__panel}>
+                    <Swiper items={swiperItems} />
+                    <ChatList data={data}
+                        handleSelect={handleSelect}
+                    />
+                </div>
+                <div className={`${styles.chat__content} ${!isSelected ? styles.chat__content__none : ""}`}>
 
 
-<h2 className={styles.chat__title}>
-   Пожалуйста, выберите чат 
-</h2>
-        </div>
-    </div>
- 
-    </>
+                    {
+                        isSelected ? (
+                            <>
+                                <ChatHeader username="Alex" />
+                                <ChatMessages />
+                                <ChatPanel />
+                            </>
+                        ) : (
+
+                            <h2 className={styles.chat__title}>
+                                Пожалуйста, выберите чат
+                            </h2>
+                        )
+                    }
+                </div>
+            </div>
+
+        </>
     );
 }
 

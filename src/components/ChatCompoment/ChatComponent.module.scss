@@ -6,6 +6,17 @@
 
 
     &__panel {
+
+        overflow-y: scroll;
+        max-height: 100vh;
+ 
+      max-width: 500px;
+      width: 100%;
+        scrollbar-width: thin; 
+        scrollbar-color:  $gray $light-gray ;
+
+
+
         border-right: 1px solid $light-gray;
     }
 

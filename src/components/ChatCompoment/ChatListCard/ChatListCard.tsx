@@ -9,12 +9,13 @@ interface ChatListCardProps {
         isRead: boolean,
         time: string
 
-    }
+    },
+    handleSelect: ()=> void
 }
 
-const ChatListCard = ({ item }: ChatListCardProps) => {
+const ChatListCard = ({ item, handleSelect }: ChatListCardProps) => {
     return (
-        <div className={styles.card}>
+        <div className={styles.card} onClick={handleSelect}>
             <img 
             className={styles.card__logo}
             src={item.logo} />

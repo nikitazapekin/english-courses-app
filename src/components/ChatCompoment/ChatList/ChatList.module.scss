@@ -1,14 +1,6 @@
 @import "../../../theme/theme";
 .list {
-    overflow-y: scroll;
-    max-height: 100vh;
-    height: 100%;
-    display: grid;
-    grid-template-columns: minmax(200px, 500px);
-  
-    scrollbar-width: thin; 
-    scrollbar-color:  $gray $light-gray ;
-
+ 
   }
    
   .list::-webkit-scrollbar {
@@ -31,13 +23,4 @@
     background: linear-gradient(45deg, #2575fc, #6a11cb);
   }
   
-
-/*
-.list{
-    overflow-y: scroll;
-  max-height: 100vh;
-  height: 100%;
-  display: grid;
-  grid-template-columns: minmax(200px, 500px);
-}
-*/
+ 

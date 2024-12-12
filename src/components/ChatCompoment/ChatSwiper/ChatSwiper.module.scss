@@ -1,0 +1,106 @@
+@import "../../../theme/theme";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid $light-gray;
+}
+
+.swiperRootContainer {
+
+    width: 100%;
+
+    overflow-x: hidden;
+    border-radius: 10px;
+    display: flex;
+
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.swiperItemsContainer {
+
+    display: flex;
+    padding: 0 10px;
+    column-gap: 20px;
+    
+    width: max-content;
+    @include tablets {
+        column-gap: 40px;
+    }
+}
+
+.swiperItem {
+width: auto;
+ 
+    border-radius: 27px;
+   
+    
+    transition: 0.4s ease-in-out;
+    display: flex;
+    flex-direction: column;
+
+     
+    &__img {
+    //  min-width: 100%;
+    width: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      max-width: 80px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(20px);
+        text-align: center;
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__experience {
+        font-weight: 700;
+        @include fontSize(24px);
+        text-align: center;
+        color: $black;
+        font-family: "Inter", sans-serif;
+        margin-top: 7px;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        text-align: center;
+        color: $black;
+        margin-top: 6px;
+        font-family: "Inter", sans-serif;
+    }
+
+
+}
+
+.dots {
+    display: flex;
+    column-gap: 13px;
+    align-items: center;
+    justify-content: center;
+}
+
+.dot {
+    background-color: $light-gray;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 27px;
+    height: 27px;
+
+    &__active {
+        width: 37px;
+        height: 37px;
+        background-color: $orangeLight;
+    }
+}

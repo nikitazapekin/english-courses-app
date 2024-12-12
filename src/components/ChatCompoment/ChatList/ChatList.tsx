@@ -10,15 +10,18 @@ interface ChatListProps {
         isRead: boolean,
         time: string
 
-    }[]
+    }[],
+    handleSelect: ()=> void
 }
 
-const ChatList = ({ data }: ChatListProps) => {
+const ChatList = ({ data, handleSelect }: ChatListProps) => {
     return (
         <div className={styles.list}>
             {
                 data.map(item => (
-                    <ChatListCard item={item} />
+                    <ChatListCard item={item} 
+                    handleSelect={handleSelect}
+                    />
                 ))
             }
 
