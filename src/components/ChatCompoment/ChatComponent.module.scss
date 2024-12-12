@@ -1,0 +1,40 @@
+@import "../../theme/theme";
+
+
+.chat {
+    display: flex;
+
+
+    &__panel {
+        border-right: 1px solid $light-gray;
+    }
+
+    &__content {
+        max-height: 100vh;
+        min-height: 100%;
+
+    
+        display: flex;
+        flex: 1 1 auto;
+       
+        flex-direction: column;
+        &__none {
+            align-items: center;
+            justify-content: center;
+            width: auto
+
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        opacity: 0.5;
+        text-align: center;
+ 
+margin: 0 auto;
+       
+    }
+}

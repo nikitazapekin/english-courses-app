@@ -12,3 +12,5 @@ export const  TESTING_EDUCATE_PAGE = "/card/testing/:id/:theme"
 export const  SEARCH_PAGE = "/search/:query"
 export const  TUTOR_PAGE = "/tutor/:query"
 export const  HELP_PAGE = "/help"
+
+export const CHAT_PAGE = "/chat"

@@ -70,6 +70,10 @@ const AuthorithedHeader = () => {
     const handleCatalog = () => {
         navigate("/catalog")
     }
+
+    const handleChat = () => {
+        navigate("/chat")
+    }
     const scrollToJoin = () => {
         navigate("/")
         const element = document.getElementById("joinSection");
@@ -128,6 +132,8 @@ const handlePersonal =()=> {
                             <div className={styles.navigation__image__wrapper}>
 
                                 <img className={styles.navigation__image}
+
+                                onClick={handleChat}
                                     src={ChatIcon}
                                     alt="chat"
                                 />
