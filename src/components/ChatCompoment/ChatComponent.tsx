@@ -216,7 +216,7 @@ const ChatComponent = () => {
 
     return (
         <div className={styles.chat}>
-            {/* Панель чатов */}
+         
             <div className={`
                 ${styles.chat__panel} 
                 ${isSelected ? styles["chat__panel--hidden"] : ""}
