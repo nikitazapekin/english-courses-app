@@ -19,10 +19,18 @@ const ChatListCard = ({ item, handleSelect }: ChatListCardProps) => {
             <img 
             className={styles.card__logo}
             src={item.logo} />
-            <div className={styles.card__info}>
+            <div className={styles.card__content}>
 
+            <div className={styles.card__info}>
+            <h2 className={styles.card__title}>
+                        {item.username}
+                    </h2>
+                    <p className={styles.card__time}>
+                {item.time}
+                    </p>
+             {/*
                 <div className={styles.card__block}>
-                    <h2 className={styles.card__title}>
+                <h2 className={styles.card__title}>
                         {item.username}
                     </h2>
                     <p className={styles.card__message}>
@@ -31,13 +39,18 @@ const ChatListCard = ({ item, handleSelect }: ChatListCardProps) => {
                 </div>
             </div>
                 <div className={`${styles.card__info} ${styles.card__additional}`}>
-                    <p className={styles.card__time}>
-                        {item.time}
+                <p className={styles.card__time}>
+                {item.time}
                     </p>
                     <p className={styles.card__read}>
-                        {item.isRead}
+                    {item.isRead}
                     </p>
-                </div>
+                    */}
+                    </div>
+                    <p className={styles.card__message}>
+                        {item.message}
+                    </p>
+            </div>
         </div>
 
     );
