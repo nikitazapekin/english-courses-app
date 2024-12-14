@@ -49,7 +49,7 @@ const ModalResult = ({ isDisplay, time, count, length }: ModalResultProps) => {
     }
 
     return (
-        <div className={`${styles.modal} ${!isDisplay ? "" : styles.modal__none}`}>
+        <div className={`${styles.modal} ${isDisplay ? "" : styles.modal__none}`}>
             <div className={styles.modal__inner}>
                 <div className={styles.modal__content}>
                     <img src={Star} alt="Star" className={styles.star__top} />

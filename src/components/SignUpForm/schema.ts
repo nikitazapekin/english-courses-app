@@ -11,10 +11,10 @@ export const schema = yup.object().shape({
     .string()
     .trim()
     .required("Field is required")
-    .min(2, "The name must be at least 2 characters long")
+    .min(2, "Имя должно иметь хотя бы 2 символа")
     .test(
       "is-first-letter-uppercase",
-      "The first character must be leading",
+      "Первая буква должна быть заглавной",
       (value) => {
         if (!value) return false;
         return /^[A-ZА-Я]/.test(value);
@@ -24,13 +24,13 @@ export const schema = yup.object().shape({
   email: yup
     .string()
     .required("Field is required")
-    .matches(regExpEmail, "Invalid email format"),
+    .matches(regExpEmail, "Неккоректный email"),
 
   password: yup
     .string()
     .required("Field is required")
-    .min(6, "Password must be at least 6 characters long")
-    .test("password-strength", "Password is too weak", (value) => {
+    .min(6, "Пароль должен быть минимально из 6 символов")
+    .test("password-strength", "Пароль слишком слабый", (value) => {
       if (!value) return false;
 
       const hasUpperCase = /[A-Z]/.test(value);
@@ -52,8 +52,8 @@ export const schema = yup.object().shape({
 
 confirmPassword: yup
   .string()
-  .required("Confirm Password is required")
-  .test("passwords-match", "Passwords must match", function (value) {
+  .required("Подтвердите пароль")
+  .test("passwords-match", "Пароли должны совпадать", function (value) {
     return value === this.resolve(yup.ref("password"));
   }),
 
@@ -61,7 +61,7 @@ confirmPassword: yup
   country: yup
     .string()
     .required("Field is required")
-    .test("is-valid-country", "Invalid country selected", function (value) {
+    .test("is-valid-country", "Неккоректная страна", function (value) {
       const { countries } = this.options.context as ValidationContext;
       return countries.includes(value || "");
     }),
@@ -69,6 +69,6 @@ confirmPassword: yup
   agreeToTerms: yup
     .boolean()
     .required("Consent required")
-    .oneOf([true], "Consent required"),
+    .oneOf([true], "Требуется согласие"),
 });
  

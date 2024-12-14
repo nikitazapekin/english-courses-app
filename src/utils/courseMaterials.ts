@@ -47,7 +47,7 @@ export const courseMaterials: courseMaterialsTypes[] = [
     {
         id: 1,
         lesson: 2,
-        title: "Фразовые глаголы vsd",
+        title: "Фразовые глаголы",
         timestampt: "Длительность 25 минут",
         video: "https://www.youtube.com/embed/6Qd1xAikoQc?si=1XXgWrxNi3ZSjm7I",
         material: {

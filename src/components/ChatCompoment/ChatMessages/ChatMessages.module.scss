@@ -26,7 +26,10 @@
 .message {
     display: flex;
     column-gap: 20px;
-
+  //  max-width: 90%;
+    &__yours {
+        margin-left: auto;
+    }
     &__image {
         width: 80px;
         height: 80px;

@@ -1,6 +1,8 @@
 import ChatMessage from "./ChatMessage";
 import styles from "./ChatMessages.module.scss"
 import Avatar from "../../../assets/avatars/avatar1.png"
+import Avatar1 from "../../../assets/avatars/avatar2.png"
+import Avatar2 from "../../../assets/avatars/avatar3.png"
 const messages = [
     {
         id: 1,
@@ -16,7 +18,7 @@ const messages = [
         username: "Mark",
         time: "11:11 14:12:2024",
         isYourMessage:  true,
-        logo: Avatar
+        logo: Avatar2
     },
 
     {
@@ -25,7 +27,7 @@ const messages = [
         username: "Mark",
         time: "11:11 14:12:2024",
         isYourMessage: false,
-        logo: Avatar
+        logo: Avatar1
     },
     {
         id: 4,
