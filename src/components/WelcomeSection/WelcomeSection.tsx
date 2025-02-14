@@ -10,10 +10,8 @@ const WelcomeSection = () => {
     return (
         <section className={styles.welcome}>
             <div className={styles.welcome__wrapper}>
-
                 <div className={styles.welcome__inner}>
                     <div className={styles.welcome__preview}>
-
                         <h1 className={styles.welcome__title}>
                             Do you speak
                             english?
@@ -29,11 +27,8 @@ const WelcomeSection = () => {
                     <img src={Bird} alt="Preview" 
                     className={styles.welcome__image}
                     />
-
-             
                 </div>
-            </div>
-        
+            </div>  
         </section>
     );
 }

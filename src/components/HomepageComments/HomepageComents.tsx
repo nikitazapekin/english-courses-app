@@ -23,15 +23,11 @@ const HomepageComments = () => {
                                     src={Stars}
                                     alt="stars"
                                 />
-
                             </div>
-
                             <p className={styles.info__describtion}>
                                 Активно разговаривают уже после 30 уроков
                             </p>
                         </div>
-
-
                         <div className={`${styles.comment} ${styles.comment__bronze}`}>
                             <div className={styles.comment__header}>
                                 <img src={Avatar1}
@@ -51,8 +47,6 @@ const HomepageComments = () => {
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
-
-
                                     </div>
                                 </div>
                             </div>
@@ -63,8 +57,6 @@ const HomepageComments = () => {
                                 её ежедневно.
                             </p>
                         </div>
-
-
                     </div>
                     <div className={styles.comments__line}>
                     <div className={`${styles.comment} ${styles.comment__gray}`}>
@@ -86,8 +78,6 @@ const HomepageComments = () => {
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__starSliced} />
-
-
                                     </div>
                                 </div>
                             </div>
@@ -97,9 +87,6 @@ const HomepageComments = () => {
 
                             </p>
                         </div>
-
-
-
                         <div className={`${styles.comment} ${styles.comment__bronzeL}`}>
                             <div className={styles.comment__header}>
                                 <img src={Avatar2}
@@ -119,26 +106,18 @@ const HomepageComments = () => {
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
                                         <div className={styles.comment__star} />
-
-
                                     </div>
                                 </div>
                             </div>
-
                             <p className={styles.comment__text}>
                             Начала заниматься в школе совсем недавно. Больше всего не хватало разговорной практики, а теперь, благодаря ежедневным занятиям в Skyeng, уверенность в общении растёт с каждым уроком.
                             </p>
                         </div>
-
-
-
-
                         <div className={`${styles.comment} ${styles.comment__blue}`}>
                             <div className={styles.comment__header}>
                                 <img src={Avatar3}
                                     className={styles.comment__avatar}
                                     alt="Avatar" />
-
                                 <div className={styles.comment__info}>
                                     <h3 className={styles.comment__info__title}>
                                        Максим
@@ -154,8 +133,6 @@ const HomepageComments = () => {
                                         <div className={styles.comment__star}>
                                         <div className={styles.comment__starSliced} />
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -164,14 +141,15 @@ const HomepageComments = () => {
                             Только недавно начала заниматься в школе, но уже вижу первые результаты. Раньше мне не хватало практики в разговорной речи, а теперь, в Skyeng, у меня есть возможность тренироваться ежедневно
                             </p>
                         </div>
-
-
-
-
                     </div>
                 </div>
             </div>
         </section>);
 }
-
 export default HomepageComments;
+
+
+
+
+
+

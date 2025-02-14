@@ -22,9 +22,6 @@
         @include tablets {
             display: none;
         }
-
-
-
     }
 
     &__preview {
@@ -54,13 +51,16 @@
         cursor: pointer;
         color: $white;
     }
-&__item {
-    align-self: center;
-}
+
+    &__item {
+        align-self: center;
+    }
+
     &__image {
         &__wrapper {
             position: relative;
             cursor: pointer;
+
             &::before {
                 content: "1";
                 position: absolute;
@@ -74,14 +74,13 @@
                 align-items: center;
                 justify-content: center;
                 z-index: 11;
-
                 @include fontSize(16px);
                 color: $white;
                 font-family: "Inter", sans-serif;
                 cursor: pointer;
             }
-            
         }
+
         width: 36px;
         height: 36px;
         align-self: center;
@@ -97,7 +96,6 @@
         &:hover {
             background-color: $btn-active;
         }
-
     }
 }
 
@@ -108,17 +106,13 @@
     height: 43px;
 
     &__input {
-
         border-radius: 21px;
         outline: none;
         border: none;
         cursor: pointer;
         padding-left: 21px;
-
         font-weight: 400;
         @include fontSize(20px);
-
-        &::placeholder {}
     }
 
     &__btn {
@@ -146,7 +140,6 @@
         display: flex;
         flex-direction: column;
         row-gap: 5px;
-
     }
 
     &__param {
@@ -192,7 +185,6 @@
         width: 50px;
         height: 4px;
         background-color: $white;
-
     }
 }
 
@@ -244,8 +236,6 @@
         align-items: center;
     }
 
-
-
     &__btn {
         display: flex;
         flex-direction: column;
@@ -253,7 +243,6 @@
         width: 40px;
         height: 40px;
         cursor: pointer;
-
     }
 
     &__line1 {
@@ -265,12 +254,9 @@
 
     &__line2 {
         transform: rotate(-45deg) translateY(-50%);
-
         position: absolute;
-
         top: 50%;
         left: 0;
-
     }
 
     &__content {
@@ -279,15 +265,12 @@
         row-gap: 26px;
         align-items: center;
         margin-top: 57px;
-
     }
 
     &__image {
-
         margin-top: auto;
         align-self: flex-end;
         max-width: 600px;
         width: 100%;
-
     }
 }

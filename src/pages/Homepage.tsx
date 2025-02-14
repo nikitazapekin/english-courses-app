@@ -13,15 +13,30 @@ import Tutors from "../components/Tutors/Tutors";
 import { useEffect } from "react";
 import HelpBtn from "../components/HelpBtn/HelpBtn";
 import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
+import AuthService from "../services/Auth";
 const Homepage = () => {
     useEffect(() => {
-       
         window.scrollTo(0, 0);
-   
     }, []);
-  
-    return (
 
+    const handleClick = async () => {
+        try {
+            const response = await AuthService.login("user@example.com", "password123");
+            console.log('Ответ сервера:', response.data);
+        } catch (error: any) {
+            console.error('Ошибка при логине:', error);
+            if (error.response) {
+                console.error('Ответ ошибки:', error.response);
+            } else if (error.request) {
+                console.error('Запрос был отправлен, но не получен ответ:', error.request);
+            } else {
+                console.error('Ошибка при настройке запроса:', error.message);
+            }
+        }
+    };
+    
+    
+    return (
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
@@ -30,18 +45,17 @@ const Homepage = () => {
                 <Tutors />
                 <Certificate />
                 <CoursesHomepage />
-                
                 <CommonQuestions />
                 <JoinTrial />
                 <HomepageComments />
                 <NavigateBtn />
-           <HelpBtn />
-             
+                <HelpBtn />
+                <button onClick={handleClick}>
+ddd
+                </button>
             </div>
-           
             <Footer />
         </div>
     );
 }
-
 export default Homepage;

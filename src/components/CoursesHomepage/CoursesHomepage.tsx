@@ -1,3 +1,4 @@
+ 
 import styles from "./CoursesHomepage.module.scss"
 import Person1 from "../../assets/persons/Person1.png"
 import Person2 from "../../assets/persons/Person2.png"
@@ -32,7 +33,6 @@ const CoursesHomepage = () => {
                                     />
                                 </div>
                             </div>
-
 
 
                             <div className={`${styles.cardS} ${styles.cardS__bronze}`}>
@@ -97,16 +97,11 @@ const CoursesHomepage = () => {
                                     <img className={styles.cardS__image}
                                         src={Person5}
                                         alt="person"
-
                                     />
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
-
-
                     <Link to={"/catalog"} className={styles.courses__more}>
                         Посмотреть ещё
                     </Link>
@@ -117,3 +112,5 @@ const CoursesHomepage = () => {
 }
 
 export default CoursesHomepage;
+
+ 

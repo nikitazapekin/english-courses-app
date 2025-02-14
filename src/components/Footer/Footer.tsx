@@ -61,10 +61,7 @@ const Footer = () => {
                             ))}
 
                         </div>
-
-
                     </div>
-
                 </div>
                 <iframe className={styles.card} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2350.9127596688495!2d27.549856477075576!3d53.89775453332256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcfe8262c4f7d%3A0x9c685623d5f0fb00!2z0KbRjdC90YLRgNCw0LvRjNC90Ys!5e0!3m2!1sru!2suk!4v1729360505197!5m2!1sru!2suk" width="600" height="450" loading="lazy" />
                 <div className={styles.networks}>
@@ -74,7 +71,6 @@ const Footer = () => {
                             className={styles.networks__network}
                             alt="Network" />
                     ))}
-
                 </div>
                 <hr className={styles.line} />
                 <div className={styles.copyright}>
@@ -86,5 +82,4 @@ const Footer = () => {
         </footer>
     );
 }
-
 export default Footer;

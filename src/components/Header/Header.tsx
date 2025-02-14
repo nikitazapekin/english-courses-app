@@ -16,26 +16,19 @@ import AuthorithedHeader from "./AuthorithedHeader/AuthorithedHeader";
 import UnauthorithedHeader from "./UnauthorithedHeader/UnuthorithedHeader";
 
 
- 
 const Header = () => {
     const [isAuthorithed, setIsAuthorized] = useState(() => {
         const storedValue = localStorage.getItem("isAuthorized");
-        return storedValue ? JSON.parse(storedValue) : false; // Если нет значения, по умолчанию false
+        return storedValue ? JSON.parse(storedValue) : false;
     });
-    
-    
     return (
-
         <>
             {isAuthorithed ? (
-                
-            <AuthorithedHeader />
+                <AuthorithedHeader />
             ) : (
                 <UnauthorithedHeader />
-                )}
- 
-                </>
+            )}
+        </>
     );
 }
-
 export default Header;

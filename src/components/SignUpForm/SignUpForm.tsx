@@ -1,4 +1,4 @@
- 
+
 import { useNavigate } from "react-router-dom";
 import Mail from "../../assets/icons/mail.png"
 import User from "../../assets/icons/user.png"
@@ -14,14 +14,15 @@ import { RegisterInterface } from "./types"
 import { useSelector } from "react-redux";
 import { getPasswordStrength } from "../../helpers/getPaswordStrenth";
 import { formsSelector } from "../../store/selectors/Forms.selector";
-import  Placeholder from "../../assets/icons/location.png"
+import Placeholder from "../../assets/icons/location.png"
 import { useEffect } from "react";
+import AuthService from "../../services/Auth";
 
 interface SignUpProps {
     toasts: { id: string; message: string }[],
-    addToast: (message: string)=> void
+    addToast: (message: string) => void
 }
-const SignUpForm = ({toasts, addToast}: SignUpProps) => {
+const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
     const navigate = useNavigate();
     const countries = useSelector(formsSelector)
     const handleNavigate = () => {
@@ -42,19 +43,41 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
     const submitForm = (data: RegisterInterface) => {
 
         localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
-  navigate("/personal")
+        navigate("/personal")
         reset();
 
     };
 
-    useEffect(()=> {
+    useEffect(() => {
         if (Object.keys(errors).length != 0) {
-        addToast("Пожалуйста, исправьте ошибки в форме.");
+            addToast("Пожалуйста, исправьте ошибки в форме.");
         }
         console.log(errors)
     }, [errors])
+
+
+
+     const handleClick = async () => {
+            try {
+                const response = await AuthService.login("user@example.com", "password123");
+                console.log('Ответ сервера:', response.data);
+            } catch (error: any) {
+                console.error('Ошибка при логине:', error);
+                if (error.response) {
+                    console.error('Ответ ошибки:', error.response);
+                } else if (error.request) {
+                    console.error('Запрос был отправлен, но не получен ответ:', error.request);
+                } else {
+                    console.error('Ошибка при настройке запроса:', error.message);
+                }
+            }
+        };
+
+
+
+        
     const passwordValue = watch("password", "");
-  
+
     return (
         <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
             <div className={styles.form__inner}>
@@ -137,7 +160,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
 
                     <div className={styles.form__field}>
                         <p className={styles.form__text}>
-                       Пароль {getPasswordStrength(passwordValue).message}
+                            Пароль {getPasswordStrength(passwordValue).message}
                         </p>
                         <progress
                             className={`${styles.form__progress} ${getPasswordStrength(passwordValue).class}`}
@@ -146,27 +169,22 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
                             value={getPasswordStrength(passwordValue).value}
                         />
                     </div>
-
-
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
                             {errors.confirmPassword?.message}
-
                         </p>
                         <div
                             className={styles.form__input__wrapper}>
                             <input
                                 {...register("confirmPassword")}
-                                className={styles.form__input}  type="password"
-                             
+                                className={styles.form__input} type="password"
+
                                 placeholder="Введите пароль еще раз"
                                 required
 
                             />
                             <img className={styles.form__icon} src={Lock} />
-
                         </div>
-
                     </div>
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
@@ -174,7 +192,6 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
                         </p>
                         <div
                             className={styles.form__input__wrapper}>
-
                             <input
                                 className={styles.form__input}
                                 {...register("country")}
@@ -189,14 +206,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
                             <img className={styles.form__icon} src={Placeholder} />
 
                         </div>
-
-
                     </div>
-
-
-
-
-
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
                             {errors.agreeToTerms?.message}
@@ -213,7 +223,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
                                 required
                             />
                             <p className={styles.form__text}>
-                              Я согласен(а) с персональной обработкой данных 
+                                Я согласен(а) с персональной обработкой данных
                             </p>
                         </div>
 
@@ -228,6 +238,7 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
 
                 <button className={styles.form__submit}
                     type="submit"
+                    onClick={handleClick}
                 >Зарегистрироваться</button>
 
                 <div className={styles.form__or}>
@@ -261,4 +272,3 @@ const SignUpForm = ({toasts, addToast}: SignUpProps) => {
 }
 
 export default SignUpForm;
- 

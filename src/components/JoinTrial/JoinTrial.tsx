@@ -37,8 +37,6 @@ const JoinTrial = () => {
                                 <div className={`${styles.join__circle} ${styles.join__circleB}`} />
                                 <div className={`${styles.join__circle} ${styles.join__circleS} ${styles.join__circleEnd}`} />
                             </div>
-
-
                             <ul className={styles.join__list}>
                                 {list.map((item, index) => (
                                     <li key={index} className={styles.join__item} >
@@ -59,19 +57,12 @@ const JoinTrial = () => {
                             </div>
                         </div>
                     <img className={styles.join__image}
-                        src={Bird}
-                        alt="Bird"
+                        src={Bird}  alt="Bird"
                     />
                     </div>
                 </div>
-                    {/*
-                */}
-
-
-
             </div>
         </section>
     );
 }
-
 export default JoinTrial;

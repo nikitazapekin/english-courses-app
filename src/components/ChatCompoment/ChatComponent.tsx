@@ -11,7 +11,7 @@ import Avatar2 from "../../assets/avatars/avatar3.png"
 const data = [
     {
         id: 1,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -21,7 +21,7 @@ const data = [
     },
     {
         id: 2,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar1,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -31,7 +31,7 @@ const data = [
     },
     {
         id: 3,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar2,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -41,7 +41,7 @@ const data = [
     },
     {
         id: 4,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -51,7 +51,7 @@ const data = [
     },
     {
         id: 5,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -61,7 +61,7 @@ const data = [
     },
     {
         id: 6,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -71,7 +71,7 @@ const data = [
     },
     {
         id: 7,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -81,7 +81,7 @@ const data = [
     },
     {
         id: 8,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -91,7 +91,7 @@ const data = [
     },
     {
         id: 9,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -101,7 +101,7 @@ const data = [
     },
     {
         id: 10,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -113,7 +113,7 @@ const data = [
 
     {
         id: 11,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -123,7 +123,7 @@ const data = [
     },
     {
         id: 12,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -133,7 +133,7 @@ const data = [
     },
     {
         id: 13,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -143,7 +143,7 @@ const data = [
     },
     {
         id: 14,
-        username: "Alexander",
+        username: "Alex",
         logo: Avatar,
         message: "Okay. There is no problem",
         isYourMessage: false,
@@ -157,7 +157,7 @@ const swiperItems = [
 
     {
         id: 1,
-        title: "Alexander",
+        title: "Alex",
         img: Avatar,
 
 
@@ -166,7 +166,7 @@ const swiperItems = [
 
     {
         id: 2,
-        title: "Alexander",
+        title: "Alex",
         img: Avatar,
 
 
@@ -175,7 +175,7 @@ const swiperItems = [
 
     {
         id: 3,
-        title: "Alexander",
+        title: "Alex",
         img: Avatar,
 
 
@@ -184,7 +184,7 @@ const swiperItems = [
 
     {
         id: 4,
-        title: "Alexander",
+        title: "Alex",
         img: Avatar,
 
 
@@ -192,7 +192,7 @@ const swiperItems = [
 
     {
         id: 5,
-        title: "Alexander",
+        title: "Alex",
         img: Avatar,
 
 
@@ -201,7 +201,7 @@ const swiperItems = [
 
     {
         id: 6,
-        title: "Alexander",
+        title: "Alex",
         img: Avatar,
 
 
