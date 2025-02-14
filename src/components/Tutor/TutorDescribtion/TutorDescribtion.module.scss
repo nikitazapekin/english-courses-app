@@ -1,0 +1,124 @@
+@import "../../../theme/theme";
+
+.tutor {
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    &__header {
+        display: flex;
+        column-gap: 20px;
+        align-items: center;
+
+        &__title {
+            font-weight: 700;
+            @include fontSize(48px);
+            color: $white;
+            font-family: "Inter", sans-serif;
+
+            @include smPc {
+                @include fontSize(32px);
+            }
+        }
+
+        &__image {
+            align-self: center;
+        }
+    }
+
+    &__level {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+
+
+
+    &__stars {
+        align-self: center;
+        white-space: nowrap;
+    }
+
+    &__star {
+
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+        border-radius: 1px;
+
+    }
+
+    &__starSliced {
+
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+
+
+        &::after {
+            border: 2px solid $orange;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 50%;
+
+            background-color: $blue;
+            z-index: 1;
+            border: none;
+            outline: none;
+            background-color: $gray;
+        }
+    }
+
+
+    &__rate {
+        display: flex;
+        column-gap: 10px;
+        align-items: center;
+
+        &__text {
+            font-weight: 400;
+            @include fontSize(20px);
+            color: $white;
+            font-family: "Inter", sans-serif;
+        }
+
+
+
+    }
+
+    &__citate {
+        font-weight: 400;
+        @include fontSize(24px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+}

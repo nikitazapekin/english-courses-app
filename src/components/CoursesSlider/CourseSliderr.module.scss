@@ -1,0 +1,235 @@
+@import "../../theme/theme";
+
+.slider {
+    // background-color: $sliderGreen;
+    transition: 0.4s ease-in-out;
+    min-height: 518px;
+    height: 100%;
+
+    @include bigTablets {
+        min-height: 800px;
+    }
+    @include mobiles {
+        min-height: 600px;
+    }
+    &__inner {
+        display: flex;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        justify-content: space-between;
+        column-gap: 20px;
+        @include mobiles {
+            padding: 0 10px;
+
+        }
+
+    }
+
+
+    &__carousel {
+        display: flex;
+        min-width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        min-height: 100%;
+        max-width: 100%;
+        transition: 0.4s ease-in-out;
+
+    }
+
+    &__panel {
+        min-height: 518px;
+
+        position: relative;
+
+        width: 100%;
+        max-width: 100%;
+
+        overflow: hidden;
+        height: 100%;
+
+        @include bigTablets {
+            min-height: 800px;
+        }
+        @include mobiles {
+            min-height: 600px;
+        }
+    }
+
+    &__button {
+
+        cursor: pointer;
+        background-color: $light-gray;
+        border-radius: 50%;
+        min-width: 86px;
+        height: 86px;
+        font-weight: 700;
+        @include fontSize(32px);
+        color: $black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: center;
+
+        transition: 0.4s ease-in-out;
+
+        &:hover {
+
+            background-color: $blue;
+            @include fontSize(40px);
+
+        }
+
+        @include bigTablets {
+           min-width: 60px;
+           height: 60px;
+        }
+
+
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(48px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+        text-align: right;
+        margin-top: 47px;
+        margin-bottom: 16px;
+
+        @include bigTablets {
+            text-align: center;
+          
+        }
+        @include mobiles {
+            @include fontSize(32px);
+        }
+
+
+
+    }
+
+    &__item {
+
+        display: flex;
+
+        min-width: 100%;
+        min-height: 100%;
+        flex-direction: column;
+        width: 100%;
+
+
+        &__content {
+            align-self: flex-end;
+            display: flex;
+            flex-direction: column;
+
+
+        }
+    }
+
+    &__about {
+        font-weight: 400;
+        @include fontSize(32px);
+        text-align: right;
+        color: $white;
+        max-width: 787px;
+        margin-bottom: 16px;
+width: 100%;
+        @include bigTablets {
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+@include mobiles {
+    @include fontSize(24px);
+}
+    }
+
+    &__image {
+
+        max-width: 60%;
+        width: 100%;
+
+        height: auto;
+        align-self: flex-end;
+
+        @include bigTablets {
+            max-width: 100%;
+            align-self: center;
+        }
+
+   }
+
+    &__try {
+        padding: 7px 43px;
+        background-color: $yellow;
+        border-radius: 7px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-weight: 700;
+        @include fontSize(32px);
+        color: $black;
+        align-self: flex-end;
+        transition: 0.4s ease-in-out;
+
+        &:hover {
+            background-color: $yellow-active;
+        }
+
+        @include bigTablets {
+            align-self: center;
+            margin-bottom: 20px;
+        }
+
+        @include mobiles {
+            @include fontSize(24px);
+            padding: 7px 20px;
+        }
+
+    }
+
+
+    &__line {
+        display: flex;
+        height: 100%;
+        column-gap: 20px;
+
+        @include bigTablets {
+            flex-direction: column-reverse;
+        }
+
+
+    }
+
+    &__blog {
+        display: flex;
+        flex-direction: column;
+        max-width: 40%;
+        width: 100%;
+
+        @include bigTablets {
+            max-width: 100%;
+     
+        justify-content: center;
+            height: 100%;
+        
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+}

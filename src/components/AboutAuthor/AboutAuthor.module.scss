@@ -1,0 +1,142 @@
+@import "../../theme/theme";
+
+.about {
+    background-color: $black;
+    margin-top: 30px;
+
+    &__inner {
+        display: flex;
+        max-width: 1430px;
+        padding: 50px 15px;
+        margin: 0 auto;
+        flex-direction: column;
+        align-items: center;
+
+        @include pc {
+            flex-direction: column;
+        }
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(48px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__author {
+        &__wrapper {
+
+            max-width: 435px;
+            height: 100%;
+            align-self: center;
+        }
+
+        border-radius: 20px;
+        width: 100%;
+    }
+
+    &__content {
+        margin-top: 30px;
+        display: flex;
+        column-gap: 70px;
+
+        @include smPc {
+            column-gap: 30px;
+        }
+
+        @include tablets {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+.info {
+    align-self: center;
+@include tablets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+    &__title {
+        font-weight: 700;
+        @include fontSize(36px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__citate {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+        margin-top: 10px;
+    }
+
+    &__skills {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+    }
+
+    &__skill {
+        display: flex;
+        align-items: center;
+        column-gap: 24px;
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+
+
+    &__btn {
+        justify-self: flex-start;
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: minmax(200px, 396px);
+        cursor: pointer;
+        padding: 15px 0;
+        text-align: center;
+        border-radius: 6px;
+        z-index: 5;
+        position: relative;
+
+        &__text {
+            font-weight: 700;
+            @include fontSize(20px);
+            color: $white;
+            z-index: 3;
+            font-family: "Inter", sans-serif;
+        }
+
+        &::before {
+            border-radius: 6px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: $purple;
+            content: "";
+        }
+
+        &:after {
+            border-radius: 6px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: $purpleDark;
+            transform: translateX(5px) translateY(5px);
+            content: "";
+        }
+    }
+
+}

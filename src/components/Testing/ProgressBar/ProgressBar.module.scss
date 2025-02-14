@@ -1,0 +1,31 @@
+@import "../../../theme/theme";
+
+.progress {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid $black;
+    height: 30px;
+    background-color: $light-gray;
+    margin-top: 30px;
+    overflow: hidden;
+    display: flex;
+
+    &__item {
+        flex: 1;
+        border-left: 1px solid $black;
+        height: 30px;
+        background-color: $light-gray; 
+    }
+    &__green {
+        background-color: $sliderGreen;  
+    }
+
+    &__red {
+        background-color: $red;  
+    }
+
+    &__gray {
+        background-color: $light-gray;  
+    }
+}
+ 

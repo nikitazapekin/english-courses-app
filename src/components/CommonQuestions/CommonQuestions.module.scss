@@ -1,0 +1,65 @@
+@import "../../theme/theme";
+.common {
+  margin-bottom: 40px;
+  padding: 0 15px;
+  @include mobiles {
+    padding: 0 10px;
+  }
+  &__title {
+    font-weight: 700;
+    @include fontSize(48px);
+    color: $black;
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    @include tablets {
+      @include fontSize(32px);
+    }
+  }
+  &__inner {
+    max-width: 1125px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 27px;
+  }
+}
+.card {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+  &__inner {
+    font-weight: 400;
+    font-size: 36px;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+    @include tablets {
+      @include fontSize(20px);
+    }
+    background-color: $black;
+    color: $white;
+    border-radius: 5px;
+    list-style: none;
+    font-weight: 400;
+    @include fontSize(36px);
+    padding: 14px 29px;
+    border-radius: 25px;
+    transition: 0.4s ease-in-out;
+    &:hover {
+      background-color: $purple;
+    }
+  }
+  &__text {
+    margin: 0;
+    @include fontSize(20px);
+    background-color: $gray;
+    padding: 14px 29px;
+    color: $white;
+    font-family: "Inter", sans-serif;
+    border-top: 1px solid $white;
+    border-radius: 25px;
+  }
+}
+.card[open] .card__inner {
+  transition: 0.4s ease-in-out;
+  background-color: $purple;
+}

@@ -1,0 +1,45 @@
+
+@mixin smMobiles {
+	@media (max-width: 320px) {
+		@content;
+	}
+}
+@mixin mobiles {
+	@media (max-width: 480px) {
+		@content;
+	}
+}
+@mixin tablets {
+	@media (max-width: 768px) {
+		@content;
+	}
+}
+@mixin smallTablets {
+	@media (max-width: 560px) {
+		@content;
+	}
+}
+@mixin mediumTablets {
+	@media (max-width: 640px) {
+		@content;
+	}
+}
+@mixin bigTablets {
+	@media (max-width: 1024px) {
+		@content;
+	}
+}
+@mixin smPc {
+	@media (max-width: 1280px) {
+		@content;
+	}
+}
+@mixin pc {
+	@media (max-width: 1440px) {
+		@content;
+	}
+}
+
+
+
+ 

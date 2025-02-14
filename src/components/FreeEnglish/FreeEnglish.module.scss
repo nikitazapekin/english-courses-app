@@ -1,0 +1,216 @@
+@import "../../theme/theme";
+.free {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__title {
+        font-weight: 700;
+        @include fontSize(48px);
+        font-family: "Inter", sans-serif;
+        @include tablets {
+            @include fontSize(32px);
+            margin-bottom: 40px;
+        }
+        @include mobiles {
+          text-align: center;
+        }
+    }
+    &__lines {
+        display: flex;
+        flex-direction: column;
+        row-gap: 86px;
+        @include tablets {
+            row-gap: 40px;
+        }
+    }
+}
+.line {
+    &__stroke {
+        display: flex;
+        justify-content: space-between;
+        &:nth-child(2) {
+            align-self: center;
+        }
+    }
+  &__content {
+        display: flex;
+        align-items: center;
+    }
+    &__center {
+        justify-self: center;
+    }
+    &__lightning {
+        align-self: center;
+    }
+    &__image {
+        align-self: center;
+        max-width: 260px;
+        @include tablets {
+            display: none;
+        }
+    }
+    &__text {
+        max-width: 683px;
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+        @include tablets {
+            @include fontSize(24px);
+        }
+    }
+}
+
+/*
+
+.line {
+    &__stroke {
+      display: flex;
+      justify-content: space-between;
+      position: relative; // Для контроля анимации
+  
+      // Анимации для разных сторон
+      &.animate-right {
+        animation: slide-in-right 1s ease forwards;
+      }
+      &.animate-left {
+        animation: slide-in-left 1s ease forwards;
+      }
+  
+      &:nth-child(1) {
+        &.animate {
+          animation: slide-in-right 1s ease forwards;
+        }
+      }
+  
+      &:nth-child(2) {
+        &.animate {
+          animation: slide-in-left 1s ease forwards;
+        }
+      }
+  
+      &:nth-child(3) {
+        &.animate {
+          animation: slide-in-right 1s ease forwards;
+        }
+      }
+    }
+  
+    // Анимации параллакса
+    @keyframes slide-in-right {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  
+    @keyframes slide-in-left {
+      0% {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+  }
+  */
+
+/*
+@import "../../theme/theme";
+
+.free {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(48px);
+        font-family: "Inter", sans-serif;
+
+        @include tablets {
+            @include fontSize(32px);
+            margin-bottom: 40px;
+        }
+        @include mobiles {
+          text-align: center;
+        }
+    }
+
+    &__lines {
+        display: flex;
+        flex-direction: column;
+        row-gap: 86px;
+
+        @include tablets {
+
+            row-gap: 40px;
+        }
+
+    }
+}
+
+.line {
+
+    &__stroke {
+        display: flex;
+        justify-content: space-between;
+
+        &:nth-child(2) {
+            align-self: center;
+        }
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+    }
+
+    &__center {
+        justify-self: center;
+    }
+
+    &__lightning {
+        align-self: center;
+    }
+
+    &__image {
+        align-self: center;
+        max-width: 260px;
+
+        @include tablets {
+            display: none;
+        }
+    }
+
+    &__text {
+        max-width: 683px;
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+
+        @include tablets {
+            @include fontSize(24px);
+        }
+    }
+}
+
+*/

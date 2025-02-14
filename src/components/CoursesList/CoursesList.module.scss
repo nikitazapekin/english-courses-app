@@ -1,0 +1,165 @@
+@import "../../theme/theme";
+
+.courses {
+    @include pc {
+        margin: 0 auto;
+    }
+
+    width: 100%;
+
+    &__inner {
+     
+        display: flex;
+        flex-direction: column;
+
+        @include pc {
+            max-width: 100%;
+            width: 100%;
+           
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+
+        @include mobiles {
+            flex-direction: column;
+        }
+    }
+
+    &__title {
+        margin-top: 35px;
+        @include fontSize(24px);
+        font-family: "Inter", sans-serif;
+        @include mobiles {
+         align-self: center;
+         @include fontSize(32px);
+         margin-bottom: 20px;
+        }
+    }
+    &__text {
+        margin-top: 35px;
+        @include fontSize(24px);
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        text-align: center;
+      align-self: center;
+    }
+
+
+    &__select {
+        align-self: flex-end;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        @include fontSize(24px);
+        color: $black;
+        border: none;
+        outline: none;
+    }
+
+
+    &__cards {
+        display: grid;
+
+
+ 
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 16px;
+        margin-top: 17px;
+       
+        @include pc {
+       
+         justify-items: center;
+        }
+        @include smPc {
+            
+            grid-template-columns: repeat(2, 1fr);
+}
+   
+
+
+
+
+@include mobiles {
+      grid-template-columns: repeat(1, 1fr);
+  
+   }
+
+
+    }
+
+ 
+}
+
+
+.card {
+
+
+    display: flex;
+   
+    width: 260px;
+    flex-direction: column;
+
+    cursor: pointer;
+    position: relative;
+    perspective: 300px;
+    transition: 0.4s ease-in-out;
+
+    @include pc {
+ 
+width: 100%;
+ 
+    }
+
+
+
+    &:hover {
+        transform: rotateY(20deg) rotateX(10deg);
+    }
+
+    &__preview {
+        border-radius: 8px;
+        min-height: 176px;
+    }
+
+    &__image {
+        padding: 40px 0 14px 11px;
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__price {
+        font-weight: 700;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__name {
+        color: $white;
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-weight: 700;
+        @include fontSize(40px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+        padding: 11px 22px 0 0;
+        transform: rotate(7deg);
+    }
+
+    &__rating,   &__releaseDate{
+        font-weight: 400;
+        @include fontSize(16px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+    
+}

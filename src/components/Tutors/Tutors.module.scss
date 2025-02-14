@@ -1,0 +1,27 @@
+@import "../../theme/theme";
+
+.tutors {
+    &__wrapper {
+        clip-path: polygon(0 82px, 100% 0, 100% calc(100% - 82px), 0 100%);
+        background-color: $gray;
+    }
+    &__title {
+        font-weight: 400;
+        @include fontSize(40px);
+        text-align: center;
+        color: $white;
+        margin-top: 139px;
+        @include tablets {
+            @include fontSize(32px);
+        }
+    }
+    &__inner {
+        display: flex;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        flex-direction: column;
+        row-gap: 20px;
+        padding-bottom: 173px;
+  }
+}

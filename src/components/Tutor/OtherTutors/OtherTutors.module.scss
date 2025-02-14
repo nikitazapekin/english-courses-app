@@ -1,0 +1,218 @@
+@import "../../../theme/theme";
+
+
+.tutors {
+    &__title {
+
+        font-weight: 700;
+        @include fontSize(48px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 20px;
+        grid-gap: 20px;
+        @include smPc {
+            grid-gap: 10px
+        }
+        @include tablets {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}
+
+
+.card {
+
+
+    transition: 0.4s ease-in-out;
+
+    &:hover {
+        background-color: $blue;
+    }
+    flex: 1 1 100%;
+    background-color: $light-gray;
+    border-radius: 20px;
+    padding: 20px;
+
+
+    &__preview {
+        display: flex;
+        column-gap: 20px;
+        @include mobiles {
+            flex-direction: column;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+    &__citate {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__image {
+        max-width: 180px;
+        border-radius: 6px;
+        height: auto;
+        max-height: 300px;
+        object-fit: cover;
+        @include mobiles {
+            max-width: 100%;
+        }
+    }
+
+    &__stars {
+        align-self: center;
+        @include pc {
+         white-space: nowrap;
+        }
+
+    }
+
+    &__star {
+
+
+        transform: translateY(2px);
+
+
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+        border-radius: 1px;
+
+    }
+
+    &__starSliced {
+
+        position: relative;
+        transform: translateY(2px);
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+
+
+        &::after {
+            border: 2px solid $orange;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 50%;
+
+            background-color: $blue;
+            z-index: 1;
+            border: none;
+            outline: none;
+            background-color: $gray;
+        }
+    }
+
+
+
+    &__btn {
+        align-self: center;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 0;
+        display: grid;
+        grid-template-columns: minmax(150px, 200px);
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        @include fontSize(20px);
+        transition: 0.4s ease-in-out;
+        color: $white;
+
+        &__purple {
+            background-color: $purple;
+
+            &:hover {
+                background-color: $btn-active;
+            }
+
+        }
+    }
+
+    &__rate {
+        display: flex;
+        column-gap: 10px;
+        flex-wrap: wrap;
+
+        &__text {
+            font-family: "Inter", sans-serif;
+            font-weight: 400;
+            @include fontSize(20px);
+            color: $black;
+        }
+    }
+
+
+    &__footer {
+        display: flex;
+        column-gap: 20px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    &__chat {
+        background-color: $white;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.4s ease-in-out;
+
+        &:hover {
+            background-color: $sliderGreen;
+        }
+
+        &__icon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+}

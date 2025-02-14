@@ -1,0 +1,106 @@
+@import "../../theme/theme";
+
+.personal {
+    &__inner {
+        display: flex;
+
+
+        max-width: 1430px;
+        padding: 0px 15px;
+        flex-direction: column;
+        margin: 0 auto;
+
+    }
+
+    &__info {
+        display: flex;
+        column-gap: 140px;
+        justify-content: space-between;
+        margin-top: 30px;
+
+        @include smPc {
+            column-gap: 30px;
+        }
+        @include tablets {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        @include tablets {
+       //     flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    &__btn {
+        align-self: center;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px 0;
+        display: grid;
+        grid-template-columns: minmax(100px, 200px);
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        @include fontSize(20px);
+        transition: 0.4s ease-in-out;
+        color: $white;
+
+        &__purple {
+            background-color: $purple;
+
+            &:hover {
+                background-color: $btn-active;
+            }
+
+        }
+
+        &__red {
+            background-color: $red;
+
+            &:hover {
+                background-color: $redActive;
+            }
+        }
+
+    }
+&__preview {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+ @include tablets {
+   // flex-direction: row;
+    column-gap: 10px;
+    margin-left: 10px;
+ 
+ }
+}
+    &__balance {
+        display: flex;
+        column-gap: 4px;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        margin: 0 auto;
+
+        &__text {
+            font-weight: 400;
+
+        }
+
+        &__number {
+            font-weight: 700;
+
+        }
+
+   @include tablets {
+        //    flex-direction: column;
+        }
+    }
+}

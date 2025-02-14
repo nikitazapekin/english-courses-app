@@ -1,0 +1,89 @@
+@import "../../../theme/theme";
+
+.panel {
+    margin-top: 30px;
+
+    &__inner {
+        width: 100%;
+     //   max-width: 1070px;
+        display: flex;
+        padding: 37px;
+
+        justify-content: space-between;
+        margin: 0 auto;
+        border-radius: 20px;
+        background-color: $light-gray;
+        column-gap: 20px;
+
+    }
+
+    &__preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include mobiles {
+            display: none;
+        }
+        
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 100%;
+
+    }
+
+    &__image {
+        max-width: 134px;
+    }
+
+    &__area {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        height: 100%;
+        border-radius: 6px;
+        resize: none;
+        font-weight: 400;
+
+        @include fontSize(16px);
+        padding: 10px;
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__btn {
+        font-weight: 700;
+
+        @include fontSize(24px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+        background-color: $purple;
+        align-self: flex-end;
+        cursor: pointer;
+        border-radius: 6px;
+        padding: 10px 50px;
+        transition: 0.4s ease-in-out;
+        margin-top: 10px;
+
+
+        @include mobiles {
+            @include fontSize(16px);
+        }
+        &:hover {
+            background-color: $btn-active;
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+
+        @include fontSize(16px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        margin-top: 10px;
+    }
+}

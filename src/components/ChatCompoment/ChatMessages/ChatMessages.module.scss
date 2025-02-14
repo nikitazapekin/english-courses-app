@@ -1,0 +1,73 @@
+@import "../../../theme/theme";
+
+.messages {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // width: 100%;
+    row-gap: 20px;
+    padding: 0 10px;
+
+
+
+    overflow-y: scroll;
+
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    scrollbar-width: none;
+
+    -ms-overflow-style: none;
+}
+
+.message {
+    display: flex;
+    column-gap: 20px;
+  //  max-width: 90%;
+    &__yours {
+        margin-left: auto;
+    }
+    &__image {
+        width: 80px;
+        height: 80px;
+        align-self: flex-end;
+    }
+
+    &__wrapper {
+
+        background-color: rgb(206, 230, 170);
+        padding: 10px;
+        border-radius: 10px;
+
+        &__not {
+            padding: 10px;
+        }
+    }
+
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__time {
+        text-align: right;
+        font-weight: 400;
+        @include fontSize(16px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+
+        &__not {
+            text-align: left;
+            font-weight: 400;
+            @include fontSize(16px);
+            color: $black;
+            font-family: "Inter", sans-serif;
+        }
+    }
+
+}

@@ -1,0 +1,53 @@
+@import "../../../theme/theme";
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+column-gap: 10px;
+    &__btn {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        max-width: 300px;
+        @include fontSize(24px);
+          color: $black;
+          font-family: "Inter", sans-serif;
+        &__bold {
+            font-weight: 700;
+        }
+        &__text {
+            font-weight: 400;
+        }
+        &__right {
+            text-align: right
+        }
+        @include mobiles {
+            @include fontSize(20px); 
+        }
+    }
+    &__current {
+        @include fontSize(24px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        text-align: center;
+
+        &__table {
+            display: none;
+            @include tablets {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            @include mobiles {
+                @include fontSize(20px); 
+            }
+        }
+        &__pc {
+            @include tablets {
+                display: none;
+            }
+        }
+    
+    }
+}

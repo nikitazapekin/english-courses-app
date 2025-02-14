@@ -1,0 +1,33 @@
+@import "../../theme/theme";
+
+.dots {
+    display: flex;
+    column-gap: 14px;
+    justify-content: center;
+    margin-top: 35px;
+
+    &__dot {
+        cursor: pointer;
+        padding: 15px 20px;
+        border-radius: 6px;
+        background-color: $light-gray;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        transition: 0.4s ease-in-out;
+        font-family: "Inter", sans-serif;
+        margin-bottom: 35px;
+        &:hover {
+            background-color: $blue-active;
+        }
+
+
+        @include mobiles {
+            padding: 10px 15px;
+        }
+    }
+
+    &__active {
+        background-color: $orangeLight;
+    }
+}

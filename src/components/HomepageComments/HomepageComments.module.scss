@@ -1,0 +1,187 @@
+@import "../../theme/theme";
+.comments {
+    margin-bottom: 80px;
+    padding: 0 15px;
+    &__inner {
+        max-width: 1300px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        margin: 0 auto;
+    }
+    &__title {
+        font-weight: 400;
+        @include fontSize(48px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        max-width: 1142px;
+        @include tablets {
+            @include fontSize(32px);
+        }
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: flex-start;
+        width: 100%;
+    }
+    &__line {
+        display: flex;
+        column-gap: 20px;
+        width: 100%;
+        @include smPc {
+            flex-wrap: wrap;
+            row-gap: 20px;
+        }
+    }
+}
+.info {
+    background-color: $commnetsBlue;
+    border-radius: 20px;
+    flex: 0 0 335px;
+    @include smPc {
+        flex: 0 0 100%;
+    }
+    height: 335px;
+    padding: 28px 20px;
+    &__image {
+        align-self: start;
+    }
+    &__title {
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        @include fontSize(36px);
+        color: $white;
+    }
+    &__describtion {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        margin-top: 20px;
+        font-family: "Inter", sans-serif;
+    }
+    &__preview {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.comment {
+    border-radius: 20px;
+    min-height: 335px;
+    padding: 20px 30px;
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 17px;
+    &__header {
+        display: flex;
+        column-gap: 18px;
+    }
+    &__info {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+        &__title {
+            font-weight: 700;
+            @include fontSize(24px);
+            color: $black;
+            font-family: "Inter", sans-serif;
+        }
+        &__date {
+            font-weight: 400;
+            @include fontSize(20px);
+            color: $grayDate;
+            font-family: "Inter", sans-serif;
+        }
+    }
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+    &__avatar {
+        align-self: flex-start;
+        @include smPc {
+            width: 90px;
+        }
+    }
+    &__bronze {
+        background-color: $bronze;
+        flex: 1 1 100%;
+    }
+    &__bronzeL {
+        background-color: $bronzeL;
+        flex: 1 1 341px;
+    }
+    &__gray {
+        background-color: $light-gray;
+        flex: 1 1 341px;
+    }
+    &__blue {
+        background-color: $blue;
+        flex: 1 1 421px;
+    }
+    &__stars {
+        display: flex;
+        column-gap: 6px;
+        @include mobiles {
+            column-gap: 0;
+        }
+    }
+    &__star {
+        position: relative;
+        display: inline-block;
+        width: 29px;
+        height: 29px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+        border-radius: 1px;
+    }
+    &__starSliced {
+        position: relative;
+        display: inline-block;
+        width: 29px;
+        height: 29px;
+        background: $orange;
+        clip-path: polygon(50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%);
+        &::after {
+            border: 2px solid $orange;
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 50%;
+            background-color: $blue;
+            z-index: 1;
+            border: none;
+            outline: none;
+            background-color: $gray;
+        }
+    }
+    &__starWrapper {
+        overflow: hidden;
+        width: 50%;
+        height: 29px;
+    }
+}

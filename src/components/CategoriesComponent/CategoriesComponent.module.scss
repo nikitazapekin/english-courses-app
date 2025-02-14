@@ -1,0 +1,30 @@
+@import "../../theme/theme";
+.categories {
+    &__inner {
+      
+            display: flex;
+            max-width: 1430px;
+            padding: 0px 15px;
+            margin: 0 auto; 
+            column-gap: 55px;
+            margin-top: 35px;
+            @include pc {
+                flex-direction: column;
+            }
+    }
+    &__content {
+
+        display: flex;
+        flex-direction: column;
+        max-width: 1138px;
+        width: 100%;
+        @include pc {
+          max-width: 100%;
+          width: 100%;
+          margin: 0 auto;
+        }
+        @include smPc {
+            
+        }
+    }
+}

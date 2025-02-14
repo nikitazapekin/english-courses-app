@@ -1,0 +1,59 @@
+@import "../../../theme/theme";
+
+.lessons {
+    // margin-bottom: 60px;
+    padding-bottom: 60px;
+
+    &__inner {
+
+        display: flex;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        flex-direction: column;
+
+        row-gap: 20px;
+
+
+        @include mobiles {
+            padding: 0 10px;
+
+        }
+    }
+
+    &__title {
+        margin-top: 60px;
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        @include fontSize(48px);
+        color: $white;
+    }
+
+    &__text {
+      
+        font-weight: 400;
+        font-family: "Inter", sans-serif;
+        @include fontSize(24px);
+        color: $white;
+    }
+
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 34px;
+    }
+
+    &__panel {
+        display: flex;
+        justify-content: flex-end;
+column-gap: 20px;
+        &__text {
+            font-weight: 400;
+            @include fontSize(24px);
+            color: $white;
+            font-family: "Inter", sans-serif;
+            cursor: pointer;
+        }
+    }
+}

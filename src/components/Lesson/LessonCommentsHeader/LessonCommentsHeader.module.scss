@@ -1,0 +1,31 @@
+@import "../../../theme/theme";
+.header {
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    &__title {
+        &__text {
+            @include fontSize(24px);
+            color: $black;
+            font-family: "Inter", sans-serif;
+            font-size: 400;
+        }
+    }
+
+    &__select {
+        flex: 0 1 300px;
+
+
+        font-family: "Inter", sans-serif;
+        border: none;
+        outline: none;
+        font-weight: 400;
+        margin-bottom: 10px;
+        color: $black;
+
+        @include fontSize(20px);
+        @include tablets {
+            @include fontSize(16px);
+        }
+    }
+}

@@ -1,0 +1,139 @@
+@import "../../theme/theme";
+.courses {
+    &__wrapper {
+        clip-path: polygon(0 0, 100% 82px, 100% 100%, 0 calc(100% - 82px));
+        background-color: $gray;
+    }
+    &__title {
+        font-weight: 400;
+        @include fontSize(40px);
+        text-align: center;
+        color: $white;
+        margin-top: 139px;
+    }
+    &__inner {
+        display: flex;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        flex-direction: column;
+        row-gap: 20px;
+        padding-bottom: 173px;
+        @include mobiles {
+            padding: 0 10px 123px 10px;
+        }
+    }
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 60px;
+    }
+    &__line {
+        display: flex;
+        column-gap: 60px;
+        flex-wrap: wrap;
+        justify-content: center;
+        @include smPc {
+            column-gap: 50px;
+            row-gap: 50px;
+        }
+    }
+    &__line1 {
+        display: flex;
+        column-gap: 60px;
+        flex-wrap: wrap;
+        justify-content: center;
+        @include smPc {
+            column-gap: 50px;
+            row-gap: 50px;
+        }
+    }
+    &__more {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $white;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+    }
+}
+.cardS {
+    border-radius: 20px;
+    min-height: 395px;
+    flex: 0 0 338px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    perspective: 300px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        transform: rotateY(30deg) rotateX(10deg);
+    }
+    @include smPc {
+        &:nth-child(1) {
+            flex: 1 0 343px;
+        }
+        &:nth-child(2) {
+            flex: 1 0 343px;
+        }
+        &:nth-child(3) {
+            flex: 0 0 100%;
+        }
+    }
+    &__gray {
+        background-color: $light-gray ;
+    }
+    &__bronze {
+        background-color: $bronze;
+    }
+    &__bronzeL {
+        background-color: $bronzeL;
+    }
+    &__content {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    &__image {
+        justify-self: flex-end;
+        max-height: 270px;
+        @include mobiles {
+            max-width: 200px;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        @include fontSize(36px);
+        color: $black;
+        padding: 16px 20px;
+        margin: 0 auto;
+    }
+}
+.cardB {
+    border-radius: 20px;
+    flex: 0 0 536px;
+    min-height: 395px;
+    perspective: 300px;
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        transform: rotateY(30deg) rotateX(10deg);
+    }
+    @include smPc {
+        &:nth-child(1) {
+            flex: 1 0 343px;
+        }
+        &:nth-child(2) {
+            flex: 1 0 343px;
+        }
+    }
+    &__titleWhite {
+        color: $white;
+    }
+    &__black {
+        background-color: $blackCard;
+    }
+}

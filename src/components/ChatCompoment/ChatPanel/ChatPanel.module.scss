@@ -1,0 +1,45 @@
+@import "../../../theme/theme";
+
+.panel {
+    display: flex;
+    background-color: $light-gray;
+    column-gap: 20px;
+    width: 100%;
+    padding: 20px 40px;
+
+    &__messageBox {
+        background-color: $white;
+        border-radius: 20px;
+        flex: 1 1 100%;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+    }
+
+    &__image {
+        cursor: pointer;
+
+    }
+
+    &__input {
+        height: 100%;
+        border: none;
+        outline: none;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 20px;
+
+
+
+
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $gray;
+        padding: 12px 15px;
+    }
+    &__send {
+        align-self: center;
+    }
+}

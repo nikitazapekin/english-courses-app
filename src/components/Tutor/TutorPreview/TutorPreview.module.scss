@@ -1,0 +1,23 @@
+@import "../../../theme/theme";
+
+.tutor {
+    &__info {
+        display: flex;
+        column-gap: 100px;
+        @include smPc {
+            column-gap: 50px;
+        }
+        @include mobiles {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 20px;
+        }
+    }
+    &__describtion {
+        margin-top: 20px;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+    }
+}

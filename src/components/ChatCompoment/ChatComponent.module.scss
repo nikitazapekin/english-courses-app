@@ -1,0 +1,204 @@
+@import "../../theme/theme";
+.chat {
+    display: flex;
+    position: relative;
+
+    &__panel {
+        overflow-y: scroll;
+        max-height: 100vh;
+        max-width: 500px;
+        min-width: 400px;
+        width: 100%;
+        scrollbar-width: thin;
+        scrollbar-color: $gray $light-gray;
+        border-right: 1px solid $light-gray;
+        transition: 0.4s ease-in-out;
+
+        @media (max-width: 768px) {
+            max-width: 100%;
+            width: 100%;
+            min-width: none;
+
+            &--hidden {
+                display: none;
+            }
+        }
+    }
+
+    &__content {
+        max-height: 100vh;
+        min-height: 100%;
+      
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center; 
+        align-items: center;   
+
+        @media (max-width: 768px) {
+            &__none {
+                display: none;
+            }
+
+            &--visible {
+                display: flex;
+                flex: 1 1 auto;
+                position: relative;
+           
+                width: 100%;
+                background-color: $white;
+            }
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        opacity: 0.5;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+/*
+@import "../../theme/theme";
+
+.chat {
+    display: flex;
+    position: relative;
+
+    &__panel {
+        overflow-y: scroll;
+        max-height: 100vh;
+        max-width: 500px;
+        min-width: 400px;
+        width: 100%;
+        scrollbar-width: thin;
+        scrollbar-color: $gray $light-gray;
+        border-right: 1px solid $light-gray;
+        transition: 0.4s ease-in-out;
+
+        @include tablets {
+            max-width: 100%;
+            width: 100%;
+            min-width: none;
+        }
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__content {
+        max-height: 100vh;
+        min-height: 100%;
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+
+        &__none {
+            @include tablets {
+                display: none;
+            }
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--visible {
+            display: flex;
+            flex: 1 1 auto;
+            position: relative;
+       
+            width: 100%;
+         
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        opacity: 0.5;
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+*/
+
+/*
+@import "../../theme/theme";
+
+
+.chat {
+    display: flex;
+position: relative;
+
+    &__panel {
+
+        overflow-y: scroll;
+        max-height: 100vh;
+ 
+      max-width: 500px;
+      min-width: 400px;
+      width: 100%;
+        scrollbar-width: thin; 
+        scrollbar-color:  $gray $light-gray ;
+
+
+
+        border-right: 1px solid $light-gray;
+        transition: 0.4s ease-in-out;
+        @include tablets {
+max-width: 100%;
+width: 100%;
+min-width: none;
+      
+        }
+        &__mobile {
+            @include tablets {
+                display: none;
+            }
+        }
+    }
+    &__content {
+        max-height: 100vh;
+        min-height: 100%;
+
+    
+        display: flex;
+        flex: 1 1 auto;
+        @include tablets {
+         display: none;
+        }
+        flex-direction: column;
+        &__none {
+            align-items: center;
+            justify-content: center;
+            width: auto
+
+        }
+        &__selected {
+         
+            position: relative;
+            z-index: 111;
+            width: 100%;
+            background-color: red;
+        }
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        opacity: 0.5;
+        text-align: center;
+ 
+margin: 0 auto;
+       
+    }
+}
+*/

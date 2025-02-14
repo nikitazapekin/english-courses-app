@@ -1,0 +1,89 @@
+@import "../../theme/theme";
+.welcome {
+    &__wrapper {
+        background-color: $gray;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 82px));
+    }
+    &__inner {
+        display: flex;
+        min-height: 656px;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        justify-content: space-between;
+        @include bigTablets {
+            flex-direction: column;
+            align-items: center;
+            min-height: 720px;
+        }
+    }
+    &__preview {
+        display: flex;
+        flex-direction: column;
+        row-gap: 18px;
+        justify-content: center;
+    }
+    &__title {
+        font-weight: 700;
+        @include fontSize(64px);
+        color: $white;
+        max-width: 405px;
+        font-family: "Inter", sans-serif;
+        @include bigTablets {
+            margin-top: 46px;
+            @include fontSize(48px);
+            text-align: center;
+        }
+    }
+    &__about {
+        font-weight: 400;
+        max-width: 441px;
+        color: $white;
+        @include fontSize(32px);
+        @include bigTablets {
+            @include fontSize(24px);
+            text-align: center;
+        }
+    }
+    &__btn {
+        font-weight: 700;
+        @include fontSize(40px);
+        padding: 15px 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $purple;
+        transition: 0.4s ease-in-out;
+        color: $white;
+        border-radius: 10px;
+        cursor: pointer;
+        &:hover {
+            background-color: $btn-active;
+        }
+        @include bigTablets {
+            @include fontSize(24px);
+        }
+    }
+    &__image {
+        align-self: flex-end;
+        width: 50%;
+        transform: translateY(20%);
+        @include bigTablets {
+            width: 62%;
+        }
+        @include mobiles {
+            width: 90%;
+        }
+
+    }
+}
+.triangle {
+    &__top {
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 69px solid $gray;
+        border-left: 100vw solid transparent;
+    }
+}

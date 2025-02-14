@@ -1,0 +1,100 @@
+@import "../../theme/theme";
+.footer {
+    background-color: $black;
+    padding: 31px 0px 27px 0;
+    &__inner {
+        display: flex;
+        max-width: 1430px;
+        padding: 0px 15px;
+        margin: 0 auto;
+        flex-direction: column;
+        row-gap: 20px;
+        @include mobiles {
+            padding: 0 10px;
+        }
+    }
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        column-gap: 41px;
+        @include bigTablets {
+            flex-direction: column;
+            align-items: center;
+            row-gap: 41px;
+        }
+    }
+}
+.contacts {
+    display: flex;
+    column-gap: 41px;
+    text-align: center;
+    @include mobiles {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+    &__title {
+        font-weight: 700;
+        @include fontSize(20px);
+        color: $white
+    }
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+    }
+}
+.about {
+    display: flex;
+    column-gap: 51px;
+    &__block {
+        display: flex;
+        flex-direction: column;
+        row-gap: 14px;
+        @include tablets {
+            max-width: 177px;
+        }
+        @include smallTablets {
+            max-width: 100%;
+        }
+    }
+    &__title {
+        font-weight: 700;
+        @include fontSize(20px);
+        color: $white;
+    }
+    &__text {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+        transition: 0.4s ease-in-out;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    @include smallTablets {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+}
+.card {
+    display: flex;
+    width: 100%;
+    height: 313px;
+}
+.networks {
+    display: flex;
+    column-gap: 13px;
+    justify-content: flex-end;
+    &__network {
+        cursor: pointer;
+    }
+}
+.copyright {
+    &__text {
+        text-align: center;
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $white;
+    }
+}

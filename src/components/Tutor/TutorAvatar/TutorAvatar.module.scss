@@ -1,0 +1,80 @@
+@import "../../../theme/theme";
+
+.avatar {
+
+
+    @include mobiles {
+        width: 100%;
+    }
+
+    &__btn {
+        align-self: center;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: minmax(150px, 200px);
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-weight: 700;
+        @include fontSize(20px);
+        transition: 0.4s ease-in-out;
+        color: $white;
+
+        &__purple {
+            background-color: $purple;
+
+            &:hover {
+                background-color: $btn-active;
+            }
+        }
+
+        &__green {
+            background-color: $sliderGreen;
+
+            &:hover {
+                background-color: $greenActive;
+            }
+        }
+
+        @include mobiles {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        
+        }
+    }
+
+    &__wrapper {
+        max-width: 176px;
+        width: 100%;
+        border-radius: 50%;
+
+        @include mobiles {
+            max-width: 100%;
+
+
+        }
+    }
+
+    &__image {
+        aspect-ratio: 1;
+        width: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+
+        @include mobiles {
+            width: 100%;
+
+        }
+    }
+
+    &__btns {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}

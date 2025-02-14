@@ -1,0 +1,50 @@
+@import "../../../theme/theme";
+
+.card {
+    background-color: $white;
+    padding: 32px 22px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+ 
+
+    &:hover {
+        background-color: $purple;
+    }
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        row-gap: 6px;
+    }
+
+    &__header {
+        display: flex;
+        column-gap: 20px;
+        @include tablets {
+            flex-direction: column;
+        }
+    }
+
+    &__lesson {
+        font-weight: 700;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        white-space: nowrap;
+    }
+
+    &__title {
+        font-weight: 400;
+        @include fontSize(32px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__timestampt {
+        font-weight: 400;
+        @include fontSize(24px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+}

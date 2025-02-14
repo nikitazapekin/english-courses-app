@@ -1,0 +1,32 @@
+@import "../../../theme/theme";
+
+.header {
+    display: flex;
+    background-color: $light-gray;
+    padding: 15px;
+    width: 100%;
+    justify-content: space-between;
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(24px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__recently {
+        font-weight: 400;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__info {
+        display: flex;
+        column-gap: 20px;
+    }
+    &__icon {
+        cursor: pointer;
+        align-self: center;
+    }
+}

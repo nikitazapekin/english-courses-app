@@ -1,0 +1,63 @@
+@import "../../../theme/theme";
+
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid $light-gray;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+
+    font-weight: 400;
+    @include fontSize(24px);
+    color: $black;
+    font-family: "Inter", sans-serif;
+
+    &:hover {
+        background-color: $purple;
+    }
+
+
+    transition: background-color 0.4s ease-in-out;
+
+    &.correct {
+        background-color: $sliderGreen;
+    
+        border-color: #28a745;
+    }
+
+    &.incorrect {
+       
+       background-color: $red;
+        border-color: #dc3545;
+        animation: move 0.4s forwards;
+    }
+
+}
+
+.card__index {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.card__text {
+    flex: 1;
+    text-align: center;
+}
+
+@keyframes move {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(2deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

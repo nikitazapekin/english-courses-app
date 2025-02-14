@@ -1,0 +1,31 @@
+@import "../../../theme/theme";
+
+.search {
+    &__inner {
+        display: flex;
+
+
+        max-width: 1430px;
+        padding: 0px 15px;
+        flex-direction: column;
+        margin: 0 auto;
+
+        flex-direction: column;
+        row-gap: 30px;
+    }
+
+    &__title {
+        font-weight: 700;
+        @include fontSize(48px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+        margin-top: 60px;
+    }
+
+    &__cards {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+    }
+
+}
