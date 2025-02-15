@@ -55,14 +55,16 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         console.log(errors)
     }, [errors])
 
-
-
-     const handleClick = async () => {
+        const handleClick = async (data: RegisterInterface) => {
+            
+            if (Object.keys(errors).length == 0) {
             try {
-                const response = await AuthService.login("user@example.com", "password123");
+                const { confirmPassword, ...registrationData } = data; 
+                const response = await AuthService.registration(registrationData);
                 console.log('Ответ сервера:', response.data);
+                navigate("/personal");  
             } catch (error: any) {
-                console.error('Ошибка при логине:', error);
+                console.error('Ошибка при регистрации:', error);
                 if (error.response) {
                     console.error('Ответ ошибки:', error.response);
                 } else if (error.request) {
@@ -71,11 +73,9 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                     console.error('Ошибка при настройке запроса:', error.message);
                 }
             }
+        }
         };
 
-
-
-        
     const passwordValue = watch("password", "");
 
     return (
@@ -116,14 +116,9 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
 
                         </div>
                     </div>
-
-
-
-
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
                             {errors.email?.message}
-
                         </p>
                         <div className={styles.form__input__wrapper}>
                             <input
@@ -138,8 +133,6 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
 
                         </div>
                     </div>
-
-
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>
                             {errors.password?.message}
@@ -226,23 +219,15 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                                 Я согласен(а) с персональной обработкой данных
                             </p>
                         </div>
-
-
-
                     </div>
-
-
                 </div>
-
                 <hr className={styles.form__line} />
-
                 <button className={styles.form__submit}
                     type="submit"
-                    onClick={handleClick}
+                    onClick={handleSubmit(handleClick)}
+                  //  onClick={handleClick}
                 >Зарегистрироваться</button>
-
                 <div className={styles.form__or}>
-
                     <hr className={styles.form__line} />
                     <p className={styles.form__or__text}>Или</p>
                     <hr className={styles.form__line} />
@@ -262,10 +247,6 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                         <img className={styles.form__network__image} src={Vk} alt="discord" />
                     </div>
                 </div>
-
-
-
-
             </div>
         </form>
     );
