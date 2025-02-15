@@ -19,9 +19,7 @@ interface SignInProps {
     toasts: { id: string; message: string }[],
     addToast: (message: string) => void
 }
-
 const SignInForm = ({ toasts, addToast }: SignInProps) => {
-
     const navigate = useNavigate();
     const {
         register,
@@ -32,13 +30,9 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
     });
 
     const onSubmit = (data: SignInData) => {
-
         localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
-
         navigate("/personal")
-
     };
-
     const handleNavigate = () => {
         navigate("/sign-up");
     };
@@ -50,10 +44,8 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
     const handleClick = async (data: SignInData) => {
         if (Object.keys(errors).length == 0) {
             try {
-                //     const { confirmPassword, ...registrationData } = data; 
-                const response = await AuthService.login({email: data.email, password: data.password});
-                
-                console.log('Ответ сервера:', response.data);
+                const response = await AuthService.login({ email: data.email, password: data.password });
+                localStorage.setItem("accessToken", response.data.accessToken);
                 navigate("/personal");
             } catch (error: any) {
                 console.error('Ошибка при регистрации:', error);
