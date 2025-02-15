@@ -47,7 +47,6 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         reset();
 
     };
-
     useEffect(() => {
         if (Object.keys(errors).length != 0) {
             addToast("Пожалуйста, исправьте ошибки в форме.");
@@ -55,14 +54,13 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         console.log(errors)
     }, [errors])
 
-        const handleClick = async (data: RegisterInterface) => {
-            
+        const handleClick = async (data: RegisterInterface) => {  
             if (Object.keys(errors).length == 0) {
             try {
                 const { confirmPassword, ...registrationData } = data; 
                 const response = await AuthService.registration(registrationData);
                 console.log('Ответ сервера:', response.data);
-                navigate("/personal");  
+                navigate("/sign-in");  
             } catch (error: any) {
                 console.error('Ошибка при регистрации:', error);
                 if (error.response) {

@@ -1,19 +1,17 @@
 import $api from "../http";
 import axios, {AxiosResponse} from 'axios';
  import { RegisterInterface } from "../components/SignUpForm/types";
+import { SignInData } from "../components/SignInForm/types";
 export default class AuthService {
-    static async login(email: string, password: string): Promise<AxiosResponse<any>> {
+    
+    static async login({email, password}: SignInData): Promise<AxiosResponse<any>> {
         return $api.post<any>('/user/login', {email, password})
     }
-/* 
-    static async registration(email: string, password: string): Promise<AxiosResponse<any>> {
-        return $api.post<any>('/register', {email, password})
-    }
- */
+ 
 
     static async registration(data: Omit<RegisterInterface, 'confirmPassword'>): Promise<AxiosResponse<any>> {
         return $api.post<any>('/user/register', data);
-     // return axios.post<any>('http://localhost:5000/api/user/register', data)
+     
     }
 
     static async logout(): Promise<void> {
