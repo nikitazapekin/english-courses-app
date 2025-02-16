@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Mail from "../../assets/icons/mail.png";
- 
+
 import Lock from "../../assets/icons/lock.png";
 import styles from "./SignInForm.module.scss";
 import { SignInData } from "./types";
@@ -11,16 +11,15 @@ import Vk from "../../assets/networks/vk.png"
 import Discord from "../../assets/networks/discord.png"
 import Google from "../../assets/networks/google.png"
 import { signInSchema } from "./schema";
- import { useToast } from "../../hooks/useToast";
+import { useToast } from "../../hooks/useToast";
 import Toast from "../Toast/Toast";
 import { useEffect } from "react";
+import AuthService from "../../services/Auth";
 interface SignInProps {
     toasts: { id: string; message: string }[],
-    addToast: (message: string)=> void
+    addToast: (message: string) => void
 }
- 
-    const SignInForm = ({toasts, addToast}: SignInProps) => {
-
+const SignInForm = ({ toasts, addToast }: SignInProps) => {
     const navigate = useNavigate();
     const {
         register,
@@ -31,21 +30,35 @@ interface SignInProps {
     });
 
     const onSubmit = (data: SignInData) => {
-
         localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
-
         navigate("/personal")
-  
     };
- 
     const handleNavigate = () => {
         navigate("/sign-up");
     };
-useEffect(()=> {
-    if (Object.keys(errors).length != 0) {
-    addToast("Пожалуйста, исправьте ошибки в форме.");
-    }
-}, [errors])
+    useEffect(() => {
+        if (Object.keys(errors).length != 0) {
+            addToast("Пожалуйста, исправьте ошибки в форме.");
+        }
+    }, [errors])
+    const handleClick = async (data: SignInData) => {
+        if (Object.keys(errors).length == 0) {
+            try {
+                const response = await AuthService.login({ email: data.email, password: data.password });
+                localStorage.setItem("accessToken", response.data.accessToken);
+                navigate("/personal");
+            } catch (error: any) {
+                console.error('Ошибка при регистрации:', error);
+                if (error.response) {
+                    console.error('Ответ ошибки:', error.response);
+                } else if (error.request) {
+                    console.error('Запрос был отправлен, но не получен ответ:', error.request);
+                } else {
+                    console.error('Ошибка при настройке запроса:', error.message);
+                }
+            }
+        }
+    };
     return (
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles.form__inner}>
@@ -72,7 +85,6 @@ useEffect(()=> {
                             <img className={styles.form__icon} src={Mail} alt="Mail Icon" />
                         </div>
                     </div>
-
                     <div className={styles.form__field}>
                         <p className={styles.form__error}>{errors.password?.message}</p>
                         <div className={styles.form__input__wrapper}>
@@ -94,7 +106,7 @@ useEffect(()=> {
                                 type="checkbox"
                                 className={styles.form__checkbox}
                                 id="agreeToTerms"
-                               
+
                             />
                             <p className={styles.form__text}>
                                 Запомнить меня
@@ -102,8 +114,8 @@ useEffect(()=> {
                         </div>
                     </div>
                 </div>
-                <button className={styles.form__submit} type="submit" 
-
+                <button className={styles.form__submit} type="submit"
+                    onClick={handleSubmit(handleClick)}
                 >Войти</button>
                 <div className={styles.form__or}>
                     <hr className={styles.form__line} />
@@ -111,7 +123,7 @@ useEffect(()=> {
                     <hr className={styles.form__line} />
                 </div>
                 <p className={styles.form__or__text} >Войти через социальные сети</p>
-   
+
 
                 <div className={styles.form__networks}>
                     <div className={styles.form__network}>
@@ -132,4 +144,3 @@ useEffect(()=> {
 };
 
 export default SignInForm;
- 

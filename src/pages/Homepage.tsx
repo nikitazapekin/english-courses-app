@@ -19,7 +19,7 @@ const Homepage = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const handleClick = async () => {
+  /*   const handleClick = async () => {
         try {
             const response = await AuthService.login("user@example.com", "password123");
             console.log('Ответ сервера:', response.data);
@@ -33,7 +33,7 @@ const Homepage = () => {
                 console.error('Ошибка при настройке запроса:', error.message);
             }
         }
-    };
+    }; */
     
     
     return (
@@ -50,9 +50,11 @@ const Homepage = () => {
                 <HomepageComments />
                 <NavigateBtn />
                 <HelpBtn />
+                {/*
                 <button onClick={handleClick}>
-ddd
+                ddd
                 </button>
+                */}
             </div>
             <Footer />
         </div>

@@ -25,9 +25,7 @@ const PersonalProfile = () => {
                 <div className={styles.personal__info}>
                     <div className={styles.personal__actions}>
                         <AvatarComponent />
-
-
-                        <div className={styles.personal__preview}>
+                  {/*      <div className={styles.personal__preview}>
                             <div className={styles.personal__balance}>
                                 <p className={styles.personal__balance__text}>
                                     Баланс:
@@ -43,7 +41,7 @@ const PersonalProfile = () => {
                                 Выйти
                             </button>
                         </div>
-
+*/}
 
 
                     </div>
@@ -56,4 +54,4 @@ const PersonalProfile = () => {
     );
 }
 
-export default PersonalProfile;
+export default PersonalProfile; 

@@ -3,16 +3,18 @@ import Discord from "../../../assets/networks/discord.png"
 import Vk from "../../../assets/networks/vk.png"
 import Google from "../../../assets/networks/google.png"
 import Belarus from "../../../assets/Countries/Belarus.png"
+import { useSelector } from "react-redux"
+import { PersonalSelector } from "../../../store/selectors/Personal.selector"
 const PersonalDescribtion = () => {
+    const user  =  useSelector(PersonalSelector)
     return (
         <div className={styles.describtion}>
             <h3 className={styles.describtion__title}>
-                Никита Запекин Андреевич
+              {user.username}
             </h3>
             <div className={styles.describtion__country}>
-
                 <p className={styles.describtion__country__text}>
-                    Минск, Беларусь
+                 {user.country}, {user.city}
                 </p>
                 <img src={Belarus} alt="Belarus" className={styles.describtion__country__image} />
             </div>
@@ -20,8 +22,7 @@ const PersonalDescribtion = () => {
                 +375297542229
             </p>
             <p className={styles.describtion__text}>
-                Ответственый и амбициозный. Считаю, что главный фактор успеха в чем-либо - это желание
-                достижения цели путем упорного труда и настойчивости.
+                {user.describtion ?  <>{user.describtion} </> : <>Добавьте описание...</>}
             </p>
             <p className={styles.describtion__subtitle}>
                 Привязать аккаунт к социальным сетям:
