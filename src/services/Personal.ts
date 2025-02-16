@@ -21,8 +21,26 @@ interface PersonalResponse {
         describtion: string
     },
 }
+
+interface EditProps {
+    data: {
+        email: string,
+        password: string, 
+        phone: string,
+        country: string,
+        city: string, 
+        name: string,
+        shortName: string,
+        describtion: string,
+         theme: string 
+    }
+}
 export default class PersonalService {
     static async GetUser(): Promise<AxiosResponse<PersonalResponse>> {
         return $api.get<PersonalResponse>('/personal/getUser');
     }
+    static async EditUser( {data}: EditProps ): Promise<AxiosResponse<PersonalResponse>> {
+        return $api.put<PersonalResponse>('/personal/editUser', data);
+    }
+
 }

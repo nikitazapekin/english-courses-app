@@ -57,17 +57,14 @@
 
     &__forms {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         grid-column-gap: 20px;
         grid-row-gap: 20px;
         width: 100%;
         justify-items: center;
         width: 100%;
-
         margin-top: 20px;
-
         @include smPc {
-
             grid-template-columns: repeat(2, 1fr);
         }
 
