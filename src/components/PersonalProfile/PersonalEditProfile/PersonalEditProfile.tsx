@@ -27,15 +27,23 @@ const PersonalEditProfile = () => {
         describtion: "",
         theme: ""
     });
-
-    const handleEdit = () => {
+/*     const handleEdit = async () => {
         try {
             PersonalService.EditUser({ data: data });
         } catch (error) {
             console.error("Ошибка при редактировании профиля", error);
         }
     };
-
+ */
+    const handleEdit = async () => {
+        try {
+            const response = await PersonalService.EditUser({ data });
+            console.log("Данные обновлены:", response.data);
+        } catch (error) {
+            console.error("Ошибка при редактировании профиля", error);
+        }
+    };
+    
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (name != "confirmPassword") {
