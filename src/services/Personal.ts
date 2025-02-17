@@ -35,6 +35,17 @@ interface EditProps {
          theme: string 
     }
 }
+
+interface EditAvatarProps {
+ 
+        avatar: string
+ 
+}
+interface  GetAvatarProps {
+ 
+   data: string
+
+}
 export default class PersonalService {
     static async GetUser(): Promise<AxiosResponse<PersonalResponse>> {
         return $api.get<PersonalResponse>('/personal/getUser');
@@ -42,5 +53,15 @@ export default class PersonalService {
     static async EditUser( {data}: EditProps ): Promise<AxiosResponse<PersonalResponse>> {
         return $api.put<PersonalResponse>('/personal/editUser', data);
     }
+
+    static async EditUserAvatar( {avatar}: EditAvatarProps ): Promise<AxiosResponse<PersonalResponse>> {
+        return $api.put<PersonalResponse>('/personal/editAvatar', {avatar: avatar});
+    }
+
+    static async GetAvatar(  ): Promise<AxiosResponse<any>> {
+        return  $api.get<any>('/personal/getAvatar');
+    }
+
+
 
 }

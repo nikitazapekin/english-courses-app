@@ -109,7 +109,7 @@ const CoursesSlider = () => {
 
               </div>
             ))}
-          </div>
+          </div> 
         </div>
         <div className={styles.slider__button} onClick={handleNext}>
           {">"}

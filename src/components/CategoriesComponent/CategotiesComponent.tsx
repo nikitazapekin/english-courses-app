@@ -6,9 +6,7 @@ import styles from "./CategoriesComponent.module.scss"
 
 const CategoriesComponent = () => {
    const [query, searchQuery] = useState("")
-   const handleSearch = () => {
 
-   }
    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     searchQuery(event.target.value);  
 };
