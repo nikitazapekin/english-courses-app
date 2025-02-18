@@ -3,7 +3,8 @@ import axios, { AxiosResponse } from 'axios';
 import { RegisterInterface } from "../components/SignUpForm/types";
 import { SignInData } from "../components/SignInForm/types";
 export interface SignInResponse {
-    accessToken: string
+    accessToken: string,
+    role: string
 }
 export default class AuthService {
 
@@ -11,7 +12,7 @@ export default class AuthService {
         return $api.post<any>('/user/login', { email, password })
     }
     static async registration(data: Omit<RegisterInterface, 'confirmPassword'>): Promise<AxiosResponse<any>> {
-        console.log("DATA, " , data)
+        console.log("DATA, ", data)
         return $api.post<any>('/user/register', data);
 
     }

@@ -14,3 +14,5 @@ export const  TUTOR_PAGE = "/tutor/:query"
 export const  HELP_PAGE = "/help"
 
 export const CHAT_PAGE = "/chat"
+
+export const  TUTOR_PERSONAL_PAGE = "/tutor/personal"

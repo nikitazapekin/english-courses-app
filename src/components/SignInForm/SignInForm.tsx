@@ -46,7 +46,12 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
             try {
                 const response = await AuthService.login({ email: data.email, password: data.password });
                 localStorage.setItem("accessToken", response.data.accessToken);
-                navigate("/personal");
+                if(response.data.role == "user") {
+
+                    navigate("/personal");
+                } else {
+                    navigate("/tutor/personal");
+                }
             } catch (error: any) {
                 console.error('Ошибка при регистрации:', error);
                 if (error.response) {
