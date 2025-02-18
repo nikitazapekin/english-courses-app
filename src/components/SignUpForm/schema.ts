@@ -70,5 +70,11 @@ confirmPassword: yup
     .boolean()
     .required("Consent required")
     .oneOf([true], "Требуется согласие"),
+   
+   
+   // isTutor: yup
+   isTutor: yup
+   .boolean()
+   .required("Выберите, являетесь ли вы учителем") 
 });
  

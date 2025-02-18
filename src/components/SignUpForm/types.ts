@@ -7,6 +7,7 @@ export interface RegisterInterface {
 //    gender: string;
     country: string;
     agreeToTerms: boolean;
+    isTutor: string
   }
   
  

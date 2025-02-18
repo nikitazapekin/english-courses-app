@@ -16,8 +16,6 @@ const AvatarComponent = () => {
         try {
             const response = await PersonalService.GetAvatar();
             console.log("Avatar response:", response);
-    
-        
             const avatarUrl = response.data.avatar;
             setAvatar(avatarUrl);   
         } catch (error) {
@@ -39,7 +37,6 @@ const AvatarComponent = () => {
                     handleSetAvatar(fileUrl);   
                 }
             };
-
             reader.readAsDataURL(file);
         }
     };

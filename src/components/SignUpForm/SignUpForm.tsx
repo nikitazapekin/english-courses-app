@@ -37,7 +37,7 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         watch,
         formState: { errors },
     } = useForm<RegisterInterface>({
-        resolver: yupResolver(schema),
+        resolver: yupResolver(schema) as any,
         context: { countries },
     });
     const submitForm = (data: RegisterInterface) => {
@@ -218,12 +218,36 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                             </p>
                         </div>
                     </div>
+
+
+
+
+                    <div className={styles.form__field}>
+                       
+                        <div
+                            className={`${styles.form__input__wrapper} ${styles.form__confirm}`}>
+
+                            <input
+                                {...register("isTutor")}
+                                type="checkbox"
+                                className={styles.form__checkbox}
+                                id="agreeToTerms"
+                                required
+                            />
+                            <p className={styles.form__text}>
+                               Вы учитель?
+                            </p>
+                        </div>
+                    </div>
+
+
+
                 </div>
                 <hr className={styles.form__line} />
                 <button className={styles.form__submit}
                     type="submit"
                     onClick={handleSubmit(handleClick)}
-                  //  onClick={handleClick}
+              
                 >Зарегистрироваться</button>
                 <div className={styles.form__or}>
                     <hr className={styles.form__line} />
