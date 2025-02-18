@@ -6,11 +6,14 @@ import PersonalSlice from "./slices/PersonalSlice/PersonalSlice"
 import HomepageSlice from "./slices/Homepage.slice"
 import FormSlice from "./slices/Forms.slice"
 import ReplyToSlice from "./slices/ReplyTo.slice"
+import TutorSlice from "./slices/TutorSlice/TutorSlice"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
     FormSlice: FormSlice,
     ReplyToSlice: ReplyToSlice,
-    PersonalSlice: PersonalSlice
+    PersonalSlice: PersonalSlice,
+    TutorSlice: TutorSlice
+
 });
 export const store = configureStore({
     reducer: rootReducer,

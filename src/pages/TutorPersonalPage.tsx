@@ -9,11 +9,8 @@ import HelpBtn from "../components/HelpBtn/HelpBtn";
 import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
 import { useDispatch } from "react-redux";
 import TutorService from "../services/Tutor";
+import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 const TutorPersonalPage = () => {
-
-
-   
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -23,7 +20,8 @@ const TutorPersonalPage = () => {
             try {
                 const response = await TutorService.GetTutor()
                 console.log("RESP", JSON.stringify(response))
-               // dispatch(setPerson( response.data.user))
+                dispatch(setTutor(response.data.user))
+            
             } catch (err) {
                 navigate("/sign-in")
                 console.log("Something went wrong", err);

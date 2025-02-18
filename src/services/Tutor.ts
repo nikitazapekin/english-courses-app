@@ -8,7 +8,7 @@ interface GetTutorProps {
     message: string,
     user: {
         id:number
-        id_author: null,
+        id_author: null | number,
         username: string,
         email:string,
        
