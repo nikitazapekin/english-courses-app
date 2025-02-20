@@ -1,6 +1,6 @@
 
 import { Component } from "react";
-import { CARD_PAGE, CATALOG, CHAT_PAGE, HELP_PAGE, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TUTOR_PAGE, TUTOR_PERSONAL_PAGE } from "./consts";
+import { CARD_PAGE, CATALOG, CHAT_PAGE, HELP_PAGE, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TUTOR_CREATE_COURSES, TUTOR_PAGE, TUTOR_PERSONAL_COURSES, TUTOR_PERSONAL_PAGE } from "./consts";
 import Homepage from "../pages/Homepage";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
@@ -18,6 +18,8 @@ import TutorPage from "../pages/TutorPage";
 import HelpPage from "../pages/HelpPage";
 import ChatPage from "../pages/ChatPage";
 import TutorPersonalPage from "../pages/TutorPersonalPage";
+import TutorPersonalCourses from "../pages/TutorPersonalCourses";
+import TutorCreateCourse from "../pages/TutorCreateCourse";
 
 export const publicRoutes = [
   {
@@ -104,6 +106,21 @@ export const publicRoutes = [
     Component: TutorPersonalPage
 
   },
+
+
+  {
+    path: TUTOR_PERSONAL_COURSES,
+    Component: TutorPersonalCourses
+
+  },
+
+
+  {
+    path: TUTOR_CREATE_COURSES,
+    Component: TutorCreateCourse
+
+  },
+
 
   {
     path: "*",

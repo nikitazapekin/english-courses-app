@@ -17,10 +17,8 @@ export default class AuthService {
 
     }
     static async logout(): Promise<void> {
-        return $api.post('/logout')
+        return $api.get('/user/logout')
     }
-    static async test(email: string, password: string): Promise<AxiosResponse<any>> {
-        return axios.post<any>('http://localhost:5000/api/user/login', { email, password })
-    }
+  
 
 }

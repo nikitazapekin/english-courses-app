@@ -61,7 +61,7 @@ export default class PersonalService {
     static async GetAvatar(  ): Promise<AxiosResponse<any>> {
         return  $api.get<any>('/personal/getAvatar');
     }
-
+ 
 
 
 }

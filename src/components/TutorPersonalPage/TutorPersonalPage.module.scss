@@ -1,0 +1,16 @@
+.tutor {
+    background-color: #f8f9fa;
+    height: auto;
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    
+
+    &__container {
+        max-width: 1430px;
+        width: 100%;
+     //   background-color: red;
+    }
+}

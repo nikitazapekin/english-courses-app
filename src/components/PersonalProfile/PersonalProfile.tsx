@@ -6,6 +6,7 @@ import PersonalCourses from "./PersonalCourses/PersonalCourses";
 import PaymentModal from "../PaymentModal/PaymentModal";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AuthService from "../../services/Auth";
 const PersonalProfile = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
@@ -13,9 +14,14 @@ const PersonalProfile = () => {
         setIsOpenModal(prev => !prev)
     }
     const navigate = useNavigate()
-    const handleClick = () => {
-        localStorage.removeItem("isAuthorized")
-        navigate("/sign-up")
+   
+    const handleLogout = async () => {
+        try {
+            const response = AuthService.logout()
+            navigate("/sign-in")
+        } catch {
+
+        }
     }
     return (
         <section className={styles.personal}>
@@ -25,23 +31,12 @@ const PersonalProfile = () => {
                 <div className={styles.personal__info}>
                     <div className={styles.personal__actions}>
                         <AvatarComponent />
-                  {/*      <div className={styles.personal__preview}>
-                            <div className={styles.personal__balance}>
-                                <p className={styles.personal__balance__text}>
-                                    Баланс:
-                                </p>
-                                <p className={styles.personal__balance__number}>
-                                    200$
-                                </p>
-                            </div>
-                            <button className={`${styles.personal__btn} ${styles.personal__btn__purple}`} onClick={handleOpenModal}>
-                                Пополнить
-                            </button>
-                            <button className={`${styles.personal__btn} ${styles.personal__btn__red}`} onClick={handleClick}>
+                    <div className={styles.personal__preview}>
+              
+                            <button className={`${styles.personal__btn} ${styles.personal__btn__red}`} onClick={handleLogout}>
                                 Выйти
                             </button>
                         </div>
-*/}
 
 
                     </div>
