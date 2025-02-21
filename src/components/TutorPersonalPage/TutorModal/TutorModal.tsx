@@ -1,4 +1,186 @@
+import { useState, ChangeEvent } from "react";
 import { tutorLesson } from "./Consts";
+import styles from "./TutorModal.module.scss";
+
+interface FormData {
+    title: string;
+    describtion: string;
+    video: File[];
+    materials: File[];
+}
+
+const TutorModal = () => {
+    const [formData, setFormData] = useState<FormData>({
+        title: "",
+        describtion: "",
+        video: [],
+        materials: [],
+    });
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const { name, files } = e.target;
+        if (files) {
+            setFormData((prev) => ({
+                ...prev,
+                [name]: [...(prev[name as keyof FormData] as File[]), ...Array.from(files)],
+            }));
+        }
+    };
+
+    const handleRemoveFile = (name: "video" | "materials", index: number) => {
+        setFormData((prev) => ({
+            ...prev,
+            [name]: (prev[name] as File[]).filter((_, i) => i !== index),
+        }));
+    };
+
+    return (
+        <div className={styles.modal}>
+            <div className={styles.modal__content}>
+                <h3 className={styles.modal__title}>Добавить урок</h3>
+                <form className={styles.modal__fields}>
+                    {tutorLesson.map((item) => (
+                        <div className={styles.modal__field} key={item.id}>
+                            <label className={styles.modal__field__title}>
+                                {item.title}
+                            </label>
+                            {item.type === "video" && (
+                                <>
+                                    <input
+                                        className={`${styles.modal__input} ${styles.modal__file}`}
+                                        placeholder={item.placeholder}
+                                        name={item.name}
+                                        type="file"
+                                        accept="video/*"
+                                        multiple
+                                        onChange={handleFileChange}
+                                    />
+                                    <div className={styles.fileList}>
+                                        {(formData.video as File[]).map((file, index) => (
+                                            <div key={index} className={styles.fileItem}>
+                                                {file.name}
+                                                <button
+                                                    type="button"
+                                                    className={styles.removeBtn}
+                                                    onClick={() => handleRemoveFile("video", index)}
+                                                >
+                                                    ❌
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+                            {item.type === "file" && (
+                                <>
+                                    <input
+                                        className={`${styles.modal__input} ${styles.modal__file}`}
+                                        placeholder={item.placeholder}
+                                        name={item.name}
+                                        type="file"
+                                        accept=".txt, .docx, .csv, .pptx"
+                                        multiple
+                                        onChange={handleFileChange}
+                                    />
+                                    <div className={styles.fileList}>
+                                        {(formData.materials as File[]).map((file, index) => (
+                                            <div key={index} className={styles.fileItem}>
+                                                {file.name}
+                                                <button
+                                                    type="button"
+                                                    className={styles.removeBtn}
+                                                    onClick={() => handleRemoveFile("materials", index)}
+                                                >
+                                                    ❌
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </>
+                            )}
+                            {item.type === "input" && (
+                                <input
+                                    className={styles.modal__input}
+                                    placeholder={item.placeholder}
+                                    name={item.name}
+                                    value={formData[item.name as keyof FormData] as string}
+                                    onChange={handleChange}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </form>
+
+                <button className={styles.modal__btn}>Добавить урок</button>
+            </div>
+            <div className={styles.modal__overlay} />
+        </div>
+    );
+};
+
+export default TutorModal;
+
+
+/* import { tutorLesson } from "./Consts";
+import styles from "./TutorModal.module.scss"
+const TutorModal = () => {
+    return (
+        <div className={styles.modal}>
+            <div className={styles.modal__content}>
+                <h3 className={styles.modal__title}>Добавить урок</h3>
+                <form className={styles.modal__fields}>
+                    {tutorLesson.map((item) => (
+                        <div className={styles.modal__field} key={item.id}>
+                            <label className={styles.modal__field__title}>
+                                {item.title}
+                            </label>
+                            {item.type === "video" && (
+                                <input
+                                    className={`${styles.modal__input} ${styles.modal__file}`}
+                                    placeholder={item.placeholder}
+                                    name={item.name}
+                                    type="file"
+                                    accept="video/*"
+                                />
+                            )}
+                            {item.type === "file" && (
+                                <input
+                                    className={`${styles.modal__input} ${styles.modal__file}`}
+                                    placeholder={item.placeholder}
+                                    name={item.name}
+                                    type="file"
+                                    accept=".txt, .docx, .csv, .pptx"
+                                />
+                            )}
+                            {item.type === "input" && (
+                                <input
+                                    className={styles.modal__input}
+                                    placeholder={item.placeholder}
+                                    name={item.name}
+                                />
+                            )}
+                        </div>
+                    ))}
+                </form>
+
+                <button className={styles.modal__btn}>Добавить урок</button>
+            </div>
+            <div className={styles.modal__overlay} />
+        </div>
+    );
+};
+
+export default TutorModal;
+ */
+/* import { tutorLesson } from "./Consts";
 import styles from "./TutorModal.module.scss"
 
 const TutorModal = () => {
@@ -43,4 +225,4 @@ const TutorModal = () => {
     </div>);
 }
 
-export default TutorModal;
+export default TutorModal; */
