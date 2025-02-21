@@ -22,7 +22,8 @@ interface CreateFormSliceTypes {
     loading: boolean,
     error: null | string,
     isOpenModal: boolean,
-    lessons: Lessons[]
+    lessons: Lessons[],
+    openModalType: string
 }
 
 
@@ -37,7 +38,8 @@ const initialState: CreateFormSliceTypes = {
     loading: false,
     isOpenModal: false,
     error: null,
-    lessons: []
+    lessons: [],
+    openModalType: ""
 };
 const CreateFormSlice = createSlice({
     name: 'list',
@@ -48,9 +50,10 @@ const CreateFormSlice = createSlice({
             state.form = action.payload
             console.log(state.form)
         },
-        setOpenModal(state) {
+        setOpenModal(state, action: PayloadAction<{ type: string }>) {
             state.isOpenModal = !state.isOpenModal
             console.log("STATE", state.isOpenModal)
+            state.openModalType = action.payload.type
         },
         setLessons(state, action: PayloadAction<Lessons>) {
             state.lessons.push(action.payload)

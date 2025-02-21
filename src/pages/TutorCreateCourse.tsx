@@ -15,7 +15,7 @@ const TutorCreateCourse = () => {
 
     }, []);
 
-    const isOpenModal = useSelector(isOpenModalCreateLessonSelector)
+    const {isOpenModal} = useSelector(isOpenModalCreateLessonSelector)
 
 
 

@@ -26,8 +26,8 @@ const TutorCreateCourseComponent: React.FC = () => {
         dispatch(setForm(formState ))
     }, [formState])
 
-    const handleOpenModal = ()=> {
-        dispatch(setOpenModal())
+    const handleOpenModal = (type: string)=> {
+        dispatch(setOpenModal({type: type}))
     }
     return (
         <section className={styles.panel}>
@@ -68,11 +68,11 @@ const TutorCreateCourseComponent: React.FC = () => {
                             )}
                         </div>
                     ))}
-                    <button className={styles.panel__btn} type="button" onClick={handleOpenModal}>
+                    <button className={styles.panel__btn} type="button" onClick={()=> handleOpenModal("lesson")}>
                         Добавить урок
                     </button>
                     <button className={`${styles.panel__btn} ${styles.panel__btn__test}`} type="button"
-                    onClick={handleOpenModal}
+                    onClick={()=> handleOpenModal("test")}
                     >
                         Добавить тест
                     </button>

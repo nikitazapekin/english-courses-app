@@ -56,7 +56,7 @@ const TutorModalLessons = () => {
     }
 
     const handleClose = ()=> {
-        dispatch(setOpenModal())
+        dispatch(setOpenModal({type: ""}))
     }
 
 
