@@ -119,7 +119,19 @@ const CoursesList = ({ query }: CoursesListProps) => {
           
           
           
-          
+            <div className={styles.courses__header}>
+                    <h2 className={styles.courses__title}>Новинки</h2>
+                    <select
+                        className={styles.courses__select}
+                        value={sortOption}
+                     //   onChange={handleSortChange}
+                    >
+                        <option value="price">Сортировать по стоимости</option>
+                        <option value="rating">Сортировать по рейтингу</option>
+                        <option value="releaseDate">Сортировать по выпуску</option>
+                    </select>
+                </div>
+
           
             <div className={styles.courses__cards}>
                     {cards.map((item, index) => (
@@ -129,7 +141,7 @@ const CoursesList = ({ query }: CoursesListProps) => {
                                     <img className={styles.card__image} src={item.course_logo} alt={item.title} />
                              
                                 <h3 className={styles.card__title}>{item.title}</h3>
-                               {item.course_logo}
+                           
                                 <p className={styles.card__rating}>Автор: {item.author}</p>
                                 <p className={styles.card__releaseDate}>Дата выпуска: {item.release_date}</p>
                             </Link>
