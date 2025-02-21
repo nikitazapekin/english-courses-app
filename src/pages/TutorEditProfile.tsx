@@ -36,8 +36,14 @@ const TutorEditProfile = () => {
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>
-             <TutorPersonalPageComponent />
+                <div className={styles.content__inner}>
 
+             <TutorPersonalPageComponent />
+          {/*   <p>
+
+ jjvs fav egea
+             </p> */}
+                </div>
             </div>
 
             <Footer />

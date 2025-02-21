@@ -15,8 +15,7 @@ interface TestingAnswerProps {
     length: number,
     currentQuestionNumber: number
 }
-//handleDisplayResults={handleDisplayResults}
-//length={results.length}
+
 
 const TestingAnswer = ({
     item,

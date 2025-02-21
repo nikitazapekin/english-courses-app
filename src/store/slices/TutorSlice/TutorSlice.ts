@@ -19,7 +19,8 @@ interface TutorSliceTypes {
     message: string
     user: Tutor,
     loading: boolean,
-    error: null | string
+    error: null | string,
+    tutorPage: string,
 }
 const initialState: TutorSliceTypes = {
     message: "",
@@ -37,7 +38,8 @@ const initialState: TutorSliceTypes = {
         role: "",
     },
     loading: false,
-    error: null
+    error: null,
+    tutorPage: ""
 };
 const TutorSlice = createSlice({
     name: 'list',
@@ -47,6 +49,9 @@ const TutorSlice = createSlice({
         setTutor(state, action: PayloadAction<Tutor>) {
             state.user = action.payload
  
+        },
+        setTutorPage(state, action: PayloadAction<{ page: string }>) {
+            state.tutorPage = action.payload.page
         }
 
     },
@@ -55,7 +60,7 @@ const TutorSlice = createSlice({
 });
 
 export const {  
-
+setTutorPage,
     setTutor
 } = TutorSlice.actions;
 export default TutorSlice.reducer;

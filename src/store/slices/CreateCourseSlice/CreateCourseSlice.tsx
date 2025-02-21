@@ -34,7 +34,8 @@ interface CreateFormSliceTypes {
     isOpenModal: boolean,
     lessons: Lessons[],
     openModalType: string,
-    tests: FormDataTests[]
+    tests: FormDataTests[],
+    tutorPage: string,
 }
 
 
@@ -51,7 +52,8 @@ const initialState: CreateFormSliceTypes = {
     error: null,
     lessons: [],
     openModalType: "",
-    tests: []
+    tests: [],
+    tutorPage: ""
 };
 const CreateFormSlice = createSlice({
     name: 'list',
@@ -73,7 +75,8 @@ const CreateFormSlice = createSlice({
         },
         setTests(state, action: PayloadAction<FormDataTests>) {
             state.tests.push(action.payload)
-        }
+        },
+      
     },
 });
 
@@ -81,7 +84,8 @@ export const {
     setForm,
     setOpenModal,
     setLessons,
-    setTests
+    setTests,
+   // setTutorPage
     // setPerson
 } = CreateFormSlice.actions;
 export default CreateFormSlice.reducer;

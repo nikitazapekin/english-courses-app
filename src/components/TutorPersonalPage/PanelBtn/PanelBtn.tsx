@@ -1,19 +1,24 @@
 import { useNavigate } from "react-router-dom"
 import styles from "./PanelBtn.module.scss"
-import { link } from "fs"
+import { useDispatch } from "react-redux"
+import { setTutorPage } from "../../../store/slices/TutorSlice/TutorSlice"
+ 
 interface PanelBtnProps {
     item: {
 
         id: number,
         text: string,
         icon: string,
-        link: string
+        link: string,
+        page: string
     }
 }
 const PanelBtn = ({ item }: PanelBtnProps) => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const handleNavigate = () => {
-navigate(`/tutor/personal${item.link}`)
+        navigate(`/tutor/personal${item.link}`)
+        dispatch(setTutorPage({page: item.page}))
     }
     return (
         <div className={styles.panel} onClick={handleNavigate}>

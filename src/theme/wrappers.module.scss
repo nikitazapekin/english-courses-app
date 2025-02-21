@@ -8,6 +8,11 @@
 }
 .content {
   flex: 1 1 auto;
+  &__inner {
+    width: 100%;
+    height: auto;
+    display: flex;
+  }
 }
 .darken {
   position: fixed;  

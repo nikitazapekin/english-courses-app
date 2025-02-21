@@ -4,22 +4,38 @@ import styles from "./TutorPersonalPage.module.scss"
 import TutorPamel from "./TutorPanel/TutorPanel";
 import PanelBtns from "./PanelBtns/PanelBtns";
 import { useSelector } from "react-redux";
-import { TutorSelector } from "../../store/selectors/Tutor.selector";
+import { TutorPageSelector, TutorSelector } from "../../store/selectors/Tutor.selector";
+import { useLocation } from "react-router-dom";
+import EditProfile from "./EditProfile/EditProfile";
 
 
 const TutorPersonalPageComponent: React.FC = () => {
-const tutor = useSelector(TutorSelector)
+    const tutor = useSelector(TutorSelector)
+    const tutorPage = useSelector(TutorPageSelector)
+
+    const location = useLocation();
+    const lastPathSegment = location.pathname.split("/").pop();
+    console.log(lastPathSegment);
 
     return (
         <section
 
             className={styles.tutor}>
             <div className={styles.tutor__container}>
-                <TutorPamel 
-                username={tutor.user.username}
-                email={tutor.user.email}
+
+                <TutorPamel
+                    username={tutor.user.username}
+                    email={tutor.user.email}
                 />
-             
+
+                {
+                  lastPathSegment == "edit" && (
+                        <div>
+                           <EditProfile />
+                        </div>
+                    )
+                }
+
             </div>
         </section>
     );

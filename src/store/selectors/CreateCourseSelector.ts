@@ -10,3 +10,4 @@ export const isOpenModalCreateLessonSelector = (state: RootState) => {
     return {isOpenModal: state.CreateFormSlice.isOpenModal, type: state.CreateFormSlice.openModalType} 
      
 };
+ 
