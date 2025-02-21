@@ -1,0 +1,11 @@
+@import "../../../theme/theme";
+
+.edit {
+    &__title {
+        font-weight: 700;
+        font-size: 24px;
+        text-align: center;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+    }
+}
