@@ -5,7 +5,7 @@ import styles from "../theme/wrappers.module.scss"
 import TutorCreateCourseComponent from "../components/TutorPersonalPage/TurorCreateCourse/TutorCreateCourse";
 import TutorModal from "../components/TutorPersonalPage/TutorModal/TutorModal";
 import { useSelector } from "react-redux";
-import { CreateCourseSelector } from "../store/selectors/CreateCourseSelector";
+import { CreateCourseSelector, isOpenModalCreateLessonSelector } from "../store/selectors/CreateCourseSelector";
 const TutorCreateCourse = () => {
 
 
@@ -15,7 +15,7 @@ const TutorCreateCourse = () => {
 
     }, []);
 
-    const isOpenModal = useSelector(CreateCourseSelector)
+    const isOpenModal = useSelector(isOpenModalCreateLessonSelector)
 
 
 

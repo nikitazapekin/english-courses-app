@@ -1,6 +1,8 @@
-import { useState, ChangeEvent } from "react";
+import { useState, ChangeEvent, useEffect } from "react";
 import { tutorLesson } from "./Consts";
 import styles from "./TutorModal.module.scss";
+import { useDispatch } from "react-redux";
+import { setLessons, setOpenModal } from "../../../store/slices/CreateCourseSlice/CreateCourseSlice";
 
 interface FormData {
     title: string;
@@ -16,7 +18,7 @@ const TutorModal = () => {
         video: [],
         materials: [],
     });
-
+    const dispatch = useDispatch()
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -41,7 +43,16 @@ const TutorModal = () => {
             [name]: (prev[name] as File[]).filter((_, i) => i !== index),
         }));
     };
+    
+    const handleSubmit = () => {
+        dispatch(setLessons(formData))
+        handleClose()
 
+    }
+
+    const handleClose = ()=> {
+        dispatch(setOpenModal())
+    }
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -119,110 +130,16 @@ const TutorModal = () => {
                     ))}
                 </form>
 
-                <button className={styles.modal__btn}>Добавить урок</button>
+                <button className={styles.modal__btn}
+                    onClick={handleSubmit}
+                >Добавить урок</button>
             </div>
-            <div className={styles.modal__overlay} />
+            <div className={styles.modal__overlay} 
+            onClick={handleClose}
+            />
         </div>
     );
 };
 
 export default TutorModal;
 
-
-/* import { tutorLesson } from "./Consts";
-import styles from "./TutorModal.module.scss"
-const TutorModal = () => {
-    return (
-        <div className={styles.modal}>
-            <div className={styles.modal__content}>
-                <h3 className={styles.modal__title}>Добавить урок</h3>
-                <form className={styles.modal__fields}>
-                    {tutorLesson.map((item) => (
-                        <div className={styles.modal__field} key={item.id}>
-                            <label className={styles.modal__field__title}>
-                                {item.title}
-                            </label>
-                            {item.type === "video" && (
-                                <input
-                                    className={`${styles.modal__input} ${styles.modal__file}`}
-                                    placeholder={item.placeholder}
-                                    name={item.name}
-                                    type="file"
-                                    accept="video/*"
-                                />
-                            )}
-                            {item.type === "file" && (
-                                <input
-                                    className={`${styles.modal__input} ${styles.modal__file}`}
-                                    placeholder={item.placeholder}
-                                    name={item.name}
-                                    type="file"
-                                    accept=".txt, .docx, .csv, .pptx"
-                                />
-                            )}
-                            {item.type === "input" && (
-                                <input
-                                    className={styles.modal__input}
-                                    placeholder={item.placeholder}
-                                    name={item.name}
-                                />
-                            )}
-                        </div>
-                    ))}
-                </form>
-
-                <button className={styles.modal__btn}>Добавить урок</button>
-            </div>
-            <div className={styles.modal__overlay} />
-        </div>
-    );
-};
-
-export default TutorModal;
- */
-/* import { tutorLesson } from "./Consts";
-import styles from "./TutorModal.module.scss"
-
-const TutorModal = () => {
-    return (<div className={styles.modal}>
-
-        <div className={styles.modal__content}>
-            <h3 className={styles.modal__title}>
-                Добавить урок
-            </h3>
-            <form className={styles.modal__fields}>
-                {tutorLesson.map(item => (
-                    <div className={styles.modal__field}
-                        key={item.id}
-                    >
-                        <label className={styles.modal__field__title}>
-                            {item.title}
-                        </label>
-                        {item.type == "video" || item.type == "file" && (
-                            <input
-                                className={`${styles.modal__input} ${styles.modal__file}`}
-                                placeholder={item.placeholder}
-                                name={item.name}
-                                type=""
-                            />
-                        )}
-                        {item.type == "input" && (
-                            <input
-                                className={styles.modal__input}
-                                placeholder={item.placeholder}
-                                name={item.name}
-                            />
-                        )}
-                    </div>
-                ))}
-            </form>
-
-            <button className={styles.modal__btn}>
-                Добавить урок
-            </button>
-        </div>
-        <div className={styles.modal__overlay} />
-    </div>);
-}
-
-export default TutorModal; */

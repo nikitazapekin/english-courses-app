@@ -3,7 +3,12 @@ import {
     PayloadAction
 } from '@reduxjs/toolkit';
 
-
+interface Lessons {
+    title: string;
+    describtion: string;
+    video: File[];
+    materials: File[];
+}
 interface FormProps {
     name: string,
     describtion: string,
@@ -16,7 +21,8 @@ interface CreateFormSliceTypes {
     form: FormProps
     loading: boolean,
     error: null | string,
-    isOpenModal: boolean
+    isOpenModal: boolean,
+    lessons: Lessons[]
 }
 
 
@@ -30,7 +36,8 @@ const initialState: CreateFormSliceTypes = {
     },
     loading: false,
     isOpenModal: false,
-    error: null
+    error: null,
+    lessons: []
 };
 const CreateFormSlice = createSlice({
     name: 'list',
@@ -43,13 +50,19 @@ const CreateFormSlice = createSlice({
         },
         setOpenModal(state) {
             state.isOpenModal = !state.isOpenModal
+            console.log("STATE", state.isOpenModal)
+        },
+        setLessons(state, action: PayloadAction<Lessons>) {
+            state.lessons.push(action.payload)
+            console.log("LES", JSON.stringify(state.lessons))
         }
     },
 });
 
 export const {
     setForm,
-    setOpenModal
+    setOpenModal,
+    setLessons
     // setPerson
 } = CreateFormSlice.actions;
 export default CreateFormSlice.reducer;
