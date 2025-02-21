@@ -9,11 +9,11 @@ interface FormState {
     name: string,
     describtion: string,
     for: string,
-    logo: string  
+    logo: string
 }
 
 const TutorCreateCourseComponent: React.FC = () => {
-    const [formState, setFormState] = useState<FormState>({name: "", describtion: "", for:"", logo: ""});
+    const [formState, setFormState] = useState<FormState>({ name: "", describtion: "", for: "", logo: "" });
     const dispatch = useDispatch()
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, files } = e.target;
@@ -23,12 +23,17 @@ const TutorCreateCourseComponent: React.FC = () => {
         }));
     };
     useEffect(() => {
-        dispatch(setForm(formState ))
+        dispatch(setForm(formState))
     }, [formState])
 
-    const handleOpenModal = (type: string)=> {
-        dispatch(setOpenModal({type: type}))
+    const handleOpenModal = (type: string) => {
+        dispatch(setOpenModal({ type: type }))
     }
+
+    const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault(); 
+    };
+    
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>
@@ -36,7 +41,7 @@ const TutorCreateCourseComponent: React.FC = () => {
                     <h1 className={styles.panel__header__title}>
                         Создайте свой курс
                     </h1>
-                  
+
                 </div>
                 <form className={styles.panel__fields}>
                     {dataPreview.map(item => (
@@ -68,15 +73,17 @@ const TutorCreateCourseComponent: React.FC = () => {
                             )}
                         </div>
                     ))}
-                    <button className={styles.panel__btn} type="button" onClick={()=> handleOpenModal("lesson")}>
+                    <button className={styles.panel__btn} type="button" onClick={() => handleOpenModal("lesson")}>
                         Добавить урок
                     </button>
                     <button className={`${styles.panel__btn} ${styles.panel__btn__test}`} type="button"
-                    onClick={()=> handleOpenModal("test")}
+                        onClick={() => handleOpenModal("test")}
                     >
                         Добавить тест
                     </button>
-                    <button className={styles.panel__btn} type="submit">
+                    <button className={styles.panel__btn} type="submit"
+                        onClick={ handleSubmit}
+                    >
                         Сохранить курс
                     </button>
                 </form>
