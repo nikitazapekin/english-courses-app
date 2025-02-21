@@ -1,26 +1,179 @@
-import styles from "./TutorModalTests.module.scss"
+import styles from "./TutorModalTests.module.scss";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { setLessons, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
+import { modalTest } from "./Consts";
+
+interface FormData {
+    title: string;
+    answers: string[];
+    answer: string;
+    url: File | null;
+}
+
+const TutorModalTests = () => {
+    const [formData, setFormData] = useState<FormData>({
+        title: "",
+        answer: "",
+        answers: [],
+        url: null
+    });
+
+    const dispatch = useDispatch();
+
+    // Обработка текстовых полей
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    // Обработка загрузки файла (изображение)
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { files } = e.target;
+        if (files && files.length > 0) {
+            setFormData((prev) => ({
+                ...prev,
+                url: files[0],
+            }));
+        }
+    };
+
+    // Добавление нового варианта ответа
+    const handleAddAnswer = () => {
+        setFormData((prev) => ({
+            ...prev,
+            answers: [...prev.answers, ""],
+        }));
+    };
+
+    // Обновление конкретного ответа
+    const handleAnswerChange = (index: number, value: string) => {
+        setFormData((prev) => {
+            const newAnswers = [...prev.answers];
+            newAnswers[index] = value;
+            return { ...prev, answers: newAnswers };
+        });
+    };
+
+    // Удаление варианта ответа
+    const handleRemoveAnswer = (index: number) => {
+        setFormData((prev) => ({
+            ...prev,
+            answers: prev.answers.filter((_, i) => i !== index),
+        }));
+    };
+
+    const handleSubmit = () => {
+       // dispatch(setLessons(formData)); // Отправляем в Redux
+        handleClose();
+    };
+
+    const handleClose = () => {
+        dispatch(setOpenModal({ type: "" }));
+    };
+
+    return (
+        <div className={styles.modal__content}>
+            <h3 className={styles.modal__title}>Добавить тест</h3>
+            <form className={styles.modal__fields}>
+                {modalTest.map((item) => (
+                    <div className={styles.modal__field} key={item.id}>
+                        <label className={styles.modal__field__title}>{item.title}</label>
+
+                        {item.type === "input" && (
+                            <input
+                                className={styles.modal__input}
+                                placeholder={item.placeholder}
+                                name={item.name}
+                                value={formData[item.name as keyof FormData] as string}
+                                onChange={handleChange}
+                            />
+                        )}
+
+                        {item.type === "array" && (
+                            <div className={styles.answersContainer}>
+                                {formData.answers.map((answer, index) => (
+                                    <div key={index} className={styles.answerItem}>
+                                        <input
+                                            className={styles.modal__input}
+                                            placeholder="Введите вариант ответа"
+                                            value={answer}
+                                            onChange={(e) => handleAnswerChange(index, e.target.value)}
+                                        />
+                                        <button
+                                            type="button"
+                                            className={styles.removeBtn}
+                                            onClick={() => handleRemoveAnswer(index)}
+                                        >
+                                            ❌
+                                        </button>
+                                    </div>
+                                ))}
+                                <button type="button" className={styles.addAnswerBtn} onClick={handleAddAnswer}>
+                                    ➕ Добавить ответ
+                                </button>
+                            </div>
+                        )}
+
+                        {item.type === "image" && (
+                            <>
+                                <input
+                                    className={`${styles.modal__input} ${styles.modal__file}`}
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                />
+                                {formData.url && (
+                                    <div className={styles.imagePreview}>
+                                        <span>{formData.url.name}</span>
+                                        <button
+                                            type="button"
+                                            className={styles.removeBtn}
+                                            onClick={() => setFormData((prev) => ({ ...prev, url: null }))}
+                                        >
+                                            ❌
+                                        </button>
+                                    </div>
+                                )}
+                            </>
+                        )}
+                    </div>
+                ))}
+            </form>
+
+            <button className={styles.modal__btn} onClick={handleSubmit}>
+                Добавить тест
+            </button>
+        </div>
+    );
+};
+
+export default TutorModalTests;
+
+/* import styles from "./TutorModalTests.module.scss"
 import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import React from "react";
 import { setLessons, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
-import { tutorLesson } from "../Consts";
- 
+import { modalTest } from "./Consts";
+
 interface FormData {
     title: string;
-    describtion: string;
-    video: File[];
-    materials: File[];
+    answers: String[],
+    answer: string,
+    url: string,
+    
 }
 
 const TutorModalTests = () => {
-
-    
-
     const [formData, setFormData] = useState<FormData>({
         title: "",
-        describtion: "",
-        video: [],
-        materials: [],
+      answer: "", 
+      answers: [], 
+      url: ""
     });
     const dispatch = useDispatch()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,24 +200,29 @@ const TutorModalTests = () => {
             [name]: (prev[name] as File[]).filter((_, i) => i !== index),
         }));
     };
-    
+
     const handleSubmit = () => {
-        dispatch(setLessons(formData))
+    
         handleClose()
 
     }
 
-    const handleClose = ()=> {
-        dispatch(setOpenModal({type: ""}))
+    const handleClose = () => {
+        dispatch(setOpenModal({ type: "" }))
     }
 
 
 
-    return ( 
-<div className={styles.modal__content}>
-           
-           <h3 className={styles.modal__title}>Добавить тест</h3>
-             <form className={styles.modal__fields}>
+    return (
+        <div className={styles.modal__content}>
+
+            <h3 className={styles.modal__title}>Добавить тест</h3>
+            <form className={styles.modal__fields}>
+
+
+
+            
+                
                  {tutorLesson.map((item) => (
                      <div className={styles.modal__field} key={item.id}>
                          <label className={styles.modal__field__title}>
@@ -135,14 +293,16 @@ const TutorModalTests = () => {
                          )}
                      </div>
                  ))}
-             </form>
 
-             <button className={styles.modal__btn}
-                 onClick={handleSubmit}
-             >Добавить урок</button>
-     
-  </div>
-      );
+                 
+            </form>
+
+            <button className={styles.modal__btn}
+                onClick={handleSubmit}
+            >Добавить тест</button>
+
+        </div>
+    );
 }
- 
-export default TutorModalTests;
+
+export default TutorModalTests; */
