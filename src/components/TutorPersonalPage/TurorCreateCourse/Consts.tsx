@@ -18,7 +18,7 @@ export const dataPreview = [
         id: 3,
         title: "Курс предназначен для",
         placeholder: "Курс предназначен для",
-        type: "select",
+        type: "input",
         name: "for"
 
 

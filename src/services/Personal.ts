@@ -41,11 +41,7 @@ interface EditAvatarProps {
         avatar: string
  
 }
-interface  GetAvatarProps {
  
-   data: string
-
-}
 export default class PersonalService {
     static async GetUser(): Promise<AxiosResponse<PersonalResponse>> {
         return $api.get<PersonalResponse>('/personal/getUser');
