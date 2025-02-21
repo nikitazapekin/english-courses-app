@@ -10,12 +10,8 @@ import PersonalService from "../services/Personal";
 import { useDispatch } from "react-redux";
 import { setPerson } from "../store/slices/PersonalSlice/PersonalSlice";
 import { useNavigate } from "react-router-dom";
-const TutorCreateCourse = () => {
- 
- 
-
-
-
+import TutorPersonalPageComponent from "../components/TutorPersonalPage/TutorPersonalPage";
+const TutorEditProfile = () => {
 
 
 
@@ -36,24 +32,17 @@ const TutorCreateCourse = () => {
 
     }, []);
 
+    return (
+        <div className={styles.wrapper}>
+            <Header />
+            <div className={styles.content}>
+             <TutorPersonalPageComponent />
 
+            </div>
 
-    const { isOpenModal } = useSelector(isOpenModalCreateLessonSelector)
-
-
-
-    return (<div className={styles.wrapper}>
-        <Header />
-        <div className={styles.content}>
-            <TutorCreateCourseComponent />
-
+            <Footer />
         </div>
-        {isOpenModal && (
-
-            <TutorModal />
-        )}
-        <Footer />
-    </div>);
+    );
 }
 
-export default TutorCreateCourse;
+export default TutorEditProfile;
