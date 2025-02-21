@@ -1,26 +1,35 @@
 
- 
+
 import React, { useEffect, useState } from "react";
 import styles from "./CoursesList.module.scss";
 import Card from "../../assets/cards/card1.png";
 import Design from "../../assets/cards/design.png";
 import CoursesListDots from "./CoursesListDots";
 import { Link } from "react-router-dom";
+import CourseService from "../../services/Course";
 
 type SortOption = "price" | "rating" | "releaseDate";
 
 interface Course {
-    name: string;
+  /*   name: string;
     title: string;
     price: number;
     rating: number;
     releaseDate: string;
     image: string;
-    color: string;
+    color: string; */
+
+    id: number,
+    author: string,
+    title: string,
+    description: string,
+    course_for: String[],
+    release_date: string,
+    course_logo: string,
 }
 
 const initialCards: Course[] = [
- 
+/* 
     {
         name: "Web",
         title: "Web-технологии",
@@ -29,581 +38,7 @@ const initialCards: Course[] = [
         releaseDate: "2023-09-15",
         image: Card,
         color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для wfefewдизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-
-
-
-
-
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для дизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
-    {
-        name: "Web",
-        title: "Web-технологии",
-        price: 30,
-        rating: 4.5,
-        releaseDate: "2023-09-15",
-        image: Card,
-        color: "#0389D8"
-    },
-    {
-        name: "Design",
-        title: "Для wfefewдизайнеров",
-        price: 50,
-        rating: 4.7,
-        releaseDate: "2022-07-20",
-        image: Design,
-        color: "#D1D803"
-    },
+    }, */
 
 ];
 
@@ -611,58 +46,106 @@ interface CoursesListProps {
     query: string;
 }
 
-const ITEMS_PER_PAGE = 16; 
+const ITEMS_PER_PAGE = 16;
 
 const CoursesList = ({ query }: CoursesListProps) => {
     const [cards, setCards] = useState<Course[]>(initialCards);
     const [sortOption, setSortOption] = useState<SortOption>("price");
     const [currentPage, setCurrentPage] = useState<number>(1);
 
-    const totalPages = Math.ceil(cards.length / ITEMS_PER_PAGE);
-
-    const handlePageChange = (page: number) => {
-        if (page >= 1 && page <= totalPages) {
-            setCurrentPage(page);
-        }
-    };
-
-    const sortCards = (option: SortOption) => {
-        const sortedCards = [...cards].sort((a, b) => {
-            if (option === "price") return a.price - b.price;
-            if (option === "rating") return b.rating - a.rating;
-            if (option === "releaseDate") return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
-            return 0;
-        });
-        setCards(sortedCards);
-    };
-
-    const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        const selectedOption = event.target.value as SortOption;
-        setSortOption(selectedOption);
-        sortCards(selectedOption);
-    };
 
     useEffect(() => {
-        if (query) {
-            setCards(
-                initialCards.filter((item) =>
-                    item.title.toLowerCase().includes(query.toLowerCase()) ||
-                    item.name.toLowerCase().includes(query.toLowerCase())
-                )
-            );
-            setCurrentPage(1);  
-        } else {
-            setCards(initialCards);
+        const handleGet = async () => {
+
+            try {
+
+                const reposnse = await CourseService.GetCourses()
+                setCards(reposnse.data.courses)
+            } catch {
+
+            }
         }
-    }, [query]);
+        handleGet()
 
-    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-    const displayedCards = cards.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
+    }, [])
+    /* 
+        const totalPages = Math.ceil(cards.length / ITEMS_PER_PAGE);
+    
+    
+    
+    
+        const handlePageChange = (page: number) => {
+            if (page >= 1 && page <= totalPages) {
+                setCurrentPage(page);
+            }
+        };
+    
+        const sortCards = (option: SortOption) => {
+            const sortedCards = [...cards].sort((a, b) => {
+                if (option === "price") return a.price - b.price;
+                if (option === "rating") return b.rating - a.rating;
+                if (option === "releaseDate") return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+                return 0;
+            });
+            setCards(sortedCards);
+        };
+    
+        const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+            const selectedOption = event.target.value as SortOption;
+            setSortOption(selectedOption);
+            sortCards(selectedOption);
+        };
+    
+        useEffect(() => {
+            if (query) {
+                setCards(
+                    initialCards.filter((item) =>
+                        item.title.toLowerCase().includes(query.toLowerCase()) ||
+                        item.name.toLowerCase().includes(query.toLowerCase())
+                    )
+                );
+                setCurrentPage(1);  
+            } else {
+                setCards(initialCards);
+            }
+        }, [query]);
+    
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const displayedCards = cards.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+     */
     return (
         <div className={styles.courses}>
             <div className={styles.courses__inner}>
-                <div className={styles.courses__header}>
+          
+          
+          
+          
+          
+            <div className={styles.courses__cards}>
+                    {cards.map((item, index) => (
+                        <div className={styles.card} key={index}>
+                            <Link to="/card">
+                             
+                                    <img className={styles.card__image} src={item.course_logo} alt={item.title} />
+                             
+                                <h3 className={styles.card__title}>{item.title}</h3>
+                               {item.course_logo}
+                                <p className={styles.card__rating}>Автор: {item.author}</p>
+                                <p className={styles.card__releaseDate}>Дата выпуска: {item.release_date}</p>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+           
+          
+          
+          
+          
+          
+          
+          
+          
+                {/*    <div className={styles.courses__header}>
                     <h2 className={styles.courses__title}>Новинки</h2>
                     <select
                         className={styles.courses__select}
@@ -702,12 +185,12 @@ const CoursesList = ({ query }: CoursesListProps) => {
                     currentPage={currentPage}
                     onPageChange={handlePageChange}
                 />
+                */}
             </div>
         </div>
     );
 };
 
 export default CoursesList;
- 
 
- 
+

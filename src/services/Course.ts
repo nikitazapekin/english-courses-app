@@ -10,15 +10,40 @@ interface CreateCourseTypes {
     logo: string;
 }
 
+
+interface Course {
+    id: number,
+    author: string,
+    title: string,
+    description: string,
+    course_for: String[],
+    release_date: string,
+    course_logo: string,
+}
+
+interface GetCoursesResponse {
+    message: string,
+    courses: Course[]
+
+}
+
 export default class CourseService {
     static async CreateCourse(data: CreateCourseTypes): Promise<AxiosResponse<any>> {
         return $api.post<any>("/courses/createCourse", {
             name: data.name,
-            describtion: data.describtion,  
+            describtion: data.describtion,
             forcourse: data.for,
             logo: data.logo
-        });  
+        });
     }
+
+
+    static async GetCourses(): Promise<AxiosResponse<GetCoursesResponse>> {
+        return $api.get<GetCoursesResponse>("/courses/getCourses")
+    }
+
+
+
 }
 
 
