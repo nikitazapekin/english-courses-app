@@ -1,7 +1,7 @@
 import styles from "./TutorModalTests.module.scss";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { setLessons, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
+import { setLessons, setOpenModal, setTests } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
 import { modalTest } from "./Consts";
 
 interface FormData {
@@ -21,7 +21,6 @@ const TutorModalTests = () => {
 
     const dispatch = useDispatch();
 
-    // Обработка текстовых полей
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -30,7 +29,6 @@ const TutorModalTests = () => {
         }));
     };
 
-    // Обработка загрузки файла (изображение)
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { files } = e.target;
         if (files && files.length > 0) {
@@ -40,8 +38,6 @@ const TutorModalTests = () => {
             }));
         }
     };
-
-    // Добавление нового варианта ответа
     const handleAddAnswer = () => {
         setFormData((prev) => ({
             ...prev,
@@ -49,7 +45,6 @@ const TutorModalTests = () => {
         }));
     };
 
-    // Обновление конкретного ответа
     const handleAnswerChange = (index: number, value: string) => {
         setFormData((prev) => {
             const newAnswers = [...prev.answers];
@@ -58,7 +53,6 @@ const TutorModalTests = () => {
         });
     };
 
-    // Удаление варианта ответа
     const handleRemoveAnswer = (index: number) => {
         setFormData((prev) => ({
             ...prev,
@@ -67,6 +61,7 @@ const TutorModalTests = () => {
     };
 
     const handleSubmit = () => {
+        dispatch(setTests(formData))
        // dispatch(setLessons(formData)); // Отправляем в Redux
         handleClose();
     };

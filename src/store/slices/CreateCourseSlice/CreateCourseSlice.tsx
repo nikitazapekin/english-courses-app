@@ -3,6 +3,16 @@ import {
     PayloadAction
 } from '@reduxjs/toolkit';
 
+
+interface FormDataTests {
+    title: string;
+    answers: string[];
+    answer: string;
+    url: File | null;
+}
+
+
+
 interface Lessons {
     title: string;
     describtion: string;
@@ -23,7 +33,8 @@ interface CreateFormSliceTypes {
     error: null | string,
     isOpenModal: boolean,
     lessons: Lessons[],
-    openModalType: string
+    openModalType: string,
+    tests: FormDataTests[]
 }
 
 
@@ -39,7 +50,8 @@ const initialState: CreateFormSliceTypes = {
     isOpenModal: false,
     error: null,
     lessons: [],
-    openModalType: ""
+    openModalType: "",
+    tests: []
 };
 const CreateFormSlice = createSlice({
     name: 'list',
@@ -58,6 +70,9 @@ const CreateFormSlice = createSlice({
         setLessons(state, action: PayloadAction<Lessons>) {
             state.lessons.push(action.payload)
             console.log("LES", JSON.stringify(state.lessons))
+        },
+        setTests(state, action: PayloadAction<FormDataTests>) {
+            state.tests.push(action.payload)
         }
     },
 });
@@ -65,7 +80,8 @@ const CreateFormSlice = createSlice({
 export const {
     setForm,
     setOpenModal,
-    setLessons
+    setLessons,
+    setTests
     // setPerson
 } = CreateFormSlice.actions;
 export default CreateFormSlice.reducer;
