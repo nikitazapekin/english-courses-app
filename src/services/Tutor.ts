@@ -21,9 +21,30 @@ interface GetTutorProps {
     }
 
 }
+
+
+
+interface FormTypes {
+    data: {
+
+        username: string,
+        describtion: string,
+    fulldescribtion: string,
+    email: string,
+    password: string,
+    specialization: string,
+    level: string
+}
+}
 export default class TutorService {
     static async GetTutor(): Promise<AxiosResponse<GetTutorProps>> {
         return $api.get<GetTutorProps>('/tutor/getTutor');
+    }
+
+
+    static async EditTutor({data}: FormTypes): Promise<AxiosResponse<GetTutorProps>> {
+        console.log("DAT" , data)
+        return $api.put<GetTutorProps>('/tutor/editTutor', data);
     }
  
 

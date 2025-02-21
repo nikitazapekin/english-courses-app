@@ -1,11 +1,49 @@
 @import "../../../theme/theme";
 
-.edit {
+.item {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    row-gap: 5px;
     &__title {
         font-weight: 700;
         font-size: 24px;
         text-align: center;
         color: #3a3a3a;
         font-family: "Nunito", sans-serif;
+    }
+    &__input {
+        width: 100%;
+        cursor: pointer;
+
+
+        font-weight: 700;
+        font-size: 24px;
+       
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid $black;
+        background-color: transparent;
+        padding: 5px;
+    }
+    &__textarea {
+        width: 100%;
+        resize: none;
+        min-height: 200px;
+
+        font-weight: 700;
+        font-size: 24px;
+       padding: 5px;
+       outline: none;
+       border: none;
+       border: 2px dashed $light-gray;
+       background-color: transparent;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+        cursor: pointer;
     }
 }

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { TutorPageSelector, TutorSelector } from "../../store/selectors/Tutor.selector";
 import { useLocation } from "react-router-dom";
 import EditProfile from "./EditProfile/EditProfile";
+import MainPage from "./MainPage/MainPage";
 
 
 const TutorPersonalPageComponent: React.FC = () => {
@@ -15,7 +16,7 @@ const TutorPersonalPageComponent: React.FC = () => {
 
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
-    console.log(lastPathSegment);
+    console.log("segment", lastPathSegment);
 
     return (
         <section
@@ -29,10 +30,15 @@ const TutorPersonalPageComponent: React.FC = () => {
                 />
 
                 {
-                  lastPathSegment == "edit" && (
-                        <div>
-                           <EditProfile />
-                        </div>
+                    lastPathSegment == "edit" && (
+
+                        <EditProfile />
+
+                    )
+                }
+                {
+                    !lastPathSegment && (
+                        <MainPage />
                     )
                 }
 

@@ -8,8 +8,9 @@ interface EditFieldProps {
         name: string,
         type: string
     },
+    handleChange: (e:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)=> void
 }
-const EditField = ({ item }: EditFieldProps) => {
+const EditField = ({ item , handleChange}: EditFieldProps) => {
     return (
         <div className={styles.item}>
             <label
@@ -17,10 +18,24 @@ const EditField = ({ item }: EditFieldProps) => {
             >
                 {item.title}
             </label>
-            <input
+            {item.type != "textarea" ? (
+
+                <input
+                name={item.name}
                 className={styles.item__input}
                 placeholder={item.placeholder}
-            />
+                onChange={(e)=>handleChange(e)}
+                />
+            )  : 
+            (
+                <textarea 
+                name={item.name}
+                className={styles.item__textarea}
+                placeholder={item.placeholder}
+                onChange={(e)=>handleChange(e)}
+                />
+            )
+        }
         </div>);
 }
 
