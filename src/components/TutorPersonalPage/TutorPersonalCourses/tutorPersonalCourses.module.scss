@@ -9,6 +9,13 @@
     justify-content: center;
     height: 100%;
 
+    &__title {
+
+        font-size: 36px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+
+    }
 
     &__container {
         max-width: 1430px;
@@ -28,7 +35,7 @@
 
     &__header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
 
         &__btn {
             font-weight: 700;
@@ -36,7 +43,8 @@
             color: $black;
             font-family: "Nunito", sans-serif;
             cursor: pointer;
-            ;
+
+            align-items: center;
         }
     }
 }
