@@ -26,7 +26,7 @@ const CoursesList = () => {
     const [sortOption, setSortOption] = useState<SortOption>("price");
     const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
     const [pages, setPages] = useState<number>(1);
-    const itemsPerPage = Number(limit) || 10;
+    const itemsPerPage = Number(limit) || 16;
 
     useEffect(() => {
         const fetchCourses = async () => {
