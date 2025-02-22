@@ -9,3 +9,5 @@ export const editArray  = [
     {id: 8, title:"Уровень", placeholder: "Введите ваш уровень языка", name: "level",  type: "input"},
 
 ]
+
+ 

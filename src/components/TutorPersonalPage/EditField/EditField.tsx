@@ -8,9 +8,18 @@ interface EditFieldProps {
         name: string,
         type: string
     },
-    handleChange: (e:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)=> void
+    handleChange: (e:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)=> void,
+    obj: {
+        username:  string,
+        describtion:   string,
+        fulldescribtion:  string,
+       email:  string,
+       specialization:   string,
+       level:   string,
+    }
 }
-const EditField = ({ item , handleChange}: EditFieldProps) => {
+const EditField = ({ item , handleChange, obj}: EditFieldProps) => {
+    const defaultValue = obj[item.name as keyof typeof obj] || "";
     return (
         <div className={styles.item}>
             <label
@@ -24,6 +33,7 @@ const EditField = ({ item , handleChange}: EditFieldProps) => {
                 name={item.name}
                 className={styles.item__input}
                 placeholder={item.placeholder}
+                defaultValue={defaultValue}
                 onChange={(e)=>handleChange(e)}
                 />
             )  : 
