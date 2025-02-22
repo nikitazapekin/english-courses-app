@@ -41,7 +41,8 @@ export default class CourseService {
 
 
     static async GetCourses(page: number, limit: number): Promise<AxiosResponse<GetCoursesResponse>> {
-        return $api.get<GetCoursesResponse>(`/courses/getCourses?page${page}&limit=${limit}`)
+        console.log("pages", page, limit)
+        return $api.get<GetCoursesResponse>(`/courses/getCourses?page=${page}&limit=${limit}`)
     }
 
 

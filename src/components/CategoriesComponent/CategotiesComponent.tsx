@@ -21,7 +21,8 @@ const CategoriesComponent = () => {
                 <div className={styles.categories__content}>
 
                     <SearchPanel  handleChange={handleChange} />
-                    <CoursesList query={query} />
+                    <CoursesList //query={query} 
+                    />
                 </div>
             </div>
         </section>
