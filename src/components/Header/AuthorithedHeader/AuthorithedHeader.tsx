@@ -68,7 +68,7 @@ const AuthorithedHeader = () => {
 
 
     const handleCatalog = () => {
-        navigate("/catalog")
+        navigate("/catalog/1/1")
     }
 
     const handleChat = () => {

@@ -69,7 +69,7 @@ const UnauthorithedHeader = () => {
 
 
     const handleCatalog = () => {
-        navigate("/catalog")
+        navigate("/catalog/1/1")
     }
     const scrollToJoin = () => {
         navigate("/")

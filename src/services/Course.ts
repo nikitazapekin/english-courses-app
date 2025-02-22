@@ -24,6 +24,8 @@ interface Course {
 interface GetCoursesResponse {
     message: string,
     courses: Course[]
+    total: number, 
+    pages: number
 
 }
 
@@ -38,8 +40,8 @@ export default class CourseService {
     }
 
 
-    static async GetCourses(): Promise<AxiosResponse<GetCoursesResponse>> {
-        return $api.get<GetCoursesResponse>("/courses/getCourses")
+    static async GetCourses(page: number, limit: number): Promise<AxiosResponse<GetCoursesResponse>> {
+        return $api.get<GetCoursesResponse>(`/courses/getCourses?page${page}&limit=${limit}`)
     }
 
 
