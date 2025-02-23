@@ -4,7 +4,7 @@ export const SIGN_IN = "/sign-in"
 export const SIGN_UP = "/sign-up"
 export const CATALOG = "/catalog/:page/:limit";
 
-//export const CATALOG  = "/catalog"
+export const FOUND_COURSES = "/catalog/:query";
 export const  CARD_PAGE = "/card"
 export const  PERSONAL_PAGE = "/personal"
 export const  PERSONAL_PAGE_EDIT = "/personal/edit"

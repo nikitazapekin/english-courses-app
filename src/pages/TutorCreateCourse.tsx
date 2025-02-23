@@ -10,6 +10,8 @@ import PersonalService from "../services/Personal";
 import { useDispatch } from "react-redux";
 import { setPerson } from "../store/slices/PersonalSlice/PersonalSlice";
 import { useNavigate } from "react-router-dom";
+import TutorService from "../services/Tutor";
+import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 const TutorCreateCourse = () => {
  
  
@@ -25,8 +27,11 @@ const TutorCreateCourse = () => {
         window.scrollTo(0, 0);
         const handleGetUser = async () => {
             try {
-                const response = await PersonalService.GetUser();
-                dispatch(setPerson(response.data.user))
+                const response = await TutorService.GetTutor()
+             //   const response = await PersonalService.GetUser();
+         //    dispatch(setPerson(response.data.user))
+             dispatch(setTutor(response.data.user))
+             //dispatch(setPerson(response.data.user))
             } catch (err) {
                 navigate("/sign-in")
                 console.log("Something went wrong", err);

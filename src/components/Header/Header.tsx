@@ -19,10 +19,9 @@ import UnauthorithedHeader from "./UnauthorithedHeader/UnuthorithedHeader";
 const Header = () => {
     const [isAuthorithed, setIsAuthorized] = useState(() => {
         const storedValue = localStorage.getItem("accessToken");
-        return storedValue ? 
-        true
-        //JSON.parse(storedValue)
-         : false;
+        return storedValue ?
+            true
+            : false;
     });
     return (
         <>

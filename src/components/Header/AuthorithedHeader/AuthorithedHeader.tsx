@@ -16,6 +16,8 @@ import BirdPanel from "../../../assets/BirdPanel.png"
 import { useDebouncedCallback } from "use-debounce";
 import { useState, ChangeEvent } from "react";
 import ChatIcon from "../../../assets/icons/chat1.png"
+import TutorService from "../../../services/Tutor";
+import PersonalService from "../../../services/Personal";
 const courses = [
     { id: 1, title: "Курс для программистов" },
     { id: 2, title: "Английский для начинающих" },
@@ -34,12 +36,13 @@ const AuthorithedHeader = () => {
     const navigate = useNavigate()
     const isOpen = useSelector(HomepageSelector)
     const dispatch = useDispatch()
+
+    const [role, setRole] = useState("")
     const handleNavigate = () => {
         navigate("/")
     }
 
     const handleOpen = () => {
-
         dispatch(setOpenBurger(!isOpen))
     }
 
@@ -74,20 +77,34 @@ const AuthorithedHeader = () => {
     const handleChat = () => {
         navigate("/chat")
     }
-    const scrollToJoin = () => {
-        navigate("/")
-        const element = document.getElementById("joinSection");
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
 
     const handleSearch = () => {
-        navigate(`/search/${searchQuery}`)
+        navigate(`/catalog/${searchQuery}`)
+       // navigate(`/search/${searchQuery}`)
     }
-const handlePersonal =()=> {
-    navigate(`/personal`)
-}
+
+    useEffect(() => {
+        const handleGetUser = async () => {
+            try {
+                //     const response = await TutorService.GetTutor()
+                // const reponse = await PersonalService.GetUser()
+                //   setRole(reponse.data.user.role)
+                //  dispatch(setTutor(response.data.user))
+                //  setRole(response.)
+
+            } catch (err) {
+                navigate("/sign-in")
+            }
+        };
+        handleGetUser();
+    }, [])
+    const handlePersonal = () => {
+        if (role == "user") {
+            navigate(`/personal`)
+        } else {
+            navigate(`/tutor/personal`)
+        }
+    }
 
     return (
 
@@ -133,14 +150,14 @@ const handlePersonal =()=> {
 
                                 <img className={styles.navigation__image}
 
-                                onClick={handleChat}
+                                    onClick={handleChat}
                                     src={ChatIcon}
                                     alt="chat"
                                 />
 
                             </div>
                         </li>
-                   
+
 
 
                         <li className={styles.navigation__item}>

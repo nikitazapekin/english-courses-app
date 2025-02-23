@@ -8,13 +8,15 @@ import FormSlice from "./slices/Forms.slice"
 import ReplyToSlice from "./slices/ReplyTo.slice"
 import TutorSlice from "./slices/TutorSlice/TutorSlice"
 import CreateFormSlice from "./slices/CreateCourseSlice/CreateCourseSlice"
+import CoursesSlice from "./slices/CoursesSlice/CoursesSlice"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
     FormSlice: FormSlice,
     ReplyToSlice: ReplyToSlice,
     PersonalSlice: PersonalSlice,
     TutorSlice: TutorSlice,
-    CreateFormSlice: CreateFormSlice
+    CreateFormSlice: CreateFormSlice,
+    CoursesSlice: CoursesSlice
 
 });
 export const store = configureStore({

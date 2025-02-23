@@ -15,6 +15,7 @@ import { setOpenBurger } from "../../../store/slices/Homepage.slice";
 import BirdPanel from "../../../assets/BirdPanel.png"
 import { useDebouncedCallback } from "use-debounce";
 import { useState, ChangeEvent  } from "react";
+import { setSearchQueryCourses } from "../../../store/slices/CoursesSlice/CoursesSlice";
 
 
 const courses = [
@@ -44,7 +45,7 @@ const UnauthorithedHeader = () => {
         dispatch(setOpenBurger(!isOpen))
     }
 
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState<string>("");
     const [filteredCourses, setFilteredCourses] = useState<Array<{ id: number, title: string }>>([]);
     const debouncedSearch = useDebouncedCallback((query) => {
         const lowerCaseQuery = query.toLowerCase();
@@ -80,7 +81,8 @@ const UnauthorithedHeader = () => {
     };
 
     const handleSearch = () => {
-        navigate(`/search/${searchQuery}`)
+        dispatch(setSearchQueryCourses(searchQuery)); 
+        navigate(`/catalog/${searchQuery}`)
     }
     return (  
     <header className={styles.header}>
