@@ -45,33 +45,23 @@ const MainPage = () => {
 
                 <div className={styles.main__field}>
                     <h4 className={styles.main__field__title}>
-                       Рейтинг
+                        Рейтинг
                     </h4>
-
 
                     <div className={styles.star__stars}>
-                       
-                                        <div className={styles.star__star} />
-                                        <div className={styles.star__star} />
-                                        <div className={styles.star__star} />
-                                        <div className={styles.star__star} />
-                                        <div className={styles.star__starSliced} />
-                                    </div>
-
-{/*
-                    <p className={styles.main__field__value}>  {tutor.user.rate} </p>
-                    */}
-
+                        <div className={styles.star__star} />
+                        <div className={styles.star__star} />
+                        <div className={styles.star__star} />
+                        <div className={styles.star__star} />
+                        <div className={styles.star__starSliced} />
+                    </div>
                 </div>
-
-
-
                 <div className={styles.main__field}>
                     <h4 className={styles.main__field__title}>
-                      Специализация
+                        Специализация
                     </h4>
 
-                <p className={styles.main__field__value}>  {tutor.user.specialization} </p>
+                    <p className={styles.main__field__value}>  {tutor.user.specialization} </p>
                 </div>
 
             </div>
