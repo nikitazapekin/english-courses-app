@@ -19,22 +19,7 @@ const Homepage = () => {
         window.scrollTo(0, 0);
     }, []);
 
-  /*   const handleClick = async () => {
-        try {
-            const response = await AuthService.login("user@example.com", "password123");
-            console.log('Ответ сервера:', response.data);
-        } catch (error: any) {
-            console.error('Ошибка при логине:', error);
-            if (error.response) {
-                console.error('Ответ ошибки:', error.response);
-            } else if (error.request) {
-                console.error('Запрос был отправлен, но не получен ответ:', error.request);
-            } else {
-                console.error('Ошибка при настройке запроса:', error.message);
-            }
-        }
-    }; */
-    
+ 
     
     return (
         <div className={styles.wrapper}>
@@ -50,11 +35,7 @@ const Homepage = () => {
                 <HomepageComments />
                 <NavigateBtn />
                 <HelpBtn />
-                {/*
-                <button onClick={handleClick}>
-                ddd
-                </button>
-                */}
+            
             </div>
             <Footer />
         </div>

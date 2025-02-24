@@ -8,6 +8,7 @@
         font-weight: 700;
         font-size: 36px;
         color: #3a3a3a;
+   
         font-family: "Nunito", sans-serif;
     }
 
@@ -15,7 +16,7 @@
     &__subtitle {
         margin-bottom: 20px;
         font-weight: 700;
-        font-size: 24px;
+        font-size: 36px;
         text-align: center;
         color: #3a3a3a;
         font-family: "Nunito", sans-serif;
@@ -44,7 +45,95 @@
 
     }
 
+&__field {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    &__title {
+        font-weight: 700;
 
+        font-size: 24px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+
+    }
+
+    &__value {
+        font-weight: 400;
+
+        font-size: 24px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        
+    }
+
+}
 
 
 }
+
+
+.star {
+
+    &__stars {
+        display: flex;
+    column-gap: 6px;
+    @include mobiles {
+        column-gap: 0;
+    }
+}
+&__star {
+    position: relative;
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+    background: $orange;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+    border-radius: 1px;
+}
+&__starSliced {
+    position: relative;
+    display: inline-block;
+    width: 29px;
+    height: 29px;
+    background: $orange;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+    &::after {
+        border: 2px solid $orange;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        background-color: $blue;
+        z-index: 1;
+        border: none;
+        outline: none;
+        background-color: $gray;
+    }
+}
+&__starWrapper {
+    overflow: hidden;
+    width: 50%;
+    height: 29px;
+}
+    }
