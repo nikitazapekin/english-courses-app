@@ -19,7 +19,7 @@ type SortOption = "price" | "rating" | "releaseDate";
     
 
 const CoursesList = () => {
-    const { page, limit } = useParams<{ page?: string; limit?: string }>();  
+    const { page, limit, query } = useParams<{ page?: string; limit?: string, query?: string }>();  
     const navigate = useNavigate();
 
     const [cards, setCards] = useState<Course[]>([]);
@@ -28,23 +28,37 @@ const CoursesList = () => {
     const [pages, setPages] = useState<number>(1);
     const itemsPerPage = Number(limit) || 16;
 
+    console.log("QUERY", query)
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await CourseService.GetCourses(currentPage, itemsPerPage);
-               // setCards(response.data.courses);
-                setCards(response.data.courses)
-                setPages(response.data.pages)
+                if(query) {
+
+                    const response = await CourseService.GetCoursesQuery(currentPage, itemsPerPage, query);
+                    
+                    setCards(response.data.courses)
+                    setPages(response.data.pages)
+                } else {
+                    const response = await CourseService.GetCourses(currentPage, itemsPerPage);
+                    
+                    setCards(response.data.courses)
+                    setPages(response.data.pages)
+                }
             } catch (error) {
                 console.error("Ошибка при загрузке курсов:", error);
             }
         };
         fetchCourses();
-    }, [currentPage, itemsPerPage]);
+    }, [currentPage, itemsPerPage, query]);
 
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
-        navigate(`/catalog/${newPage}/${itemsPerPage}`);
+        if(query) {
+
+            navigate(`/catalog/${newPage}/${itemsPerPage}/${query}`);
+        } else {
+            navigate(`/catalog/${newPage}/${itemsPerPage}`);
+        }
     };
 
     return (

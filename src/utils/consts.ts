@@ -3,7 +3,7 @@ export const MAIN_PAGE = "/";
 export const SIGN_IN = "/sign-in"
 export const SIGN_UP = "/sign-up"
 export const CATALOG = "/catalog/:page/:limit";
-
+export const CATALOG_QUERY = "/catalog/:page/:limit/:query";
 export const FOUND_COURSES = "/catalog/:query";
 export const  CARD_PAGE = "/card"
 export const  PERSONAL_PAGE = "/personal"
