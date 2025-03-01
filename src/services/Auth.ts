@@ -12,7 +12,6 @@ export default class AuthService {
         return $api.post<any>('/user/login', { email, password })
     }
     static async registration(data: Omit<RegisterInterface, 'confirmPassword'>): Promise<AxiosResponse<any>> {
-        console.log("DATA, ", data)
         return $api.post<any>('/user/register', data);
 
     }

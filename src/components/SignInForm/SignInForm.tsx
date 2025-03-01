@@ -49,8 +49,10 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
                 if(response.data.role == "user") {
 
                     navigate("/personal");
-                } else {
+                } else if(response.data.role == "tutor") {
                     navigate("/tutor/personal");
+                } else {
+                    navigate("/admin")
                 }
             } catch (error: any) {
                 console.error('Ошибка при регистрации:', error);

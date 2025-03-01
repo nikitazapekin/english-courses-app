@@ -3,6 +3,7 @@ import AuthService from "../../../services/Auth";
 import PanelBtns from "../PanelBtns/PanelBtns";
 //import PanelBtns from "../PanelBtns/PanelBtns";
 import styles from "./AdminPanel.module.scss"
+import AvatarComponent from "../AvatarComponent/AvatarComponent";
 interface TutorPanelProps {
     username: string,
     email: string
@@ -26,6 +27,7 @@ const AdminPamel = ({ username, email }: TutorPanelProps) => {
             <AvatarComponent
             />
             */}
+            <AvatarComponent />
             <h2 className={styles.panel__title}>
                 {username}
             </h2>
