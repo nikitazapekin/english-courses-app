@@ -28,8 +28,7 @@ const TutorCreateCourse = () => {
         const handleGetUser = async () => {
             try {
                 const response = await TutorService.GetTutor()
-             //   const response = await PersonalService.GetUser();
-         //    dispatch(setPerson(response.data.user))
+        
              dispatch(setTutor(response.data.user))
              //dispatch(setPerson(response.data.user))
             } catch (err) {
