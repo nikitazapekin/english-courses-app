@@ -19,7 +19,7 @@ import Avatar2 from "../../assets/avatars/avatar2.png"
 import Avatar3 from "../../assets/avatars/avatar3.png"
 import Avatar4 from "../../assets/avatars/avatar4.png"
 
- 
+
 const items = [
 
     {
@@ -151,11 +151,11 @@ const TutorComponent = () => {
             <TutorPreview />
 
 
-<TutorCarousel items={items} title={"Курсы и сертификаты"} />
-<TutorCarousel items={items1} title={"Курсы и сертификаты"} />
-     
+            <TutorCarousel items={items} title={"Курсы и сертификаты"} />
+            <TutorCarousel items={items1} title={"Курсы и сертификаты"} />
 
-<TutorCarousel items={items2} title={"Отзывы о репетиторе"} />
+
+            <TutorCarousel items={items2} title={"Отзывы о репетиторе"} />
             <OtherTutors />
 
         </div>
