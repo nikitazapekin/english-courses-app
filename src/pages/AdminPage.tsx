@@ -8,23 +8,20 @@ import HelpBtn from "../components/HelpBtn/HelpBtn";
 import styles from "../theme/wrappers.module.scss"
 import { useEffect } from "react";
 import adminService from "../services/Admin";
+import { useDispatch } from "react-redux";
+import { setAdmin } from "../store/slices/AdminSlice/AdminSlice";
 const AdminPage = () => {
-  /*   useEffect(() => {
-
-        window.scrollTo(0, 0);
-
-    }, []);
- */
 
 
 const navigate = useNavigate()
-
+const dispatch  = useDispatch()
       useEffect(() => {
             window.scrollTo(0, 0)
             const handleGetUser = async () => {
                 try {
                     const response = await adminService.getAdmin()
-                 //   dispatch(setTutor(response.data.user))
+                    dispatch(setAdmin(response.data.user))
+
                 
                 } catch (err) {
                     navigate("/sign-in")
