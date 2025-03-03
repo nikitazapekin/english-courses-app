@@ -1,0 +1,40 @@
+@import "../../../theme/theme";
+
+.edit {
+    width: 100%;
+
+    &__title {
+        margin-bottom: 20px;
+        font-weight: 700;
+        font-size: 36px;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        width: 100%;
+    }
+
+    &__btn {
+        cursor: pointer;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        padding: 5px;
+        background-color: $sliderGreen;
+        color: $white;
+        font-size: 20px;
+
+        font-family: "Nunito", sans-serif;
+        margin-top: 20px;
+        width: 100%;
+
+    }
+
+
+
+
+}

@@ -23,3 +23,4 @@ export const TUTOR_CREATE_COURSES =  "/tutor/personal/create"
 export const TUTOR_EDIT =  "/tutor/personal/edit"
 
 export const ADMIN_PAGE = "/admin"
+export const ADMIN_EDIT_PAGE = "/admin/edit"

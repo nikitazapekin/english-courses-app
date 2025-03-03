@@ -17,7 +17,7 @@ const PanelBtn = ({ item }: PanelBtnProps) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const handleNavigate = () => {
-        navigate(`/tutor/personal${item.link}`)
+        navigate(`/admin${item.link}`)
         dispatch(setTutorPage({page: item.page}))
     }
     return (
