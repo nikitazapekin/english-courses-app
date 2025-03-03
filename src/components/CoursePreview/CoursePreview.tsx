@@ -41,10 +41,7 @@ const CoursePreview = () => {
 
                         <div className={styles.course__category}>
                             <p className={styles.course__category__text}>
-                            {/*
-                             Школьники
-                             */}
-
+                           
                              {course.course.course_for}
                             </p>
                             <img className={styles.course__category__icon}

@@ -2,16 +2,21 @@ import styles from "./AboutAuthor.module.scss"
 import Agree from "../../assets/courseDetails/agree.png"
 import Irina from "../../assets/courseDetails/irina.jpg"
 import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { OpenCourseSelector } from "../../store/selectors/OpenCourseSelector"
 const AboutAuthor = () => {
     const data = [
         "6  лет опыта",
         "Стажировка edme (22.02.2022-5.06.2022)",
         "Работала переводчиком в Epam Systems"
     ]
-const navigate = useNavigate()
+    const navigate = useNavigate()
     const handleNavigate = () => {
-navigate(`/tutor/${"Кирилл"}`)
+        navigate(`/tutor/${"Кирилл"}`)
     }
+
+
+    const course = useSelector(OpenCourseSelector)
     return (
         <section className={styles.about}>
             <div className={styles.about__inner}>
@@ -21,14 +26,14 @@ navigate(`/tutor/${"Кирилл"}`)
                 <div className={styles.about__content}>
                     <div className={styles.about__author__wrapper}>
 
-                    <img src={Irina} alt="Author" className={styles.about__author} />
+                        <img src={course.tutor.avatar_base64 ? course.tutor.avatar_base64 : ""} alt="Author" className={styles.about__author} />
                     </div>
                     <div className={styles.info}>
                         <h3 className={styles.info__title}>
-                            Ирина
+                            {course.tutor.username}
                         </h3>
                         <p className={styles.info__citate}>
-                            ‘’Знание языка - как ключ, который откроет все двери’’
+                          {course.tutor.description}
                         </p>
                         <div className={styles.info__skills}>
                             {
@@ -55,7 +60,7 @@ navigate(`/tutor/${"Кирилл"}`)
                 </div>
 
 
-              
+
             </div>
         </section>);
 }
