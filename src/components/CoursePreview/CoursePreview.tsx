@@ -14,10 +14,10 @@ const CoursePreview = () => {
                 <div className={styles.course__content}>
 
                 <h1 className={styles.course__title}>
-                  {course.title}
+                  {course.course.title}
                     </h1>
                     <h2 className={styles.course__subtitle}>
-                     {course.description}
+                     {course.course.description}
                     </h2>
                     <p className={styles.course__about}>
                         {/*
@@ -45,7 +45,7 @@ const CoursePreview = () => {
                              Школьники
                              */}
 
-                             {course.course_for}
+                             {course.course.course_for}
                             </p>
                             <img className={styles.course__category__icon}
                                 src={CourseIcon1}
@@ -65,7 +65,7 @@ const CoursePreview = () => {
                 <div className={styles.course__logo} >
 
                 <img  className={styles.course__logo__image} 
-                src={course.course_logo}
+                src={course.course.course_logo}
                 //src={Logo}
                  alt="Logo" 
                 
