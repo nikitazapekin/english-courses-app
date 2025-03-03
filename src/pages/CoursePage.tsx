@@ -12,13 +12,36 @@ import { useEffect } from "react";
 import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
 import HelpBtn from "../components/HelpBtn/HelpBtn";
 import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
+import { useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import CourseService from "../services/Course";
 const CoursePage = () => {
+ 
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+        const location = useLocation();
+        const lastPathSegment = location.pathname.split("/").pop();
+        console.log("segment", lastPathSegment);
+    
     useEffect(() => {
-
         window.scrollTo(0, 0);
+        const handleGetUser = async () => {
+            try {
+                const response = await CourseService.GetCourseInfo(lastPathSegment!)
+        
+           //  dispatch(setTutor(response.data.user))
+             //dispatch(setPerson(response.data.user))
+            } catch (err) {
+               // navigate("/sign-in")
+                console.log("Something went wrong", err);
+            }
+        };
+        handleGetUser();
 
     }, []);
 
+
+    
     return (
         <div className={styles.wrapper}>
             <Header />

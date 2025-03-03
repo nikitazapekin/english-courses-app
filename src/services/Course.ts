@@ -53,6 +53,10 @@ export default class CourseService {
     }
 
 
+    static async GetCourseInfo(query: string): Promise<AxiosResponse<GetCoursesResponse>> {
+        return $api.get<GetCoursesResponse>(`/courses/getCourseInfo?id=${query}`)
+    }
+
 
 }
  
