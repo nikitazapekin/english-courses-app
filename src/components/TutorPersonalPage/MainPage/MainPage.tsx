@@ -36,7 +36,7 @@ const MainPage = () => {
                     <h4 className={styles.main__field__title}>
                         Полное описание
                     </h4>
-                    <p className={styles.main__field__value}>  {tutor.user.full_description} </p>
+                    <p className={styles.main__field__value}>  {tutor.user.fulldescription} </p>
 
 
                 </div>

@@ -19,10 +19,10 @@ const TutorPersonalPage = () => {
         const handleGetUser = async () => {
             try {
                 const response = await TutorService.GetTutor()
-                dispatch(setTutor(response.data.user))
+               dispatch(setTutor(response.data.user))
             
             } catch (err) {
-                navigate("/sign-in")
+              //  navigate("/sign-in")
             }
         };
         handleGetUser();  

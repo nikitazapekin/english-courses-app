@@ -29,7 +29,7 @@ const TutorCreateCourse = () => {
             try {
                 const response = await TutorService.GetTutor()
         
-             dispatch(setTutor(response.data.user))
+         //    dispatch(setTutor(response.data.user))
              //dispatch(setPerson(response.data.user))
             } catch (err) {
                 navigate("/sign-in")

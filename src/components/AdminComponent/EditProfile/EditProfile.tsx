@@ -43,7 +43,7 @@ const EditProfile = () => {
     const obj = {
         username: tutor.user.username,
         describtion: tutor.user.description,
-        fulldescribtion: tutor.user.full_description,
+        fulldescribtion: tutor.user.fulldescription,
        email: tutor.user.email,
        specialization: tutor.user.specialization,
        level: tutor.user.english_level
