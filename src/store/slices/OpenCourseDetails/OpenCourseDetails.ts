@@ -1,91 +1,94 @@
-import {
-    createSlice,
-    PayloadAction
-} from '@reduxjs/toolkit';
-
-
-interface FormDataTests {
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+/* 
+interface Course {
+    id: number;
+    course_id: number;
+    author: string;
     title: string;
-    answers: string[];
-    answer: string;
-    url: File | null;
+    description: string;
+    course_for: String[];
+    release_date: string;
+    course_logo: string;
 }
+ */
 
-
-
-interface Lessons {
-    title: string;
-    describtion: string;
-    video: File[];
-    materials: File[];
+interface Course {
+   
+    courses: {
+        course: {
+            id: number,
+            course_id:number
+            author: string,
+        title: string,
+        description: string,
+        course_for: String[],
+        release_date: string,
+        course_logo:string,
+    },
+    tutor: {
+        id: number,
+        username:string,
+        email: string,
+        description: string,
+        rate:string,
+        specialization: string,
+        english_level:string,
+        full_description: string,
+        avatar_base64: null
+    }
+    }
 }
-interface FormProps {
-    name: string,
-    describtion: string,
-    for: string,
-    logo: string
-}
+ 
+
 
 interface OpenFormSliceTypes {
-    message: string
-    form: FormProps
-    loading: boolean,
-    error: null | string,
-    isOpenModal: boolean,
-    lessons: Lessons[],
-    openModalType: string,
-    tests: FormDataTests[],
-    tutorPage: string,
+    message: string;
+    courses: Course;
+    loading: boolean;
+    error: null | string;
 }
-
 
 const initialState: OpenFormSliceTypes = {
     message: "",
-    form: {
-        name: "",
-        describtion: "",
-        for: "",
-        logo: ""
-    },
     loading: false,
-    isOpenModal: false,
+    courses: {
+        course: {
+
+            id: 0,
+            course_id: 0,
+        author: "",
+        title: "",
+        description: "",
+        course_for: [],
+        release_date: "",
+        course_logo: "",
+    }, 
+    tutor: {
+
+        id: 0,
+        username:"",
+    email: "",
+    description:"",
+    rate:"",
+    specialization: "",
+    english_level:"",
+    full_description:"",
+    avatar_base64: ""
+}
+    },
+
     error: null,
-    lessons: [],
-    openModalType: "",
-    tests: [],
-    tutorPage: ""
 };
+
 const OpenFormSlice = createSlice({
     name: 'list',
     initialState,
     reducers: {
-
-        setForm(state, action: PayloadAction<FormProps>) {
-            state.form = action.payload
-            console.log(state.form)
+        setCourse(state, action: PayloadAction< Course>) {
+            state.courses = action.payload;
         },
-        setOpenModal(state, action: PayloadAction<{ type: string }>) {
-            state.isOpenModal = !state.isOpenModal
-            console.log("STATE", state.isOpenModal)
-            state.openModalType = action.payload.type
-        },
-        setLessons(state, action: PayloadAction<Lessons>) {
-            state.lessons.push(action.payload)
-            console.log("LES", JSON.stringify(state.lessons))
-        },
-        setTests(state, action: PayloadAction<FormDataTests>) {
-            state.tests.push(action.payload)
-        },
-      
     },
 });
 
-export const {
-    setForm,
-    setOpenModal,
-    setLessons,
-    setTests,
-   // setTutorPage
-    // setPerson
-} = OpenFormSlice.actions;
+export const { setCourse } = OpenFormSlice.actions;
 export default OpenFormSlice.reducer;

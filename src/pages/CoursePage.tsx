@@ -15,6 +15,7 @@ import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CourseService from "../services/Course";
+import { setCourse } from "../store/slices/OpenCourseDetails/OpenCourseDetails";
 const CoursePage = () => {
  
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const CoursePage = () => {
         const handleGetUser = async () => {
             try {
                 const response = await CourseService.GetCourseInfo(lastPathSegment!)
-        
+        dispatch(setCourse( response.data.courses))
            //  dispatch(setTutor(response.data.user))
              //dispatch(setPerson(response.data.user))
             } catch (err) {

@@ -36,6 +36,8 @@ interface EditProps {
     }
 }
 
+ 
+
 interface EditAvatarProps {
  
         avatar: string

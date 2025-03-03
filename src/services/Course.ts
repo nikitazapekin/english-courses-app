@@ -28,7 +28,33 @@ interface GetCoursesResponse {
     pages: number
 
 }
-
+interface CourseDetails {
+    message:string,
+    courses: {
+        course: {
+            id: number,
+            course_id:number
+            author: string,
+        title: string,
+        description: string,
+        course_for: String[],
+        release_date: string,
+        course_logo:string,
+    },
+    tutor: {
+        id: number,
+        username:string,
+        email: string,
+        description: string,
+        rate:string,
+        specialization: string,
+        english_level:string,
+        full_description: string,
+        avatar_base64: null
+    }
+    }
+}
+ 
 export default class CourseService {
     static async CreateCourse(data: CreateCourseTypes): Promise<AxiosResponse<any>> {
         return $api.post<any>("/courses/createCourse", {
@@ -53,8 +79,8 @@ export default class CourseService {
     }
 
 
-    static async GetCourseInfo(query: string): Promise<AxiosResponse<GetCoursesResponse>> {
-        return $api.get<GetCoursesResponse>(`/courses/getCourseInfo?id=${query}`)
+    static async GetCourseInfo(query: string): Promise<AxiosResponse<CourseDetails>> {
+        return $api.get<CourseDetails>(`/courses/getCourseInfo?id=${query}`)
     }
 
 
