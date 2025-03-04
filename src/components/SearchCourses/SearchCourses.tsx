@@ -6,13 +6,33 @@ import SearchCard from "./SearchCard/SearchCard";
 
 
 interface Course {
-    id: number,
+  /*   id: number,
     author: string,
     title: string,
     description: string,
     course_for: String[],
     release_date: string,
-    course_logo: string,
+    course_logo: string, */
+ 
+          
+                id: number,
+                author: string,
+                title: string,
+                description:  string,
+                fulldescription:  string,
+
+
+                course_for:String[],
+                course_suitable:  String[],
+                for_what_reasons: String[],
+                about_course:  String[],
+                tag: string,
+                course_rate:string,
+                release_date: string,
+                course_logo: string,
+         
+
+
 }
 
 
@@ -24,9 +44,10 @@ const SearchCourses = () => {
         const handleSearch = async () => {
             try {
                 if (query) {
-/* 
                     const response = await CourseService.SearchCourses(query)
-                    setCards(response.data.courses) */
+/* 
+*/
+                    setCards(response.data.courses) 
                 }
             } catch {
 

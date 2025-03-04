@@ -22,11 +22,26 @@ interface CreateCourseTypes {
 
 
 interface Course {
-    id: number,
+  /*   id: number,
     author: string,
     title: string,
     description: string,
   course_for: String[],
+    release_date: string,
+    course_logo: string, */
+    id: number,
+    author: string,
+    title: string,
+    description:  string,
+    fulldescription:  string,
+
+
+    course_for:String[],
+    course_suitable:  String[],
+    for_what_reasons: String[],
+    about_course:  String[],
+    tag: string,
+    course_rate:string,
     release_date: string,
     course_logo: string,
 }
@@ -64,18 +79,6 @@ interface CourseDetails {
     }
     }
 }
-
-/*
-  name: string;
-    description: string;
-    for: string;
-    logo: string;
-    course_for: String[],
-    fulldescription: string,
-    for_what_reasons: String[],
-    about_course: String[],
-    tag: string,
-    */
  
 export default class CourseService {
     static async CreateCourse(data: CreateCourseTypes): Promise<AxiosResponse<any>> {

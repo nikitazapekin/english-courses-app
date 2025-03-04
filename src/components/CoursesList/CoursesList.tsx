@@ -42,7 +42,7 @@ const CoursesList = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-          /*       if(query) {
+                if(query) {
 
                     const response = await CourseService.GetCoursesQuery(currentPage, itemsPerPage, query);
                     
@@ -53,7 +53,7 @@ const CoursesList = () => {
                     
                     setCards(response.data.courses)
                     setPages(response.data.pages)
-                } */
+                }  
             } catch (error) {
                 console.error("Ошибка при загрузке курсов:", error);
             }
@@ -88,7 +88,7 @@ const CoursesList = () => {
                 </div>
 
                 <div className={styles.courses__cards}>
-                    {/*
+              
                     {cards.length > 0 ? (
                         cards.map((item) => (
                             <div className={styles.card} key={item.id}>
@@ -103,7 +103,7 @@ const CoursesList = () => {
                         ) : (
                             <div className={styles.courses__text}>Курсы не найдены</div>
                             )}
-                            */}
+                            
                 </div>
 
                 <CoursesListDots totalPages={pages} currentPage={currentPage} onPageChange={handlePageChange} />
