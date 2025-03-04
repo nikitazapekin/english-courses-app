@@ -89,6 +89,7 @@ const CoursesList = () => {
 
                 <div className={styles.courses__cards}>
               
+ 
                     {cards.length > 0 ? (
                         cards.map((item) => (
                             <div className={styles.card} key={item.id}>

@@ -1,7 +1,10 @@
 import styles from "./ForWhatSection.module.scss"
 import Lightning from "../../assets/lightning.png"
- import { data } from "./consts";
+import { data } from "./consts";
+import { useSelector } from "react-redux";
+import { OpenCourseSelector } from "../../store/selectors/OpenCourseSelector";
 const ForWhatSection = () => {
+    const course = useSelector(OpenCourseSelector)
     return (
         <section className={styles.what}>
             <div className={styles.what__inner}>
@@ -9,7 +12,9 @@ const ForWhatSection = () => {
                     Зачем английский для программистов?
                 </h2>
                 <div className={styles.what__content}>
-                    {data.map((item, index) => (
+
+ 
+                    {course.course.for_what_reasons.map((item, index) => (
 
                         <div className={styles.what__item} key={index}>
                             <img src={Lightning} alt="Lightning"
@@ -19,8 +24,8 @@ const ForWhatSection = () => {
                                 {item}
                             </p>
                         </div>
-                    ))
-                    }
+                    ))}
+                 
                 </div>
             </div>
         </section>

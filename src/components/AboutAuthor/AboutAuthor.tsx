@@ -36,16 +36,26 @@ const AboutAuthor = () => {
                           {course.tutor.description}
                         </p>
                         <div className={styles.info__skills}>
-                            {
-                                data.map((item, index) => (
-                                    <div className={styles.info__skill} key={index}>
-                                        <img src={Agree} alt="Agree" />
-                                        <p className={styles.info__text}>
-                                            {item}
-                                        </p>
-                                    </div>
-                                ))
-                            }
+{
+    course.tutor.experience.map((item, index)=> (
+        <div className={styles.info__skill} key={index}>
+        <img src={Agree} alt="Agree" />
+        <p className={styles.info__text}>
+            {item}
+        </p>
+    </div>
+    ))
+}
+                        
+
+{
+  //  course.tutor.
+}
+
+
+{
+  //  course.tutor.
+}
                         </div>
                         <div className={styles.info__btn}>
                             <p className={styles.info__btn__text} onClick={handleNavigate} >

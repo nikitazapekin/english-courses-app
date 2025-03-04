@@ -23,31 +23,27 @@ const CoursePreview = () => {
                         {/*
 {course.}
 */}
+
+{course.course.fulldescription}
+ 
 </p>
 
                     <div className={styles.course__categories}>
 
-                        {/*
-                        <div className={styles.course__category}>
-                        <p className={styles.course__category__text}>
-                                Студенты
-                            </p>
-                            <img className={styles.course__category__icon}
-                                src={CourseIcon1}
-                            />
-                        </div>
+                  
+ 
+  {course.course.course_for.map(item => (
 
-                        */}
-
-                        <div className={styles.course__category}>
+      <div className={styles.course__category}>
                             <p className={styles.course__category__text}>
                            
-                             {course.course.course_for}
+                            {item}
                             </p>
                             <img className={styles.course__category__icon}
                                 src={CourseIcon1}
-                            />
+                                />
                         </div>
+                            ))}
 
 
                     </div>

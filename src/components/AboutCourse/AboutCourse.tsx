@@ -3,6 +3,8 @@ import Icon1 from "../../assets/courseDetails/icon1.png"
 import Icon2 from "../../assets/courseDetails/icon2.png"
 import Icon3 from "../../assets/courseDetails/icon3.png"
 import Icon4 from "../../assets/courseDetails/icon4.png"
+import { useSelector } from "react-redux"
+import { OpenCourseSelector } from "../../store/selectors/OpenCourseSelector"
 const data = [
     {
         title: "90 уроков",
@@ -22,13 +24,23 @@ const data = [
     }
 ]
 const AboutCourse = () => {
+    const course = useSelector(OpenCourseSelector)
     return (<section className={styles.about}>
         <div className={styles.about__inner}>
             <h2 className={styles.about__title}>
                 О курсе
             </h2>
             <div className={styles.about__btns}>
-                {data.map((item, index) => (
+
+                {course.course.about_course.map((item, index)=> (
+                     <div className={styles.about__item} key={index}>
+                   
+                     <p className={styles.about__text}>
+                         {item}
+                     </p>
+                 </div>
+                ))}
+             {/*  {data.map((item, index) => (
                     <div className={styles.about__item} key={index}>
                         <img src={item.image}
                             className={styles.about__image}
@@ -38,6 +50,7 @@ const AboutCourse = () => {
                         </p>
                     </div>
                 ))}
+                    */}
             </div>
         </div>
     </section>
