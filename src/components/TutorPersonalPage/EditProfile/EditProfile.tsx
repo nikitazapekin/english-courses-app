@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { TutorSelector } from "../../../store/selectors/Tutor.selector";
 
 interface FormTypes {
-    username: string;
+/*     username: string;
     description: string;
     fulldescription: string;
     email: string;
@@ -20,23 +20,65 @@ interface FormTypes {
     experience: String[];
     durability: string;
     location: string;
+    price: number; */
+
+    id: number;
+    id_author: number;
+    username: string;
+    email: string;
+    description: string;
+    rate: string;
+    specialization: string;
+    english_level: string;
+    full_description: string;
+    role: string;
+    number_of_students: string;
+    experience: String[];  
+    work_experience: string;
+    password: string;
+   // level: string;
+    location: string;
     price: number;
+    phone: string
+
+
 }
 
 const EditProfile = () => {
     const [formData, setFormData] = useState<FormTypes>({
-        username: "",
+      /*   username: "",
         description: "",
-        fulldescription: "",
+        full_description: "",
         email: "",
         password: "",
         specialization: "",
-        level: "",
-        students: "",
+        english_level: "",
+        number_of_students: "",
         experience: [],
-        durability: "",
+        work_experience: "",
+        location: "",
+        price: 0, */
+
+
+
+        id: 0,   
+        id_author: 0,  
+        username: "",
+        description: "",
+        full_description: "",
+        email: "",
+        password: "",
+        specialization: "",
+        english_level: "",
+        number_of_students: "",
+        experience: [], 
+        work_experience: "",
         location: "",
         price: 0,
+        rate: "",
+        role: "",
+        phone: ""
+
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -53,7 +95,7 @@ const EditProfile = () => {
 
     const tutor = useSelector(TutorSelector);
     const obj: FormTypes = {
-        username: tutor.user.username,
+/*         username: tutor.user.username,
         description: tutor.user.description,
         fulldescription: tutor.user.fulldescription,
         email: tutor.user.email,
@@ -64,7 +106,26 @@ const EditProfile = () => {
         experience: tutor.user.experience || [],
         durability: tutor.user.durability || "",
         location: tutor.user.location || "",
-        price: Number(tutor.user.price),
+        price: Number(tutor.user.price), */
+
+        id: tutor.user.id,
+        id_author:tutor.user.id_author,
+        username:  tutor.user.username,
+        email:  tutor.user.email,
+        description:tutor.user.description,
+        rate:tutor.user.rate,
+        specialization:  tutor.user.specialization,
+        english_level:tutor.user.english_level,
+        full_description: tutor.user.full_description,
+        role: tutor.user.role,
+        number_of_students: tutor.user.number_of_students,
+        experience:tutor.user.experience, 
+        work_experience: tutor.user.work_experience,
+        password:tutor.user.password,
+       // level: string;
+        location: tutor.user.location,
+        price:tutor.user.price,
+        phone: tutor.user.phone
     };
 
     return (

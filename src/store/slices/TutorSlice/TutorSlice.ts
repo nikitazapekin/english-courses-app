@@ -1,23 +1,49 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+/*
+{
+    "message": "Доступ разрешён",
+    "user": {
+        "id": 1,
+        "id_author": 1,
+        "username": "Tutor",
+        "email": "tutor@mail.ru",
+        "description": "2123123",
+        "rate": "0.00",
+        "specialization": "Программирование",
+        "english_level": "С1",
+        "full_description": "описание",
+        "role": "tutor",
+        "number_of_students": 11,
+        "experience": [
+            "3"
+        ],
+        "work_experience": 11,
+        "phone": "3243351",
+        "location": "dwfwe",
+        "price": "21"
+    }
+}
+    */
 interface Tutor {
     id: number;
     id_author: number;
     username: string;
-    description: string;
-    fulldescription: string;
     email: string;
-    password: string;
+    description: string;
+    rate: string;
     specialization: string;
-    level: string;
-    students: string;
+    english_level: string;
+    full_description: string;
+    role: string;
+    number_of_students: string;
     experience: String[];  
-    durability: string;
+    work_experience: string;
+    password: string;
+   // level: string;
     location: string;
     price: number;
-    rate: string;
-    english_level: string;
-    role: string;
+    phone: string
 }
 
 interface TutorSliceTypes {
@@ -31,7 +57,7 @@ interface TutorSliceTypes {
 const initialState: TutorSliceTypes = {
     message: "",
     user: {
-        id: 0,
+     /*    id: 0,
         id_author: 0,
         username: "",
         email: "",
@@ -47,7 +73,26 @@ const initialState: TutorSliceTypes = {
         location: "",
         price: 0,
         role: "",
-        english_level: ""
+        english_level: "" */
+
+        id: 0,
+        id_author: 0,
+        username: "",
+        email:  "",
+        description:  "",
+        rate: "",
+        specialization: "",
+        english_level:  "",
+        full_description: "",
+        role:  "",
+        number_of_students:  "",
+        experience:[],
+        work_experience:  "",
+        password: "",
+       // level: string;
+        location: "",
+        price:0,
+        phone: "",
     },
     loading: false,
     error: null,

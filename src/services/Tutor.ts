@@ -21,7 +21,7 @@ interface GetTutorProps {
 
 
 
-        id: number,
+       /*  id: number,
         id_author:number,
         username: string,
         email: string,
@@ -36,7 +36,28 @@ interface GetTutorProps {
         work_experience:number,
         phone:string,
         location:string,
-        price:number,
+        price:number, */
+
+
+        
+    id: number;
+    id_author: number;
+    username: string;
+    email: string;
+    description: string;
+    rate: string;
+    specialization: string;
+    english_level: string;
+    full_description: string;
+    role: string;
+    number_of_students: string;
+    experience: String[];  
+    work_experience: string;
+    password: string;
+   // level: string;
+    location: string;
+    price: number;
+    phone: string
     }
 
 }
@@ -78,7 +99,7 @@ interface FormTypes {
         specialization: string,
         level: string */
 
-        username: string;
+     /*    username: string;
         description: string;
         fulldescription: string;
         email: string;
@@ -89,7 +110,30 @@ interface FormTypes {
         experience: String[];
         durability: string;
         location: string;
-        price: number;
+        price: number; */
+
+
+
+
+        
+    id: number;
+    id_author: number;
+    username: string;
+    email: string;
+    description: string;
+    rate: string;
+    specialization: string;
+    english_level: string;
+    full_description: string;
+    role: string;
+    number_of_students: string;
+    experience: String[];  
+    work_experience: string;
+    password: string;
+   // level: string;
+    location: string;
+    price: number;
+    phone: string
     }
 }
 
