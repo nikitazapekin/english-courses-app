@@ -130,7 +130,7 @@ interface FormTypes {
     experience: String[];  
     work_experience: string;
     password: string;
-   // level: string;
+ 
     location: string;
     price: number;
     phone: string

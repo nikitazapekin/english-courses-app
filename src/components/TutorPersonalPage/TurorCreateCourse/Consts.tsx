@@ -12,17 +12,59 @@ export const dataPreview = [
         title: "Описание курса",
         placeholder: "Введите описание курса",
         type: "input",
-        name: "describtion"
+        name: "description"
     },
     {
         id: 3,
         title: "Курс предназначен для",
         placeholder: "Курс предназначен для",
-        type: "input",
-        name: "for"
+        type: "select",
+        name: "course_for"
 
 
     },
+
+    {
+        id: 5,
+        title: "Полное описание",
+        placeholder: "полное описание курса",
+        type: "input",
+        name: "fulldescription"
+
+
+    },
+
+
+    {
+        id: 6,
+        title: "Для чего нужно знать английский",
+        placeholder: "Для чего нужно знать английский",
+        type: "select",
+        name: "for_what_reasons"
+
+
+    },
+
+    {
+        id: 7,
+        title: "О курсе",
+        placeholder: "О курсе",
+        type: "select",
+        name: "about_course"
+
+
+    },
+    {
+        id: 8,
+        title: "Тег",
+        placeholder: "Тег курса",
+        type: "input",
+        name: "tag"
+
+
+    },
+
+
     {
         id: 4,
         title: "Лого курса",

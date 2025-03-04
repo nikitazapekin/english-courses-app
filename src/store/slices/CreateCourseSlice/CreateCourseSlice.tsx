@@ -20,10 +20,21 @@ interface Lessons {
     materials: File[];
 }
 interface FormProps {
-    name: string,
+/*     name: string,
     describtion: string,
     for: string,
-    logo: string
+    logo: string */
+
+
+    name: string;
+    description: string;
+    for: string;
+    logo: string;
+    course_for: String[],
+    fulldescription: string,
+    for_what_reasons: String[],
+    about_course: String[],
+    tag: string,
 }
 
 interface CreateFormSliceTypes {
@@ -43,9 +54,14 @@ const initialState: CreateFormSliceTypes = {
     message: "",
     form: {
         name: "",
-        describtion: "",
+        description: "",
         for: "",
-        logo: ""
+        logo: "",
+        course_for: [],
+        fulldescription: "",
+        for_what_reasons: [],
+        about_course: [],
+        tag:"",
     },
     loading: false,
     isOpenModal: false,

@@ -8,13 +8,23 @@ type SortOption = "price" | "rating" | "releaseDate";
  
 
     interface Course {
-        id: number,
+         id: number,
         author: string,
         title: string,
         description: string,
         course_for: String[],
         release_date: string,
-        course_logo: string,
+        course_logo: string, 
+
+     /*    name: string;
+        description: string;
+        for: string;
+        logo: string;
+        forcourse: String[],
+        fulldescription: string,
+        for_what_reasons: String[],
+        about_course: String[],
+        tag: string, */
     }
     
 
@@ -32,7 +42,7 @@ const CoursesList = () => {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                if(query) {
+          /*       if(query) {
 
                     const response = await CourseService.GetCoursesQuery(currentPage, itemsPerPage, query);
                     
@@ -43,7 +53,7 @@ const CoursesList = () => {
                     
                     setCards(response.data.courses)
                     setPages(response.data.pages)
-                }
+                } */
             } catch (error) {
                 console.error("Ошибка при загрузке курсов:", error);
             }
@@ -78,6 +88,7 @@ const CoursesList = () => {
                 </div>
 
                 <div className={styles.courses__cards}>
+                    {/*
                     {cards.length > 0 ? (
                         cards.map((item) => (
                             <div className={styles.card} key={item.id}>
@@ -89,9 +100,10 @@ const CoursesList = () => {
                                 </Link>
                             </div>
                         ))
-                    ) : (
-                        <div className={styles.courses__text}>Курсы не найдены</div>
-                    )}
+                        ) : (
+                            <div className={styles.courses__text}>Курсы не найдены</div>
+                            )}
+                            */}
                 </div>
 
                 <CoursesListDots totalPages={pages} currentPage={currentPage} onPageChange={handlePageChange} />

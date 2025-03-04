@@ -24,9 +24,9 @@ const SearchCourses = () => {
         const handleSearch = async () => {
             try {
                 if (query) {
-
+/* 
                     const response = await CourseService.SearchCourses(query)
-                    setCards(response.data.courses)
+                    setCards(response.data.courses) */
                 }
             } catch {
 

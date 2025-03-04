@@ -4,10 +4,20 @@ import { RegisterInterface } from "../components/SignUpForm/types";
 import { SignInData } from "../components/SignInForm/types";
 
 interface CreateCourseTypes {
-    name: string;
+ /*    name: string;
     describtion: string;
     for: string;
+    logo: string; */
+
+    name: string;
+    description: string;
+    for: string;
     logo: string;
+    course_for: String[],
+    fulldescription: string,
+    for_what_reasons: String[],
+    about_course: String[],
+    tag: string,
 }
 
 
@@ -16,7 +26,7 @@ interface Course {
     author: string,
     title: string,
     description: string,
-    course_for: String[],
+  course_for: String[],
     release_date: string,
     course_logo: string,
 }
@@ -54,14 +64,33 @@ interface CourseDetails {
     }
     }
 }
+
+/*
+  name: string;
+    description: string;
+    for: string;
+    logo: string;
+    course_for: String[],
+    fulldescription: string,
+    for_what_reasons: String[],
+    about_course: String[],
+    tag: string,
+    */
  
 export default class CourseService {
     static async CreateCourse(data: CreateCourseTypes): Promise<AxiosResponse<any>> {
+        console.log("DAR", JSON.stringify(data))
+      
         return $api.post<any>("/courses/createCourse", {
             name: data.name,
-            describtion: data.describtion,
-            forcourse: data.for,
-            logo: data.logo
+            description: data.description,
+           course_for: data.course_for,
+            logo: data.logo,
+            fulldescription: data.fulldescription, 
+            for_what_reasons: data.for_what_reasons, 
+            about_course: data.about_course, 
+            tag: data.tag,
+          
         });
     }
     static async GetCourses(page: number, limit: number): Promise<AxiosResponse<GetCoursesResponse>> {
