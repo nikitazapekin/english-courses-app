@@ -78,7 +78,7 @@ const EditField = ({ item, handleChange, obj }: EditFieldProps) => {
                 />
             )}
 
-            {item.name} , {JSON.stringify(obj)}
+     
         </div>
     );
 };

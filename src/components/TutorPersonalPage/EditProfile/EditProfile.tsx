@@ -46,19 +46,7 @@ interface FormTypes {
 
 const EditProfile = () => {
     const [formData, setFormData] = useState<FormTypes>({
-      /*   username: "",
-        description: "",
-        full_description: "",
-        email: "",
-        password: "",
-        specialization: "",
-        english_level: "",
-        number_of_students: "",
-        experience: [],
-        work_experience: "",
-        location: "",
-        price: 0, */
-
+    
 
 
         id: 0,   
@@ -95,18 +83,7 @@ const EditProfile = () => {
 
     const tutor = useSelector(TutorSelector);
     const obj: FormTypes = {
-/*         username: tutor.user.username,
-        description: tutor.user.description,
-        fulldescription: tutor.user.fulldescription,
-        email: tutor.user.email,
-        password: tutor.user.password,
-        specialization: tutor.user.specialization,
-        level: tutor.user.english_level,
-        students: tutor.user.students || "",
-        experience: tutor.user.experience || [],
-        durability: tutor.user.durability || "",
-        location: tutor.user.location || "",
-        price: Number(tutor.user.price), */
+ 
 
         id: tutor.user.id,
         id_author:tutor.user.id_author,
