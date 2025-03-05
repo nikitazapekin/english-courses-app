@@ -39,7 +39,9 @@ const TutorCourse = () => {
                     username={tutor.user.username}
                     email={tutor.user.email}
                 />
-                <TutorEditCourse />
+                <TutorEditCourse 
+                id={lastPathSegment!}
+                />
 
             </div>
         </section>

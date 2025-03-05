@@ -19,8 +19,10 @@ interface FormState {
     about_course: String[];
     tag: string;
 }
-
-const TutorEditCourse: React.FC = () => {
+interface Props {
+    id: string
+}
+const TutorEditCourse = ({id}: Props) => {
     const editCourse = useSelector(OpenCourseSelector)
     console.log("JSON", JSON.stringify(editCourse))
     const [formState, setFormState] = useState<FormState>({
@@ -61,6 +63,7 @@ const TutorEditCourse: React.FC = () => {
 
 
     };
+    
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -103,7 +106,7 @@ const TutorEditCourse: React.FC = () => {
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
-            const response = await CourseService.CreateCourse(formState);
+            const response = await CourseService.EditCourseInfo({data: {...formState, id: id}}, id);
             console.log("Курс создан:", response.data);
         } catch (error) {
             console.error("Ошибка при создании курса:", error);

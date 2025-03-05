@@ -108,15 +108,7 @@ interface CourseDetails {
     message:string,
     courses: {
         course: {
-        /*     id: number,
-            course_id:number
-            author: string,
-        title: string,
-        description: string,
-        course_for: String[],
-        release_date: string,
-        course_logo:string, */
-
+ 
 
         id: number,
         author: string,
@@ -152,6 +144,57 @@ interface CourseDetails {
     }
 }
  
+
+
+
+/*
+
+interface FormState {
+    name: string;
+    description: string;
+    for: string;
+    logo: string;
+    course_for: String[];
+    fulldescription: string;
+    for_what_reasons: String[];
+    about_course: String[];
+    tag: string;
+}
+    */
+
+
+interface FormTypes {
+    data: {
+   /*  id: number;
+    id_author: number;
+    username: string;
+    email: string;
+    description: string;
+    rate: string;
+    specialization: string;
+    english_level: string;
+    full_description: string;
+    role: string;
+    number_of_students: string;
+    experience: String[];  
+    work_experience: string;
+    password: string;
+ 
+    location: string;
+    price: number;
+    phone: string */
+    id: string,
+    name: string;
+    description: string;
+    for: string;
+    logo: string;
+    course_for: String[];
+    fulldescription: string;
+    for_what_reasons: String[];
+    about_course: String[];
+    tag: string;
+    }
+}
 export default class CourseService {
     static async CreateCourse(data: CreateCourseTypes): Promise<AxiosResponse<any>> {
         return $api.post<any>("/courses/createCourse", {
@@ -183,6 +226,11 @@ export default class CourseService {
 
     static async GetCourseInfo(query: string): Promise<AxiosResponse<CourseDetails>> {
         return $api.get<CourseDetails>(`/courses/getCourseInfo?id=${query}`)
+    }
+
+
+    static async EditCourseInfo({data}: FormTypes, query: string): Promise<AxiosResponse<CourseDetails>> {
+        return $api.put<CourseDetails>(`/courses/editCourseInfo?id=${query}`, data)
     }
 
 

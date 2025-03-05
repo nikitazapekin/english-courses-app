@@ -26,7 +26,7 @@ const TutorEditProfile = () => {
              
              const response = await TutorService.GetTutor();
              dispatch(setTutor(response.data.user))
-            //    dispatch(setPerson(response.data.user))
+            
             } catch (err) {
                 navigate("/sign-in")
                 console.log("Something went wrong", err);
@@ -43,10 +43,7 @@ const TutorEditProfile = () => {
                 <div className={styles.content__inner}>
 
              <TutorPersonalPageComponent />
-          {/*   <p>
-
- jjvs fav egea
-             </p> */}
+       
                 </div>
             </div>
 
