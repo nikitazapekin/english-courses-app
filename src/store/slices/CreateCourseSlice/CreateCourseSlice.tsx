@@ -8,7 +8,7 @@ interface FormDataTests {
     title: string;
     answers: string[];
     answer: string;
-    url: File | null;
+    url: string;
 }
 
 
@@ -20,12 +20,7 @@ interface Lessons {
     materials: File[];
 }
 interface FormProps {
-/*     name: string,
-    describtion: string,
-    for: string,
-    logo: string */
-
-
+ 
     name: string;
     description: string;
     for: string;
@@ -45,7 +40,12 @@ interface CreateFormSliceTypes {
     isOpenModal: boolean,
     lessons: Lessons[],
     openModalType: string,
+  //  tests: FormDataTests[],
+  test: {
+    title: string, 
+    description: string,
     tests: FormDataTests[],
+  },
     tutorPage: string,
 }
 
@@ -68,7 +68,12 @@ const initialState: CreateFormSliceTypes = {
     error: null,
     lessons: [],
     openModalType: "",
+  //  tests: [],
+  test: {
+    title: "", 
+    description: "",
     tests: [],
+  },
     tutorPage: ""
 };
 const CreateFormSlice = createSlice({
@@ -90,7 +95,7 @@ const CreateFormSlice = createSlice({
             console.log("LES", JSON.stringify(state.lessons))
         },
         setTests(state, action: PayloadAction<FormDataTests>) {
-            state.tests.push(action.payload)
+         //   state.tests.push(action.payload)
         },
       
     },

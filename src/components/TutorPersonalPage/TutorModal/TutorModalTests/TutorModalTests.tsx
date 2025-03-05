@@ -61,8 +61,8 @@ const TutorModalTests = () => {
     };
 
     const handleSubmit = () => {
-        dispatch(setTests(formData))
-       // dispatch(setLessons(formData)); // Отправляем в Redux
+     //   dispatch(setTests(formData))
+    
         handleClose();
     };
 

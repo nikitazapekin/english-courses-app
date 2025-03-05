@@ -4,9 +4,7 @@ const CourseConsultation = () => {
         <form className={styles.course__inner}>
             <div className={styles.course__content}>
                 <h2 className={styles.course__title}>
-                    Записаться на курс
-                    или бесплатно
-                    проконсультроваться
+                    Записаться на пробное занятие с репетитором
                 </h2>
                 <div className={styles.form}>
                     <input className={styles.form__input} type="text" placeholder="Имя" required />
@@ -22,11 +20,9 @@ const CourseConsultation = () => {
             </div>
             <button className={styles.course__btn} type="submit">
                 <p className={styles.course__btn__text}>
-                  Записаться
+                    Записаться
                 </p>
                 <div className={styles.course__btn__background} />
-
-
             </button>
 
         </form>
