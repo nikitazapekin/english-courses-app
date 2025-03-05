@@ -24,6 +24,8 @@ const PerosnalEditPage = () => {
         handleGetUser();
 
     }, []);
+
+    
     return (
 
         <div className={styles.wrapper}>

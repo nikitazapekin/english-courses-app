@@ -29,7 +29,7 @@ const TutorCourse = () => {
         };
         handleGetUser();
 
-    })
+    }, [])
     const tutor = useSelector(TutorSelector)
     return (
         <section

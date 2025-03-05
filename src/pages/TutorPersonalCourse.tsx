@@ -8,6 +8,9 @@ import TutorService from "../services/Tutor";
 import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 import TutorPersonalCoursesComponent from "../components/TutorPersonalPage/TutorPersonalCourses/TutorPersonalCourses";
 import TutorCourse from "../components/TutorPersonalPage/TutorCourse/TutorCourse";
+import { useSelector } from "react-redux";
+import { isOpenModalCreateLessonSelector } from "../store/selectors/CreateCourseSelector";
+import TutorModal from "../components/TutorPersonalPage/TutorModal/TutorModal";
 const TutorPersonalCourse = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -24,12 +27,18 @@ const TutorPersonalCourse = () => {
         };
         handleGetUser();
     }, []);
+    const { isOpenModal } = useSelector(isOpenModalCreateLessonSelector)
     return (
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.darken} />
             <div className={styles.content}>
            <TutorCourse />
+
+           {isOpenModal && (
+
+<TutorModal />
+)}
             </div>
             <Footer />
         </div>

@@ -13,7 +13,7 @@ interface FormState {
     description: string;
     for: string;
     logo: string;
-   course_for: String[];
+    course_for: String[];
     fulldescription: string;
     for_what_reasons: String[];
     about_course: String[];
@@ -24,18 +24,18 @@ const TutorEditCourse: React.FC = () => {
     const editCourse = useSelector(OpenCourseSelector)
     console.log("JSON", JSON.stringify(editCourse))
     const [formState, setFormState] = useState<FormState>({
-        name: "", description: "",  for: "",
-         logo: "",
+        name: "", description: "", for: "",
+        logo: "",
         fulldescription: "", for_what_reasons: [], about_course: [], tag: "",
         course_for: []
     });
 
-    useEffect(()=> {
+    useEffect(() => {
         if (editCourse.course) {
             setFormState({
-                name: editCourse.course.title || "",  
+                name: editCourse.course.title || "",
                 description: editCourse.course.description || "",
-                for:  "",
+                for: "",
                 logo: editCourse.course.course_logo || "",
                 fulldescription: editCourse.course.fulldescription || "",
                 for_what_reasons: editCourse.course.course_for || [],
@@ -44,9 +44,9 @@ const TutorEditCourse: React.FC = () => {
                 course_for: editCourse.course.course_for || []
             });
         }
-//setFormState({...editCourse.course})
+        //setFormState({...editCourse.course})
     }, [editCourse])
-    
+
     const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});
 
     const dispatch = useDispatch();
@@ -78,17 +78,17 @@ const TutorEditCourse: React.FC = () => {
         setFormState(prevState => ({ ...prevState, logo: "" }));
     };
 
-   
+
     const handleAddItem = (name: keyof FormState) => {
         if (!selectInputs[name]) return;
         setFormState(prevState => ({
             ...prevState,
             [name]: [...prevState[name] as string[], selectInputs[name]]
         }));
-        setSelectInputs(prev => ({ ...prev, [name]: "" })); 
+        setSelectInputs(prev => ({ ...prev, [name]: "" }));
     };
 
-   
+
     const handleRemoveItem = (name: keyof FormState, index: number) => {
         setFormState(prevState => ({
             ...prevState,
@@ -108,6 +108,9 @@ const TutorEditCourse: React.FC = () => {
         } catch (error) {
             console.error("Ошибка при создании курса:", error);
         }
+    };
+    const handleOpenModal = (type: string) => {
+        dispatch(setOpenModal({ type: type }));
     };
 
     return (
@@ -188,8 +191,18 @@ const TutorEditCourse: React.FC = () => {
                         </div>
                     ))}
 
+
+                    <button className={styles.panel__btn} type="button" onClick={() => handleOpenModal("lesson")}>
+                        Добавить урок
+                    </button>
+                    <button className={`${styles.panel__btn} ${styles.panel__btn__test}`} type="button"
+                        onClick={() => handleOpenModal("test")}
+                    >
+                        Добавить тест
+                    </button>
+            
                     <button className={styles.panel__btn} type="submit" onClick={handleSubmit}>
-                        Сохранить курс
+                        Сохранить изменения
                     </button>
                 </form>
             </div>
@@ -198,7 +211,7 @@ const TutorEditCourse: React.FC = () => {
 };
 
 export default TutorEditCourse;
- 
+
 /* const TutorEditCourse = () => {
     return ( <div>
 
