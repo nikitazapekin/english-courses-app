@@ -154,8 +154,6 @@ interface CourseDetails {
  
 export default class CourseService {
     static async CreateCourse(data: CreateCourseTypes): Promise<AxiosResponse<any>> {
-        console.log("DAR", JSON.stringify(data))
-      
         return $api.post<any>("/courses/createCourse", {
             name: data.name,
             description: data.description,

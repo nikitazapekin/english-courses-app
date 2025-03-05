@@ -71,24 +71,7 @@ const initialState: OpenFormSliceTypes = {
     loading: false,
     courses: {
         course: {
-        /*   id: 0,
-            course_id: 0,
-            author: "",
-            title: "",
-            description: "",
-            course_for: [],
-            release_date: "",
-            course_logo: "",  */
-
-          /*   name: "",
-            description:"",
-            for:"",
-            logo: "",
-            course_for: [],
-            fulldescription:"",
-            for_what_reasons: [],
-            about_course:  [],
-            tag: "", */
+      
 
 
 

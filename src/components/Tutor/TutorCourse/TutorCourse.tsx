@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom"
 import styles from "./TutorCourse.module.scss"
 interface TutorCourseProps {
     item: {
@@ -12,8 +13,14 @@ interface TutorCourseProps {
     }
 }
 const TutorCourse = ({ item }: TutorCourseProps) => {
+    const navigate = useNavigate()
+    const handleRedirect = () => {
+navigate(`/tutor/personal/courses/${item.id}`)
+    }
     return (
-        <div className={styles.card}>
+        <div className={styles.card}
+        onClick={handleRedirect}
+        >
             <img
                 className={styles.card__image}
                 src={item.course_logo}
@@ -26,11 +33,13 @@ const TutorCourse = ({ item }: TutorCourseProps) => {
                 <p className={styles.card__describtion}>
                     {item.description}
                 </p>
+ 
 
+                    
                 <div className={styles.card__for}>
                     {
                         item.course_for.map(item_for => (
-                            <div className={styles.card__for}>
+                            <div className={styles.card__for__item}>
                                 {item_for}
                             </div>
                         ))

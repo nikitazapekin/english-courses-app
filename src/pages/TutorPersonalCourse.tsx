@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import TutorService from "../services/Tutor";
 import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 import TutorPersonalCoursesComponent from "../components/TutorPersonalPage/TutorPersonalCourses/TutorPersonalCourses";
-const TutorPersonalCourses = () => {
+import TutorCourse from "../components/TutorPersonalPage/TutorCourse/TutorCourse";
+const TutorPersonalCourse = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -15,7 +16,7 @@ const TutorPersonalCourses = () => {
         const handleGetUser = async () => {
             try {
                 const response = await TutorService.GetTutor()
-                dispatch(setTutor(response.data.user))
+               dispatch(setTutor(response.data.user))
 
             } catch (err) {
                 navigate("/sign-in")
@@ -28,11 +29,11 @@ const TutorPersonalCourses = () => {
             <Header />
             <div className={styles.darken} />
             <div className={styles.content}>
-                <TutorPersonalCoursesComponent />
+           <TutorCourse />
             </div>
             <Footer />
         </div>
     );
 }
 
-export default TutorPersonalCourses;
+export default TutorPersonalCourse;

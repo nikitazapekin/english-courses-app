@@ -19,7 +19,7 @@ import { setCourse } from "../store/slices/OpenCourseDetails/OpenCourseDetails";
 const CoursePage = () => {
  
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    
         const location = useLocation();
         const lastPathSegment = location.pathname.split("/").pop();
         console.log("segment", lastPathSegment);
@@ -30,8 +30,7 @@ const CoursePage = () => {
             try {
                 const response = await CourseService.GetCourseInfo(lastPathSegment!)
         dispatch(setCourse( response.data.courses))
-           //  dispatch(setTutor(response.data.user))
-             //dispatch(setPerson(response.data.user))
+          
             } catch (err) {
                // navigate("/sign-in")
                 console.log("Something went wrong", err);

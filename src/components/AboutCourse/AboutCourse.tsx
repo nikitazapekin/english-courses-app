@@ -40,17 +40,7 @@ const AboutCourse = () => {
                      </p>
                  </div>
                 ))}
-             {/*  {data.map((item, index) => (
-                    <div className={styles.about__item} key={index}>
-                        <img src={item.image}
-                            className={styles.about__image}
-                            alt="Icon" />
-                        <p className={styles.about__text}>
-                            {item.title}
-                        </p>
-                    </div>
-                ))}
-                    */}
+          
             </div>
         </div>
     </section>

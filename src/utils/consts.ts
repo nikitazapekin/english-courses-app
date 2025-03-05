@@ -19,6 +19,7 @@ export const CHAT_PAGE = "/chat"
 
 export const  TUTOR_PERSONAL_PAGE = "/tutor/personal"
 export const TUTOR_PERSONAL_COURSES =  "/tutor/personal/courses"
+export const TUTOR_PERSONAL_COURSE =  "/tutor/personal/courses/:id"
 export const TUTOR_CREATE_COURSES =  "/tutor/personal/create"
 export const TUTOR_EDIT =  "/tutor/personal/edit"
 
