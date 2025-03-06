@@ -43,6 +43,21 @@ interface EditAvatarProps {
         avatar: string
  
 }
+
+interface Test {
+    title_test: string,
+     description: string,
+     topics: String[],
+     questions: Array<{
+ 
+         title: string,
+         answers: String[], 
+         answer: string, 
+ url: string
+     }>  
+  
+  }
+ 
  
 export default class PersonalService {
     static async GetUser(): Promise<AxiosResponse<PersonalResponse>> {
@@ -51,13 +66,14 @@ export default class PersonalService {
     static async EditUser( {data}: EditProps ): Promise<AxiosResponse<PersonalResponse>> {
         return $api.put<PersonalResponse>('/personal/editUser', data);
     }
-
     static async EditUserAvatar( {avatar}: EditAvatarProps ): Promise<AxiosResponse<PersonalResponse>> {
         return $api.put<PersonalResponse>('/personal/editAvatar', {avatar: avatar});
     }
-
     static async GetAvatar(  ): Promise<AxiosResponse<any>> {
         return  $api.get<any>('/personal/getAvatar');
+    }
+    static async SubscribeToCourse( courseId: string): Promise<AxiosResponse<any>> {
+        return  $api.put<any>('/personal/subcribeToCourse', {courseId: courseId});
     }
  
 

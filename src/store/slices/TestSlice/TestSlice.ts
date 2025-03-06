@@ -47,7 +47,7 @@ const TestSlice = createSlice({
         }, */
 
         setTest(state, action:PayloadAction<Test>) {
-
+state.test = action.payload
         }
     },
 });

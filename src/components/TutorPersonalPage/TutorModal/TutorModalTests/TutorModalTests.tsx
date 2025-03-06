@@ -130,7 +130,7 @@ const TutorModalTests = () => {
                             value={question.title}
                             onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
                         />
-                        
+
                         {question.answers.map((answer, aIndex) => (
                             <input
                                 key={aIndex}
@@ -184,4 +184,3 @@ const TutorModalTests = () => {
 export default TutorModalTests;
 
 
- 

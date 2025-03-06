@@ -33,24 +33,7 @@ interface TutorSliceTypes {
 const initialState: TutorSliceTypes = {
     message: "",
     user: {
-     /*    id: 0,
-        id_author: 0,
-        username: "",
-        email: "",
-        password: "",  
-        description: "",
-        fulldescription: "",  
-        rate: "",
-        specialization: "",
-        level: "",
-        students: "",
-        experience: [],
-        durability: "",
-        location: "",
-        price: 0,
-        role: "",
-        english_level: "" */
-
+     
         id: 0,
         id_author: 0,
         username: "",

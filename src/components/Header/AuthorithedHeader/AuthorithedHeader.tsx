@@ -86,9 +86,9 @@ const AuthorithedHeader = () => {
     useEffect(() => {
         const handleGetUser = async () => {
             try {
-                //     const response = await TutorService.GetTutor()
+                     const response = await PersonalService.GetUser()
                 // const reponse = await PersonalService.GetUser()
-                //   setRole(reponse.data.user.role)
+                   setRole(response.data.user.role)
                 //  dispatch(setTutor(response.data.user))
                 //  setRole(response.)
 

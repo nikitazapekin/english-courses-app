@@ -2,15 +2,22 @@ import { useDispatch } from "react-redux";
 import styles from "./CourseModal.module.scss"
 import { setOpenCourseModal } from "../../../store/slices/CourseModal/CourseModal";
 import { useLocation } from "react-router-dom";
+import PersonalService from "../../../services/Personal";
 const CourseModal = () => {
- const location = useLocation();
+    const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
- 
+
 
 
     const dispatch = useDispatch()
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         dispatch(setOpenCourseModal())
+        try {
+            PersonalService.SubscribeToCourse(lastPathSegment!)
+        }
+        catch {
+
+        }
     }
     const handleCancel = () => {
         dispatch(setOpenCourseModal())
