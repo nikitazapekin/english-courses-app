@@ -13,7 +13,7 @@ import Google from "../../assets/networks/google.png"
 import { signInSchema } from "./schema";
 import { useToast } from "../../hooks/useToast";
 import Toast from "../Toast/Toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AuthService from "../../services/Auth";
 interface SignInProps {
     toasts: { id: string; message: string }[],
@@ -21,6 +21,7 @@ interface SignInProps {
 }
 const SignInForm = ({ toasts, addToast }: SignInProps) => {
     const navigate = useNavigate();
+    const [errorMessage, setErrorMessage] = useState("")
     const {
         register,
         handleSubmit,
@@ -57,7 +58,11 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
             } catch (error: any) {
                 console.error('Ошибка при регистрации:', error);
                 if (error.response) {
+                    console.log("err", JSON.stringify(error.response.data))
                     console.error('Ответ ошибки:', error.response);
+               
+                    setErrorMessage(error.response?.data?.message || "Произошла ошибка");
+ 
                 } else if (error.request) {
                     console.error('Запрос был отправлен, но не получен ответ:', error.request);
                 } else {
@@ -121,6 +126,9 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
                         </div>
                     </div>
                 </div>
+                <p>
+                    {errorMessage}
+                </p>
                 <button className={styles.form__submit} type="submit"
                     onClick={handleSubmit(handleClick)}
                 >Войти</button>

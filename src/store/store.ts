@@ -11,6 +11,8 @@ import CreateFormSlice from "./slices/CreateCourseSlice/CreateCourseSlice"
 import CoursesSlice from "./slices/CoursesSlice/CoursesSlice"
 import AdminSlice from "./slices/AdminSlice/AdminSlice"
 import OpenForm from "./slices/OpenCourseDetails/OpenCourseDetails"
+
+import CourseModal from "./slices/CourseModal/CourseModal"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
     FormSlice: FormSlice,
@@ -20,7 +22,8 @@ export const rootReducer = combineReducers({
     CreateFormSlice: CreateFormSlice,
     CoursesSlice: CoursesSlice,
     AdminSlice:AdminSlice,
-    OpenCourse: OpenForm
+    OpenCourse: OpenForm,
+    CourseModal: CourseModal
 
 });
 export const store = configureStore({

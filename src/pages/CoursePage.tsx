@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CourseService from "../services/Course";
 import { setCourse } from "../store/slices/OpenCourseDetails/OpenCourseDetails";
+import Course from "../components/Course/Course";
 const CoursePage = () => {
  
     const dispatch = useDispatch()
@@ -49,7 +50,7 @@ const CoursePage = () => {
                
               
 
-               
+               <Course />
                 <CoursePreview />
 
                 <ForWhatSection />
