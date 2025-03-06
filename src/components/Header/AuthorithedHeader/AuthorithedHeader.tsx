@@ -87,11 +87,9 @@ const AuthorithedHeader = () => {
         const handleGetUser = async () => {
             try {
                      const response = await PersonalService.GetUser()
-                // const reponse = await PersonalService.GetUser()
+             
                    setRole(response.data.user.role)
-                //  dispatch(setTutor(response.data.user))
-                //  setRole(response.)
-
+            
             } catch (err) {
                 navigate("/sign-in")
             }

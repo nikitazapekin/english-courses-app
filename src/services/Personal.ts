@@ -75,6 +75,9 @@ export default class PersonalService {
     static async SubscribeToCourse( courseId: string): Promise<AxiosResponse<any>> {
         return  $api.put<any>('/personal/subcribeToCourse', {courseId: courseId});
     }
+    static async GetPersonalCourses( limit: number, offset: number): Promise<AxiosResponse<any>> {
+        return  $api.get<any>(`/personal/getSubscribedCourses?limit=${limit}&offset=${offset}`);
+    }
  
 
 
