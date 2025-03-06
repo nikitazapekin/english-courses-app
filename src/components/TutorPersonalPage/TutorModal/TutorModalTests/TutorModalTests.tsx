@@ -1,28 +1,31 @@
-import styles from "./TutorModalTests.module.scss"; 
-import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { setLessons, setOpenModal, setTests } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
-import { modalTest } from "./Consts";
+ 
 
-interface FormData {
-    title_test: string;
-    description_test: string;
-    topics: string[];
+import styles from "./TutorModalTests.module.scss";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { setTests, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
+import { setTest } from "../../../../store/slices/TestSlice/TestSlice";
+
+interface Question {
     title: string;
     answers: string[];
     answer: string;
-    url: File | null;
+    url: string;
+}
+
+interface FormData {
+    title_test: string;
+    description: string;
+    topics: string[];
+    questions: Question[];
 }
 
 const TutorModalTests = () => {
     const [formData, setFormData] = useState<FormData>({
         title_test: "",
-        description_test: "",
+        description: "",
         topics: [],
-        title: "",
-        answer: "",
-        answers: [],
-        url: null
+        questions: [],
     });
 
     const dispatch = useDispatch();
@@ -35,62 +38,53 @@ const TutorModalTests = () => {
         }));
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { files } = e.target;
-        if (files && files.length > 0) {
-            setFormData((prev) => ({
-                ...prev,
-                url: files[0],
-            }));
-        }
-    };
-
-    const handleAddAnswer = () => {
+    const handleAddQuestion = () => {
         setFormData((prev) => ({
             ...prev,
-            answers: [...prev.answers, ""],
+            questions: [...prev.questions, { title: "", answers: [""], answer: "", url: "" }],
         }));
     };
 
-    const handleAnswerChange = (index: number, value: string) => {
+    const handleQuestionChange = (qIndex: number, value: string) => {
         setFormData((prev) => {
-            const newAnswers = [...prev.answers];
-            newAnswers[index] = value;
-            return { ...prev, answers: newAnswers };
+            const newQuestions = [...prev.questions];
+            newQuestions[qIndex].title = value;
+            return { ...prev, questions: newQuestions };
         });
     };
 
-    const handleRemoveAnswer = (index: number) => {
-        setFormData((prev) => ({
-            ...prev,
-            answers: prev.answers.filter((_, i) => i !== index),
-        }));
-    };
-
-    const handleAddTopic = () => {
-        setFormData((prev) => ({
-            ...prev,
-            topics: [...prev.topics, ""],
-        }));
-    };
-
-    const handleTopicChange = (index: number, value: string) => {
+    const handleAddAnswer = (qIndex: number) => {
+        let count = 0
         setFormData((prev) => {
-            const newTopics = [...prev.topics];
-            newTopics[index] = value;
-            return { ...prev, topics: newTopics };
+            const newQuestions = [...prev.questions];
+           if(count<1) {
+
+               newQuestions[qIndex].answers.push("");
+            
+            count++
+            }
+            return { ...prev, questions: newQuestions };
         });
     };
 
-    const handleRemoveTopic = (index: number) => {
-        setFormData((prev) => ({
-            ...prev,
-            topics: prev.topics.filter((_, i) => i !== index),
-        }));
+    const handleAnswerChange = (qIndex: number, aIndex: number, value: string) => {
+        setFormData((prev) => {
+            const newQuestions = [...prev.questions];
+            newQuestions[qIndex].answers[aIndex] = value;
+            return { ...prev, questions: newQuestions };
+        });
     };
 
+    const handleCorrectAnswerChange = (qIndex: number, value: string) => {
+        setFormData(prev => {
+            const newQuestions = [...prev.questions];
+            newQuestions[qIndex].answer = value;
+            return { ...prev, questions: newQuestions };
+        });
+    };
+    
     const handleSubmit = () => {
-        //dispatch(setTests(formData));
+        dispatch(setTest(formData));
         handleClose();
     };
 
@@ -98,103 +92,74 @@ const TutorModalTests = () => {
         dispatch(setOpenModal({ type: "" }));
     };
 
+    useEffect(()=> {
+console.log(formData)
+    }, [formData])
     return (
         <div className={styles.modal__content}>
             <h3 className={styles.modal__title}>Добавить тест</h3>
             <form className={styles.modal__fields}>
-                {modalTest.map((item) => (
-                    <div className={styles.modal__field} key={item.id}>
-                        <label className={styles.modal__field__title}>{item.title}</label>
+                <input
+                    className={styles.modal__input}
+                    placeholder="Название теста"
+                    name="title_test"
+                    value={formData.title_test}
+                    onChange={handleChange}
+                />
+                <input
+                    className={styles.modal__input}
+                    placeholder="Описание"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                />
 
-                        {item.type === "input" && (
+                {formData.questions.map((question, qIndex) => (
+                    <div key={qIndex} className={styles.questionContainer}>
+                        <input
+                            className={styles.modal__input}
+                            placeholder="Введите вопрос"
+                            value={question.title}
+                            onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
+                        />
+                        
+                        {question.answers.map((answer, aIndex) => (
                             <input
+                                key={aIndex}
                                 className={styles.modal__input}
-                                placeholder={item.placeholder}
-                                name={item.name}
-                                value={formData[item.name as keyof FormData] as string}
-                                onChange={handleChange}
+                                placeholder="Вариант ответа"
+                                value={answer}
+                                onChange={(e) => handleAnswerChange(qIndex, aIndex, e.target.value)}
                             />
-                        )}
+                        ))}
+                        <button type="button" className={styles.addAnswerBtn} onClick={() => handleAddAnswer(qIndex)}>
+                            ➕ Добавить ответ
+                        </button>
 
-                        {item.type === "array" && item.name === "answers" && (
-                            <div className={styles.answersContainer}>
-                                {formData.answers.map((answer, index) => (
-                                    <div key={index} className={styles.answerItem}>
-                                        <input
-                                            className={styles.modal__input}
-                                            placeholder="Введите вариант ответа"
-                                            value={answer}
-                                            onChange={(e) => handleAnswerChange(index, e.target.value)}
-                                        />
-                                        <button
-                                            type="button"
-                                            className={styles.removeBtn}
-                                            onClick={() => handleRemoveAnswer(index)}
-                                        >
-                                            ❌
-                                        </button>
-                                    </div>
-                                ))}
-                                <button type="button" className={styles.addAnswerBtn} onClick={handleAddAnswer}>
-                                    ➕ Добавить ответ
-                                </button>
-                            </div>
-                        )}
+                        <input
+                            className={styles.modal__input}
+                            placeholder="Правильный ответ"
+                            value={question.answer}
+                            onChange={(e) => handleCorrectAnswerChange(qIndex, e.target.value)}
+                        />
 
-                        {item.type === "array" && item.name === "topics" && (
-                            <div className={styles.answersContainer}>
-                                {formData.topics.map((topic, index) => (
-                                    <div key={index} className={styles.answerItem}>
-                                        <input
-                                            className={styles.modal__input}
-                                            placeholder="Введите тему теста"
-                                            value={topic}
-                                            onChange={(e) => handleTopicChange(index, e.target.value)}
-                                        />
-                                        <button
-                                            type="button"
-                                            className={styles.removeBtn}
-                                            onClick={() => handleRemoveTopic(index)}
-                                        >
-                                            ❌
-                                        </button>
-                                    </div>
-                                ))}
-                                <button type="button" className={styles.addAnswerBtn} onClick={handleAddTopic}>
-                                    ➕ Добавить тему
-                                </button>
-                            </div>
-                        )}
 
-                        {item.type === "image" && (
+ 
                             <>
-                                <input
-                                    className={`${styles.modal__input} ${styles.modal__file}`}
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleFileChange}
-                                />
-                                {formData.url && (
-                                    <div className={styles.imagePreview}>
-                                        <span>{formData.url.name}</span>
-                                        <button
-                                            type="button"
-                                            className={styles.removeBtn}
-                                            onClick={() => setFormData((prev) => ({ ...prev, url: null }))}
-                                        >
-                                            ❌
-                                        </button>
-                                    </div>
-                                )}
+                
                             </>
-                        )}
+              
+
+
+
+
                     </div>
                 ))}
+                <button type="button" className={styles.addQuestionBtn} onClick={handleAddQuestion}>
+                    ➕ Добавить вопрос
+                </button>
             </form>
-
-            <button className={styles.modal__btn} onClick={handleSubmit}>
-                Добавить тест
-            </button>
+            <button className={styles.modal__btn} onClick={handleSubmit}>Добавить тест</button>
         </div>
     );
 };
@@ -204,25 +169,47 @@ export default TutorModalTests;
 
 
 
-/* import styles from "./TutorModalTests.module.scss";
+
+
+
+
+
+
+
+/*  
+
+
+ 
+
+
+
+import styles from "./TutorModalTests.module.scss";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { setLessons, setOpenModal, setTests } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
+import { setTests, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
+import { setTest } from "../../../../store/slices/TestSlice/TestSlice";
 import { modalTest } from "./Consts";
 
-interface FormData {
+interface Question {
     title: string;
     answers: string[];
     answer: string;
-    url: File | null;
+    url: string;
+}
+
+interface FormData {
+    title_test: string;
+    description: string;
+    topics: string[];
+    questions: Question[];
 }
 
 const TutorModalTests = () => {
     const [formData, setFormData] = useState<FormData>({
-        title: "",
-        answer: "",
-        answers: [],
-        url: null
+        title_test: "",
+        description: "",
+        topics: [],
+        questions: [],
     });
 
     const dispatch = useDispatch();
@@ -235,40 +222,54 @@ const TutorModalTests = () => {
         }));
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { files } = e.target;
-        if (files && files.length > 0) {
-            setFormData((prev) => ({
-                ...prev,
-                url: files[0],
-            }));
-        }
-    };
-    const handleAddAnswer = () => {
+    const handleAddQuestion = () => {
         setFormData((prev) => ({
             ...prev,
-            answers: [...prev.answers, ""],
+            questions: [...prev.questions, { title: "", answers: [""], answer: "", url: "" }],
         }));
     };
 
-    const handleAnswerChange = (index: number, value: string) => {
+    const handleQuestionChange = (index: number, field: keyof Question, value: string) => {
         setFormData((prev) => {
-            const newAnswers = [...prev.answers];
-            newAnswers[index] = value;
-            return { ...prev, answers: newAnswers };
+            const newQuestions = [...prev.questions];
+            newQuestions[index] = { ...newQuestions[index], [field]: value };
+            return { ...prev, questions: newQuestions };
         });
     };
 
-    const handleRemoveAnswer = (index: number) => {
-        setFormData((prev) => ({
-            ...prev,
-            answers: prev.answers.filter((_, i) => i !== index),
-        }));
+    const handleAddAnswer = (qIndex: number) => {
+        console.log("Добавляем ответ");
+        let count=0;
+        setFormData((prev) => {
+            const newQuestions = [...prev.questions];
+            if(count<1) {
+
+                newQuestions[qIndex].answers.push("");
+             count++   
+            }
+            return { ...prev, questions: newQuestions };
+        });
     };
 
-    const handleSubmit = () => {
-     //   dispatch(setTests(formData))
+    const handleAnswerChange = (qIndex: number, aIndex: number, value: string) => {
+        setFormData((prev) => {
+            const newQuestions = [...prev.questions];
+            newQuestions[qIndex].answers[aIndex] = value;
+            return { ...prev, questions: newQuestions };
+        });
+    };
+
+
+    const handleCorrectAnswerChange = (qIndex: number, value: string) => {
+        setFormData(prev => {
+            const newQuestions = [...prev.questions];
+            newQuestions[qIndex] = { ...newQuestions[qIndex], answer: value };
+            return { ...prev, questions: newQuestions };
+        });
+    };
     
+    const handleSubmit = () => {
+        dispatch(setTest(formData));
         handleClose();
     };
 
@@ -280,77 +281,70 @@ const TutorModalTests = () => {
         <div className={styles.modal__content}>
             <h3 className={styles.modal__title}>Добавить тест</h3>
             <form className={styles.modal__fields}>
-                {modalTest.map((item) => (
-                    <div className={styles.modal__field} key={item.id}>
-                        <label className={styles.modal__field__title}>{item.title}</label>
+                <input
+                    className={styles.modal__input}
+                    placeholder="Название теста"
+                    name="title_test"
+                    value={formData.title_test}
+                    onChange={handleChange}
+                />
+                <input
+                    className={styles.modal__input}
+                    placeholder="Описание"
+                    name="description"
+                    value={formData.description}
+                    onChange={handleChange}
+                />
 
-                        {item.type === "input" && (
-                            <input
-                                className={styles.modal__input}
-                                placeholder={item.placeholder}
-                                name={item.name}
-                                value={formData[item.name as keyof FormData] as string}
-                                onChange={handleChange}
+                {formData.questions.map((question, qIndex) => (
+                    <div key={qIndex} className={styles.questionContainer}>
+                        <input
+                            className={styles.modal__input}
+                            placeholder="Введите вопрос"
+                            value={question.title}
+                       //     onChange={(e) => handleAnswerChange(qIndex, aIndex, e.target.value)}
+                    //   onChange={(e) => 
+                    //   handleAnswerChange(qIndex, aIndex, e.target.value)}
+
+                //    onChange={(e) => handleCorrectAnswerChange( e.target.value)}
                             />
-                        )}
+                        
+                      
+                    
+                      
+                      {question.answers.map((answer, aIndex) => (
+                            <input
+                                key={aIndex}
+                                className={styles.modal__input}
+                                placeholder="Вариант ответа"
+                                value={answer}
+                                onChange={(e) => handleAnswerChange(qIndex, aIndex, e.target.value)}
+                            />
+                        ))}
+                        <button type="button" className={styles.addAnswerBtn} onClick={() => handleAddAnswer(qIndex)}>
+                            ➕ Добавить ответ
+                        </button>
 
-                        {item.type === "array" && (
-                            <div className={styles.answersContainer}>
-                                {formData.answers.map((answer, index) => (
-                                    <div key={index} className={styles.answerItem}>
-                                        <input
-                                            className={styles.modal__input}
-                                            placeholder="Введите вариант ответа"
-                                            value={answer}
-                                            onChange={(e) => handleAnswerChange(index, e.target.value)}
-                                        />
-                                        <button
-                                            type="button"
-                                            className={styles.removeBtn}
-                                            onClick={() => handleRemoveAnswer(index)}
-                                        >
-                                            ❌
-                                        </button>
-                                    </div>
-                                ))}
-                                <button type="button" className={styles.addAnswerBtn} onClick={handleAddAnswer}>
-                                    ➕ Добавить ответ
-                                </button>
-                            </div>
-                        )}
-
-                        {item.type === "image" && (
-                            <>
-                                <input
-                                    className={`${styles.modal__input} ${styles.modal__file}`}
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleFileChange}
-                                />
-                                {formData.url && (
-                                    <div className={styles.imagePreview}>
-                                        <span>{formData.url.name}</span>
-                                        <button
-                                            type="button"
-                                            className={styles.removeBtn}
-                                            onClick={() => setFormData((prev) => ({ ...prev, url: null }))}
-                                        >
-                                            ❌
-                                        </button>
-                                    </div>
-                                )}
-                            </>
-                        )}
+                        <input
+                                
+                                className={styles.modal__input}
+                                placeholder="Правильный ответ"
+                                value={question.answer}
+                                name= "answer"
+                                onChange={(e) => handleCorrectAnswerChange(qIndex, e.target.value)}
+                               // onChange={(e) => handleAnswerChange(qIndex, aIndex, e.target.value)}
+                            />
                     </div>
                 ))}
+                <button type="button" className={styles.addQuestionBtn} onClick={handleAddQuestion}>
+                    ➕ Добавить вопрос
+                </button>
             </form>
-
-            <button className={styles.modal__btn} onClick={handleSubmit}>
-                Добавить тест
-            </button>
+            <button className={styles.modal__btn} onClick={handleSubmit}>Добавить тест</button>
         </div>
     );
 };
 
 export default TutorModalTests;
-  */
+
+   */

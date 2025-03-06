@@ -1,30 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-/*
-{
-    "message": "Доступ разрешён",
-    "user": {
-        "id": 1,
-        "id_author": 1,
-        "username": "Tutor",
-        "email": "tutor@mail.ru",
-        "description": "2123123",
-        "rate": "0.00",
-        "specialization": "Программирование",
-        "english_level": "С1",
-        "full_description": "описание",
-        "role": "tutor",
-        "number_of_students": 11,
-        "experience": [
-            "3"
-        ],
-        "work_experience": 11,
-        "phone": "3243351",
-        "location": "dwfwe",
-        "price": "21"
-    }
-}
-    */
+ 
 interface Tutor {
     id: number;
     id_author: number;

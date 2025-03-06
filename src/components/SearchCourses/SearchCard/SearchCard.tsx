@@ -1,3 +1,4 @@
+import { formatDate } from "../../../helpers/formatDate";
 import styles from "./SearchCard.module.scss"
 
 
@@ -26,7 +27,7 @@ const SearchCard = ({ item }: Course) => {
                 {item.title}
             </h3>
             <h4 className={styles.card__date}>
-                {item.release_date}
+                {formatDate(item.release_date)}
             </h4>
 
         </div>);

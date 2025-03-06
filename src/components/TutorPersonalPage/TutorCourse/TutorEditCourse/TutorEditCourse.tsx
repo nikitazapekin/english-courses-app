@@ -46,7 +46,7 @@ const TutorEditCourse = ({id}: Props) => {
                 course_for: editCourse.course.course_for || []
             });
         }
-        //setFormState({...editCourse.course})
+ 
     }, [editCourse])
 
     const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});

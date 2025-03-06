@@ -41,6 +41,11 @@ const TutorPersonalPageComponent: React.FC = () => {
                         <MainPage />
                     )
                 }
+ {
+                    lastPathSegment== "personal" && (
+                        <MainPage />
+                    )
+                }
 
             </div>
         </section>
