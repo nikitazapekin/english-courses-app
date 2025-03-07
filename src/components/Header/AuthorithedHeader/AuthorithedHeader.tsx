@@ -98,7 +98,7 @@ const AuthorithedHeader = () => {
     }, [])
     const handlePersonal = () => {
         if (role == "user") {
-            navigate(`/personal`)
+            navigate(`/personal/1/10`)
         } else {
             navigate(`/tutor/personal`)
         }

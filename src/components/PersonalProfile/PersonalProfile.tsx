@@ -5,12 +5,41 @@ import PersonalDescribtion from "./PersonalDescribtion/PersonalDescribtion";
 import PersonalCourses from "./PersonalCourses/PersonalCourses";
 import PaymentModal from "../PaymentModal/PaymentModal";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AuthService from "../../services/Auth";
 import PersonalService from "../../services/Personal";
+
+interface CoursesResponse {
+
+    courses: Array<{
+
+        id: number,
+        course_id: number,
+        author: string,
+        title: string,
+        description: string,
+        fulldescription: string,
+        course_for: String[],
+        course_suitable: String[],
+        for_what_reasons: String[],
+        about_course: String[],
+        tag: string,
+        course_rate: string,
+        release_date: string,
+        course_logo: string,
+    }>
+}
+
 const PersonalProfile = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
+    const [cards, setCards] = useState<CoursesResponse["courses"]>([])
+ 
+    const [total, setTotal] = useState(0)
+
+    const [page, setPage] = useState(0)
+    const [limit, setLimit] = useState(5)
+
     const handleOpenModal = () => {
         setIsOpenModal(prev => !prev)
     }
@@ -24,20 +53,43 @@ const PersonalProfile = () => {
 
         }
     }
-
+    const location = useLocation();
+    
+    let lastPathSegment = location.pathname.split("/")  
+    const [currentPage, setCurrentPage] = useState(isNaN(Number(lastPathSegment)) ? 1 : lastPathSegment);
+       //  lastPathSegment = lastPathSegment.po
+    /*    useEffect(()=> {
+        setPage(Number(currentPage))
+      //  setPage(Number(lastPathSegment[lastPathSegment.length-2])!)
+       }, []) */
     useEffect(() => {
         const handleGet = async () => {
             try {
-                const response = await PersonalService.GetPersonalCourses(1, 10)
-
+                console.log("last",Number(currentPage) )
+                const response = await PersonalService.GetPersonalCourses( Number(currentPage) , 5)
+                setCards(response.data.courses.courses)
                 console.log(response.data)
+
+             //   setPage(response.data.courses.page)
+                setTotal(response.data.courses.total)
             } catch {
 
             }
         }
 
         handleGet()
-    }, [])
+    }, [currentPage])
+
+    useEffect(() => {
+       // if (page !== Number(lastPathSegment[lastPathSegment.length-2])) {
+          navigate(`/personal/${currentPage}/${limit}`);
+     //   }
+      }, [ currentPage]);
+      const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+      };
+    
+     
     return (
         <section className={styles.personal}>
             <PaymentModal isOpenModal={isOpenModal} handleOpenModal={handleOpenModal} />
@@ -58,7 +110,18 @@ const PersonalProfile = () => {
                     <PersonalDescribtion />
 
                 </div>
-                <PersonalCourses />
+ 
+                <PersonalCourses
+                    cards={cards}
+                    total={total}
+                    limit={limit}
+                    handlePageChange={handlePageChange}
+                    currentPage={Number(currentPage)}
+                 
+                //   total={}
+                />
+
+                {currentPage}
             </div>
         </section>
     );

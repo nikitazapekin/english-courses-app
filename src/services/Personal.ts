@@ -57,6 +57,90 @@ interface Test {
      }>  
   
   }
+
+  /*
+  {
+    "message": "Ваши курсы",
+    "courses": [
+        {
+            "id": 8,
+            "course_id": null,
+            "author": "ttt@mail.ru",
+            "title": "dwq",
+            "description": "",
+            "fulldescription": "wfqfw",
+            "course_for": [],
+            "course_suitable": [],
+            "for_what_reasons": [
+                "wfqf"
+            ],
+            "about_course": [
+                "wfqwf"
+            ],
+            "tag": "wqf",
+            "course_rate": "0",
+            "release_date": "2025-03-03T21:00:00.000Z",
+            "course_logo": "/static/courses/1741092116543.png"
+        },
+        {
+            "id": 33,
+            "course_id": null,
+            "author": "tutorr@mail.ru",
+            "title": "testttttt",
+            "description": "avdvva",
+            "fulldescription": "savsavs",
+            "course_for": [
+                "vavsv",
+                "test"
+            ],
+            "course_suitable": [
+                "vavsv",
+                "test"
+            ],
+            "for_what_reasons": [
+                "savvda",
+                "test"
+            ],
+            "about_course": [
+                "avdvadav",
+                "tesr"
+            ],
+            "tag": "itadvaavd",
+            "course_rate": "0",
+            "release_date": "2025-03-04T21:00:00.000Z",
+            "course_logo": "/static/courses/1741195832429.png"
+        }
+    ]
+}
+    */
+
+interface CoursesResponse {
+    message:string,
+
+    courses: {
+        page: number,
+        limit:number,
+        total: number,
+        
+    courses:  Array<{
+
+        id: number,
+        course_id: number,
+    author: string,
+    title: string,
+    description: string,
+    fulldescription: string,
+    course_for: String[],
+    course_suitable:String[],
+    for_what_reasons: String[],
+    about_course:String[],
+    tag: string,
+    course_rate: string,
+    release_date:string,
+    course_logo: string,
+}>
+    }
+}
  
  
 export default class PersonalService {
@@ -75,8 +159,9 @@ export default class PersonalService {
     static async SubscribeToCourse( courseId: string): Promise<AxiosResponse<any>> {
         return  $api.put<any>('/personal/subcribeToCourse', {courseId: courseId});
     }
-    static async GetPersonalCourses( limit: number, offset: number): Promise<AxiosResponse<any>> {
-        return  $api.get<any>(`/personal/getSubscribedCourses?limit=${limit}&offset=${offset}`);
+    static async GetPersonalCourses( offset: number,  limit: number, ): Promise<AxiosResponse<CoursesResponse>> {
+        console.log("offset", offset)
+        return  $api.get<CoursesResponse>(`/personal/getSubscribedCourses?limit=${limit}&offset=${offset}`);
     }
  
 

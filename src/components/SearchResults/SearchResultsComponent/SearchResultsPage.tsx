@@ -115,17 +115,15 @@ const SearchResultsComponent = () => {
 
                     <div className={styles.search__cards}>
 
-                        {currentData.map((item, index) => (
+                      {/*  {currentData.map((item, index) => (
                             <PersonalCourseCard key={index} 
-                            describtion={item.description}
+                            description={item.description}
                             price={item.price}
                             target={item.price}
                             title={item.title} author={item.author} date={item.date} image={item.image} />
                         ))}
-                        {/*
-                        <PersonalDots />
-                          <PersonalDots totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />
-                        */}
+                  */}
+                   
                         <SearchDots   totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange}/>
                     </div>
                 </div>

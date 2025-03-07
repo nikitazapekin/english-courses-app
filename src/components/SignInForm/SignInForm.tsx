@@ -32,7 +32,7 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
 
     const onSubmit = (data: SignInData) => {
         localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
-        navigate("/personal")
+        navigate("/personal/1/10")
     };
     const handleNavigate = () => {
         navigate("/sign-up");
@@ -49,7 +49,7 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
                 localStorage.setItem("accessToken", response.data.accessToken);
                 if(response.data.role == "user") {
 
-                    navigate("/personal");
+                    navigate("/personal/1/10");
                 } else if(response.data.role == "tutor") {
                     navigate("/tutor/personal");
                 } else {
