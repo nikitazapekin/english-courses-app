@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import styles from "./TutorModalLessons.module.scss";
+import LessonService from "../../../../services/Lesson";
 
 interface FormData {
     title: string;
-    describtion: string;
+    description: string;
     durability: string;
     video: File[];
     materials: File[];
@@ -11,7 +12,7 @@ interface FormData {
 
 const tutorLesson = [
     { id: 1, placeholder: "Введите название урока", title: "Название", type: "input", name: "title" },
-    { id: 2, placeholder: "Введите описание урока", title: "Описание", type: "input", name: "describtion" },
+    { id: 2, placeholder: "Введите описание урока", title: "Описание", type: "input", name: "description" },
     { id: 3, placeholder: "Введите продолжительность", title: "Продолжительность", type: "input", name: "durability" },
     { id: 4, placeholder: "Добавьте видео урока", title: "Видео", type: "video", name: "video" },
     { id: 5, placeholder: "Добавьте материалы урока", title: "Материалы", type: "file", name: "materials" },
@@ -20,7 +21,7 @@ const tutorLesson = [
 const TutorModalLessons: React.FC = () => {
     const [formData, setFormData] = useState<FormData>({
         title: "",
-        describtion: "",
+        description: "",
         durability: "",
         video: [],
         materials: [],
@@ -51,9 +52,13 @@ const TutorModalLessons: React.FC = () => {
         }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log("Форма отправлена:", formData);
+      try {
+await LessonService.CreateLesson(formData)
+      } catch {
+
+      }
     };
 
     return (

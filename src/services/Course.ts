@@ -4,11 +4,7 @@ import { RegisterInterface } from "../components/SignUpForm/types";
 import { SignInData } from "../components/SignInForm/types";
 
 interface CreateCourseTypes {
- /*    name: string;
-    describtion: string;
-    for: string;
-    logo: string; */
-
+ 
     name: string;
     description: string;
     for: string;
@@ -22,13 +18,7 @@ interface CreateCourseTypes {
 
 
 interface Course {
-  /*   id: number,
-    author: string,
-    title: string,
-    description: string,
-  course_for: String[],
-    release_date: string,
-    course_logo: string, */
+ 
     id: number,
     author: string,
     title: string,
@@ -54,56 +44,7 @@ interface GetCoursesResponse {
 
 }
 
-
-
-/*
-{
-    "message": "Курс найден",
-    "courses": {
-        "course": {
-            "id": 32,
-            "course_id": null,
-            "author": "ttt@mail.ru",
-            "title": "Английский для программистов",
-            "description": "Станьте настоящим профессионалом своего дела",
-            "fulldescription": "               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab ad laborum autem sit? Quam molestias a alias enim inventore! Quos ipsam facere nisi. Beatae incidunt facilis deleniti voluptate? Aliquam, earum!",
-            "course_for": [
-                "Детей",
-                "Студентов"
-            ],
-            "course_suitable": [
-                "Детей",
-                "Студентов"
-            ],
-            "for_what_reasons": [
-                "Понимание документации",
-                "Разговор с заказчтками"
-            ],
-            "about_course": [
-                "90 уроков",
-                "21 тест",
-                "детальная лексика"
-            ],
-            "tag": "it",
-            "course_rate": "0",
-            "release_date": "2025-03-03T21:00:00.000Z",
-
-            "course_avatar": null
-        },
-        "tutor": {
-            "id": 2,
-            "username": "Ttt",
-            "email": "ttt@mail.ru",
-            "description": "vvvvvvvvvvvvvvv",
-            "rate": "0.00",
-            "specialization": "vvvvv",
-            "english_level": "vvvvvvv",
-            "full_description": "vvv",
-        
-            }
-    }
-}
-*/
+ 
 interface CourseDetails {
     message:string,
     courses: {
@@ -144,45 +85,11 @@ interface CourseDetails {
     }
 }
  
-
-
-
-/*
-
-interface FormState {
-    name: string;
-    description: string;
-    for: string;
-    logo: string;
-    course_for: String[];
-    fulldescription: string;
-    for_what_reasons: String[];
-    about_course: String[];
-    tag: string;
-}
-    */
-
+ 
 
 interface FormTypes {
     data: {
-   /*  id: number;
-    id_author: number;
-    username: string;
-    email: string;
-    description: string;
-    rate: string;
-    specialization: string;
-    english_level: string;
-    full_description: string;
-    role: string;
-    number_of_students: string;
-    experience: String[];  
-    work_experience: string;
-    password: string;
  
-    location: string;
-    price: number;
-    phone: string */
     id: string,
     name: string;
     description: string;
@@ -200,7 +107,7 @@ export default class CourseService {
         return $api.post<any>("/courses/createCourse", {
             name: data.name,
             description: data.description,
-           course_for: data.course_for,
+         course_for: data.course_for,
             logo: data.logo,
             fulldescription: data.fulldescription, 
             for_what_reasons: data.for_what_reasons, 
