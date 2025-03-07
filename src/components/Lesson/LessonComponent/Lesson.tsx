@@ -15,41 +15,9 @@ import { useSelector } from "react-redux";
 import { ReplyToSelector } from "../../../store/selectors/ReplyTo.selector";
 import LessonService from "../../../services/Lesson";
 
-// Тип для комментариев
+ 
 const data: LessonCommentItem[] = [
-  {
-    userId: 1,
-    username: "Test",
-    comment: "Lorem ipsum dolor sit amet...",
-    date: "22.12.2024",
-    avatar: Avatar,
-    likes: 0,
-    isYourComment: false,
-    commentId: 0,
-    responces: [
-      {
-        userId: 2,
-        username: "Alex",
-        comment: "Lorem ipsum dolor sit amet...",
-        date: "22.12.2024",
-        avatar: Avatar,
-        likes: 0,
-        isYourComment: false,
-        to: "Test",
-      },
-    ],
-  },
-  {
-    userId: 4,
-    username: "You",
-    comment: "Lorem ipsum dolor sit amet...",
-    date: "22.12.2024",
-    avatar: Avatar,
-    likes: 0,
-    isYourComment: true,
-    commentId: 1,
-    responces: [],
-  },
+ 
 ];
 
 interface LessonTypes {
@@ -57,7 +25,7 @@ interface LessonTypes {
   title: string;
   description: string;
   durability: string;
-  video: string; // Теперь это строка (URL)
+  video: string;  
   materials: string[];
 }
 
@@ -139,24 +107,19 @@ const LessonComponent = () => {
     <div className={styles.lesson}>
       <div className={styles.lesson__inner}>
         <div className={styles.lesson__title}>
-          <p className={styles.lesson__number}>Урок {courseMaterials[Number(theme)].lesson}</p>
-          <h1 className={styles.lesson__name}>{lesson?.title}</h1>
+          <p className={styles.lesson__number}>Урок {lesson?.id}</p>
+          {/*
+
+*/}
+<h1 className={styles.lesson__name}>{lesson?.title}</h1>
         </div>
         <p className={styles.lesson__subtitle}>{lesson?.durability}</p>
 
         <div className={styles.lesson__content}>
+          {/*
           <LessonHeader />
-          {/* 
-          {lesson && lesson.video && (
-            <iframe
-              className={styles.lesson__video}
-              src={`data:video/mp4;base64,${lesson.video}`} // Это будет URL для видео
-              title="Video lesson"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          )}
-            */}
+          */}
+         
 
             
 {lesson && lesson.video && (
@@ -169,13 +132,14 @@ const LessonComponent = () => {
               Ваш браузер не поддерживает видео.
             </video>
           )}
-          
+          {/*
           <DownloadFile
-            title={courseMaterials[Number(theme)].material.text}
+          title={courseMaterials[Number(theme)].material.text}
             icon={courseMaterials[Number(theme)].material.icon}
             size={courseMaterials[Number(theme)].material.size}
             file={courseMaterials[Number(theme)].material.link}
           />
+          */}
           <div className={styles.lesson__testing}>Тематический тест по теме</div>
 
           <LessonPanel handleAddComment={handleAddComment} />
