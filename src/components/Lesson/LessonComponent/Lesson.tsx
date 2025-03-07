@@ -7,6 +7,185 @@ import LessonPanel from "../LessonPanel/LessonPanel";
 import LessonCommentsHeader from "../LessonCommentsHeader/LessonCommentsHeader";
 import LessonComments from "../LessonComments/LessonComments";
 import Avatar from "../../../assets/avatars/avatar1.png";
+import { LessonCommentItem, Response } from "../types";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { ReplyToSelector } from "../../../store/selectors/ReplyTo.selector";
+import LessonService from "../../../services/Lesson";
+
+// Тип для комментариев
+const data: LessonCommentItem[] = [
+  {
+    userId: 1,
+    username: "Test",
+    comment: "Lorem ipsum dolor sit amet...",
+    date: "22.12.2024",
+    avatar: Avatar,
+    likes: 0,
+    isYourComment: false,
+    commentId: 0,
+    responces: [
+      {
+        userId: 2,
+        username: "Alex",
+        comment: "Lorem ipsum dolor sit amet...",
+        date: "22.12.2024",
+        avatar: Avatar,
+        likes: 0,
+        isYourComment: false,
+        to: "Test",
+      },
+    ],
+  },
+  {
+    userId: 4,
+    username: "You",
+    comment: "Lorem ipsum dolor sit amet...",
+    date: "22.12.2024",
+    avatar: Avatar,
+    likes: 0,
+    isYourComment: true,
+    commentId: 1,
+    responces: [],
+  },
+];
+
+interface LessonTypes {
+  id: number;
+  title: string;
+  description: string;
+  durability: string;
+  video: string; // Теперь это строка (URL)
+  materials: string[];
+}
+
+const LessonComponent = () => {
+  const { theme } = useParams();
+  const [comments, setComments] = useState<LessonCommentItem[]>(data);
+  const [lesson, setLesson] = useState<LessonTypes>();
+
+  const handleAddComment = (text: string) => {
+    const newComment: LessonCommentItem = {
+      userId: Date.now(),
+      username: "Вы",
+      comment: text,
+      date: new Date().toLocaleDateString(),
+      avatar: Avatar,
+      likes: 0,
+      isYourComment: true,
+      responces: null,
+      commentId: data.length,
+    };
+    setComments((prev) => [...prev, newComment]);
+  };
+
+  const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
+
+  const handleAddReply = (commentId: number, reply: Response) => {
+    setComments((prevComments) =>
+      prevComments.map((comment) => {
+        if (comment.commentId === commentId) {
+          return {
+            ...comment,
+            responces: comment.responces ? [...comment.responces, reply] : [reply],
+          };
+        }
+        return comment;
+      })
+    );
+  };
+
+  useEffect(() => {
+    const reply = {
+      userId: userId,
+      username: username,
+      comment: comment,
+      date: date,
+      avatar: Avatar,
+      likes: likes,
+      isYourComment: isYourComment,
+      to: to,
+    };
+
+    if (userId && username && date && comment && isYourComment && to && commentId >= 0) {
+      handleAddReply(commentId, reply);
+    }
+  }, [avatar, userId, username, date, comment, likes, isYourComment, to, commentId]);
+
+  const location = useLocation();
+  const lastPathSegment = location.pathname.split("/");
+
+  useEffect(() => {
+    const handleGet = async () => {
+      try {
+        const response = await LessonService.GetLesson(
+          lastPathSegment[lastPathSegment.length - 1]!,
+          lastPathSegment[lastPathSegment.length - 2]!
+        );
+        console.log("LESSON", response.data);
+        const lessonData = response.data.lesson;
+        setLesson(lessonData);
+      } catch (error) {
+        console.error("Error loading lesson:", error);
+      }
+    };
+
+    handleGet();
+  }, []);
+
+  return (
+    <div className={styles.lesson}>
+      <div className={styles.lesson__inner}>
+        <div className={styles.lesson__title}>
+          <p className={styles.lesson__number}>Урок {courseMaterials[Number(theme)].lesson}</p>
+          <h1 className={styles.lesson__name}>{lesson?.title}</h1>
+        </div>
+        <p className={styles.lesson__subtitle}>{lesson?.durability}</p>
+
+        <div className={styles.lesson__content}>
+          <LessonHeader />
+          {lesson && lesson.video && (
+            <iframe
+              className={styles.lesson__video}
+              src={lesson.video} // Это будет URL для видео
+              title="Video lesson"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          )}
+
+          <DownloadFile
+            title={courseMaterials[Number(theme)].material.text}
+            icon={courseMaterials[Number(theme)].material.icon}
+            size={courseMaterials[Number(theme)].material.size}
+            file={courseMaterials[Number(theme)].material.link}
+          />
+          <div className={styles.lesson__testing}>Тематический тест по теме</div>
+
+          <LessonPanel handleAddComment={handleAddComment} />
+
+          <LessonCommentsHeader />
+
+          <LessonComments data={comments} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LessonComponent;
+
+ 
+
+/* import styles from "./Lesson.module.scss";
+import { useLocation, useParams } from "react-router-dom";
+import { courseMaterials } from "../../../utils/courseMaterials";
+import LessonHeader from "../LessonHeader/LessonHeader";
+import DownloadFile from "../DownloadFile/DownloadFile";
+import LessonPanel from "../LessonPanel/LessonPanel";
+import LessonCommentsHeader from "../LessonCommentsHeader/LessonCommentsHeader";
+import LessonComments from "../LessonComments/LessonComments";
+import Avatar from "../../../assets/avatars/avatar1.png";
 import Avatar2 from "../../../assets/avatars/avatar2.png";
 import { LessonCommentItem, Response } from "../types";
 import { useEffect, useState } from "react";
@@ -120,33 +299,7 @@ const LessonComponent = () => {
 
   const location = useLocation();
   const lastPathSegment = location.pathname.split("/");
-/* 
-  useEffect(() => {
-    const handleGet = async () => {
-      try {
-        const response = await LessonService.GetLesson(
-          lastPathSegment[lastPathSegment.length - 1]!,
-          lastPathSegment[lastPathSegment.length - 2]!
-        );
-        console.log("LESSON", response.data);
-        const lessonData = response.data.lesson;
-
-        // Используем Buffer.isBuffer для проверки
-        if (Array.isArray(lessonData.video) && Buffer.isBuffer(lessonData.video[0])) {
-          const base64Video = bufferToBase64(lessonData.video[0]); // Преобразуем Buffer в base64
-          lessonData.video[0] = base64Video;
-        }
-
-        setLesson(lessonData);
-      } catch {
-        // Обработка ошибки
-      }
-    };
-
-    handleGet();
-  }, []);
- */
-
+ 
   useEffect(() => {
     const handleGet = async () => {
       try {
@@ -215,7 +368,7 @@ const LessonComponent = () => {
 };
 
 export default LessonComponent;
-
+ */
 
 /* import styles from "./Lesson.module.scss";
 import { useLocation, useParams } from "react-router-dom";

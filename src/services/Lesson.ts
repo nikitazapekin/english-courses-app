@@ -28,7 +28,7 @@ interface GetLesson {
             title: string,
             description:string,
             durability: string,
-            video: string[],
+            video: string,
             materials: string[]
         }
   
