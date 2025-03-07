@@ -1,4 +1,6 @@
-import styles from "./Lesson.module.scss";
+ 
+
+  import styles from "./Lesson.module.scss";
 import { useLocation, useParams } from "react-router-dom";
 import { courseMaterials } from "../../../utils/courseMaterials";
 import LessonHeader from "../LessonHeader/LessonHeader";
@@ -144,16 +146,30 @@ const LessonComponent = () => {
 
         <div className={styles.lesson__content}>
           <LessonHeader />
+          {/* 
           {lesson && lesson.video && (
             <iframe
               className={styles.lesson__video}
-              src={lesson.video} // Это будет URL для видео
+              src={`data:video/mp4;base64,${lesson.video}`} // Это будет URL для видео
               title="Video lesson"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
           )}
+            */}
 
+            
+{lesson && lesson.video && (
+            <video
+              className={styles.lesson__video}
+              controls
+              src={`data:video/mp4;base64,${lesson.video}`}
+              title="Video lesson"
+            >
+              Ваш браузер не поддерживает видео.
+            </video>
+          )}
+          
           <DownloadFile
             title={courseMaterials[Number(theme)].material.text}
             icon={courseMaterials[Number(theme)].material.icon}
@@ -173,7 +189,7 @@ const LessonComponent = () => {
   );
 };
 
-export default LessonComponent;
+export default LessonComponent;  
 
  
 
