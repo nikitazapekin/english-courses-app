@@ -34,7 +34,7 @@ interface PersonalCourseProps {
 const PersonalCourse = ({ item }: PersonalCourseProps) => {
     const navigate = useNavigate()
     const handleRedirect = () => {
-navigate(`/tutor/personal/courses/${item.id}`)
+navigate(`/card/lessons/${item.id}`)
     }
     return (
         <div className={styles.card}

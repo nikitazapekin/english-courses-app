@@ -57,11 +57,7 @@ const PersonalProfile = () => {
     
     let lastPathSegment = location.pathname.split("/")  
     const [currentPage, setCurrentPage] = useState(isNaN(Number(lastPathSegment)) ? 1 : lastPathSegment);
-       //  lastPathSegment = lastPathSegment.po
-    /*    useEffect(()=> {
-        setPage(Number(currentPage))
-      //  setPage(Number(lastPathSegment[lastPathSegment.length-2])!)
-       }, []) */
+ 
     useEffect(() => {
         const handleGet = async () => {
             try {
@@ -70,7 +66,7 @@ const PersonalProfile = () => {
                 setCards(response.data.courses.courses)
                 console.log(response.data)
 
-             //   setPage(response.data.courses.page)
+        
                 setTotal(response.data.courses.total)
             } catch {
 
@@ -81,9 +77,9 @@ const PersonalProfile = () => {
     }, [currentPage])
 
     useEffect(() => {
-       // if (page !== Number(lastPathSegment[lastPathSegment.length-2])) {
+   
           navigate(`/personal/${currentPage}/${limit}`);
-     //   }
+ 
       }, [ currentPage]);
       const handlePageChange = (page: number) => {
         setCurrentPage(page);
@@ -118,7 +114,7 @@ const PersonalProfile = () => {
                     handlePageChange={handlePageChange}
                     currentPage={Number(currentPage)}
                  
-                //   total={}
+            
                 />
 
                 {currentPage}

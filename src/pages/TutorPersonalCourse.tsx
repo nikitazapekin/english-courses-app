@@ -19,7 +19,7 @@ const TutorPersonalCourse = () => {
         const handleGetUser = async () => {
             try {
                 const response = await TutorService.GetTutor()
-               dispatch(setTutor(response.data.user))
+                dispatch(setTutor(response.data.user))
 
             } catch (err) {
                 navigate("/sign-in")
@@ -33,12 +33,12 @@ const TutorPersonalCourse = () => {
             <Header />
             <div className={styles.darken} />
             <div className={styles.content}>
-           <TutorCourse />
+                <TutorCourse />
 
-           {isOpenModal && (
+                {isOpenModal && (
 
-<TutorModal />
-)}
+                    <TutorModal />
+                )}
             </div>
             <Footer />
         </div>

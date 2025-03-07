@@ -214,12 +214,4 @@ const TutorEditCourse = ({id}: Props) => {
 };
 
 export default TutorEditCourse;
-
-/* const TutorEditCourse = () => {
-    return ( <div>
-
-
-    </div> );
-}
  
-export default TutorEditCourse; */
