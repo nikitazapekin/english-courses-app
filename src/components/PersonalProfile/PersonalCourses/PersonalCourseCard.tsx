@@ -45,6 +45,8 @@ navigate(`/tutor/personal/courses/${item.id}`)
                 src={item.course_logo}
                 alt="logo"
             />
+
+    
             <div className={styles.card__preview}>
                 <h3 className={styles.card__title}>
                     {item.title}

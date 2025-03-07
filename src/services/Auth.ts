@@ -16,6 +16,7 @@ export default class AuthService {
 
     }
     static async logout(): Promise<void> {
+        localStorage.removeItem('accessToken');
         return $api.get('/user/logout')
     }
   
