@@ -16,7 +16,7 @@ const TutorPersonalPageComponent: React.FC = () => {
 
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
-    console.log("segment", lastPathSegment);
+ 
 
     return (
         <section

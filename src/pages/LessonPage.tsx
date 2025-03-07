@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { setPerson } from "../store/slices/PersonalSlice/PersonalSlice";
 import { useDispatch } from "react-redux";
 const LessonPage = () => {
- 
 
 const navigate = useNavigate()
 const dispatch = useDispatch()
