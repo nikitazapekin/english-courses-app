@@ -18,6 +18,21 @@ interface GetLessonsResponse {
         
     
 }
+
+
+interface GetLesson {
+ 
+        message: string,
+        lesson: {
+            id: number, 
+            title: string,
+            description:string,
+            durability: string,
+            video: string[],
+            materials: string[]
+        }
+  
+}
 export default class LessonService {
     static async CreateLesson(data: any): Promise<AxiosResponse<any>> {
         return $api.post<any>('/lesson/createLesson', data, {
@@ -35,6 +50,14 @@ export default class LessonService {
         });
     }
 
+
+    static async GetLesson(courseId: string, lessonId: string):  Promise<AxiosResponse<GetLesson>> {
+        return $api.get<GetLesson>(`/lesson/getLesson?courseId=${courseId}&lessonId=${lessonId}`,  {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    }
 
 
 } 

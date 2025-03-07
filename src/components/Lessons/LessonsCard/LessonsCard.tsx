@@ -1,10 +1,12 @@
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import styles from "./LessonsCard.module.scss"
 interface LessonsCardProps {
     item: {
         title: string,
         timestampt: string,
         id: number,
+        lessonId: number,
+        courseId: number
     }
     isLessons: boolean
 }
@@ -13,12 +15,19 @@ const LessonsCard = ({ item, isLessons }: LessonsCardProps) => {
     const handleNavigateLesson = (title: string, id: number) => {
         if (isLessons) {
 
-            navigate(`/card/lessons/${title}/${id}`)
+            navigate(`/card/lessons/${title}/${item.lessonId}/${item.courseId}`)
         } else {
-            navigate(`/card/testing/${title}/${id}`)
+            navigate(`/card/testing/${title}/${item.lessonId}/${item.courseId}`)
         }
     }
-    return (<div className={styles.card} onClick={() => handleNavigateLesson(item.title, item.id)}>
+ 
+    
+
+
+        
+    return (
+    
+    <div className={styles.card} onClick={() => handleNavigateLesson(item.title, item.id)}>
         <div className={styles.card__inner}>
             <div className={styles.card__header}>
                 <p className={styles.card__lesson}>
