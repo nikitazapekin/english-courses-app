@@ -83,11 +83,29 @@
         margin-top: 30px;
         text-align: center;
 @include tablets {
- //   @include fontSize(20px);
- //   padding: 14px 21px;   
+ 
 }
         &:hover {
             background-color: $btn-active;
         }
+    }
+
+    &__icon {
+        width: 32px;
+        height: auto;
+    }
+    &__files {
+display: flex;
+column-gap: 10px;
+align-items: center;
+    }
+    &__download {
+        padding: 10px;
+        border-radius: 10px;
+        background-color: $purple;
+        color: $white;
+        border: none;
+        outline: none;
+        cursor: pointer;
     }
 }

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { setTests, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
 import { setTest } from "../../../../store/slices/TestSlice/TestSlice";
+import TestService from "../../../../services/Test";
 
 interface Question {
     title: string;
@@ -90,8 +91,16 @@ const TutorModalTests = () => {
         }
     };
 
-    const handleSubmit = () => {
-        dispatch(setTest(formData));
+    const handleSubmit = async () => {
+
+        try {
+await TestService.CreateTest({ data: formData });
+
+
+        } catch {
+
+        }
+      //  dispatch(setTest(formData));csa
         handleClose();
     };
 

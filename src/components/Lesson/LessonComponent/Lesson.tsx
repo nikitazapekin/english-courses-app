@@ -1,6 +1,6 @@
- 
 
-  import styles from "./Lesson.module.scss";
+
+import styles from "./Lesson.module.scss";
 import { useLocation, useParams } from "react-router-dom";
 import { courseMaterials } from "../../../utils/courseMaterials";
 import LessonHeader from "../LessonHeader/LessonHeader";
@@ -15,9 +15,11 @@ import { useSelector } from "react-redux";
 import { ReplyToSelector } from "../../../store/selectors/ReplyTo.selector";
 import LessonService from "../../../services/Lesson";
 
- 
+import Txt from "../../../assets/download/txt.png"
+import Pptx from "../../../assets/download/ppt.png"
+import Word from "../../../assets/download/word.png"
 const data: LessonCommentItem[] = [
- 
+
 ];
 
 interface LessonTypes {
@@ -25,10 +27,27 @@ interface LessonTypes {
   title: string;
   description: string;
   durability: string;
-  video: string;  
-//  materials: string[];
-materials: { filename: string; data: string };
+  video: string;
+
+  materials: { filename: string; data: string };
 }
+
+const getIcon = (filename: string) => {
+  const extension = filename.split(".").pop()?.toLowerCase();
+  switch (extension) {
+    case "txt":
+      return Txt;
+    case "ppt":
+    case "pptx":
+      return Pptx;
+    case "doc":
+    case "docx":
+      return Word;
+    default:
+      return Txt;
+  }
+};
+
 const LessonComponent = () => {
   const { theme } = useParams();
   const [comments, setComments] = useState<LessonCommentItem[]>(data);
@@ -107,13 +126,13 @@ const LessonComponent = () => {
 
   const handleDownload = (materials: { filename: string, data: string }) => {
     if (!materials || !materials.data) return;
-  
+
     const byteCharacters = atob(materials.data);
     const byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
       byteNumbers[i] = byteCharacters.charCodeAt(i);
     }
-  
+
     const byteArray = new Uint8Array(byteNumbers);
     const blob = new Blob([byteArray], { type: "application/octet-stream" });
     const link = document.createElement("a");
@@ -124,7 +143,7 @@ const LessonComponent = () => {
     document.body.removeChild(link);
   };
 
-  
+
   return (
     <div className={styles.lesson}>
       <div className={styles.lesson__inner}>
@@ -133,7 +152,7 @@ const LessonComponent = () => {
           {/*
 
 */}
-<h1 className={styles.lesson__name}>{lesson?.title}</h1>
+          <h1 className={styles.lesson__name}>{lesson?.title}</h1>
         </div>
         <p className={styles.lesson__subtitle}>{lesson?.durability}</p>
 
@@ -141,10 +160,10 @@ const LessonComponent = () => {
           {/*
           <LessonHeader />
           */}
-         
 
-            
-{lesson && lesson.video && (
+
+
+          {lesson && lesson.video && (
             <video
               className={styles.lesson__video}
               controls
@@ -154,17 +173,25 @@ const LessonComponent = () => {
               Ваш браузер не поддерживает видео.
             </video>
           )}
-        
+
           <div className={styles.lesson__testing}>Тематический тест по теме</div>
 
           {lesson?.materials && (
-  <button
-    className={styles.lesson__download}
-    onClick={() => handleDownload(lesson.materials)}
-  >
-    Скачать {lesson.materials.filename}
-  </button>
-)}
+            <div
+            className={styles.lesson__files}
+            >
+              <img 
+              className={styles.lesson__icon}
+              src={getIcon(lesson.materials.filename)} alt="File Icon" />
+              <button
+                className={styles.lesson__download}
+                onClick={() => handleDownload(lesson.materials)}
+              >
+                Скачать {lesson.materials.filename}
+              </button>
+
+            </div>
+          )}
 
 
           <LessonPanel handleAddComment={handleAddComment} />
@@ -178,6 +205,5 @@ const LessonComponent = () => {
   );
 };
 
-export default LessonComponent;  
+export default LessonComponent;
 
- 
