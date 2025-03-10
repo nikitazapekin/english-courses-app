@@ -6,7 +6,8 @@ interface LessonsCardProps {
         timestampt: string,
         id: number,
         lessonId: number,
-        courseId: number
+        courseId: number,
+        isLesson?: boolean
     }
     isLessons: boolean
 }
@@ -31,7 +32,7 @@ const LessonsCard = ({ item, isLessons }: LessonsCardProps) => {
         <div className={styles.card__inner}>
             <div className={styles.card__header}>
                 <p className={styles.card__lesson}>
-                    {isLessons ? (
+                    {item.isLesson ? (
                         <>
                             Урок {item.id + 1}
                         </>
@@ -47,7 +48,7 @@ const LessonsCard = ({ item, isLessons }: LessonsCardProps) => {
                 </p>
             </div>
             <p className={styles.card__timestampt}>
-                Продолжительность    {item.timestampt}
+                 {item.timestampt}
             </p>
         </div>
     </div>);

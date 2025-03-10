@@ -21,9 +21,33 @@ interface FormData {
 }
 }
 
+interface GetTestResponse {
+   
+        message: string,
+        tests: 
+            {
+                id: number;
+                name:  string,
+                test_number:number;
+                duration:  string,
+                description: string,
+                topics: String[],
+                course_id: number;
+            }[]
+        
+   
+}
+
 export default class TestService {
     static async CreateTest(data: any): Promise<AxiosResponse<any>> {
         return $api.post<any>('/test/createTest', data)
          
     }
+
+    static async GetTest(id:string): Promise<AxiosResponse<GetTestResponse>> {
+        return $api.get<GetTestResponse>(`/test/getTest?course_id=${id}`)
+         
+    }
+
+
 }

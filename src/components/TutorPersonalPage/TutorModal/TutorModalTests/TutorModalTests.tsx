@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { setTests, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
 import { setTest } from "../../../../store/slices/TestSlice/TestSlice";
 import TestService from "../../../../services/Test";
+import { useLocation } from "react-router-dom";
 
 interface Question {
     title: string;
@@ -91,16 +92,19 @@ const TutorModalTests = () => {
         }
     };
 
+    const location = useLocation();
+    const lastPathSegment = location.pathname.split("/").pop();
+
     const handleSubmit = async () => {
 
         try {
-await TestService.CreateTest({ data: formData });
+            await TestService.CreateTest({ data: { ...formData, course_id: lastPathSegment } });
 
 
         } catch {
 
         }
-      //  dispatch(setTest(formData));csa
+        //  dispatch(setTest(formData));csa
         handleClose();
     };
 

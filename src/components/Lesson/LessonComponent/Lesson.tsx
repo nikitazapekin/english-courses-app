@@ -157,11 +157,7 @@ const LessonComponent = () => {
         <p className={styles.lesson__subtitle}>{lesson?.durability}</p>
 
         <div className={styles.lesson__content}>
-          {/*
-          <LessonHeader />
-          */}
-
-
+       
 
           {lesson && lesson.video && (
             <video
