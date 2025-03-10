@@ -14,20 +14,15 @@ interface LessonsCardProps {
 const LessonsCard = ({ item, isLessons }: LessonsCardProps) => {
     const navigate = useNavigate()
     const handleNavigateLesson = (title: string, id: number) => {
-        if (isLessons) {
+        if (item.isLesson) {
 
             navigate(`/card/lessons/${title}/${item.lessonId}/${item.courseId}`)
         } else {
             navigate(`/card/testing/${title}/${item.lessonId}/${item.courseId}`)
         }
-    }
- 
-    
-
-
-        
+    } 
     return (
-    
+ 
     <div className={styles.card} onClick={() => handleNavigateLesson(item.title, item.id)}>
         <div className={styles.card__inner}>
             <div className={styles.card__header}>
@@ -40,7 +35,6 @@ const LessonsCard = ({ item, isLessons }: LessonsCardProps) => {
                         <>
                             Тестирование {item.id + 1}
                         </>
-
                     )}
                 </p>
                 <p className={styles.card__title}>
