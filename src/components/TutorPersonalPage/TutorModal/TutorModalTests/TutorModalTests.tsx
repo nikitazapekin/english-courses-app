@@ -53,13 +53,9 @@ const TutorModalTests = () => {
             return { ...prev, questions: newQuestions };
         });
     };
-    
-
     const handleAddAnswer = (qIndex: number) => {
         setFormData((prev) => {
-            const newQuestions = [...prev.questions];
-            
-           
+            const newQuestions = [...prev.questions]; 
             if (newQuestions[qIndex].answers.length === 0 || newQuestions[qIndex].answers[newQuestions[qIndex].answers.length - 1] !== "") {
                 newQuestions[qIndex].answers.push("");
             }
@@ -68,18 +64,6 @@ const TutorModalTests = () => {
         });
     };
     
-  /*   const handleAddAnswer = (qIndex: number) => {
-        let count=0;
-        if(count<1) {
-        setFormData((prev) => {
-            const newQuestions = [...prev.questions];
-            newQuestions[qIndex].answers.push("");
-            return { ...prev, questions: newQuestions };
-        });
-        count++
-    }
-    };
- */
     const handleAnswerChange = (qIndex: number, aIndex: number, value: string) => {
         setFormData((prev) => {
             const newQuestions = [...prev.questions];
@@ -123,7 +107,7 @@ const TutorModalTests = () => {
         } catch {
 
         }
-        //  dispatch(setTest(formData));csa
+ 
         handleClose();
     };
 
