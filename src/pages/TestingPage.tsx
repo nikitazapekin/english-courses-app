@@ -9,26 +9,7 @@ import TestService from "../services/Test";
 import { useLocation } from "react-router-dom";
 const TestingPage = () => {
 
-
-
-
-    const location = useLocation();
-        const lastPathSegment = location.pathname.split("/")
-    useEffect(() => {
-
-        const handleGetTests = async () => {
-            try {
-
-                const response = TestService.GetQuestions(lastPathSegment[lastPathSegment.length-2])
-            } catch {
-
-            }
-
-        }
-handleGetTests()
-        window.scrollTo(0, 0);
-
-    }, []);
+ 
 
     return (<div className={styles.wrapper}>
         <Header />
