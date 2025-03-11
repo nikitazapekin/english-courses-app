@@ -29,7 +29,7 @@ const TestingComponent = () => {
     const { theme } = useParams<{ theme: string }>();
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [resetSelection, setResetSelection] = useState(false);
-    const [cards, setCards] = useState<Cards[]>([]);  
+    const [cards, setCards] = useState<Cards[]>([]);
     const taskMaterial = theme && !isNaN(Number(theme))
         ? testingMaterial[Number(theme)]
         : null;
@@ -61,7 +61,8 @@ const TestingComponent = () => {
     };
 
     const handleIncrementQuestion = () => {
-        setCurrentQuestion((prev) => Math.min(prev + 1, taskMaterial!.tasks.length - 1));
+        //   setCurrentQuestion((prev) => Math.min(prev + 1, taskMaterial!.tasks.length - 1));
+        setCurrentQuestion((prev) => prev + 1);
         setResetSelection(true);
     };
 
@@ -82,7 +83,7 @@ const TestingComponent = () => {
         const handleGetTests = async () => {
             try {
                 const response = await TestService.GetQuestions(lastPathSegment[lastPathSegment.length - 2]);
-                setCards(response.data.questions);  
+                setCards(response.data.questions);
             } catch (error) {
                 console.error("Ошибка при получении данных: ", error);
             }
@@ -91,8 +92,15 @@ const TestingComponent = () => {
         window.scrollTo(0, 0);
     }, [location.pathname]);
 
+
+    useEffect(()=> {
+console.log("CURRENT", currentQuestion)
+console.log(cards[currentQuestion])
+    }, [currentQuestion])
     return (
         <div className={styles.test}>
+
+            {JSON.stringify(cards)}
             <ModalResult
                 isDisplay={isDisplay}
                 time={time}
@@ -121,18 +129,18 @@ const TestingComponent = () => {
 
                     <div className={styles.main}>
                         <h2 className={styles.main__question}>
-                            {cards[currentQuestion]?.question || "Загрузка..."} 
+                            {cards[currentQuestion]?.question || "Загрузка..."}
                         </h2>
                     </div>
                     <div className={styles.main__answers}>
-                    {cards[currentQuestion]?.answers?.map((item, index) => (
+                        {cards[currentQuestion]?.answers?.map((item, index) => (
                             <TestingAnswer
                                 key={index}
                                 item={{
-                                text:    String(item),
-                                isTrue: false
+                                    text: String(item),
+                                    isTrue: false
                                 }
-                            }
+                                }
                                 handleIncrementQuestion={handleIncrementQuestion}
                                 index={index}
                                 onAnswerClick={(isTrue) => updateResults(currentQuestion, isTrue)}
@@ -141,17 +149,17 @@ const TestingComponent = () => {
                                 handleDisplayResults={handleDisplayResults}
                                 length={results.length}
                                 currentQuestionNumber={currentQuestion}
-                                />
-                                ))}
+                            />
+                        ))}
                     </div>
-                                
+
 
                     <img
                         className={styles.main__image}
-                        src={cards[currentQuestion]?.question_image || ""} 
+                        src={cards[currentQuestion]?.question_image || ""}
                         alt="Testing"
                     />
-{/*
+                    {/*
                     {cards[currentQuestion] ? (
                         <ProgressBar length={cards.length} results={results} />
                         ) : null}

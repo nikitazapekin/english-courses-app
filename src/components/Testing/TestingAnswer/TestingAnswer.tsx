@@ -40,15 +40,17 @@ const TestingAnswer = ({
     }, [resetSelection]);
 
     const handleClick = () => {
-        if (!isClicked && !isAnswered) {
+        console.log(1)
+      //  if (!isClicked && !isAnswered) {
             setIsClicked(true);
             setIsCorrect(item.isTrue);
             onAnswerClick(item.isTrue);
             setTimeout(()=> {
 
                 handleIncrementQuestion();
+                console.log("clicked")
             }, 2000)
-        }
+       // }
     };
     useEffect(()=> {
 if(currentQuestionNumber+1==length) {
