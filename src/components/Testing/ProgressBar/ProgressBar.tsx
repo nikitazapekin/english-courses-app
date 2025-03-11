@@ -11,22 +11,26 @@ interface ProgressBarProps {
 const ProgressBar = ({ length, results }: ProgressBarProps) => {
     return (
         <div className={styles.progress}>
+
             {Array.from({ length }).map((_, index) => {
-                const result = results[index];
+    /*             const result = results[index];
                 const statusClass =
                     result?.isTrue === null
                         ? styles.progress__gray
                         : result.isTrue
                         ? styles.progress__green
                         : styles.progress__red;
-
+ */
+const statusClass=""
                 return (
                     <div
                         key={index}
                         className={`${styles.progress__item} ${statusClass}`}
                     />
                 );
-            })}
+                })}
+                {/*
+                */}
         </div>
     );
 };

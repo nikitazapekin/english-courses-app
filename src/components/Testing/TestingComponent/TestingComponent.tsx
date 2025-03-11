@@ -138,7 +138,7 @@ console.log(cards[currentQuestion])
                                 key={index}
                                 item={{
                                     text: String(item),
-                                    isTrue: false
+                                    isTrue: cards[currentQuestion].correct_answer == String(item)
                                 }
                                 }
                                 handleIncrementQuestion={handleIncrementQuestion}
@@ -159,7 +159,11 @@ console.log(cards[currentQuestion])
                         src={cards[currentQuestion]?.question_image || ""}
                         alt="Testing"
                     />
-                    {/*
+                        
+                        <ProgressBar length={cards.length}  results={results} 
+                        
+                        />
+                        {/*
                     {cards[currentQuestion] ? (
                         <ProgressBar length={cards.length} results={results} />
                         ) : null}
