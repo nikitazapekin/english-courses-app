@@ -37,7 +37,22 @@ interface GetTestResponse {
         
    
 }
-
+interface GetQuestionsRespose {
+    
+        message:string,
+        questions: 
+            {
+                id: number,
+                test_id: number,
+                question:string,
+                answers:  String[],
+                correct_answer: string,
+                question_image:string,
+            }[]
+           
+        
+    
+}
 export default class TestService {
     static async CreateTest(data: any): Promise<AxiosResponse<any>> {
         return $api.post<any>('/test/createTest', data)
@@ -50,8 +65,8 @@ export default class TestService {
     }
 
 
-    static async GetQuestions(id:string): Promise<AxiosResponse<GetTestResponse>> {
-        return $api.get<GetTestResponse>(`/test/getTest?test_id=${id}`)
+    static async GetQuestions(id:string): Promise<AxiosResponse<GetQuestionsRespose>> {
+        return $api.get<GetQuestionsRespose>(`/test/getQuestions?test_id=${id}`)
          
     }
 

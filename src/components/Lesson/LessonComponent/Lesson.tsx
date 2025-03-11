@@ -149,9 +149,7 @@ const LessonComponent = () => {
       <div className={styles.lesson__inner}>
         <div className={styles.lesson__title}>
           <p className={styles.lesson__number}>Урок {lesson?.id}</p>
-          {/*
-
-*/}
+     
           <h1 className={styles.lesson__name}>{lesson?.title}</h1>
         </div>
         <p className={styles.lesson__subtitle}>{lesson?.durability}</p>

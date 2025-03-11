@@ -64,9 +64,7 @@ const handleDisplayResults = () => {
         }
     }, [resetSelection]);
 
-    if (!theme || isNaN(Number(theme)) || !taskMaterial || !taskMaterial.tasks.length) {
-        return <div>Тема не выбрана или заданий нет.</div>;
-    }
+  
 
     return (
         <div className={styles.test}>
@@ -98,12 +96,12 @@ const handleDisplayResults = () => {
 
                     <div className={styles.main}>
                         <h2 className={styles.main__question}>
-                            {taskMaterial.tasks[currentQuestion].sentance}
+                            {taskMaterial && taskMaterial.tasks[currentQuestion].sentance}
                         </h2>
                     </div>
 
                     <div className={styles.main__answers}>
-                        {taskMaterial.tasks[currentQuestion].answers.map((item, index) => (
+                        {taskMaterial && taskMaterial.tasks[currentQuestion].answers.map((item, index) => (
                             <TestingAnswer
                                 key={index}
                                 item={item}
@@ -119,12 +117,23 @@ const handleDisplayResults = () => {
                         ))}
                     </div>
 
-                    <img
-                        className={styles.main__image}
-                        src={taskMaterial.tasks[currentQuestion].image}
-                        alt="Testing"
-                    />
-                    <ProgressBar length={taskMaterial.tasks.length} results={results} />
+ 
+
+
+<img
+    className={styles.main__image}
+    src={
+        taskMaterial && typeof taskMaterial !== "string" && taskMaterial.tasks?.[currentQuestion]?.image
+            ? taskMaterial.tasks[currentQuestion].image
+            : ""
+    }
+    alt="Testing"
+/>
+
+{taskMaterial && typeof taskMaterial !== "string" && taskMaterial.tasks ? (
+    <ProgressBar length={taskMaterial.tasks.length} results={results} />
+) : null}
+
                 </div>
             </div>
         </div>
@@ -133,3 +142,4 @@ const handleDisplayResults = () => {
 
 export default TestingComponent;
 
+ 
