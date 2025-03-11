@@ -64,7 +64,7 @@ const TestingComponent = () => {
     };
 
     const handleIncrementQuestion = () => {
-      
+
         setCurrentQuestion((prev) => prev + 1);
         setResetSelection(true);
     };
@@ -86,10 +86,10 @@ const TestingComponent = () => {
         const handleGetTests = async () => {
             try {
                 const response = await TestService.GetQuestions(lastPathSegment[lastPathSegment.length - 2]);
-                setCards(response.data.questions); 
+                setCards(response.data.questions);
                 setIsLoaded(true)
             } catch (error) {
-                console.error("Ошибка при получении данных: ", error); 
+                console.error("Ошибка при получении данных: ", error);
                 setIsLoaded(true)
             }
         };
@@ -103,13 +103,20 @@ const TestingComponent = () => {
         console.log(cards[currentQuestion])
     }, [currentQuestion])
     useEffect(() => {
-        setResults(generateArray(cards.length+1))
+        setResults(generateArray(cards.length + 1))
     }, [cards])
 
 
-    useEffect(()=> {
-console.log("RES" , results)
+    useEffect(() => {
+        console.log("RES", results)
+        //cards[currentQuestion]?.question ? "" : handleDisplayResults()
     }, [results])
+    useEffect(() => {
+        console.log("cur", currentQuestion , cards.length)
+        if (cards.length > 0 && currentQuestion == cards.length) {
+            handleDisplayResults()
+        }
+    }, [currentQuestion])
     return (
         <div className={styles.test}>
             <ModalResult
