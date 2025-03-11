@@ -29,13 +29,16 @@ const TestingComponent = () => {
     const { theme } = useParams<{ theme: string }>();
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [resetSelection, setResetSelection] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false)
     const [cards, setCards] = useState<Cards[]>([]);
     const taskMaterial = theme && !isNaN(Number(theme))
+
         ? testingMaterial[Number(theme)]
         : null;
 
     const [results, setResults] = useState<Array<{ index: number; isTrue: boolean | null }>>(
-        taskMaterial ? generateArray(taskMaterial.tasks.length) : []
+        //  taskMaterial ? generateArray(taskMaterial.tasks.length) : []
+        []
     );
 
     const [isDisplay, setIsDisplay] = useState(false);
@@ -61,7 +64,7 @@ const TestingComponent = () => {
     };
 
     const handleIncrementQuestion = () => {
-        //   setCurrentQuestion((prev) => Math.min(prev + 1, taskMaterial!.tasks.length - 1));
+      
         setCurrentQuestion((prev) => prev + 1);
         setResetSelection(true);
     };
@@ -83,9 +86,11 @@ const TestingComponent = () => {
         const handleGetTests = async () => {
             try {
                 const response = await TestService.GetQuestions(lastPathSegment[lastPathSegment.length - 2]);
-                setCards(response.data.questions);
+                setCards(response.data.questions); 
+                setIsLoaded(true)
             } catch (error) {
-                console.error("Ошибка при получении данных: ", error);
+                console.error("Ошибка при получении данных: ", error); 
+                setIsLoaded(true)
             }
         };
         handleGetTests();
@@ -93,14 +98,20 @@ const TestingComponent = () => {
     }, [location.pathname]);
 
 
-    useEffect(()=> {
-console.log("CURRENT", currentQuestion)
-console.log(cards[currentQuestion])
+    useEffect(() => {
+        console.log("CURRENT", currentQuestion)
+        console.log(cards[currentQuestion])
     }, [currentQuestion])
+    useEffect(() => {
+        setResults(generateArray(cards.length+1))
+    }, [cards])
+
+
+    useEffect(()=> {
+console.log("RES" , results)
+    }, [results])
     return (
         <div className={styles.test}>
-
-            {JSON.stringify(cards)}
             <ModalResult
                 isDisplay={isDisplay}
                 time={time}
@@ -149,6 +160,7 @@ console.log(cards[currentQuestion])
                                 handleDisplayResults={handleDisplayResults}
                                 length={results.length}
                                 currentQuestionNumber={currentQuestion}
+                                isLoaded={isLoaded}
                             />
                         ))}
                     </div>
@@ -159,11 +171,11 @@ console.log(cards[currentQuestion])
                         src={cards[currentQuestion]?.question_image || ""}
                         alt="Testing"
                     />
-                        
-                        <ProgressBar length={cards.length}  results={results} 
-                        
-                        />
-                        {/*
+
+                    <ProgressBar length={cards.length} results={results}
+
+                    />
+                    {/*
                     {cards[currentQuestion] ? (
                         <ProgressBar length={cards.length} results={results} />
                         ) : null}

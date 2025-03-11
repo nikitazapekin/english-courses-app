@@ -9,11 +9,12 @@ interface TestingAnswerProps {
     index: number;
     onAnswerClick: (isTrue: boolean) => void;
     handleIncrementQuestion: () => void;
-    isAnswered: boolean; 
-    resetSelection: boolean; 
-    handleDisplayResults: ()=> void,
+    isAnswered: boolean;
+    resetSelection: boolean;
+    handleDisplayResults: () => void,
     length: number,
-    currentQuestionNumber: number
+    currentQuestionNumber: number,
+    isLoaded: boolean
 }
 
 
@@ -26,14 +27,15 @@ const TestingAnswer = ({
     resetSelection,
     handleDisplayResults,
     length,
-    currentQuestionNumber
+    currentQuestionNumber,
+    isLoaded
 }: TestingAnswerProps) => {
     const [isClicked, setIsClicked] = useState(false);
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
     useEffect(() => {
         if (resetSelection) {
-        
+
             setIsClicked(false);
             setIsCorrect(null);
         }
@@ -41,38 +43,42 @@ const TestingAnswer = ({
 
     const handleClick = () => {
         console.log(1)
-      //  if (!isClicked && !isAnswered) {
-            setIsClicked(true);
-            setIsCorrect(item.isTrue);
-            onAnswerClick(item.isTrue);
-            setTimeout(()=> {
 
-                handleIncrementQuestion();
-                console.log("clicked")
-            }, 2000)
-       // }
+        setIsClicked(true);
+        setIsCorrect(item.isTrue);
+        onAnswerClick(item.isTrue);
+        setTimeout(() => {
+
+            handleIncrementQuestion();
+            console.log("clicked")
+        }, 2000)
+        // }
     };
-    useEffect(()=> {
-if(currentQuestionNumber+1==length) {
-    setTimeout(()=> {
+    useEffect(() => {
 
-        handleDisplayResults()
-    }, 2000)
-}
+        console.log("current", currentQuestionNumber, length, isLoaded)
+        if (isLoaded) {
+
+            if (currentQuestionNumber + 1 == length) {
+                setTimeout(() => {
+
+            //        handleDisplayResults()
+                }, 2000)
+            }
+        }
     }, [currentQuestionNumber])
 
     return (
         <div
-            className={`${styles.card} ${
-                isClicked
+            className={`${styles.card} ${isClicked
                     ? isCorrect
                         ? styles.correct
                         : styles.incorrect
                     : ""
-            }`}
+                }`}
             onClick={handleClick}
         >
-            
+
             <p className={styles.card__index}>{index + 1}</p>
             <p className={styles.card__text}>{item.text}</p>
         </div>
@@ -80,4 +86,3 @@ if(currentQuestionNumber+1==length) {
 };
 
 export default TestingAnswer;
- 

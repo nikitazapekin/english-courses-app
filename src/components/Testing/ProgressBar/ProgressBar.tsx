@@ -13,15 +13,20 @@ const ProgressBar = ({ length, results }: ProgressBarProps) => {
         <div className={styles.progress}>
 
             {Array.from({ length }).map((_, index) => {
-    /*             const result = results[index];
-                const statusClass =
+                const result = results[index];
+                let statusClass
+                if(result){
+
+                    statusClass =
                     result?.isTrue === null
                         ? styles.progress__gray
                         : result.isTrue
                         ? styles.progress__green
                         : styles.progress__red;
- */
-const statusClass=""
+                        /*             
+                        const statusClass=""
+                        */
+                    }
                 return (
                     <div
                         key={index}
