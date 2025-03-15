@@ -39,8 +39,7 @@ const PersonalCourses: React.FC<CoursesProps> = ({ cards, total, limit, handlePa
 
   const totalPages = Math.ceil(total / limit);
   const startIndex = (currentPage - 1) * limit;
-  const endIndex = startIndex + limit;
-  //const currentData = cards.slice(startIndex, endIndex);
+ 
 const currentData = cards
  
 

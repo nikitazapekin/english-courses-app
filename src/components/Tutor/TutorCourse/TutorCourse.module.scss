@@ -7,10 +7,17 @@
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     padding: 15px;
-    height: 300px;
+    height: 200px;
    // height: 100%;
     align-items: center;
 cursor: pointer;
+justify-content: space-between;
+ 
+
+&__content {
+    display: flex;
+    column-gap: 20px;
+}
     &__image {
         max-width: 200px;
         width: 100%;
@@ -53,5 +60,15 @@ cursor: pointer;
             padding: 2px 5px;
             background-color: $sliderGreen;
         }
+    }
+
+
+    &__edit {
+        justify-self: flex-end;
+        align-self: flex-start;
+        font-size: 20px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        cursor: pointer;
     }
 }
