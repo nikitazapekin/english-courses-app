@@ -1,13 +1,11 @@
 import styles from "./tutorPersonalCourses.module.scss"
 import { useSelector } from "react-redux";
 import { TutorSelector } from "../../../store/selectors/Tutor.selector";
-
 import TutorPamel from "../TutorPanel/TutorPanel";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TutorService from "../../../services/Tutor";
 import TutorsCourses from "../../Tutor/TutorsCourses/TutorsCourses";
-
 interface TutorCoursesResponse {
     id: number,
     author: string,
@@ -16,8 +14,6 @@ interface TutorCoursesResponse {
     course_for: String[],
     release_date: string,
     course_logo: string,
-
-
 }
 const TutorPersonalCoursesComponent = () => {
     const tutor = useSelector(TutorSelector)

@@ -35,9 +35,11 @@ const Homepage = () => {
                 <HomepageComments />
                 <NavigateBtn />
                 <HelpBtn />
-            
-            </div>
-            <Footer />
+                
+                </div>
+                <Footer />
+            {/*
+                */}
         </div>
     );
 }

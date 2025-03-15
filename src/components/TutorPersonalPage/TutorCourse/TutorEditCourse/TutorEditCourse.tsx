@@ -24,7 +24,7 @@ interface Props {
 }
 const TutorEditCourse = ({id}: Props) => {
     const editCourse = useSelector(OpenCourseSelector)
-    console.log("JSON", JSON.stringify(editCourse))
+ //   console.log("JSON", JSON.stringify(editCourse))
     const [formState, setFormState] = useState<FormState>({
         name: "", description: "", for: "",
         logo: "",
@@ -107,7 +107,7 @@ const TutorEditCourse = ({id}: Props) => {
         event.preventDefault();
         try {
             const response = await CourseService.EditCourseInfo({data: {...formState, id: id}}, id);
-            console.log("Курс создан:", response.data);
+         //   console.log("Курс создан:", response.data);
         } catch (error) {
             console.error("Ошибка при создании курса:", error);
         }

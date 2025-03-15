@@ -83,11 +83,11 @@ const CreateFormSlice = createSlice({
 
         setForm(state, action: PayloadAction<FormProps>) {
             state.form = action.payload
-            console.log(state.form)
+         //   console.log(state.form)
         },
         setOpenModal(state, action: PayloadAction<{ type: string }>) {
             state.isOpenModal = !state.isOpenModal
-            console.log("STATE", state.isOpenModal)
+       //     console.log("STATE", state.isOpenModal)
             state.openModalType = action.payload.type
         },
         setLessons(state, action: PayloadAction<Lessons>) {

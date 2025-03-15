@@ -91,7 +91,7 @@ const AuthorithedHeader = () => {
                    setRole(response.data.user.role)
             
             } catch (err) {
-                navigate("/sign-in")
+           //     navigate("/sign-in")
             }
         };
         handleGetUser();

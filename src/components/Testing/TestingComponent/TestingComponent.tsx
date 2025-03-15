@@ -8,6 +8,10 @@ import ModalResult from "../ModalResult/ModalResult";
 import { formatTime } from "../../../helpers/formatTime";
 import TestService from "../../../services/Test";
 
+
+
+ 
+  
 function generateArray(length: number): Array<{ index: number; isTrue: boolean | null }> {
     return Array.from({ length }, (_, i) => ({
         index: i,
