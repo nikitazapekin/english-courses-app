@@ -106,7 +106,7 @@ export default class CommentsService {
     }
 
 
-    static async ReplyReply({ reply_id }: LikeReplyTypes): Promise<AxiosResponse<any>> {
+    static async LikeReply({ reply_id }: LikeReplyTypes): Promise<AxiosResponse<any>> {
         return $api.post<any>('/comments/likeReply',
             {
              reply_id: reply_id

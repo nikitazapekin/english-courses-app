@@ -33,7 +33,7 @@ const LessonComponentReply = ({ nested,// handleLikeReply,
     const handleLikeReply = async (id: string) => {
         setIsLiked(prev => !prev)
         try {
-            const reponse = await CommentsService.LikeComment({ comment_id: Number(id) })
+            const reponse = await CommentsService.LikeReply({ reply_id: Number(id) })
         } catch {
 
         }
