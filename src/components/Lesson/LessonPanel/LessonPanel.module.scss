@@ -36,7 +36,13 @@
     }
 
     &__image {
-        max-width: 134px;
+      //  max-width: 134px;
+        border-radius: 50%;
+    /*     min-height: 100px;
+        min-width: 100px; */
+        width: 100px;
+        height: 100px;
+        aspect-ratio: 1;
     }
 
     &__area {

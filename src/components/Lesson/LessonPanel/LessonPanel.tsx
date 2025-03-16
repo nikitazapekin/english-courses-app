@@ -1,59 +1,51 @@
-/* 
-import React, { useState } from "react";
-import styles from "./LessonPanel.module.scss";
-import Personal from "../../../assets/Personal/Avatar.png";
-
-interface LessonPanelProps {
-    addComment: (comment: string) => void; // Пропс для добавления комментария
-}
-
-const LessonPanel = ({ addComment }: LessonPanelProps) => {
-    const [commentText, setCommentText] = useState("");
-
-    const handleSend = () => {
-        if (commentText.trim()) {
-            addComment(commentText); // Добавляем комментарий
-            setCommentText(""); // Очищаем текстовое поле
-        }
-    };
-
-    return (
-        <section className={styles.panel}>
-            <div className={styles.panel__inner}>
-                <div className={styles.panel__preview}>
-                    <img src={Personal} alt="Logo" className={styles.panel__image} />
-                    <p className={styles.panel__title}>
-                        Вы <br /> (Запекин Никита)
-                    </p>
-                </div>
-                <div className={styles.panel__content}>
-                    <textarea
-                        placeholder="Оставьте ваш комментарий"
-                        value={commentText}
-                        onChange={(e) => setCommentText(e.target.value)}
-                        className={styles.panel__area}
-                        />
-                        <div className={styles.panel__btn} onClick={handleSend}>
-                        Отправить
-                    </div>
-                    </div>
-                    </div>
-        </section>
-    );
-};
-
-export default LessonPanel;
- */
+ 
 import styles from "./LessonPanel.module.scss"
 import Personal from "../../../assets/Personal/Avatar.png"
 import { useEffect, useState } from "react"
+import CommentsService from "../../../services/Comments"
+import { useLocation } from "react-router-dom"
+interface User {
+ 
+         id: number,
+         email: string,
+         auth_date: string,
+         user_id: number,
+         courses: string,
+         phone: string,
+         country: string,
+         city: string,
+         role: string,
+         username: string,
+         describtion: string
+ 
+   }
+   
 interface LessonPanelProps {
-    handleAddComment: (text: string)=> void
+    handleAddComment: (text: string)=> void,
+    user: User, 
+    avatar: string
 }
-const LessonPanel = ({handleAddComment}: LessonPanelProps) => {
+
+
+const LessonPanel = ({handleAddComment, user, avatar}: LessonPanelProps ) => {
+
+    
+    
+    const location = useLocation();
+    const lastPathSegment = location.pathname.split("/")
+    console.log(lastPathSegment)
 const [text, setText] =useState("")
-    const handleSend =()=> {
-        handleAddComment(text)
+    const handleSend =async ()=> {
+       handleAddComment(text)
+/* const response = CommentsService.CreateComment(
+    //wdq
+    {
+        lesson_id:1,
+        text: ""
+        }
+        
+    )
+    */
     }
     const handleChange = (event:  React.ChangeEvent<HTMLTextAreaElement>) => {
 setText(event.target.value)
@@ -62,11 +54,17 @@ setText(event.target.value)
         <section className={styles.panel}>
             <div className={styles.panel__inner}>
                 <div className={styles.panel__preview}>
-                    <img src={Personal} alt="Logo"
+
+               
+                    <img
+                    src={avatar}
+                    //src={Personal} 
+                    
+                    alt="Logo"
                     className={styles.panel__image}
                     />
                     <p className={styles.panel__title}> 
-                        Вы <br /> (Запекин Никита)
+                        Вы <br /> ({user && user.username})
                     </p>
                 </div>
                 <div className={styles.panel__content}>
@@ -83,5 +81,4 @@ setText(event.target.value)
 }
 
 export default LessonPanel;
-/*
-*/
+ 

@@ -18,9 +18,27 @@ import LessonService from "../../../services/Lesson";
 import Txt from "../../../assets/download/txt.png"
 import Pptx from "../../../assets/download/ppt.png"
 import Word from "../../../assets/download/word.png"
+import PersonalService from "../../../services/Personal";
+import CommentsService from "../../../services/Comments";
 const data: LessonCommentItem[] = [
 
 ];
+
+interface User {
+ 
+      id: number,
+      email: string,
+      auth_date: string,
+      user_id: number,
+      courses: string,
+      phone: string,
+      country: string,
+      city: string,
+      role: string,
+      username: string,
+      describtion: string
+ 
+}
 
 interface LessonTypes {
   id: number;
@@ -52,9 +70,27 @@ const LessonComponent = () => {
   const { theme } = useParams();
   const [comments, setComments] = useState<LessonCommentItem[]>(data);
   const [lesson, setLesson] = useState<LessonTypes>();
+  const [userAvatar, setUserAvatar] = useState<string>();
+const [user, setUser ] = useState<User>()
+const location = useLocation();
+const lastPathSegment = location.pathname.split("/")
+console.log(lastPathSegment[lastPathSegment.length-2])
+  const handleAddComment = async (text: string) => {
 
-  const handleAddComment = (text: string) => {
-    const newComment: LessonCommentItem = {
+try {
+
+  const response = CommentsService.CreateComment(
+    //wdq
+      {
+          lesson_id: Number(lastPathSegment[lastPathSegment.length-2]),
+          text: text
+  
+      }
+    )
+    } catch {
+
+    }
+ /*    const newComment: LessonCommentItem = {
       userId: Date.now(),
       username: "Вы",
       comment: text,
@@ -65,10 +101,28 @@ const LessonComponent = () => {
       responces: null,
       commentId: data.length,
     };
-    setComments((prev) => [...prev, newComment]);
+    setComments((prev) => [...prev, newComment]); */
   };
 
+useEffect(()=> {
+
+  const handleFetch = async () => {
+    try {
+
+      const response = await CommentsService.GetComments(lastPathSegment[lastPathSegment.length-2])
+      console.log(response.data)
+    } catch {
+
+    }
+  }
+
+  handleFetch()
+
+} , [])
   const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
+
+
+
 
   const handleAddReply = (commentId: number, reply: Response) => {
     setComments((prevComments) =>
@@ -101,8 +155,7 @@ const LessonComponent = () => {
     }
   }, [avatar, userId, username, date, comment, likes, isYourComment, to, commentId]);
 
-  const location = useLocation();
-  const lastPathSegment = location.pathname.split("/");
+ 
 
   useEffect(() => {
     const handleGet = async () => {
@@ -111,7 +164,7 @@ const LessonComponent = () => {
           lastPathSegment[lastPathSegment.length - 1]!,
           lastPathSegment[lastPathSegment.length - 2]!
         );
-        console.log("LESSON", response.data);
+
         const lessonData = response.data.lesson;
         setLesson(lessonData);
       } catch (error) {
@@ -120,10 +173,35 @@ const LessonComponent = () => {
     };
 
     handleGet();
+
+
+    const handleGetUser = async () => {
+      try {
+        const response = await PersonalService.GetUser()
+        console.log(response.data)
+        setUser(response.data.user)
+      } catch {
+
+      }
+    }
+
+    handleGetUser()
+
+
+    const handleGetAvatar = async () => {
+      try {
+        const response = await PersonalService.GetAvatar()
+        console.log("avatar", response.data.avatar)
+     //   setUser(response.data.user)
+     setUserAvatar(response.data.avatar)
+      } catch {
+
+      }
+    }
+
+    handleGetAvatar()
   }, []);
-
-
-
+  
   const handleDownload = (materials: { filename: string, data: string }) => {
     if (!materials || !materials.data) return;
 
@@ -149,13 +227,13 @@ const LessonComponent = () => {
       <div className={styles.lesson__inner}>
         <div className={styles.lesson__title}>
           <p className={styles.lesson__number}>Урок {lesson?.id}</p>
-     
+
           <h1 className={styles.lesson__name}>{lesson?.title}</h1>
         </div>
         <p className={styles.lesson__subtitle}>{lesson?.durability}</p>
 
         <div className={styles.lesson__content}>
-       
+
 
           {lesson && lesson.video && (
             <video
@@ -172,11 +250,13 @@ const LessonComponent = () => {
 
           {lesson?.materials && (
             <div
-            className={styles.lesson__files}
+              className={styles.lesson__files}
             >
-              <img 
-              className={styles.lesson__icon}
-              src={getIcon(lesson.materials.filename)} alt="File Icon" />
+              <img
+                className={styles.lesson__icon}
+                src={getIcon(lesson.materials.filename)} alt="File Icon" />
+           
+           
               <button
                 className={styles.lesson__download}
                 onClick={() => handleDownload(lesson.materials)}
@@ -188,7 +268,10 @@ const LessonComponent = () => {
           )}
 
 
-          <LessonPanel handleAddComment={handleAddComment} />
+          <LessonPanel handleAddComment={handleAddComment}
+          user={user!}
+          avatar={userAvatar!}
+          />
 
           <LessonCommentsHeader />
 
