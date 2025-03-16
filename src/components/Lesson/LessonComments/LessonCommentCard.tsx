@@ -52,18 +52,7 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
 
 
     return (<>
-     {/*   <div className={`${styles.comment}`}>
-        <img src={item.author.avatar} alt="Logo"
-                className={styles.comment__image}
-            />
-            {item.text}
-        </div>
-        */}
-
-
-
-
-
+ 
 
 
 
@@ -75,7 +64,7 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                 className={styles.comment__content}
             >
                 <div className={styles.comment__header}>
-                    <h4 className={styles.comment__title}>{item.author.username}</h4>
+                    <h4 className={styles.comment__title}>{item.author.username} {item.author.role == "tutor" && <>(Репетитор)</>}</h4>
                     <p className={styles.comment__date}>{formattedDate}</p>
 
                 </div>

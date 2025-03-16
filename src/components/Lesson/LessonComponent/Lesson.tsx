@@ -96,7 +96,7 @@ const LessonComponent = () => {
   const { theme } = useParams();
 
 
-  const [comments, setComments ] = useState<Comments[]>()
+  const [comments, setComments ] = useState<Comments[]>([])
 //  const [comments, setComments] = useState<LessonCommentItem[]>(data);
   const [lesson, setLesson] = useState<LessonTypes>();
   const [userAvatar, setUserAvatar] = useState<string>();
@@ -104,7 +104,7 @@ const LessonComponent = () => {
   const location = useLocation();
   const lastPathSegment = location.pathname.split("/")
   console.log(lastPathSegment[lastPathSegment.length - 2])
-  const handleAddComment = async (text: string) => {
+ /*  const handleAddComment = async (text: string) => {
 
     try {
 
@@ -119,20 +119,82 @@ const LessonComponent = () => {
     } catch {
 
     }
-    /*    const newComment: LessonCommentItem = {
-         userId: Date.now(),
-         username: "Вы",
-         comment: text,
-         date: new Date().toLocaleDateString(),
-         avatar: Avatar,
-         likes: 0,
-         isYourComment: true,
-         responces: null,
-         commentId: data.length,
-       };
-       setComments((prev) => [...prev, newComment]); */
+  
+
+       const user =await  PersonalService.GetUser()
+       const userAvatar =await  PersonalService.GetAvatar()
+console.log(user.data.user.username)
+       const newComment =   {
+     //   username: "Вы",
+
+     id: 0,
+     lesson_id: 0,
+     author_id: 0,
+     author_name: user.data.user.username,
+     text:  text,
+     created_at:  Date.now().toString(), 
+     likes:  0,
+     parent_comment_id:  null, 
+     author: {
+         id:  0,
+         username: user.data.user.username,
+         email: user.data.user.email,
+         avatar: userAvatar,
+          role:  user.data.user.role,
+         country: user.data.user.country,
+         city: user.data.user.city
+     }
+
+
+
+       }
+       setComments([...comments, newComment])
+      // setComments((prev) => [...prev, newComment]); 
+  };
+ */
+
+
+
+
+  const handleAddComment = async (text: string) => {
+    try {
+      const response = await CommentsService.CreateComment({
+        lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
+        text: text,
+      });
+  
+      const user = await PersonalService.GetUser();
+      const userAvatarResponse = await PersonalService.GetAvatar();
+      const userAvatar = userAvatarResponse.data.avatar; // Extracting the avatar string
+  
+      const newComment = {
+        id: 0,
+        lesson_id: 0,
+        author_id: 0,
+        author_name: user.data.user.username,
+        text: text,
+        created_at: Date.now().toString(),
+        likes: 0,
+        parent_comment_id: null,
+        author: {
+          id: 0,
+          username: user.data.user.username,
+          email: user.data.user.email,
+          avatar: userAvatar,  
+          role: user.data.user.role,
+          country: user.data.user.country,
+          city: user.data.user.city,
+        },
+      };
+  
+  //    setComments([...comments, newComment]);
+  setComments([ newComment, ...comments]);
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
   };
 
+  
   useEffect(() => {
 
     const handleFetch = async () => {
