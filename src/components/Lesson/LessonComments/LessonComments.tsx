@@ -53,11 +53,7 @@ const LessonComments = (data: Comments) => {
                 </>
             )}
 
-            {/*
-            {data.map((item) => (
-                <LessonCommentCard item={item} key={item.userId} />
-                ))}
-                */}
+         
         </div>
     );
 };

@@ -104,55 +104,7 @@ const LessonComponent = () => {
   const location = useLocation();
   const lastPathSegment = location.pathname.split("/")
   console.log(lastPathSegment[lastPathSegment.length - 2])
- /*  const handleAddComment = async (text: string) => {
-
-    try {
-
-      const response = CommentsService.CreateComment(
-        //wdq
-        {
-          lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
-          text: text
-
-        }
-      )
-    } catch {
-
-    }
-  
-
-       const user =await  PersonalService.GetUser()
-       const userAvatar =await  PersonalService.GetAvatar()
-console.log(user.data.user.username)
-       const newComment =   {
-     //   username: "Вы",
-
-     id: 0,
-     lesson_id: 0,
-     author_id: 0,
-     author_name: user.data.user.username,
-     text:  text,
-     created_at:  Date.now().toString(), 
-     likes:  0,
-     parent_comment_id:  null, 
-     author: {
-         id:  0,
-         username: user.data.user.username,
-         email: user.data.user.email,
-         avatar: userAvatar,
-          role:  user.data.user.role,
-         country: user.data.user.country,
-         city: user.data.user.city
-     }
-
-
-
-       }
-       setComments([...comments, newComment])
-      // setComments((prev) => [...prev, newComment]); 
-  };
- */
-
+ 
 
 
 
@@ -165,7 +117,7 @@ console.log(user.data.user.username)
   
       const user = await PersonalService.GetUser();
       const userAvatarResponse = await PersonalService.GetAvatar();
-      const userAvatar = userAvatarResponse.data.avatar; // Extracting the avatar string
+      const userAvatar = userAvatarResponse.data.avatar;  
   
       const newComment = {
         id: 0,
@@ -187,7 +139,7 @@ console.log(user.data.user.username)
         },
       };
   
-  //    setComments([...comments, newComment]);
+   
   setComments([ newComment, ...comments]);
     } catch (error) {
       console.error("Error adding comment:", error);
