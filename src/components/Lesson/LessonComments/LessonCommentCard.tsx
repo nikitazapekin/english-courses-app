@@ -1,4 +1,5 @@
-
+ 
+ 
 import styles from "./LessonComments.module.scss";
 import Heart from "../../../assets/icons/heart.png"
 import { CommentsProps, LessonCommentItem, Response } from "../types"
@@ -129,7 +130,9 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
 
 
                         <svg
-                            className={`${styles.comment__heart__svg} ${liked ? styles.liked : ""}`}
+                          //  className={`${styles.comment__heart__svg} ${liked ? styles.liked : ""}`}
+
+                          className={`${styles.comment__heart__svg} ${ ? styles.liked : ""}`}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             width="24"
@@ -200,3 +203,4 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
 };
 
 export default LessonCommentCard;
+ 

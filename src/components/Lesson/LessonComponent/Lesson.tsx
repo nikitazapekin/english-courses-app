@@ -341,7 +341,7 @@ const LessonComponent = () => {
 
           <LessonCommentsHeader />
 
-          <LessonComments data={comments!} />
+          <LessonComments data={comments!}  user={{user:user!}} />
         </div>
       </div>
     </div>
