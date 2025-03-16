@@ -60,9 +60,25 @@ interface LessonCommentCardProps {
 
 
     }
+
+        user: {
+            id: number;
+            email: string;
+            auth_date: string;
+            user_id: number;
+            courses: string;
+            phone: string;
+            country: string;
+            city: string;
+            role: string;
+            username: string;
+            describtion: string;
+        };
+
+        handleUpdateLike: (id: number,  comment_id: number) => void
 }
 
-const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
+const LessonCommentCard = ({ item, user , handleUpdateLike}: LessonCommentCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isShowResponces, setIsShowResponces] = useState(false)
     const [liked, setLiked] = useState(false);
@@ -83,6 +99,7 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
         } catch {
 
         }
+        handleUpdateLike(Number(id), item.id)
     };
 
 
@@ -127,12 +144,10 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                         onClick={() => handleLikeClick(String(item.id))}
                     >
 
-
-
+ 
                         <svg
-                          //  className={`${styles.comment__heart__svg} ${liked ? styles.liked : ""}`}
-
-                          className={`${styles.comment__heart__svg} ${ ? styles.liked : ""}`}
+                 
+                          className={`${styles.comment__heart__svg} ${ item.liked_by.includes(user.id) ? styles.liked : ""}`}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                             width="24"
@@ -187,7 +202,7 @@ const LessonCommentCard = ({ item }: LessonCommentCardProps) => {
                 <>
                     {item.replies.map(nested => (
                         <LessonComponentReply
-                    //    handleLikeReply={handleLikeReply}
+                  
                         handleOpen={handleOpen}
                         key={nested.id}
                             nested={nested}

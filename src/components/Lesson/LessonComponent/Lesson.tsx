@@ -149,7 +149,7 @@ const LessonComponent = () => {
       }, 0);
       const newComment = {
         id: maxId + 1,
-     //   id: 0,
+     
         lesson_id: 0,
         author_id: 0,
         author_name: user.data.user.username,
@@ -178,7 +178,54 @@ const LessonComponent = () => {
     }
   };
 
+/* 
+const handleUpdateLike =(id: number, comment_id: number) => {
 
+}
+ */
+const handleUpdateLike = (id: number, comment_id: number) => {
+  setComments((prevComments) =>
+      prevComments.map((comment) => {
+          // Проверяем, является ли текущий комментарий тем, который нужно обновить
+          if (comment.id === comment_id) {
+              const isLiked = comment.liked_by.includes(id);
+
+              // Обновляем количество лайков и массив liked_by
+              return {
+                  ...comment,
+                  likes: isLiked ? comment.likes - 1 : comment.likes + 1,
+                  liked_by: isLiked
+                      ? comment.liked_by.filter((userId) => userId !== id) // Удаляем id пользователя
+                      : [...comment.liked_by, id], // Добавляем id пользователя
+              };
+          }
+
+          // Проверяем вложенные комментарии (реплаи)
+          if (comment.replies && comment.replies.length > 0) {
+              return {
+                  ...comment,
+                  replies: comment.replies.map((reply) => {
+                      if (reply.id === comment_id) {
+                          const isLiked = reply.liked_by.includes(id);
+
+                          // Обновляем количество лайков и массив liked_by для реплая
+                          return {
+                              ...reply,
+                              likes: isLiked ? reply.likes - 1 : reply.likes + 1,
+                              liked_by: isLiked
+                                  ? reply.liked_by.filter((userId) => userId !== id) // Удаляем id пользователя
+                                  : [...reply.liked_by, id], // Добавляем id пользователя
+                          };
+                      }
+                      return reply;
+                  }),
+              };
+          }
+
+          return comment;
+      })
+  );
+};
   useEffect(() => {
 
     const handleFetch = async () => {
@@ -341,7 +388,9 @@ const LessonComponent = () => {
 
           <LessonCommentsHeader />
 
-          <LessonComments data={comments!}  user={{user:user!}} />
+          <LessonComments data={comments!}  user={{user:user!}}
+          handleUpdateLike={handleUpdateLike}
+          />
         </div>
       </div>
     </div>
