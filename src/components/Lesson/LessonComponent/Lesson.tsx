@@ -25,19 +25,19 @@ const data: LessonCommentItem[] = [
 ];
 
 interface User {
- 
-      id: number,
-      email: string,
-      auth_date: string,
-      user_id: number,
-      courses: string,
-      phone: string,
-      country: string,
-      city: string,
-      role: string,
-      username: string,
-      describtion: string
- 
+
+  id: number,
+  email: string,
+  auth_date: string,
+  user_id: number,
+  courses: string,
+  phone: string,
+  country: string,
+  city: string,
+  role: string,
+  username: string,
+  describtion: string
+
 }
 
 interface LessonTypes {
@@ -48,6 +48,32 @@ interface LessonTypes {
   video: string;
 
   materials: { filename: string; data: string };
+}
+
+interface Comments {
+
+  
+    
+        
+            id: number,
+            lesson_id: number,
+            author_id: number,
+            author_name: string,
+            text:  string,
+            created_at:  string,
+            likes:  number,
+            parent_comment_id: number | null, 
+            author: {
+                id:  number,
+                username: string,
+                email: string,
+                avatar: string,
+                 role:  string,
+                country: string,
+                city: string
+            }
+        
+ 
 }
 
 const getIcon = (filename: string) => {
@@ -68,64 +94,68 @@ const getIcon = (filename: string) => {
 
 const LessonComponent = () => {
   const { theme } = useParams();
-  const [comments, setComments] = useState<LessonCommentItem[]>(data);
+
+
+  const [comments, setComments ] = useState<Comments[]>()
+//  const [comments, setComments] = useState<LessonCommentItem[]>(data);
   const [lesson, setLesson] = useState<LessonTypes>();
   const [userAvatar, setUserAvatar] = useState<string>();
-const [user, setUser ] = useState<User>()
-const location = useLocation();
-const lastPathSegment = location.pathname.split("/")
-console.log(lastPathSegment[lastPathSegment.length-2])
+  const [user, setUser] = useState<User>()
+  const location = useLocation();
+  const lastPathSegment = location.pathname.split("/")
+  console.log(lastPathSegment[lastPathSegment.length - 2])
   const handleAddComment = async (text: string) => {
 
-try {
-
-  const response = CommentsService.CreateComment(
-    //wdq
-      {
-          lesson_id: Number(lastPathSegment[lastPathSegment.length-2]),
-          text: text
-  
-      }
-    )
-    } catch {
-
-    }
- /*    const newComment: LessonCommentItem = {
-      userId: Date.now(),
-      username: "Вы",
-      comment: text,
-      date: new Date().toLocaleDateString(),
-      avatar: Avatar,
-      likes: 0,
-      isYourComment: true,
-      responces: null,
-      commentId: data.length,
-    };
-    setComments((prev) => [...prev, newComment]); */
-  };
-
-useEffect(()=> {
-
-  const handleFetch = async () => {
     try {
 
-      const response = await CommentsService.GetComments(lastPathSegment[lastPathSegment.length-2])
-      console.log(response.data)
+      const response = CommentsService.CreateComment(
+        //wdq
+        {
+          lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
+          text: text
+
+        }
+      )
     } catch {
 
     }
-  }
+    /*    const newComment: LessonCommentItem = {
+         userId: Date.now(),
+         username: "Вы",
+         comment: text,
+         date: new Date().toLocaleDateString(),
+         avatar: Avatar,
+         likes: 0,
+         isYourComment: true,
+         responces: null,
+         commentId: data.length,
+       };
+       setComments((prev) => [...prev, newComment]); */
+  };
 
-  handleFetch()
+  useEffect(() => {
 
-} , [])
+    const handleFetch = async () => {
+      try {
+
+        const response = await CommentsService.GetComments(lastPathSegment[lastPathSegment.length - 2])
+        console.log("RESP", response.data.comments)
+        setComments(response.data.comments)
+      } catch {
+
+      }
+    }
+
+    handleFetch()
+
+  }, [])
   const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
 
 
 
 
   const handleAddReply = (commentId: number, reply: Response) => {
-    setComments((prevComments) =>
+  /*   setComments((prevComments) =>
       prevComments.map((comment) => {
         if (comment.commentId === commentId) {
           return {
@@ -135,7 +165,7 @@ useEffect(()=> {
         }
         return comment;
       })
-    );
+    ); */
   };
 
   useEffect(() => {
@@ -155,7 +185,7 @@ useEffect(()=> {
     }
   }, [avatar, userId, username, date, comment, likes, isYourComment, to, commentId]);
 
- 
+
 
   useEffect(() => {
     const handleGet = async () => {
@@ -192,8 +222,8 @@ useEffect(()=> {
       try {
         const response = await PersonalService.GetAvatar()
         console.log("avatar", response.data.avatar)
-     //   setUser(response.data.user)
-     setUserAvatar(response.data.avatar)
+        //   setUser(response.data.user)
+        setUserAvatar(response.data.avatar)
       } catch {
 
       }
@@ -201,7 +231,7 @@ useEffect(()=> {
 
     handleGetAvatar()
   }, []);
-  
+
   const handleDownload = (materials: { filename: string, data: string }) => {
     if (!materials || !materials.data) return;
 
@@ -255,8 +285,8 @@ useEffect(()=> {
               <img
                 className={styles.lesson__icon}
                 src={getIcon(lesson.materials.filename)} alt="File Icon" />
-           
-           
+
+
               <button
                 className={styles.lesson__download}
                 onClick={() => handleDownload(lesson.materials)}
@@ -269,13 +299,13 @@ useEffect(()=> {
 
 
           <LessonPanel handleAddComment={handleAddComment}
-          user={user!}
-          avatar={userAvatar!}
+            user={user!}
+            avatar={userAvatar!}
           />
 
           <LessonCommentsHeader />
 
-          <LessonComments data={comments} />
+          <LessonComments data={comments!} />
         </div>
       </div>
     </div>

@@ -32,6 +32,7 @@
         object-fit: cover;
         overflow: hidden;
         align-self: flex-start;
+        max-width: 120px;
         @include smallTablets {
           min-width: 50px;
         
