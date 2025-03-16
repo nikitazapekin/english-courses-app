@@ -34,6 +34,7 @@ interface CommentsResponse {
                 created_at:  string,
                 likes:  number,
                 parent_comment_id: number | null, 
+                  liked_by: Number[]
                 author: {
                     id:  number,
                     username: string,
@@ -58,6 +59,7 @@ interface CommentsResponse {
                         created_at: string,
                         likes: number,
                         parent_id: number,
+                        liked_by: Number[]
                         author: {
                             id: number,
                             username: string,

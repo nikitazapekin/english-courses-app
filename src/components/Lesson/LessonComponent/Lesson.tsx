@@ -20,9 +20,7 @@ import Pptx from "../../../assets/download/ppt.png"
 import Word from "../../../assets/download/word.png"
 import PersonalService from "../../../services/Personal";
 import CommentsService from "../../../services/Comments";
-const data: LessonCommentItem[] = [
-
-];
+ 
 
 interface User {
 
@@ -49,33 +47,7 @@ interface LessonTypes {
 
   materials: { filename: string; data: string };
 }
-/* 
-interface Comments {
-
-  
-    
-        
-            id: number,
-            lesson_id: number,
-            author_id: number,
-            author_name: string,
-            text:  string,
-            created_at:  string,
-            likes:  number,
-            parent_comment_id: number | null, 
-            author: {
-                id:  number,
-                username: string,
-                email: string,
-                avatar: string,
-                 role:  string,
-                country: string,
-                city: string
-            }
-        
  
-}
- */
 
 interface Comments {
 
@@ -87,6 +59,7 @@ interface Comments {
   created_at: string,
   likes: number,
   parent_comment_id: number | null,
+  liked_by: Number[],
   author: {
     id: number,
     username: string,
@@ -111,6 +84,7 @@ interface Comments {
     text: string,
     created_at: string,
     likes: number,
+    liked_by: Number[]
     parent_id: number,
     author: {
       id: number,
@@ -183,6 +157,7 @@ const LessonComponent = () => {
         created_at: Date.now().toString(),
         likes: 0,
         parent_comment_id: null,
+        liked_by: [],
         author: {
           id: 0,
           username: user.data.user.username,

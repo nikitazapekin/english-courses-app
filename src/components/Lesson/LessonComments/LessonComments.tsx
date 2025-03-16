@@ -3,21 +3,8 @@
 
 import styles from "./LessonComments.module.scss";
 import LessonCommentCard from "./LessonCommentCard";
-
-import { CommentsProps, LessonCommentItem, Response } from "../types"
-
-
-
 interface Comments {
-
-
-
     data: {
- 
-
-
-
-
             id: number,
             lesson_id: number,
             author_id: number,
@@ -26,6 +13,7 @@ interface Comments {
             created_at:  string,
             likes:  number,
             parent_comment_id: number | null, 
+            liked_by: Number[]
             author: {
                 id:  number,
                 username: string,
@@ -51,6 +39,7 @@ interface Comments {
                     created_at: string,
                     likes: number,
                     parent_id: number,
+                    liked_by: Number[]
                     author: {
                         id: number,
                         username: string,

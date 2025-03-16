@@ -11,13 +11,7 @@ import LessonComponentReply from "./LessonComponentReply/LessonComponentReply";
 interface LessonCommentCardProps {
     //item: LessonCommentItem;
 
-    item: {
-
-
-
-
-
-
+    item:{
         id: number,
         lesson_id: number,
         author_id: number,
@@ -26,6 +20,7 @@ interface LessonCommentCardProps {
         created_at: string,
         likes: number,
         parent_comment_id: number | null,
+        liked_by: Number[] 
         author: {
             id: number,
             username: string,
@@ -38,6 +33,7 @@ interface LessonCommentCardProps {
         repliesCount: number,
         replies:
         {
+            liked_by: Number[] 
             id: number,
             comment_id: number,
             lesson_id: number,

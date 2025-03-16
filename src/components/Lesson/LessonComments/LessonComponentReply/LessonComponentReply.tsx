@@ -47,11 +47,6 @@ const LessonComponentReply = ({ nested,// handleLikeReply,
 
 
         <div>
-
-
-
-
-
             <div className={`${styles.commentNested}`}>
                 <img src={nested.author.avatar} alt="Logo"
                     className={styles.comment__image}
@@ -67,11 +62,9 @@ const LessonComponentReply = ({ nested,// handleLikeReply,
                     <p className={styles.comment__text}>{nested.text}</p>
                     <div className={styles.comment__footer}>
                         <div className={styles.comment__heart}
-                            // onClick={handleLikeClick}
+                       
                             onClick={() => handleLikeReply(String(nested.id))}
                         >
-
-
 
                             <svg
                                 className={`${styles.comment__heart__svg} ${isLiked ? styles.liked : ""}`}
