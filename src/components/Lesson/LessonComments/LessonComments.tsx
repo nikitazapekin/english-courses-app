@@ -13,24 +13,57 @@ interface Comments {
 
 
     data: {
+ 
 
-        id: number,
-        lesson_id: number,
-        author_id: number,
-        author_name: string,
-        text: string,
-        created_at: string,
-        likes: number,
-        parent_comment_id: number | null,
-        author: {
+
+
+
             id: number,
-            username: string,
-            email: string,
-            avatar: string,
-            role: string,
-            country: string,
-            city: string
-        }
+            lesson_id: number,
+            author_id: number,
+            author_name: string,
+            text:  string,
+            created_at:  string,
+            likes:  number,
+            parent_comment_id: number | null, 
+            author: {
+                id:  number,
+                username: string,
+                email: string,
+                avatar: string,
+                 role:  string,
+                country: string,
+                city: string
+            }
+    
+    
+    
+            
+            repliesCount: number,
+            replies: 
+                {
+                    id: number,
+                    comment_id: number,
+                    lesson_id:number,
+                    author_id: number,
+                    author_name: string,
+                    text: string,
+                    created_at: string,
+                    likes: number,
+                    parent_id: number,
+                    author: {
+                        id: number,
+                        username: string,
+                        email:string,
+                        avatar: string,
+                        role: string,
+                        country: string,
+                        city: string,
+                    }
+                }[]
+
+
+
     }[]
 
 

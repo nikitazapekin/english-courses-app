@@ -49,7 +49,7 @@ interface LessonTypes {
 
   materials: { filename: string; data: string };
 }
-
+/* 
 interface Comments {
 
   
@@ -75,7 +75,56 @@ interface Comments {
         
  
 }
+ */
 
+interface Comments {
+
+  id: number,
+  lesson_id: number,
+  author_id: number,
+  author_name: string,
+  text: string,
+  created_at: string,
+  likes: number,
+  parent_comment_id: number | null,
+  author: {
+    id: number,
+    username: string,
+    email: string,
+    avatar: string,
+    role: string,
+    country: string,
+    city: string
+  }
+
+
+
+
+  repliesCount: number,
+  replies:
+  {
+    id: number,
+    comment_id: number,
+    lesson_id: number,
+    author_id: number,
+    author_name: string,
+    text: string,
+    created_at: string,
+    likes: number,
+    parent_id: number,
+    author: {
+      id: number,
+      username: string,
+      email: string,
+      avatar: string,
+      role: string,
+      country: string,
+      city: string,
+    }
+  }[]
+
+
+}
 const getIcon = (filename: string) => {
   const extension = filename.split(".").pop()?.toLowerCase();
   switch (extension) {
@@ -96,15 +145,15 @@ const LessonComponent = () => {
   const { theme } = useParams();
 
 
-  const [comments, setComments ] = useState<Comments[]>([])
-//  const [comments, setComments] = useState<LessonCommentItem[]>(data);
+  const [comments, setComments] = useState<Comments[]>([])
+
   const [lesson, setLesson] = useState<LessonTypes>();
   const [userAvatar, setUserAvatar] = useState<string>();
   const [user, setUser] = useState<User>()
   const location = useLocation();
   const lastPathSegment = location.pathname.split("/")
   console.log(lastPathSegment[lastPathSegment.length - 2])
- 
+
 
 
 
@@ -114,13 +163,19 @@ const LessonComponent = () => {
         lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
         text: text,
       });
-  
+
       const user = await PersonalService.GetUser();
       const userAvatarResponse = await PersonalService.GetAvatar();
-      const userAvatar = userAvatarResponse.data.avatar;  
-  
+      const userAvatar = userAvatarResponse.data.avatar;
+
+
+      const maxId = comments.reduce((max, comment) => {
+        const maxReplyId = comment.replies.reduce((replyMax, reply) => Math.max(replyMax, reply.id), 0);
+        return Math.max(max, comment.id, maxReplyId);
+      }, 0);
       const newComment = {
-        id: 0,
+        id: maxId + 1,
+     //   id: 0,
         lesson_id: 0,
         author_id: 0,
         author_name: user.data.user.username,
@@ -132,21 +187,23 @@ const LessonComponent = () => {
           id: 0,
           username: user.data.user.username,
           email: user.data.user.email,
-          avatar: userAvatar,  
+          avatar: userAvatar,
           role: user.data.user.role,
           country: user.data.user.country,
           city: user.data.user.city,
         },
+        repliesCount: 0,
+        replies: [],
       };
-  
-   
-  setComments([ newComment, ...comments]);
+
+
+      setComments([newComment, ...comments]);
     } catch (error) {
       console.error("Error adding comment:", error);
     }
   };
 
-  
+
   useEffect(() => {
 
     const handleFetch = async () => {
@@ -155,6 +212,8 @@ const LessonComponent = () => {
         const response = await CommentsService.GetComments(lastPathSegment[lastPathSegment.length - 2])
         console.log("RESP", response.data.comments)
         setComments(response.data.comments)
+
+        // console.log(response.data.comments)
       } catch {
 
       }
@@ -169,17 +228,7 @@ const LessonComponent = () => {
 
 
   const handleAddReply = (commentId: number, reply: Response) => {
-  /*   setComments((prevComments) =>
-      prevComments.map((comment) => {
-        if (comment.commentId === commentId) {
-          return {
-            ...comment,
-            responces: comment.responces ? [...comment.responces, reply] : [reply],
-          };
-        }
-        return comment;
-      })
-    ); */
+
   };
 
   useEffect(() => {
