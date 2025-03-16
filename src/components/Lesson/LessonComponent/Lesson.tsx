@@ -213,7 +213,6 @@ const LessonComponent = () => {
         console.log("RESP", response.data.comments)
         setComments(response.data.comments)
 
-        // console.log(response.data.comments)
       } catch {
 
       }
@@ -284,8 +283,7 @@ const LessonComponent = () => {
     const handleGetAvatar = async () => {
       try {
         const response = await PersonalService.GetAvatar()
-        console.log("avatar", response.data.avatar)
-        //   setUser(response.data.user)
+    
         setUserAvatar(response.data.avatar)
       } catch {
 
