@@ -177,30 +177,25 @@ const LessonComponent = () => {
       console.error("Error adding comment:", error);
     }
   };
-
-/* 
-const handleUpdateLike =(id: number, comment_id: number) => {
-
-}
- */
+ 
 const handleUpdateLike = (id: number, comment_id: number) => {
   setComments((prevComments) =>
       prevComments.map((comment) => {
-          // Проверяем, является ли текущий комментарий тем, который нужно обновить
+  
           if (comment.id === comment_id) {
               const isLiked = comment.liked_by.includes(id);
 
-              // Обновляем количество лайков и массив liked_by
+             
               return {
                   ...comment,
                   likes: isLiked ? comment.likes - 1 : comment.likes + 1,
                   liked_by: isLiked
-                      ? comment.liked_by.filter((userId) => userId !== id) // Удаляем id пользователя
-                      : [...comment.liked_by, id], // Добавляем id пользователя
+                      ? comment.liked_by.filter((userId) => userId !== id)  
+                      : [...comment.liked_by, id],  
               };
           }
 
-          // Проверяем вложенные комментарии (реплаи)
+         
           if (comment.replies && comment.replies.length > 0) {
               return {
                   ...comment,
@@ -208,13 +203,13 @@ const handleUpdateLike = (id: number, comment_id: number) => {
                       if (reply.id === comment_id) {
                           const isLiked = reply.liked_by.includes(id);
 
-                          // Обновляем количество лайков и массив liked_by для реплая
+                      
                           return {
                               ...reply,
                               likes: isLiked ? reply.likes - 1 : reply.likes + 1,
                               liked_by: isLiked
-                                  ? reply.liked_by.filter((userId) => userId !== id) // Удаляем id пользователя
-                                  : [...reply.liked_by, id], // Добавляем id пользователя
+                                  ? reply.liked_by.filter((userId) => userId !== id)  
+                                  : [...reply.liked_by, id],  
                           };
                       }
                       return reply;
@@ -243,15 +238,13 @@ const handleUpdateLike = (id: number, comment_id: number) => {
     handleFetch()
 
   }, [])
-  const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
-
-
+  //const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
 
 
   const handleAddReply = (commentId: number, reply: Response) => {
 
   };
-
+/* 
   useEffect(() => {
     const reply = {
       userId: userId,
@@ -269,7 +262,7 @@ const handleUpdateLike = (id: number, comment_id: number) => {
     }
   }, [avatar, userId, username, date, comment, likes, isYourComment, to, commentId]);
 
-
+ */
 
   useEffect(() => {
     const handleGet = async () => {
@@ -390,6 +383,8 @@ const handleUpdateLike = (id: number, comment_id: number) => {
 
           <LessonComments data={comments!}  user={{user:user!}}
           handleUpdateLike={handleUpdateLike}
+       setComments={setComments}
+       userAvatar={userAvatar!}
           />
         </div>
       </div>

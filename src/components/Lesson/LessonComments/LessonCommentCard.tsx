@@ -9,9 +9,61 @@ import LessonReplyCard from "./LessonReplyCard";
 import CommentsService from "../../../services/Comments";
 import LessonComponentReply from "./LessonComponentReply/LessonComponentReply";
 
-interface LessonCommentCardProps {
-    //item: LessonCommentItem;
 
+
+
+
+
+
+
+
+interface Commentt {
+    id: number;
+    lesson_id: number;
+    author_id: number;
+    author_name: string;
+    text: string;
+    created_at: string;
+    likes: number;
+    parent_comment_id: number | null;
+    liked_by: Number[];
+    author: {
+        id: number;
+        username: string;
+        email: string;
+        avatar: string;
+        role: string;
+        country: string;
+        city: string;
+    };
+    repliesCount: number;
+    replies: {
+        id: number;
+        comment_id: number;
+        lesson_id: number;
+        author_id: number;
+        author_name: string;
+        text: string;
+        created_at: string;
+        likes: number;
+        parent_id: number;
+        liked_by: Number[];
+        author: {
+            id: number;
+            username: string;
+            email: string;
+            avatar: string;
+            role: string;
+            country: string;
+            city: string;
+        };
+    }[];
+}
+
+
+
+interface LessonCommentCardProps {
+ 
     item:{
         id: number,
         lesson_id: number,
@@ -75,10 +127,17 @@ interface LessonCommentCardProps {
             describtion: string;
         };
 
-        handleUpdateLike: (id: number,  comment_id: number) => void
-}
+        handleUpdateLike: (id: number,  comment_id: number) => void,
+     //   setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
+    setComments: React.Dispatch<React.SetStateAction<Commentt[]>>;
+    userAvatar: string
+    }
 
-const LessonCommentCard = ({ item, user , handleUpdateLike}: LessonCommentCardProps) => {
+ 
+
+const LessonCommentCard = ({ item, user , handleUpdateLike,// setComments
+setComments, userAvatar
+}: LessonCommentCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isShowResponces, setIsShowResponces] = useState(false)
     const [liked, setLiked] = useState(false);
@@ -103,19 +162,7 @@ const LessonCommentCard = ({ item, user , handleUpdateLike}: LessonCommentCardPr
     };
 
 
-
-    const handleLikeReply = async (id: string) => {
-        setLiked((prev) => !prev);
-
-        try {
-            const reponse = await CommentsService.LikeComment({ comment_id: Number(id) })
-        } catch {
-
-        }
-    };
-
-
-
+ 
     const formattedDate = new Date(item.created_at).toLocaleDateString("ru-RU").replace(/\//g, ".");
 
 
@@ -139,12 +186,8 @@ const LessonCommentCard = ({ item, user , handleUpdateLike}: LessonCommentCardPr
                 <p className={styles.comment__text}>{item.text}</p>
                 <div className={styles.comment__footer}>
                     <div className={styles.comment__heart}
-
-                        //onClick={handleLikeClick}
                         onClick={() => handleLikeClick(String(item.id))}
                     >
-
- 
                         <svg
                  
                           className={`${styles.comment__heart__svg} ${ item.liked_by.includes(user.id) ? styles.liked : ""}`}
@@ -193,7 +236,10 @@ const LessonCommentCard = ({ item, user , handleUpdateLike}: LessonCommentCardPr
         {isOpen && (
 
             <ResponsePanel id={item.id} to={item.author.username}
+user={user}
+            setComments={setComments}
                 handleClose={handleClose}
+                userAvatar={userAvatar}
             />
         )}
 
@@ -202,7 +248,7 @@ const LessonCommentCard = ({ item, user , handleUpdateLike}: LessonCommentCardPr
                 <>
                     {item.replies.map(nested => (
                         <LessonComponentReply
-                  
+                  userAvatar={userAvatar}
                         handleOpen={handleOpen}
                         key={nested.id}
                             nested={nested}

@@ -102,13 +102,15 @@ const LessonReplyCard = ({ itemReply, commentId }: ResponseProps) => {
                     </div>
                 </div>
             </div>
+            {/*
             {isOpenReply.reply && (
-
+                
                 <ResponsePanel id={commentId}
                     to={isOpenReply.to}
                     handleClose={handleClose}
-                />
-            )}
+                    />
+                    )}
+                    */}
         </div>
 
     );

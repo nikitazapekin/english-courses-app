@@ -23,10 +23,13 @@ interface Item {
         }
     },
     //  handleLikeReply: (id: string) => void
-    handleOpen: () => void
+    handleOpen: () => void,
+    userAvatar: string
 }
 const LessonComponentReply = ({ nested,// handleLikeReply,
-    handleOpen }: Item) => {
+    handleOpen, 
+userAvatar
+}: Item) => {
 
 
     const [isLiked, setIsLiked] = useState(false)

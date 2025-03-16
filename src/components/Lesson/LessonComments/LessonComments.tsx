@@ -63,10 +63,14 @@ interface User {
 interface LessonCommentsProps {
     data: Comment[];
     user: User;
-    handleUpdateLike: (id: number,  comment_id: number) => void
+    handleUpdateLike: (id: number,  comment_id: number) => void,
+    setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
+    userAvatar: string
 }
 
-const LessonComments = ({ data, user, handleUpdateLike }: LessonCommentsProps) => {
+
+ 
+const LessonComments = ({ data, user, handleUpdateLike, setComments , userAvatar}: LessonCommentsProps) => {
     console.log("DATA", data);
     return (
         <div className={styles.comments}>
@@ -75,7 +79,10 @@ const LessonComments = ({ data, user, handleUpdateLike }: LessonCommentsProps) =
                     {data.map((item, index) => (
                         <LessonCommentCard 
                         handleUpdateLike={handleUpdateLike}
-                       
+                        setComments={setComments}
+                     //   setComments={setComments}
+                  //     setComments={setComments}
+                  userAvatar={userAvatar}
                         item={item} user={user.user}
                         key={index}   />
                     ))}
