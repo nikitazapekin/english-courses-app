@@ -19,7 +19,6 @@
     justify-content: center;
     margin-bottom: 17px;
 }
-
 .item {
     display: flex;
     width: 100%;
@@ -29,38 +28,24 @@
     @media screen and (max-width: 610px) {
         justify-content: center;
     }
-
-
 }
-
 .videoContainer {
     flex: 1;
 }
-
-
-
-
 .card {
-
-
-
     margin-top: 20px;
     display: flex;
     column-gap: 40px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     padding: 15px;
-    //height: 200px;
-    // height: 100%;
+
     align-items: center;
     cursor: pointer;
     justify-content: space-between;
     flex-direction: column;
-
     &__title {}
-
     &__date {}
-
     &__image {
         max-width: 200px;
     }
