@@ -34,3 +34,6 @@ export const TUTOR_EDIT =  "/tutor/personal/edit"
 
 export const ADMIN_PAGE = "/admin"
 export const ADMIN_EDIT_PAGE = "/admin/edit"
+
+
+export const TUTOR_ACHIEVEMENTS_PAGE = "/tutor/personal/achievements"

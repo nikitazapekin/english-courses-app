@@ -8,6 +8,7 @@ import { TutorPageSelector, TutorSelector } from "../../store/selectors/Tutor.se
 import { useLocation } from "react-router-dom";
 import EditProfile from "./EditProfile/EditProfile";
 import MainPage from "./MainPage/MainPage";
+import AddAchievements from "./AddAchievements/AddAchievements";
 
 
 const TutorPersonalPageComponent: React.FC = () => {
@@ -16,7 +17,7 @@ const TutorPersonalPageComponent: React.FC = () => {
 
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
- 
+
 
     return (
         <section
@@ -36,13 +37,24 @@ const TutorPersonalPageComponent: React.FC = () => {
 
                     )
                 }
+
+
+
+                {
+                    lastPathSegment == "achievements" && (
+                        <AddAchievements />
+
+                    )
+                }
+
+
                 {
                     !lastPathSegment && (
                         <MainPage />
                     )
                 }
- {
-                    lastPathSegment== "personal" && (
+                {
+                    lastPathSegment == "personal" && (
                         <MainPage />
                     )
                 }
