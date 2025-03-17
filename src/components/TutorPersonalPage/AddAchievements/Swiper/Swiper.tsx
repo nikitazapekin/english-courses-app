@@ -40,7 +40,7 @@ function Swiper({ items }: Props) {
             } else if (window.innerWidth <= 1024) {
                 setItemsPerGroup(3);
             } else {
-                setItemsPerGroup(4);
+                setItemsPerGroup(3);
             }
         };
 
