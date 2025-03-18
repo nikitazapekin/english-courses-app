@@ -1,7 +1,13 @@
 import Swiper from "./Swiper/Swiper"
 import styles from "./AddAchievements.module.scss"
 import Logo from "../../../assets/Tutor/course1.jpeg"
-
+import { useDispatch } from "react-redux"
+import { setOpenModalAchievements } from "../../../store/slices/AddAchievementSlice/AddAchievementSlice"
+import Modal from "./Modal/Modal"
+import { useSelector } from "react-redux"
+import { AddAchievementSelectorPage } from "../../../store/selectors/AddAchievementSelector"
+//import { AddAchievementSelectorPage } from "../../../store/selectors/addAchievement"
+//import { AddAchievementSelectorPage } from "../../../store/selectors/AddAchievement"
 const achievements = [
     {
         id: 1,
@@ -36,16 +42,22 @@ const achievements = [
 ]
 const AddAchievements = () => {
 
+    const dispatch = useDispatch()
+
     const handleSubmit = () => {
-
+        dispatch(setOpenModalAchievements())
     }
-
+    const addAchievementSlice = useSelector(AddAchievementSelectorPage)
     return (
 
         <div className={styles.edit}>
+            {addAchievementSlice.isOpenModalAchievements && (
+
+                <Modal />
+            )}
             <h1 className={styles.edit__title}>Ваши достижения</h1>
             <div className={styles.edit__content}>
-          
+
 
                 <Swiper items={achievements}
                 />

@@ -20,19 +20,7 @@ interface AdminSliceTypes {
     error: null | string,
     tutorPage: string,
 }
-/* 
-{
-    "message": "Доступ разрешён",
-    "user": {
-        "id": 1,
-        "admin_id": 5,
-        "email": "admin@example.com",
-        "role": "admin",
-        "banned_courses": [],
-        "banned_users": [],
-        "edited_courses": []
-    }
-} */
+
 const initialState: AdminSliceTypes = {
     message: "",
     user: {
