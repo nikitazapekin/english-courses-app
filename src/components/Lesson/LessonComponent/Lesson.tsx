@@ -246,28 +246,6 @@ const handleUpdateLike = (id: number, comment_id: number) => {
   //const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
 
 
-  const handleAddReply = (commentId: number, reply: Response) => {
-
-  };
-/* 
-  useEffect(() => {
-    const reply = {
-      userId: userId,
-      username: username,
-      comment: comment,
-      date: date,
-      avatar: Avatar,
-      likes: likes,
-      isYourComment: isYourComment,
-      to: to,
-    };
-
-    if (userId && username && date && comment && isYourComment && to && commentId >= 0) {
-      handleAddReply(commentId, reply);
-    }
-  }, [avatar, userId, username, date, comment, likes, isYourComment, to, commentId]);
-
- */
 
   useEffect(() => {
     const handleGet = async () => {
@@ -332,6 +310,7 @@ const handleUpdateLike = (id: number, comment_id: number) => {
     document.body.removeChild(link);
   };
 
+ 
 
   return (
     <div className={styles.lesson}>
@@ -356,6 +335,8 @@ const handleUpdateLike = (id: number, comment_id: number) => {
               Ваш браузер не поддерживает видео.
             </video>
           )}
+
+         
 
           <div className={styles.lesson__testing}>Тематический тест по теме</div>
 
