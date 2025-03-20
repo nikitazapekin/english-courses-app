@@ -100,8 +100,10 @@ interface Comments {
 
 }
 const getIcon = (filename: string) => {
-  const extension = filename.split(".").pop()?.toLowerCase();
-  switch (extension) {
+  if(filename) {
+
+    const extension = filename.split(".").pop()?.toLowerCase();
+    switch (extension) {
     case "txt":
       return Txt;
     case "ppt":
@@ -112,7 +114,10 @@ const getIcon = (filename: string) => {
       return Word;
     default:
       return Txt;
+    }
   }
+
+return ""
 };
 
 const LessonComponent = () => {

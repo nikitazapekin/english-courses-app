@@ -7,6 +7,10 @@ import { setForm, setOpenModal } from "../../../../store/slices/CreateCourseSlic
 import CourseService from "../../../../services/Course";
 import { useSelector } from "react-redux";
 import { OpenCourseSelector } from "../../../../store/selectors/OpenCourseSelector";
+import LessonService from "../../../../services/Lesson";
+import Lesson from "./Lesson/Lesson";
+import EditModalLessons from "./EditCourseCardsModal/EditCourseCardsModal";
+import { setIsOpenEditModalLessons } from "../../../../store/slices/EditModalLesson/EditModalLesson";
 
 interface FormState {
     name: string;
@@ -22,15 +26,69 @@ interface FormState {
 interface Props {
     id: string
 }
-const TutorEditCourse = ({id}: Props) => {
+
+
+interface GetLessonsResponse {
+
+    message: string,
+    lessons:
+    Array<{
+        id: number,
+        title: string,
+        description: string,
+        durability: string,
+        video: String[],
+        materials: String[]
+    }>
+
+
+}
+/*
+interface Lessons {
+    id: number,
+            title: string,
+            description: string,
+            durability: string,
+            video: String[],
+            materials: String[]  
+}[]
+*/
+type Lesson = {
+    id: number;
+    title: string;
+    description: string;
+    durability: string;
+    video: String[];
+    materials: String[];
+};
+
+type Lessons = Lesson[];
+const TutorEditCourse = ({ id }: Props) => {
     const editCourse = useSelector(OpenCourseSelector)
- //   console.log("JSON", JSON.stringify(editCourse))
+    const [lessons, setLessons] = useState<Lessons>()
     const [formState, setFormState] = useState<FormState>({
         name: "", description: "", for: "",
         logo: "",
         fulldescription: "", for_what_reasons: [], about_course: [], tag: "",
         course_for: []
     });
+//const [isOpenModalLessons, setIsOpenModalLessons] = useState(false)
+//const [selectedLessonId, setSelectedLessonId] = useState("")
+    useEffect(() => {
+        const handleGet = async () => {
+            try {
+                const repsonse = await LessonService.GetLessons(id)
+                console.log(repsonse)
+                if (repsonse.data.lessons) {
+
+                    setLessons(repsonse.data.lessons)
+                }
+            } catch {
+
+            }
+        }
+        handleGet()
+    }, [])
 
     useEffect(() => {
         if (editCourse.course) {
@@ -46,7 +104,7 @@ const TutorEditCourse = ({id}: Props) => {
                 course_for: editCourse.course.course_for || []
             });
         }
- 
+
     }, [editCourse])
 
     const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});
@@ -63,7 +121,7 @@ const TutorEditCourse = ({id}: Props) => {
 
 
     };
-    
+
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -106,8 +164,8 @@ const TutorEditCourse = ({id}: Props) => {
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
-            const response = await CourseService.EditCourseInfo({data: {...formState, id: id}}, id);
-         //   console.log("Курс создан:", response.data);
+            const response = await CourseService.EditCourseInfo({ data: { ...formState, id: id } }, id);
+
         } catch (error) {
             console.error("Ошибка при создании курса:", error);
         }
@@ -115,7 +173,11 @@ const TutorEditCourse = ({id}: Props) => {
     const handleOpenModal = (type: string) => {
         dispatch(setOpenModal({ type: type }));
     };
-
+const handleOpenModalLessons = (lessonId: string) => {
+   // setIsOpenModalLessons(prev=>!prev)
+//setSelectedLessonId(lessonId)
+dispatch(setIsOpenEditModalLessons({lessonId: lessonId}))
+}
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>
@@ -161,20 +223,23 @@ const TutorEditCourse = ({id}: Props) => {
 
                             {item.type === "select" && (
                                 <div className={styles.selectContainer}>
-                                    <input
-                                        className={styles.panel__field__input}
-                                        placeholder={`Добавить ${item.placeholder.toLowerCase()}`}
-                                        value={selectInputs[item.name] || ""}
-                                        onChange={(e) => setSelectInputs(prev => ({ ...prev, [item.name]: e.target.value }))}
-                                    />
-                                    <button
-                                        className={styles.addButton}
-                                        type="button"
-                                        onClick={() => handleAddItem(item.name as keyof FormState)}
-                                    >
-                                        Добавить
-                                    </button>
+                                    <div className={styles.selectContainer__wrapper}>
 
+                                        <input
+                                            className={styles.panel__field__input}
+                                            placeholder={`Добавить ${item.placeholder.toLowerCase()}`}
+                                            value={selectInputs[item.name] || ""}
+                                            onChange={(e) => setSelectInputs(prev => ({ ...prev, [item.name]: e.target.value }))}
+                                        />
+                                        <button
+                                            className={styles.addButton}
+                                            type="button"
+                                            onClick={() => handleAddItem(item.name as keyof FormState)}
+                                        >
+                                            Добавить
+                                        </button>
+
+                                    </div>
                                     <ul className={styles.selectList}>
                                         {(formState[item.name as keyof FormState] as string[]).map((value, index) => (
                                             <li key={index} className={styles.selectItem}>
@@ -193,8 +258,21 @@ const TutorEditCourse = ({id}: Props) => {
                             )}
                         </div>
                     ))}
-
-
+                    <section className={styles.lessons}>
+                        <h2 className={styles.lessons__title}>
+                            Список уроков
+                        </h2>
+                        <div className={styles.lessons__list}>
+                            {lessons?.map((item, index) => (
+                                <Lesson
+                                    key={index}
+                                    item={item}
+                                    index={index}
+                                    handler={handleOpenModalLessons}
+                                />
+                            ))}
+                        </div>
+                    </section>
                     <button className={styles.panel__btn} type="button" onClick={() => handleOpenModal("lesson")}>
                         Добавить урок
                     </button>
@@ -203,15 +281,16 @@ const TutorEditCourse = ({id}: Props) => {
                     >
                         Добавить тест
                     </button>
-            
+
                     <button className={styles.panel__btn} type="submit" onClick={handleSubmit}>
                         Сохранить изменения
                     </button>
                 </form>
             </div>
+
+           
         </section>
     );
 };
 
 export default TutorEditCourse;
- 

@@ -68,24 +68,4 @@ export default TutorPersonalPageComponent;
 
 
 
-
-
-
-
-/* import { Container } from "react-bootstrap";
-const TutorPersonalPageComponent = () => {
-
-    return (
-        <section>
-            <Container className="d-flex justify-content-center align-items-center" style={{ height: "auto", maxWidth: "1430px", padding: "0px 15px", width: "100%" }}>
-                <div className="text-center">
-                    <h2>Центрированный контейнер</h2>
-                </div>
-            </Container>
-        </section>
-    );
-}
-
-export default TutorPersonalPageComponent;
-
-  */
+ 

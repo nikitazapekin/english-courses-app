@@ -134,3 +134,44 @@
 .previewImg {
     max-width: 100%;
 }
+
+.removeBtn {
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.addButton {
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-family: "Nunito", sans-serif;
+
+    font-size: 20px;
+
+}
+
+.panel__field__input {
+    width: 100%;
+}
+ .selectContainer__wrapper {
+    display: flex;
+
+ }
+
+.lessons {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 10px;
+    &__list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        row-gap: 10px;
+    }
+}

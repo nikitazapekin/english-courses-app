@@ -16,15 +16,7 @@ type SortOption = "price" | "rating" | "releaseDate";
         release_date: string,
         course_logo: string, 
 
-     /*    name: string;
-        description: string;
-        for: string;
-        logo: string;
-        forcourse: String[],
-        fulldescription: string,
-        for_what_reasons: String[],
-        about_course: String[],
-        tag: string, */
+     
     }
     
 
@@ -37,8 +29,7 @@ const CoursesList = () => {
     const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
     const [pages, setPages] = useState<number>(1);
     const itemsPerPage = Number(limit) || 16;
-
-    console.log("QUERY", query)
+ 
     useEffect(() => {
         const fetchCourses = async () => {
             try {
