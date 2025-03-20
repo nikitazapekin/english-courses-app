@@ -61,6 +61,18 @@ export default class LessonService {
     }
 
 
+
+    static async EditLesson(courseId: string, lessonId: string, data: any):  Promise<AxiosResponse<GetLesson>> {
+        return $api.put<GetLesson>(`/lesson/editLesson/${lessonId}`, data,  {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    }
+
+
+
+
 } 
  
 //getCourses
