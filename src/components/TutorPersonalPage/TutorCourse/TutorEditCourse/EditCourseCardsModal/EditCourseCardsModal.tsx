@@ -86,6 +86,8 @@ const EditModalLessons: React.FC = () => {
         }));
     };
 
+ 
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formDataToSend = new FormData();
@@ -93,15 +95,22 @@ const EditModalLessons: React.FC = () => {
         formDataToSend.append("description", formData.description);
         formDataToSend.append("durability", formData.durability);
         formDataToSend.append("id", lastPathSegment!);
-
+     
+        if (!serverData.video) {
+            formDataToSend.append("removeVideo", "true");
+        }
+        if (!serverData.materials) {
+            formDataToSend.append("removeMaterials", "true");
+        }
+    
         formData.video.forEach((file) => {
             formDataToSend.append("video", file);
         });
-
+    
         formData.materials.forEach((file) => {
             formDataToSend.append("materials", file);
         });
-
+    
         try {
             await LessonService.EditLesson(lastPathSegment!, editModal.lessonId, formDataToSend);
         } catch (error) {
@@ -169,7 +178,7 @@ const EditModalLessons: React.FC = () => {
 
                                     <div className={styles.fileList}>
                                         {/* Отображаем видео с сервера */}
-                                        {serverData.video && (
+                                        {serverData.video.length>100 && (
                                             <div className={styles.fileItem}>
                                                 <video
                                                     className={styles.lesson__video}
@@ -190,7 +199,7 @@ const EditModalLessons: React.FC = () => {
                                         )}
 
                                 
-                                        {formData.video.map((file, index) => (
+                                        {formData.video.length>0 && formData.video.map((file, index) => (
                                             <div key={index} className={styles.fileItem}>
                                                 {file.name}
                                                 <button
