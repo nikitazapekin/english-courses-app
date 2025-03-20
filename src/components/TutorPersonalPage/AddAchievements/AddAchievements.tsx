@@ -41,9 +41,7 @@ const achievements = [
     },
 ]
 const AddAchievements = () => {
-
     const dispatch = useDispatch()
-
     const handleSubmit = () => {
         dispatch(setOpenModalAchievements())
     }
@@ -51,25 +49,23 @@ const AddAchievements = () => {
     return (
 
         <div className={styles.edit}>
-            {addAchievementSlice.isOpenModalAchievements && (
-
-                <Modal />
-            )}
             <h1 className={styles.edit__title}>Ваши достижения</h1>
             <div className={styles.edit__content}>
-
-
                 <Swiper items={achievements}
                 />
-
             </div>
-
             <button className={`${styles.edit__btn} ${styles.edit__pink}`} type="submit" onClick={handleSubmit}>
                 Добавить достижение
             </button>
             <button className={styles.edit__btn} type="submit" onClick={handleSubmit}>
                 Сохранить изменения
             </button>
+
+
+
+            {addAchievementSlice.isOpenModalAchievements && (
+                <Modal />
+            )}
         </div>
     );
 }

@@ -27,7 +27,6 @@ const TutorCreateCourseComponent: React.FC = () => {
     const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});
 
     const dispatch = useDispatch();
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormState(prevState => ({
@@ -47,12 +46,9 @@ const TutorCreateCourseComponent: React.FC = () => {
             reader.readAsDataURL(event.target.files[0]);
         }
     };
-
     const handleRemoveImage = () => {
         setFormState(prevState => ({ ...prevState, logo: "" }));
     };
-
-   
     const handleAddItem = (name: keyof FormState) => {
         if (!selectInputs[name]) return;
         setFormState(prevState => ({
@@ -73,7 +69,6 @@ const TutorCreateCourseComponent: React.FC = () => {
     useEffect(() => {
         dispatch(setForm(formState));
     }, [formState]);
-
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
@@ -83,7 +78,6 @@ const TutorCreateCourseComponent: React.FC = () => {
             console.error("Ошибка при создании курса:", error);
         }
     };
-
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>

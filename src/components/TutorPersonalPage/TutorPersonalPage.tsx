@@ -38,16 +38,12 @@ const TutorPersonalPageComponent: React.FC = () => {
                     )
                 }
 
-
-
                 {
                     lastPathSegment == "achievements" && (
                         <AddAchievements />
 
                     )
                 }
-
-
                 {
                     !lastPathSegment && (
                         <MainPage />
