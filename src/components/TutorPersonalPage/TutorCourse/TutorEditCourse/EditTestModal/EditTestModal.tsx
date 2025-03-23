@@ -20,18 +20,7 @@ interface Question {
     correct_answer: string;
     question_image: string | null;
 }
-
-interface Response {
-    id: number;
-    name: string;
-    test_number: number;
-    duration: string;
-    description: string;
-    topics: string[];
-    course_id: number;
-    questions: Question[];
-}
-
+ 
 const tutorLesson = [
     { id: 1, placeholder: "Введите название теста", title: "Название", type: "input", name: "title" },
     { id: 2, placeholder: "Продолжительность теста", title: "Продолжительность", type: "input", name: "duration" },
@@ -51,7 +40,7 @@ const EditTestModal: React.FC = () => {
     });
 
     const [newTopic, setNewTopic] = useState<string>("");
-    const [newAnswer, setNewAnswer] = useState<string>(""); // Состояние для нового варианта ответа
+    const [newAnswer, setNewAnswer] = useState<string>("");  
     const editModal = useSelector(editModalSelector);
 
     useEffect(() => {
@@ -148,7 +137,7 @@ const EditTestModal: React.FC = () => {
                 };
                 return { ...prev, questions: updatedQuestions };
             });
-            setNewAnswer(""); // Очищаем поле ввода
+            setNewAnswer("");  
         }
     };
 
@@ -174,7 +163,10 @@ const EditTestModal: React.FC = () => {
         e.preventDefault();
         try {
             console.log("Form Data:", formData);
-            // Логика отправки данных на сервер
+
+            const response = await TestService.EditTestById({id: editModal.testId, formData: formData})
+            console.log(response)
+          
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
         }
@@ -276,8 +268,7 @@ const EditTestModal: React.FC = () => {
                                             </button>
                                         </div>
                                     ))}
-
-                                    {/* Поле для добавления нового варианта ответа */}
+ 
                                     <div className={styles.addAnswerWrapper}>
                                         <input
                                             className={styles.modal__input}

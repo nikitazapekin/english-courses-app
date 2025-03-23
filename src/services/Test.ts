@@ -87,10 +87,32 @@ interface Response {
             topics: string[],
             course_id: 6,
             questions: QuestionTest[]
-        //    questions: Question[]
+      
         }
  
 }
+
+
+
+interface TestFormData {
+    title: string;
+    duration: string;
+    description: string;
+    topics: string[];
+    questions: QuestionTestt[];
+}
+
+interface QuestionTestt {
+    id?: number;
+    question: string;
+    answers: string[];
+    correct_answer: string;
+    question_image: string | null;
+}
+ interface EditProps {
+    id: string,
+    formData:TestFormData
+ }
 export default class TestService {
     static async CreateTest(data: any): Promise<AxiosResponse<any>> {
         return $api.post<any>('/test/createTest', data)
@@ -112,6 +134,10 @@ export default class TestService {
          
     }  
 
+    static async EditTestById({id, formData}: EditProps): Promise<AxiosResponse<Response>> {
+        return $api.put<any>(`/test/editTestById?id=${id}`, {formData: formData})
+         
+    }  
 
 
 }
