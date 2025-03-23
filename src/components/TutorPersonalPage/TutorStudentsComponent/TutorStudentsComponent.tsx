@@ -96,8 +96,7 @@ const TutorStudentsComponent = () => {
     if (!data) return <div>Loading...</div>;
 
     const { courses, students } = data.students;
-
-    // Формируем список курсов с привязанными студентами
+ 
     const coursesWithStudents = courses.map(course => {
         const studentsInCourse = students.filter(student =>
             student.courses.includes(course.id.toString())
@@ -107,9 +106,7 @@ const TutorStudentsComponent = () => {
             students: studentsInCourse
         };
     });
-
-    // Обработчик удаления студента с курса
-     
+ 
 
 
 

@@ -43,6 +43,14 @@
     width: 100%;
     &__item {
         width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        &__remove {
+            color: rgb(182, 65, 65);
+            cursor: pointer;
+            
+        }
     }
 }
 

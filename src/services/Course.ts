@@ -134,12 +134,12 @@ export default class CourseService {
     static async GetCourseInfo(query: string): Promise<AxiosResponse<CourseDetails>> {
         return $api.get<CourseDetails>(`/courses/getCourseInfo?id=${query}`)
     }
-
-
     static async EditCourseInfo({data}: FormTypes, query: string): Promise<AxiosResponse<CourseDetails>> {
         return $api.put<CourseDetails>(`/courses/editCourseInfo?id=${query}`, data)
     }
-
+    static async DeleteCourse(query: string): Promise<AxiosResponse<CourseDetails>> {
+        return $api.delete<CourseDetails>(`/courses/deleteCourse?id=${query}`)
+    }
 
 }
  

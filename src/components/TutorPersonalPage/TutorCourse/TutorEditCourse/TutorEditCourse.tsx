@@ -13,6 +13,7 @@ import EditModalLessons from "./EditCourseCardsModal/EditCourseCardsModal";
 import { setIsOpenEditModalLessons, setIsOpenTestsModal } from "../../../../store/slices/EditModalLesson/EditModalLesson";
 import TestService from "../../../../services/Test";
 import Test from "./Test/Test";
+import { useNavigate } from "react-router-dom";
 
 interface FormState {
     name: string;
@@ -85,7 +86,7 @@ const TutorEditCourse = ({ id }: Props) => {
                 console.log("TEST", repsonse)
                 if (repsonse.data.tests) {
                     setTests(repsonse.data.tests)
-               
+
                 }
             } catch {
 
@@ -183,10 +184,21 @@ const TutorEditCourse = ({ id }: Props) => {
 
         dispatch(setIsOpenEditModalLessons({ lessonId: lessonId }))
     }
- 
 
-    const handleOpenModalTests =  (testId: string) => {
-dispatch(setIsOpenTestsModal({testId: testId}))
+
+    const handleOpenModalTests = (testId: string) => {
+        dispatch(setIsOpenTestsModal({ testId: testId }))
+    }
+
+const navigate =  useNavigate()
+    const handleDelete = async () => {
+        try {
+            const response = await CourseService.DeleteCourse(id)
+            console.log(response)
+            navigate(`/tutor/personal/courses`)
+        } catch (e) {
+            console.log(e)
+        }
     }
     return (
         <section className={styles.panel}>
@@ -295,17 +307,17 @@ dispatch(setIsOpenTestsModal({testId: testId}))
                             Список тестов
                         </h2>
                         <div className={styles.lessons__list}>
-                            {tests?.map((item, index)=> (
-                                 <Test
-                                 key={index}
-                                 item={item}
-                                 index={index}
-                                 handler={handleOpenModalTests}
-                             />
+                            {tests?.map((item, index) => (
+                                <Test
+                                    key={index}
+                                    item={item}
+                                    index={index}
+                                    handler={handleOpenModalTests}
+                                />
 
 
                             ))}
-                           
+
                         </div>
                     </section>
 
@@ -323,8 +335,12 @@ dispatch(setIsOpenTestsModal({testId: testId}))
                         Добавить тест
                     </button>
 
-                    <button className={styles.panel__btn} type="submit" onClick={handleSubmit}>
+                    <button className={styles.panel__btn} type="button" onClick={handleSubmit}>
                         Сохранить изменения
+                    </button>
+
+                    <button className={`${styles.panel__btn} ${styles.panel__delete}`} type="button" onClick={handleDelete}>
+                        Удалить курс
                     </button>
                 </form>
             </div>

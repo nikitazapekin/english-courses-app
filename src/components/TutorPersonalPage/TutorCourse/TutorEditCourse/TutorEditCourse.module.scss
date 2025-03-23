@@ -127,6 +127,11 @@
         }
     }
 
+    &__delete {
+        background-color: transparent;
+        color: #000
+    }
+
 
 
 }
@@ -158,16 +163,18 @@
 .panel__field__input {
     width: 100%;
 }
- .selectContainer__wrapper {
+
+.selectContainer__wrapper {
     display: flex;
 
- }
+}
 
 .lessons {
     display: flex;
     flex-direction: column;
     width: 100%;
     row-gap: 10px;
+
     &__list {
         display: flex;
         flex-direction: column;
