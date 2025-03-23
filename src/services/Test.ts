@@ -84,7 +84,7 @@ interface Response {
             test_number: 1,
             duration:string,
             description:string,
-            topics: String[],
+            topics: string[],
             course_id: 6,
             questions: QuestionTest[]
         //    questions: Question[]
