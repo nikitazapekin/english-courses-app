@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { OpenCourseSelector } from "../../../../store/selectors/OpenCourseSelector";
 import LessonService from "../../../../services/Lesson";
 import Lesson from "./Lesson/Lesson";
-import EditModalLessons from "./EditCourseCardsModal/EditCourseCardsModal";
+ 
 import { setIsOpenEditModalLessons, setIsOpenTestsModal } from "../../../../store/slices/EditModalLesson/EditModalLesson";
 import TestService from "../../../../services/Test";
 import Test from "./Test/Test";
@@ -190,7 +190,7 @@ const TutorEditCourse = ({ id }: Props) => {
         dispatch(setIsOpenTestsModal({ testId: testId }))
     }
 
-const navigate =  useNavigate()
+    const navigate = useNavigate()
     const handleDelete = async () => {
         try {
             const response = await CourseService.DeleteCourse(id)
@@ -285,14 +285,23 @@ const navigate =  useNavigate()
                             Список уроков
                         </h2>
                         <div className={styles.lessons__list}>
-                            {lessons?.map((item, index) => (
-                                <Lesson
-                                    key={index}
-                                    item={item}
-                                    index={index}
-                                    handler={handleOpenModalLessons}
-                                />
-                            ))}
+                            {!lessons && <p>Уроков к курсу нету</p>}
+                            {
+                                lessons && (
+                                    <>
+                                        {lessons.length > 0 && lessons?.map((item, index) => (
+                                            <Lesson
+                                                key={index}
+                                                item={item}
+                                                index={index}
+                                                handler={handleOpenModalLessons}
+                                            />
+                                        ))}
+
+
+
+                                    </>
+                                )}
                         </div>
                     </section>
 

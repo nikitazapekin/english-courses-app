@@ -70,7 +70,10 @@ export default class LessonService {
         });
     }
 
-
+    static async DeleteLesson(  lessonId: string ):  Promise<AxiosResponse<GetLesson>> {
+        return $api.delete<GetLesson>(`/lesson/deleteLesson?query=${lessonId}` 
+        );
+    }
 
 
 } 

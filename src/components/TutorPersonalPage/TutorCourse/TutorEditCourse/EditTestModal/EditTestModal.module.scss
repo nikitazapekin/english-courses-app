@@ -95,10 +95,13 @@
 
 
 
-
+&__delete {
+    background-color: transparent;
+    color: #000
+}
     &__btn {
         cursor: pointer;
-        border-radius: 20px;
+        border-radius: 10px;
         border: none;
         outline: none;
         padding: 5px;

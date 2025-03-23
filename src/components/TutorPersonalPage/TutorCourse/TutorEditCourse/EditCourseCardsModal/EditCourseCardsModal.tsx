@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EditCourseCardsModal.module.scss";
 import LessonService from "../../../../../services/Lesson";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector"; 
 import { useDispatch } from "react-redux";
@@ -154,6 +154,17 @@ const EditModalLessons: React.FC = () => {
  const handleClose =() => {
     dispatch(setClose())
  }
+const navigate = useNavigate()
+ const handleDelete =async ()=> {
+try {
+    const repsonce = await LessonService.DeleteLesson(editModal.lessonId)
+    dispatch(setClose())
+    navigate(`/tutor/personal/courses/${editModal.lessonId}`)
+} catch(e) {
+
+    console.log(e)
+ }
+}
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -272,6 +283,13 @@ const EditModalLessons: React.FC = () => {
                         onClick={handleSubmit}
                     >
                         Сохранить
+                    </button>
+
+
+                    <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}
+                        onClick={handleDelete}
+                    >
+                Удалить
                     </button>
                 </form>
             </div>

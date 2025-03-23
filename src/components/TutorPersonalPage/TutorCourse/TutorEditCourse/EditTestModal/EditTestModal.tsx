@@ -367,8 +367,11 @@ const handleClose = ()=> {
                     <button type="button" className={styles.addBtn} onClick={handleAddQuestion}>
                         Добавить вопрос
                     </button>
-                    <button type="submit" className={styles.modal__btn}>
+                    <button type="button" className={styles.modal__btn}>
                         Сохранить
+                    </button>
+                    <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}>
+                     Удалить
                     </button>
                 </form>
             </div>
