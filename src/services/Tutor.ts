@@ -70,6 +70,74 @@ interface TutorCoursesResponse {
                 }[]
 
 }
+
+
+/* 
+interface Course {
+    id: number,
+    title: string,
+    description: string,
+    fulldescription: string,
+    course_for: string[],
+    course_suitable: string[],
+    for_what_reasons: string[],
+    about_course: string[],
+    tag:string,
+    course_rate: string,
+    release_date: string,
+    course_logo:string,
+}
+interface Student {
+    id:  number,
+    username: string,
+    email:string,
+    courses:  string[]
+    avatar: string
+}
+interface Students {
+  
+        message: string,
+        students: {
+            courses:Course[]
+            students: Student[]
+        }
+    
+} */
+
+
+
+        interface Course {
+            id: number;
+            title: string;
+            description: string;
+            fulldescription: string;
+            course_for: string[];
+            course_suitable: string[];
+            for_what_reasons: string[];
+            about_course: string[];
+            tag: string;
+            course_rate: string;
+            release_date: string;
+            course_logo: string;
+        }
+        
+        interface Student {
+            id: number;
+            username: string;
+            email: string;
+            courses: (string | null)[];
+            avatar: string | null;
+        }
+        
+        interface Students {
+            message: string;
+            students: {
+                courses: Course[];
+                students: Student[];
+            };
+        }
+
+        
 export default class TutorService {
     static async GetTutor(): Promise<AxiosResponse<GetTutorProps>> {
         return $api.get<GetTutorProps>('/tutor/getTutor');
@@ -82,8 +150,8 @@ export default class TutorService {
         return $api.get<TutorCoursesResponse>('/tutor/getTutorCourses');
     }
 
-    static async GetStudentsCourse(): Promise<AxiosResponse<TutorCoursesResponse>> {
-        return $api.get<TutorCoursesResponse>('/tutor/getStudents');
+    static async GetStudentsCourse(): Promise<AxiosResponse<Students>> {
+        return $api.get<Students>('/tutor/getStudents');
     }
 
 }
