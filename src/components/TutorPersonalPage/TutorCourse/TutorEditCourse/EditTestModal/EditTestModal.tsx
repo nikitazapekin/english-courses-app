@@ -18,15 +18,45 @@ interface ServerData {
     materials: string;
 }
 interface Questions {
-  
-        id: number,
-        test_id: number,
-        question:string,
-        answers:  String[],
-        correct_answer: string,
-        question_image:string,
-    
+
+    id: number,
+    test_id: number,
+    question: string,
+    answers: String[],
+    correct_answer: string,
+    question_image: string,
+
 }
+
+
+
+interface Question {
+    /* title: string;
+    answers: string[];
+    answer: string;
+    url: string; */
+
+
+    question: string;
+    answers: string[];
+    correct_answer: string;
+    question_image: string;
+
+}
+interface Response {
+
+    id: 2,
+    name: string,
+    test_number: 1,
+    duration: string,
+    description: string,
+    topics: String[],
+    course_id: 6,
+    questions: Question[]
+
+
+}
+
 
 const tutorLesson = [
     { id: 1, placeholder: "Введите название теста", title: "Название", type: "input", name: "title" },
@@ -38,7 +68,7 @@ const tutorLesson = [
 const EditTestModal: React.FC = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
-
+    const [test, setTest] = useState<Response>()
     const [formData, setFormData] = useState<TestFormData>({
         title: "",
         duration: "",
@@ -46,7 +76,7 @@ const EditTestModal: React.FC = () => {
         topics: [],
     });
 
-   
+
     const [newTopic, setNewTopic] = useState<string>("");
     const [questions, setQuestions] = useState<Questions[]>([])
 
@@ -79,7 +109,7 @@ const EditTestModal: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-          
+
             console.log("Form Data:", formData);
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
@@ -87,11 +117,12 @@ const EditTestModal: React.FC = () => {
     };
 
     useEffect(() => {
- 
+
         const handleGetTest = async () => {
             try {
                 const response = await TestService.GetTestById(editModal.testId)
-                console.log("test",editModal.testId,  response.data);
+                console.log("test", editModal.testId, response.data);
+                setTest(response.data.test)
             } catch (error) {
                 console.error("Ошибка при получении урока:", error);
             }
@@ -99,19 +130,7 @@ const EditTestModal: React.FC = () => {
 
         handleGetTest();
 
-
-
-        const handleGet = async () => {
-            try {
-                const response = await TestService.GetQuestions(editModal.testId);
-                console.log("questions", response.data);
-            } catch (error) {
-                console.error("Ошибка при получении урока:", error);
-            }
-        };
-
-        handleGet();
-    }, [lastPathSegment, editModal.lessonId]);
+    }, [lastPathSegment, editModal.testId]);
 
     return (
         <div className={styles.modal}>
@@ -164,6 +183,91 @@ const EditTestModal: React.FC = () => {
                             )}
                         </div>
                     ))}
+                    <h2 className={styles.modal__title}>Вопросы</h2>
+                    <div className={styles.questions__list}>
+                        {test?.questions.map((item, index) => (
+                            <div className={styles.questions__question} key={index}>
+
+                                <div className={styles.modal__field}  >
+                                    <label className={styles.modal__field__title}>Вопрос теста</label>
+
+                                    <input
+                                        className={styles.modal__input}
+                                        placeholder={"Введите вопрос теста"}
+                                        defaultValue={item.question}
+
+                                    />
+
+                                    <label className={styles.modal__field__title}>Ответ на вопрос теста</label>
+
+                                    <input
+                                        className={styles.modal__input}
+                                        placeholder={"Введите ответ на вопросы"}
+                                        defaultValue={item.correct_answer}
+
+                                    />
+
+
+
+<label className={styles.modal__field__title}>Варианты ответа на вопрос</label>
+
+<input
+    className={styles.modal__input}
+    placeholder={"Введите ответ на вопросы"}
+/>
+{item.answers.map((item, index)=> (
+    <div key={index}>
+        {item}
+    </div>
+))}
+
+
+
+<label className={styles.modal__field__title}>Изображение на вопрос теста</label>
+
+<input
+    className={styles.modal__input}
+    placeholder={"Введите ответ на вопросы"}
+    
+    type="image"
+
+/>
+<img 
+ 
+src={item.question_image}
+/>
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        ))}
+
+
+                        {/*
+                                <input
+                                placeholder="Введите вопрос теста"
+                                    className={styles.questions__input}
+                                />
+
+                                <input
+                                    placeholder="Добавь изображение вопроса"
+                                    type="image"
+                                    className={styles.questions__input}
+                                />
+                                </div>
+                                ))}
+                                */}
+                    </div>
+
+
                     <button type="button" className={styles.modal__btn} onClick={handleSubmit}>
                         Сохранить
                     </button>
