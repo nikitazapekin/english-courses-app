@@ -71,39 +71,7 @@ interface TutorCoursesResponse {
 
 }
 
-
-/* 
-interface Course {
-    id: number,
-    title: string,
-    description: string,
-    fulldescription: string,
-    course_for: string[],
-    course_suitable: string[],
-    for_what_reasons: string[],
-    about_course: string[],
-    tag:string,
-    course_rate: string,
-    release_date: string,
-    course_logo:string,
-}
-interface Student {
-    id:  number,
-    username: string,
-    email:string,
-    courses:  string[]
-    avatar: string
-}
-interface Students {
-  
-        message: string,
-        students: {
-            courses:Course[]
-            students: Student[]
-        }
-    
-} */
-
+ 
 
 
         interface Course {
@@ -137,7 +105,7 @@ interface Students {
             };
         }
 
-        
+
 export default class TutorService {
     static async GetTutor(): Promise<AxiosResponse<GetTutorProps>> {
         return $api.get<GetTutorProps>('/tutor/getTutor');
@@ -152,6 +120,11 @@ export default class TutorService {
 
     static async GetStudentsCourse(): Promise<AxiosResponse<Students>> {
         return $api.get<Students>('/tutor/getStudents');
+    }
+
+
+    static async removeStudentsCourse( studentEmail:string, courseId: string): Promise<AxiosResponse<any>> {
+        return $api.post<any>('/tutor/removeStudent', {studentEmail: studentEmail, courseId: courseId});
     }
 
 }
