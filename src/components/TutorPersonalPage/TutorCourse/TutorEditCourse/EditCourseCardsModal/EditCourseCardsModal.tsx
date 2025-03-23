@@ -3,19 +3,20 @@ import styles from "./EditCourseCardsModal.module.scss";
 import LessonService from "../../../../../services/Lesson";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector";
-
+import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector"; 
+import { useDispatch } from "react-redux";
+import { setClose } from "../../../../../store/slices/EditModalLesson/EditModalLesson";
 interface LessonFormData {
     title: string;
     description: string;
     durability: string;
-    video: File[]; // Новые файлы
-    materials: File[]; // Новые файлы
+    video: File[]; 
+    materials: File[];  
 }
 
 interface ServerData {
-    video: string; // Base64-код видео с сервера
-    materials: string; // Название файла материалов с сервера
+    video: string;  
+    materials: string;  
 }
 
 interface LessonResp {
@@ -39,6 +40,11 @@ const EditModalLessons: React.FC = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
 
+
+  //  const dispatch = useDispatch()
+  /*   const handleClose =() => {
+      //  dispatch(setClose())
+    } */
     const [formData, setFormData] = useState<LessonFormData>({
         title: "",
         description: "",
@@ -144,7 +150,10 @@ const EditModalLessons: React.FC = () => {
 
         handleGet();
     }, [lastPathSegment, editModal.lessonId]);
-
+ const dispatch = useDispatch()
+ const handleClose =() => {
+    dispatch(setClose())
+ }
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -267,7 +276,9 @@ const EditModalLessons: React.FC = () => {
                 </form>
             </div>
 
-            <div className={styles.modal__overlay} />
+            <div className={styles.modal__overlay}
+        onClick={handleClose}
+            />
         </div>
     );
 };

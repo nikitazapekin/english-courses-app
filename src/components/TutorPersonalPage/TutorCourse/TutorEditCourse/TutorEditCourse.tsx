@@ -85,7 +85,7 @@ const TutorEditCourse = ({ id }: Props) => {
                 console.log("TEST", repsonse)
                 if (repsonse.data.tests) {
                     setTests(repsonse.data.tests)
-                    //  setLessons(repsonse.data.lessons)
+               
                 }
             } catch {
 

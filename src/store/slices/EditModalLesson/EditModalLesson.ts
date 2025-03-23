@@ -28,13 +28,18 @@ const EditModalLessonsSlice = createSlice({
         setIsOpenTestsModal(state, action: PayloadAction<{ testId: string }>) {
             state.isOpenTestsModal = !state.isOpenTestsModal
             state.testId = action.payload.testId
+        },
+        setClose(state) {
+            state.isOpenEditLessonModal=false,
+            state.isOpenTestsModal = false
         }
     },
 });
 
 export const {
     setIsOpenEditModalLessons,
-    setIsOpenTestsModal
+    setIsOpenTestsModal,
+    setClose
 
 } = EditModalLessonsSlice.actions;
 export default EditModalLessonsSlice.reducer;
