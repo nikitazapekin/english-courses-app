@@ -17,6 +17,16 @@ interface ServerData {
     video: string;
     materials: string;
 }
+interface Questions {
+  
+        id: number,
+        test_id: number,
+        question:string,
+        answers:  String[],
+        correct_answer: string,
+        question_image:string,
+    
+}
 
 const tutorLesson = [
     { id: 1, placeholder: "Введите название теста", title: "Название", type: "input", name: "title" },
@@ -36,15 +46,11 @@ const EditTestModal: React.FC = () => {
         topics: [],
     });
 
-    const [serverData, setServerData] = useState<ServerData>({
-        video: "",
-        materials: "",
-    });
-
+   
     const [newTopic, setNewTopic] = useState<string>("");
+    const [questions, setQuestions] = useState<Questions[]>([])
 
     const editModal = useSelector(editModalSelector);
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -81,6 +87,20 @@ const EditTestModal: React.FC = () => {
     };
 
     useEffect(() => {
+ 
+        const handleGetTest = async () => {
+            try {
+                const response = await TestService.GetTestById(editModal.testId)
+                console.log("test",editModal.testId,  response.data);
+            } catch (error) {
+                console.error("Ошибка при получении урока:", error);
+            }
+        };
+
+        handleGetTest();
+
+
+
         const handleGet = async () => {
             try {
                 const response = await TestService.GetQuestions(editModal.testId);

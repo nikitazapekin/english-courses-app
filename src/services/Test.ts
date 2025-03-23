@@ -69,6 +69,10 @@ export default class TestService {
         return $api.get<GetQuestionsRespose>(`/test/getQuestions?test_id=${id}`)
          
     }
+   static async GetTestById(id:string): Promise<AxiosResponse<GetQuestionsRespose>> {
+        return $api.get<GetQuestionsRespose>(`/test/getTestById?test_id=${id}`)
+         
+    }  
 
 
 
