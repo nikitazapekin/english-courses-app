@@ -82,4 +82,8 @@ export default class TutorService {
         return $api.get<TutorCoursesResponse>('/tutor/getTutorCourses');
     }
 
+    static async GetStudentsCourse(): Promise<AxiosResponse<TutorCoursesResponse>> {
+        return $api.get<TutorCoursesResponse>('/tutor/getStudents');
+    }
+
 }

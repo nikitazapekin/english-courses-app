@@ -117,7 +117,9 @@ const LessonsList = () => {
                 </div>
                 {isLessons && (
                     <div className={styles.lessons__list}>
-                        {cards && cards.map((item, index) => (
+
+
+                        {cards && cards.length > 0 && cards.map((item, index) => (
                             <LessonsCard
                                 key={item.id}
                                 isLessons={true}
@@ -128,14 +130,18 @@ const LessonsList = () => {
                                     lessonId: item.id,
                                     courseId: Number(lastPathSegment!),
                                     isLesson: true
-                                }
-                                }
+                                }}
                             />
                         ))}
 
 
-
-
+                        {
+                         cards?.length==0 && (
+                            <h3>
+                                Пока тут нету уроков...
+                            </h3>
+                          )
+                        }
                     </div>
                 )}
 

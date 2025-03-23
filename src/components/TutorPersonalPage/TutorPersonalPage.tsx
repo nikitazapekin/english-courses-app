@@ -9,6 +9,7 @@ import { useLocation } from "react-router-dom";
 import EditProfile from "./EditProfile/EditProfile";
 import MainPage from "./MainPage/MainPage";
 import AddAchievements from "./AddAchievements/AddAchievements";
+import TutorStudentsComponent from "./TutorStudentsComponent/TutorStudentsComponent";
 
 
 const TutorPersonalPageComponent: React.FC = () => {
@@ -43,6 +44,27 @@ const TutorPersonalPageComponent: React.FC = () => {
                         <AddAchievements />
 
                     )
+
+
+
+                    
+                }
+
+
+{
+                    lastPathSegment == "students" && (
+                       
+                    <TutorStudentsComponent />
+                        
+                       
+                  
+                 
+
+                    )
+
+
+
+                    
                 }
                 {
                     !lastPathSegment && (

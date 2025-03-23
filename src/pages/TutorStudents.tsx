@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import TutorService from "../services/Tutor";
 import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 import TutorPersonalPageComponent from "../components/TutorPersonalPage/TutorPersonalPage";
-const TutorPersonalPage = () => {
+const TutorStudentsPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     useEffect(() => {
@@ -22,7 +22,7 @@ const TutorPersonalPage = () => {
                dispatch(setTutor(response.data.user))
             
             } catch (err) {
-             
+              //  navigate("/sign-in")
             }
         };
         handleGetUser();  
@@ -41,4 +41,4 @@ const TutorPersonalPage = () => {
     </div>);
 }
 
-export default TutorPersonalPage;
+export default TutorStudentsPage;

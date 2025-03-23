@@ -1,6 +1,6 @@
 
 import { Component } from "react";
-import { ADMIN_EDIT_PAGE, ADMIN_PAGE, CARD_PAGE, CATALOG, CATALOG_QUERY, CHAT_PAGE, FOUND_COURSES, HELP_PAGE, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TESTING_PAGE, TUTOR_ACHIEVEMENTS_PAGE, TUTOR_CREATE_COURSES, TUTOR_EDIT, TUTOR_PAGE, TUTOR_PERSONAL_COURSE, TUTOR_PERSONAL_COURSES, TUTOR_PERSONAL_PAGE } from "./consts";
+import { ADMIN_EDIT_PAGE, ADMIN_PAGE, CARD_PAGE, CATALOG, CATALOG_QUERY, CHAT_PAGE, FOUND_COURSES, HELP_PAGE, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TESTING_PAGE, TUTOR_ACHIEVEMENTS_PAGE, TUTOR_CREATE_COURSES, TUTOR_EDIT, TUTOR_PAGE, TUTOR_PERSONAL_COURSE, TUTOR_PERSONAL_COURSES, TUTOR_PERSONAL_PAGE, TUTOR_PERSONAL_STUDENTS } from "./consts";
 import Homepage from "../pages/Homepage";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
@@ -26,6 +26,7 @@ import CatalogPageQuery from "../pages/CatalogPageQuery";
 import AdminPage from "../pages/AdminPage";
 import TutorPersonalCourse from "../pages/TutorPersonalCourse";
 import TutorAchievementsPage from "../pages/TutorAchievements";
+import TutorStudentsPage from "../pages/TutorStudents";
 
 export const publicRoutes = [
   {
@@ -179,6 +180,12 @@ export const publicRoutes = [
     Component: TutorAchievementsPage
   },
 
+
+  {
+
+    path:TUTOR_PERSONAL_STUDENTS,
+    Component: TutorStudentsPage
+  },
 
 
   {

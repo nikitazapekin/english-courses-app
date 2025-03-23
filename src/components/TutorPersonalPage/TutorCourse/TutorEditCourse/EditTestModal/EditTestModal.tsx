@@ -314,7 +314,6 @@ const handleClose = ()=> {
                                             </button>
                                         </div>
                                     ))}
-
                                     <div className={styles.addAnswerWrapper}>
                                         <input
                                             className={styles.modal__input}
