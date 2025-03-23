@@ -1,4 +1,162 @@
 import React, { useEffect, useState } from "react";
+import styles from "./EditTestModal.module.scss";
+import LessonService from "../../../../../services/Lesson";
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector";
+import TestService from "../../../../../services/Test";
+
+interface TestFormData {
+    title: string;
+    duration: string;
+    description: string;
+    topics: string[];
+}
+
+interface ServerData {
+    video: string;
+    materials: string;
+}
+
+const tutorLesson = [
+    { id: 1, placeholder: "Введите название теста", title: "Название", type: "input", name: "title" },
+    { id: 2, placeholder: "Продолжительность теста", title: "Продолжительность", type: "input", name: "duration" },
+    { id: 3, placeholder: "Описание теста", title: "Описание", type: "input", name: "description" },
+    { id: 4, placeholder: "Темы теста", title: "Темы", type: "select", name: "topics" },
+];
+
+const EditTestModal: React.FC = () => {
+    const location = useLocation();
+    const lastPathSegment = location.pathname.split("/").pop();
+
+    const [formData, setFormData] = useState<TestFormData>({
+        title: "",
+        duration: "",
+        description: "",
+        topics: [],
+    });
+
+    const [serverData, setServerData] = useState<ServerData>({
+        video: "",
+        materials: "",
+    });
+
+    const [newTopic, setNewTopic] = useState<string>("");
+
+    const editModal = useSelector(editModalSelector);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    const handleAddTopic = () => {
+        if (newTopic.trim() !== "") {
+            setFormData((prev) => ({
+                ...prev,
+                topics: [...prev.topics, newTopic.trim()],
+            }));
+            setNewTopic("");
+        }
+    };
+
+    const handleRemoveTopic = (index: number) => {
+        setFormData((prev) => ({
+            ...prev,
+            topics: prev.topics.filter((_, i) => i !== index),
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+          
+            console.log("Form Data:", formData);
+        } catch (error) {
+            console.error("Ошибка при отправке данных:", error);
+        }
+    };
+
+    useEffect(() => {
+        const handleGet = async () => {
+            try {
+                const response = await TestService.GetQuestions(editModal.testId);
+                console.log("questions", response.data);
+            } catch (error) {
+                console.error("Ошибка при получении урока:", error);
+            }
+        };
+
+        handleGet();
+    }, [lastPathSegment, editModal.lessonId]);
+
+    return (
+        <div className={styles.modal}>
+            <div className={styles.modal__content}>
+                <h2 className={styles.modal__title}>Редактировать тест</h2>
+                <form className={styles.modal__fields} onSubmit={handleSubmit}>
+                    {tutorLesson.map((item) => (
+                        <div className={styles.modal__field} key={item.id}>
+                            <label className={styles.modal__field__title}>{item.title}</label>
+                            {item.type === "input" && (
+                                <input
+                                    className={styles.modal__input}
+                                    placeholder={item.placeholder}
+                                    name={item.name}
+                                    value={formData[item.name as keyof TestFormData] as string}
+                                    onChange={handleChange}
+                                />
+                            )}
+
+                            {item.type === "select" && (
+                                <>
+                                    <div className={styles.modal__select}>
+                                        <div className={styles.input__wrapper}>
+                                            <input
+                                                className={`${styles.modal__input}`}
+                                                placeholder={item.placeholder}
+                                                value={newTopic}
+                                                onChange={(e) => setNewTopic(e.target.value)}
+                                            />
+                                            <div className={styles.add} onClick={handleAddTopic}>
+                                                Добавить
+                                            </div>
+                                        </div>
+                                        <div className={styles.list}>
+                                            {formData.topics.map((topic, index) => (
+                                                <div key={index} className={styles.topicItem}>
+                                                    {topic}
+                                                    <button
+                                                        type="button"
+                                                        className={styles.removeBtn}
+                                                        onClick={() => handleRemoveTopic(index)}
+                                                    >
+                                                        ❌
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    ))}
+                    <button type="button" className={styles.modal__btn} onClick={handleSubmit}>
+                        Сохранить
+                    </button>
+                </form>
+            </div>
+            <div className={styles.modal__overlay} />
+        </div>
+    );
+};
+
+export default EditTestModal;
+
+/* import React, { useEffect, useState } from "react";
 import styles from "./EditTestModal.module.scss"
 import LessonService from "../../../../../services/Lesson";
 import { useLocation } from "react-router-dom";
@@ -62,21 +220,7 @@ const EditTestModal: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        /*   const formDataToSend = new FormData();
-          formDataToSend.append("title", formData.title);
-          formDataToSend.append("description", formData.description);
-          formDataToSend.append("durability", formData.durability);
-          formDataToSend.append("id", lastPathSegment!);
-       
-          if (!serverData.video) {
-              formDataToSend.append("removeVideo", "true");
-          }
-          if (!serverData.materials) {
-              formDataToSend.append("removeMaterials", "true");
-          }
       
-        
-       */
         try {
 
             //    await LessonService.EditLesson(lastPathSegment!, editModal.lessonId, formDataToSend);
@@ -206,4 +350,4 @@ const [topics, setTopics] = useState([])
     );
 };
 
-export default EditTestModal; 
+export default EditTestModal;  */
