@@ -16,7 +16,6 @@ const TutorPersonalCourses = () => {
             try {
                 const response = await TutorService.GetTutor()
                 dispatch(setTutor(response.data.user))
-
             } catch (err) {
                 navigate("/sign-in")
             }

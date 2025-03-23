@@ -10,7 +10,9 @@ import { OpenCourseSelector } from "../../../../store/selectors/OpenCourseSelect
 import LessonService from "../../../../services/Lesson";
 import Lesson from "./Lesson/Lesson";
 import EditModalLessons from "./EditCourseCardsModal/EditCourseCardsModal";
-import { setIsOpenEditModalLessons } from "../../../../store/slices/EditModalLesson/EditModalLesson";
+import { setIsOpenEditModalLessons, setIsOpenTestsModal } from "../../../../store/slices/EditModalLesson/EditModalLesson";
+import TestService from "../../../../services/Test";
+import Test from "./Test/Test";
 
 interface FormState {
     name: string;
@@ -26,33 +28,18 @@ interface FormState {
 interface Props {
     id: string
 }
+interface Test {
 
-
-interface GetLessonsResponse {
-
-    message: string,
-    lessons:
-    Array<{
-        id: number,
-        title: string,
-        description: string,
-        durability: string,
-        video: String[],
-        materials: String[]
-    }>
-
+    id: number;
+    name: string,
+    test_number: number;
+    duration: string,
+    description: string,
+    topics: String[],
+    course_id: number;
 
 }
-/*
-interface Lessons {
-    id: number,
-            title: string,
-            description: string,
-            durability: string,
-            video: String[],
-            materials: String[]  
-}[]
-*/
+
 type Lesson = {
     id: number;
     title: string;
@@ -66,14 +53,14 @@ type Lessons = Lesson[];
 const TutorEditCourse = ({ id }: Props) => {
     const editCourse = useSelector(OpenCourseSelector)
     const [lessons, setLessons] = useState<Lessons>()
+    const [tests, setTests] = useState<Test[]>()
     const [formState, setFormState] = useState<FormState>({
         name: "", description: "", for: "",
         logo: "",
         fulldescription: "", for_what_reasons: [], about_course: [], tag: "",
         course_for: []
     });
-//const [isOpenModalLessons, setIsOpenModalLessons] = useState(false)
-//const [selectedLessonId, setSelectedLessonId] = useState("")
+
     useEffect(() => {
         const handleGet = async () => {
             try {
@@ -89,6 +76,25 @@ const TutorEditCourse = ({ id }: Props) => {
         }
         handleGet()
     }, [])
+
+
+    useEffect(() => {
+        const handleGetTests = async () => {
+            try {
+                const repsonse = await TestService.GetTest(id)
+                console.log("TEST", repsonse)
+                if (repsonse.data.tests) {
+                    setTests(repsonse.data.tests)
+                    //  setLessons(repsonse.data.lessons)
+                }
+            } catch {
+
+            }
+        }
+        handleGetTests()
+    }, [])
+
+
 
     useEffect(() => {
         if (editCourse.course) {
@@ -173,11 +179,15 @@ const TutorEditCourse = ({ id }: Props) => {
     const handleOpenModal = (type: string) => {
         dispatch(setOpenModal({ type: type }));
     };
-const handleOpenModalLessons = (lessonId: string) => {
-   // setIsOpenModalLessons(prev=>!prev)
-//setSelectedLessonId(lessonId)
-dispatch(setIsOpenEditModalLessons({lessonId: lessonId}))
-}
+    const handleOpenModalLessons = (lessonId: string) => {
+
+        dispatch(setIsOpenEditModalLessons({ lessonId: lessonId }))
+    }
+ 
+
+    const handleOpenModalTests =  (testId: string) => {
+dispatch(setIsOpenTestsModal({testId: testId}))
+    }
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>
@@ -273,6 +283,37 @@ dispatch(setIsOpenEditModalLessons({lessonId: lessonId}))
                             ))}
                         </div>
                     </section>
+
+
+
+
+
+
+
+                    <section className={styles.lessons}>
+                        <h2 className={styles.lessons__title}>
+                            Список тестов
+                        </h2>
+                        <div className={styles.lessons__list}>
+                            {tests?.map((item, index)=> (
+                                 <Test
+                                 key={index}
+                                 item={item}
+                                 index={index}
+                                 handler={handleOpenModalTests}
+                             />
+
+
+                            ))}
+                           
+                        </div>
+                    </section>
+
+
+
+
+
+
                     <button className={styles.panel__btn} type="button" onClick={() => handleOpenModal("lesson")}>
                         Добавить урок
                     </button>
@@ -288,7 +329,7 @@ dispatch(setIsOpenEditModalLessons({lessonId: lessonId}))
                 </form>
             </div>
 
-           
+
         </section>
     );
 };

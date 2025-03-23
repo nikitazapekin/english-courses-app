@@ -13,6 +13,7 @@ import { isOpenModalCreateLessonSelector } from "../store/selectors/CreateCourse
 import TutorModal from "../components/TutorPersonalPage/TutorModal/TutorModal";
 import EditModalLessons from "../components/TutorPersonalPage/TutorCourse/TutorEditCourse/EditCourseCardsModal/EditCourseCardsModal";
 import { editModalSelector } from "../store/selectors/EditLessonModal.selector";
+import EditTestModal from "../components/TutorPersonalPage/TutorCourse/TutorEditCourse/EditTestModal/EditTestModal";
 const TutorPersonalCourse = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -40,7 +41,9 @@ const TutorPersonalCourse = () => {
                 {isOpenEditLessonsModal.isOpenEditLessonModal && (
                     <EditModalLessons />
                 )}
-
+                {isOpenEditLessonsModal.isOpenTestsModal && (
+                    <EditTestModal />
+                )}
                 <TutorCourse />
 
                 {isOpenModal && (
