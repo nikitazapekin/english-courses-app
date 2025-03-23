@@ -55,6 +55,8 @@ const TutorEditCourse = ({ id }: Props) => {
     const editCourse = useSelector(OpenCourseSelector)
     const [lessons, setLessons] = useState<Lessons>()
     const [tests, setTests] = useState<Test[]>()
+    const dispatch = useDispatch();
+    
     const [formState, setFormState] = useState<FormState>({
         name: "", description: "", for: "",
         logo: "",
@@ -116,7 +118,6 @@ const TutorEditCourse = ({ id }: Props) => {
 
     const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});
 
-    const dispatch = useDispatch();
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
