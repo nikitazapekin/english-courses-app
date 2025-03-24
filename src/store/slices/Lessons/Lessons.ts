@@ -52,13 +52,26 @@ const LessonsSlice = createSlice({
             state.lessons.push(newLesson);
         },
         
+ 
 
-        editLesson(state) {
 
+        editLesson(state, action: PayloadAction<{id: number, data: LessonFormData}>) {
+            const index = state.lessons.findIndex(lesson => lesson.id === action.payload.id);
+            if (index !== -1) {
+               
+                state.lessons[index] = {
+                    ...state.lessons[index],
+                    title: action.payload.data.title,
+                    description: action.payload.data.description,
+                    durability: action.payload.data.durability,
+                 
+                };
+            }
         },
-        deleteLesson(state) {
-
-        }
+      
+       deleteLesson(state, action: PayloadAction<{id: number}>) {
+        state.lessons = state.lessons.filter(lesson => lesson.id !== action.payload.id);
+    }
 
     },
 });

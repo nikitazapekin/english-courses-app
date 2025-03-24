@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector";
 import { useDispatch } from "react-redux";
 import { setClose } from "../../../../../store/slices/EditModalLesson/EditModalLesson";
+import { deleteLesson, editLesson } from "../../../../../store/slices/Lessons/Lessons";
 interface LessonFormData {
     title: string;
     description: string;
@@ -120,6 +121,10 @@ const EditModalLessons: React.FC = () => {
         try {
             await LessonService.EditLesson(lastPathSegment!, editModal.lessonId, formDataToSend);
             dispatch(setClose())
+            dispatch(editLesson({
+                data:formData, 
+                id: Number(editModal.lessonId)
+            }))
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
         }
@@ -161,11 +166,15 @@ const EditModalLessons: React.FC = () => {
 
             const repsonce = await LessonService.DeleteLesson(editModal.lessonId)
             dispatch(setClose())
+            dispatch(deleteLesson({id: Number(editModal.lessonId) }))
             navigate(`/tutor/personal/courses/${lastPathSegment}`)
         } catch (e) {
 
             console.log(e)
         }
+
+
+
     }
     return (
         <div className={styles.modal}>
