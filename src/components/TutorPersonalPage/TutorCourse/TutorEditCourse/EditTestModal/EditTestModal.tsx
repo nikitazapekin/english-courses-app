@@ -6,8 +6,8 @@ import { editModalSelector } from "../../../../../store/selectors/EditLessonModa
 import TestService from "../../../../../services/Test";
 import { useDispatch } from "react-redux";
 import { setClose } from "../../../../../store/slices/EditModalLesson/EditModalLesson";
-import { editTest } from "../../../../../store/slices/TestSlice/TestSlice";
-
+import { editTest , deleteTest} from "../../../../../store/slices/TestSlice/TestSlice";
+ 
 interface TestFormData {
     title: string;
     duration: string;
@@ -237,6 +237,8 @@ const EditTestModal: React.FC = () => {
 
     const handleDelete = async () => {
         try {
+            dispatch(setClose())
+            dispatch(deleteTest({id: Number(editModal.testId)}))
             const reposnse = await TestService.DeleteTestById(editModal.testId)
         } catch (e) {
             console.log(e)
