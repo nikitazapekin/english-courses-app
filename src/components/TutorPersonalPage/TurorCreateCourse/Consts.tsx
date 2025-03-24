@@ -58,9 +58,10 @@ export const dataPreview = [
         id: 8,
         title: "Тег",
         placeholder: "Тег курса",
-        type: "input",
-        name: "tag"
-
+        type: "select",
+        name: "tag",
+      
+        options: ["Начинающий", "Средний", "Продвинутый", "Бизнес", "Разговорный"]
 
     },
 

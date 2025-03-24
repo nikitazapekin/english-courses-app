@@ -27,4 +27,8 @@ export default class AchievementsService {
     static async updateAchievement(  data: Achievement ): Promise<AxiosResponse<Response>> {
         return $api.put<Response>('/achievement/editAchievement', data)
     }
+
+    static async deleteAchievement( currentTitle: string): Promise<AxiosResponse<Response>> {
+        return $api.post<Response>('/achievement/deleteAchievement',{currentTitle: currentTitle})
+    }
 }

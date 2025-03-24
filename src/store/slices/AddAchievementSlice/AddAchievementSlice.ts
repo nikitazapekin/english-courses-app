@@ -80,27 +80,21 @@ const AddAchievementSliceSlice = createSlice({
             state.isOpenSelectedAchievement = false;
         }, 
 
-     /*    updateAchievement(state, action: PayloadAction<Achievement>) {
-
-        } */
-
-
+   
      updateAchievement(state, action: PayloadAction<{currentTitle: string; updatedData: Achievement}>) {
         const { currentTitle, updatedData } = action.payload;
-        
-        // Находим индекс достижения с указанным currentTitle
+         
         const achievementIndex = state.achievements.findIndex(
             ach => ach.title === currentTitle
         );
     
         if (achievementIndex !== -1) {
-            // Обновляем найденное достижение
+         
             state.achievements[achievementIndex] = {
                 ...state.achievements[achievementIndex],
                 ...updatedData
             };
-    
-            // Если обновляли выбранное достижение, обновляем и его
+     
             if (state.selectedAchievement?.title === currentTitle) {
                 state.selectedAchievement = {
                     ...state.selectedAchievement,
@@ -110,10 +104,33 @@ const AddAchievementSliceSlice = createSlice({
         } else {
             console.error(`Achievement with title "${currentTitle}" not found`);
         }
-    }
-
+    }, 
+    deleteAchievement(state, action: PayloadAction<{currentTitle: string}>) {
+        const { currentTitle } = action.payload;
+         
+        const achievementIndex = state.achievements.findIndex(
+            ach => ach.title === currentTitle
+        );
     
-    },
+        if (achievementIndex !== -1) {
+        
+            if (state.selectedAchievement?.title === currentTitle) {
+                state.selectedAchievement = null;
+                state.isOpenSelectedAchievement = false;
+            }
+             
+            state.achievements.splice(achievementIndex, 1);
+           
+            if (state.achievements.length === 0) {
+                state.lastId = 0;
+            } else {
+                state.lastId = Math.max(...state.achievements.map(a => a.id || 0));
+            }
+        } else {
+            console.error(`Achievement with title "${currentTitle}" not found`);
+        }
+    }
+},
 });
 
 export const {
@@ -122,6 +139,7 @@ export const {
     addAchievement,
     selectAchievement,
     closeAchievement,
-    updateAchievement
+    updateAchievement,
+    deleteAchievement
 } = AddAchievementSliceSlice.actions;
 export default AddAchievementSliceSlice.reducer; 

@@ -89,6 +89,7 @@ const AchievementModal = () => {
                     logo: formData.logo,
                     currentTitle: selector.selectedAchievement?.title
                 });  
+                console.log(response)
                dispatch(updateAchievement({currentTitle: selector.selectedAchievement!.title, updatedData: formData}));
             } else {
             
@@ -101,17 +102,14 @@ const AchievementModal = () => {
     }
 
     const handleDelete = async () => {
-        if (!formData.id) {
-            alert('Не выбрано достижение для удаления');
-            return;
-        }
+       
 
         try {
-       
+       const response = await AchievementsService.deleteAchievement(selector.selectedAchievement!.title)
             handleClose();
         } catch (e) {
             console.error('Ошибка при удалении достижения:', e);
-            alert('Произошла ошибка при удалении достижения');
+         
         }
     }
 
