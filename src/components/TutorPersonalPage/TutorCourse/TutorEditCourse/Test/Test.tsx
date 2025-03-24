@@ -17,7 +17,7 @@ const Test = ({ item, index, handler }: Props) => {
         <div className={styles.card}
             onClick={() => handler(String(item.id))}
         >
-            {item.id}
+           
             <h3 className={styles.card__title}>
                 {index + 1}.
                 {item.name}

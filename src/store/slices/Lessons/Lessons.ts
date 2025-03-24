@@ -1,21 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
- 
+
 interface Lesson {
-     id: number,
-     title: string,
-     description: string,
-     durability: string,
-     video: String[],
-     materials: String[]
- }
+    id: number,
+    title: string,
+    description: string,
+    durability: string,
+    video: String[],
+    materials: String[]
+}
 
 interface LessonsSliceTypes {
- lessons: Lesson[]
+    lessons: Lesson[]
+}
+
+
+
+interface LessonFormData {
+    title: string;
+    description: string;
+    durability: string;
+    video: File[];
+    materials: File[];
 }
 
 const initialState: LessonsSliceTypes = {
 
-   lessons: []
+    lessons: []
 };
 
 const LessonsSlice = createSlice({
@@ -24,13 +34,39 @@ const LessonsSlice = createSlice({
     reducers: {
 
         setLessons(state, action: PayloadAction<Lesson[]>) {
-state.lessons = action.payload
+            state.lessons = action.payload
+        },
+       /*  addLesson(state, action: PayloadAction<LessonFormData>) {
+
+        }, */
+
+        addLesson(state, action: PayloadAction<LessonFormData>) {
+            const newLesson: Lesson = {
+                id: Date.now(),  
+                title: action.payload.title,
+                description: action.payload.description,
+                durability: action.payload.durability,
+                video: [], 
+                materials: [] 
+            };
+            state.lessons.push(newLesson);
+        },
+        
+
+        editLesson(state) {
+
+        },
+        deleteLesson(state) {
+
         }
-     
+
     },
 });
 
 export const {
-    setLessons
+    setLessons,
+    editLesson,
+    deleteLesson,
+    addLesson
 } = LessonsSlice.actions;
 export default LessonsSlice.reducer;

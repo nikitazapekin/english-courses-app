@@ -4,6 +4,7 @@ import LessonService from "../../../../services/Lesson";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
+import { addLesson } from "../../../../store/slices/Lessons/Lessons";
 
 interface LessonFormData {
     title: string;
@@ -76,6 +77,7 @@ const dispatch = useDispatch()
         });
 
         try {
+            dispatch(addLesson(formData))
             await LessonService.CreateLesson(formDataToSend);
 
              
