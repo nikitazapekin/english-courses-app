@@ -15,7 +15,7 @@
 }
 
     &__container {
-        max-width: 1030px;
+        max-width: 1430px;
         width: 100%;
         margin: 0 auto;
         display: flex;
@@ -134,16 +134,12 @@
             background-color: $purple;
         }
     }
-
-
-
 }
 
 .inputWithAutocomplete, .selectContainer {
     display: flex;
     column-gap: 20px;
 }
-
 .addButton {
     border: none;
     outline: none;
