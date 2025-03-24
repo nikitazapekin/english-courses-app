@@ -14,7 +14,7 @@ export const dataPreview = [
         type: "input",
         name: "description"
     },
-    {
+   /*  {
         id: 3,
         title: "Курс предназначен для",
         placeholder: "Курс предназначен для",
@@ -22,6 +22,44 @@ export const dataPreview = [
         name: "course_for"
 
 
+    },
+ */
+/* 
+    {
+        id: 3,
+        title: "Курс предназначен для",
+        placeholder: "Для кого этот курс",
+        type: "autocomplete",
+        name: "course_for",
+        suggestions: [
+            "Школьников",
+            "Студентов",
+            "Взрослых",
+            "Начинающих",
+            "Опытных специалистов",
+            "IT-специалистов",
+            "Менеджеров",
+            "Маркетологов"
+        ]
+    }, */
+    {
+        id: 3,
+        title: "Курс предназначен для",
+        placeholder: "Для кого этот курс",
+        type: "input",
+        name: "course_for",
+        autocomplete: "on",
+        list: "courseForOptions",  
+        options: [
+            "Школьников",
+            "Студентов",
+            "Взрослых",
+            "Начинающих",
+            "Опытных специалистов",
+            "IT-специалистов",
+            "Менеджеров",
+            "Маркетологов"
+        ]
     },
 
     {
