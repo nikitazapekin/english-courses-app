@@ -86,7 +86,6 @@ const dispatch = useDispatch()
             materials: formData.materials.map(file => file.name),
             id: Number(lastPathSegment)  
         }));
- 
 
             await LessonService.CreateLesson(formDataToSend);
 

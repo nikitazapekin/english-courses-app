@@ -126,6 +126,11 @@ export default class CourseService {
     }
 
 
+    static async GetCoursesType(page: number, limit: number, type: string): Promise<AxiosResponse<GetCoursesResponse>> {
+        return $api.get<GetCoursesResponse>(`/courses/getCoursesType?page=${page}&limit=${limit}&type=${type}`)
+    }
+
+
     static async SearchCourses(query: string): Promise<AxiosResponse<GetCoursesResponse>> {
         return $api.get<GetCoursesResponse>(`/courses/searchCourses?query=${query}`)
     }

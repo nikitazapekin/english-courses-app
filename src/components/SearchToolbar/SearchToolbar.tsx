@@ -1,10 +1,16 @@
+import { useDispatch } from "react-redux";
 import styles from "./SearchToolbar.module.scss"
 import { btns } from "./consts";
+import { setType } from "../../store/slices/Catalog/Catalog";
 const SearchToolbar = () => {
+    const dispatch = useDispatch()
+const handleSelect = (type: string) => {
+    dispatch(setType({type: type}))
+}
     return (
         <div className={styles.search}>
             {btns.relevant.map((item, index) => (
-                <p className={styles.search__text} key={index}>
+                <p className={styles.search__text} key={index} onClick={()=> handleSelect(item)}>
                     {item}
                 </p>
             ))}
@@ -12,7 +18,7 @@ const SearchToolbar = () => {
             Категории
             </p>
             {btns.category.map((item, index) => (
-                <p className={styles.search__text} key={index}>
+                <p className={styles.search__text} key={index} onClick={()=> handleSelect(item)}>
                     {item}
                 </p>
             ))}
