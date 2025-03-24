@@ -30,11 +30,8 @@ const TutorPamel = ({ username, email }: TutorPanelProps) => {
                 {email}
             </h3>
             <PanelBtns />
-            <div className={styles.panel__btn}
-                onClick={handleLogout}
-            >
-                Выйти
-            </div>
+
+         
 
         </div>);
 }

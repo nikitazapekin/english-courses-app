@@ -11,8 +11,16 @@ interface LessonFormData {
     title: string;
     description: string;
     durability: string;
-    video: File[];
-    materials: File[];
+   /*  video: File[];
+    materials: File[]; */
+ /*    video: string[],
+    materials: string[] */
+
+
+    video: string[];   
+    materials: string[];
+
+
 }
 
 interface ServerData {
@@ -41,11 +49,7 @@ const EditModalLessons: React.FC = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
 
-
-    //  const dispatch = useDispatch()
-    /*   const handleClose =() => {
-        //  dispatch(setClose())
-      } */
+ 
     const [formData, setFormData] = useState<LessonFormData>({
         title: "",
         description: "",
@@ -74,7 +78,7 @@ const EditModalLessons: React.FC = () => {
         if (files) {
             setFormData((prev) => ({
                 ...prev,
-                [name]: [...(prev[name as keyof LessonFormData] as File[]), ...Array.from(files)],
+                [name]: [...(prev[name as keyof LessonFormData] as unknown as File[]), ...Array.from(files)],
             }));
         }
     };
@@ -82,7 +86,7 @@ const EditModalLessons: React.FC = () => {
     const handleRemoveFile = (name: "video" | "materials", index: number) => {
         setFormData((prev) => ({
             ...prev,
-            [name]: (prev[name] as File[]).filter((_, i) => i !== index),
+            [name]: (prev[name] as unknown as File[]).filter((_, i) => i !== index),
         }));
     };
 
@@ -229,7 +233,7 @@ const EditModalLessons: React.FC = () => {
                                             </div>
                                         )}
 
-
+{/*
                                         {formData.video.length > 0 && formData.video.map((file, index) => (
                                             <div key={index} className={styles.fileItem}>
                                                 {file.name}
@@ -242,9 +246,18 @@ const EditModalLessons: React.FC = () => {
                                                 </button>
                                             </div>
                                         ))}
-                                    </div>
-                                </>
-                            )}
+                                        */}
+
+
+
+ 
+
+
+
+
+                                        </div>
+                                        </>
+                                        )}
 
                             {item.type === "file" && (
                                 <>
@@ -271,8 +284,19 @@ const EditModalLessons: React.FC = () => {
                                                 </button>
                                             </div>
                                         )}
-
-
+{formData.materials.map((fileName, index) => (
+    <div key={index} className={styles.fileItem}>
+        {fileName}  
+        <button
+            type="button"
+            className={styles.removeBtn}
+            onClick={() => handleRemoveFile("materials", index)}
+        >
+            ❌
+        </button>
+    </div>
+))}
+{/*
                                         {formData.materials.map((file, index) => (
                                             <div key={index} className={styles.fileItem}>
                                                 {file.name}
@@ -284,7 +308,8 @@ const EditModalLessons: React.FC = () => {
                                                     ❌
                                                 </button>
                                             </div>
-                                        ))}
+                                            ))}
+                                            */}
                                     </div>
                                 </>
                             )}

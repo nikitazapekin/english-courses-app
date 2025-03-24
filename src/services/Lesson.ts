@@ -12,8 +12,8 @@ interface GetLessonsResponse {
                 title: string,
                 description: string,
                 durability: string,
-                video: String[],
-                materials: String[]
+                video: string[];  // Changed from File[] to string[]
+    materials: string[]; 
             }>
         
     

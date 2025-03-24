@@ -12,6 +12,7 @@ interface LessonFormData {
     durability: string;
     video: File[];
     materials: File[];
+    id: number
 }
 
 const tutorLesson = [
@@ -32,6 +33,7 @@ const TutorModalLessons: React.FC = () => {
         durability: "",
         video: [],
         materials: [],
+        id: 1
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,7 +79,15 @@ const dispatch = useDispatch()
         });
 
         try {
-            dispatch(addLesson(formData))
+         
+        dispatch(addLesson({
+            ...formData,
+            video: formData.video.map(file => file.name),
+            materials: formData.materials.map(file => file.name),
+            id: Number(lastPathSegment)  
+        }));
+ 
+
             await LessonService.CreateLesson(formDataToSend);
 
              

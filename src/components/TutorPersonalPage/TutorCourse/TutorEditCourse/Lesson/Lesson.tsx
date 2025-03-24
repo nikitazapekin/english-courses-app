@@ -5,8 +5,10 @@ interface Props {
         title: string,
         description: string,
         durability: string,
-        video: String[],
-        materials: String[]
+     /*    video: String[],
+        materials: String[] */
+        video: string[];  // Changed to string[]
+        materials: string[];
     }
     index: number,
     handler: (lessonId: string) => void

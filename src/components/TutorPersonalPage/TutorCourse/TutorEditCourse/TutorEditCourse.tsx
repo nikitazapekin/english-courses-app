@@ -1,4 +1,3 @@
-
 import { useState, ChangeEvent, useEffect } from "react";
 import styles from "./TutorEditCourse.module.scss";
 import { dataPreview } from "./Consts";
@@ -9,7 +8,6 @@ import { useSelector } from "react-redux";
 import { OpenCourseSelector } from "../../../../store/selectors/OpenCourseSelector";
 import LessonService from "../../../../services/Lesson";
 import Lesson from "./Lesson/Lesson";
-
 import { setIsOpenEditModalLessons, setIsOpenTestsModal } from "../../../../store/slices/EditModalLesson/EditModalLesson";
 import TestService from "../../../../services/Test";
 import Test from "./Test/Test";
@@ -30,19 +28,19 @@ interface FormState {
     about_course: String[];
     tag: string;
 }
+
 interface Props {
-    id: string
+    id: string;
 }
+
 interface Test {
-
     id: number;
-    name: string,
+    name: string;
     test_number: number;
-    duration: string,
-    description: string,
-    topics: String[],
+    duration: string;
+    description: string;
+    topics: String[];
     course_id: number;
-
 }
 
 type Lesson = {
@@ -50,60 +48,62 @@ type Lesson = {
     title: string;
     description: string;
     durability: string;
-    video: String[];
-    materials: String[];
+    video: File[];
+    materials: File[]; 
+   /*  video: string[];
+    materials: string[]; */
 };
 
 type Lessons = Lesson[];
+
 const TutorEditCourse = ({ id }: Props) => {
-    const editCourse = useSelector(OpenCourseSelector)
-    //  const [lessons, setLessons] = useState<Lessons>()
-    //   const [tests, setTests] = useState<Test[]>()
-    const tests = useSelector(TestSelector)
-    const lessons = useSelector(LessonsSelector)
+    const editCourse = useSelector(OpenCourseSelector);
+    const tests = useSelector(TestSelector);
+    const lessons = useSelector(LessonsSelector);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [formState, setFormState] = useState<FormState>({
-        name: "", description: "", for: "",
+        name: "",
+        description: "",
+        for: "",
         logo: "",
-        fulldescription: "", for_what_reasons: [], about_course: [], tag: "",
+        fulldescription: "",
+        for_what_reasons: [],
+        about_course: [],
+        tag: "",
         course_for: []
     });
+
+    const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});
 
     useEffect(() => {
         const handleGet = async () => {
             try {
-                const repsonse = await LessonService.GetLessons(id)
-                console.log(repsonse)
-                if (repsonse.data.lessons) {
-                    dispatch(setLessons(repsonse.data.lessons))
-                    //   setLessons(repsonse.data.lessons)
+                const response = await LessonService.GetLessons(id);
+                if (response.data.lessons) {
+                    dispatch(setLessons(response.data.lessons));
                 }
-            } catch {
-
+            } catch (error) {
+                console.error("Ошибка при получении уроков:", error);
             }
-        }
-        handleGet()
-    }, [])
-
+        };
+        handleGet();
+    }, [id, dispatch]);
 
     useEffect(() => {
         const handleGetTests = async () => {
             try {
-                const repsonse = await TestService.GetTest(id)
-                console.log("TEST", repsonse)
-                if (repsonse.data.tests) {
-                    //   setTests(repsonse.data.tests)
-                    dispatch(setTests(repsonse.data.tests))
+                const response = await TestService.GetTest(id);
+                if (response.data.tests) {
+                    dispatch(setTests(response.data.tests));
                 }
-            } catch {
-
+            } catch (error) {
+                console.error("Ошибка при получении тестов:", error);
             }
-        }
-        handleGetTests()
-    }, [])
-
-
+        };
+        handleGetTests();
+    }, [id, dispatch]);
 
     useEffect(() => {
         if (editCourse.course) {
@@ -119,11 +119,7 @@ const TutorEditCourse = ({ id }: Props) => {
                 course_for: editCourse.course.course_for || []
             });
         }
-
-    }, [editCourse])
-
-    const [selectInputs, setSelectInputs] = useState<{ [key: string]: string }>({});
-
+    }, [editCourse]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -131,11 +127,7 @@ const TutorEditCourse = ({ id }: Props) => {
             ...prevState,
             [name]: value
         }));
-
-
-
     };
-
 
     const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.files && event.target.files[0]) {
@@ -153,7 +145,6 @@ const TutorEditCourse = ({ id }: Props) => {
         setFormState(prevState => ({ ...prevState, logo: "" }));
     };
 
-
     const handleAddItem = (name: keyof FormState) => {
         if (!selectInputs[name]) return;
         setFormState(prevState => ({
@@ -162,7 +153,6 @@ const TutorEditCourse = ({ id }: Props) => {
         }));
         setSelectInputs(prev => ({ ...prev, [name]: "" }));
     };
-
 
     const handleRemoveItem = (name: keyof FormState, index: number) => {
         setFormState(prevState => ({
@@ -173,40 +163,38 @@ const TutorEditCourse = ({ id }: Props) => {
 
     useEffect(() => {
         dispatch(setForm(formState));
-    }, [formState]);
+    }, [formState, dispatch]);
 
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         try {
-            const response = await CourseService.EditCourseInfo({ data: { ...formState, id: id } }, id);
-
+            await CourseService.EditCourseInfo({ data: { ...formState, id: id } }, id);
         } catch (error) {
-            console.error("Ошибка при создании курса:", error);
+            console.error("Ошибка при редактировании курса:", error);
         }
     };
+
     const handleOpenModal = (type: string) => {
         dispatch(setOpenModal({ type: type }));
     };
+
     const handleOpenModalLessons = (lessonId: string) => {
-
-        dispatch(setIsOpenEditModalLessons({ lessonId: lessonId }))
-    }
-
+        dispatch(setIsOpenEditModalLessons({ lessonId: lessonId }));
+    };
 
     const handleOpenModalTests = (testId: string) => {
-        dispatch(setIsOpenTestsModal({ testId: testId }))
-    }
+        dispatch(setIsOpenTestsModal({ testId: testId }));
+    };
 
-    const navigate = useNavigate()
     const handleDelete = async () => {
         try {
-            const response = await CourseService.DeleteCourse(id)
-            console.log(response)
-            navigate(`/tutor/personal/courses`)
-        } catch (e) {
-            console.log(e)
+            await CourseService.DeleteCourse(id);
+            navigate(`/tutor/personal/courses`);
+        } catch (error) {
+            console.error("Ошибка при удалении курса:", error);
         }
-    }
+    };
+
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>
@@ -253,7 +241,6 @@ const TutorEditCourse = ({ id }: Props) => {
                             {item.type === "select" && (
                                 <div className={styles.selectContainer}>
                                     <div className={styles.selectContainer__wrapper}>
-
                                         <input
                                             className={styles.panel__field__input}
                                             placeholder={`Добавить ${item.placeholder.toLowerCase()}`}
@@ -267,7 +254,6 @@ const TutorEditCourse = ({ id }: Props) => {
                                         >
                                             Добавить
                                         </button>
-
                                     </div>
                                     <ul className={styles.selectList}>
                                         {(formState[item.name as keyof FormState] as string[]).map((value, index) => (
@@ -287,60 +273,43 @@ const TutorEditCourse = ({ id }: Props) => {
                             )}
                         </div>
                     ))}
-                    <section className={styles.lessons}>
-                        <h2 className={styles.lessons__title}>
-                            Список уроков
-                        </h2>
-                        <div className={styles.lessons__list}>
-                            {!lessons && <p>Уроков к курсу нету</p>}
-                            {
-                                lessons.lessons && (
-                                    <>
-                                        {lessons.lessons.length > 0 && lessons.lessons?.map((item, index) => (
-                                            <Lesson
-                                                key={index}
-                                                item={item}
-                                                index={index}
-                                                handler={handleOpenModalLessons}
-                                            />
-                                        ))}
-
-
-
-                                    </>
-                                )}
-                        </div>
-                    </section>
-
-
-
-
-
-
 
                     <section className={styles.lessons}>
-                        <h2 className={styles.lessons__title}>
-                            Список тестов
-                        </h2>
+                        <h2 className={styles.lessons__title}>Список уроков</h2>
                         <div className={styles.lessons__list}>
-                            {tests.tests.map((item, index) => (
-                                <Test
+                       
+                                  {!lessons || !Array.isArray(lessons.lessons) || lessons.lessons.length === 0 ? (
+                            <p className={styles.emptyMessage}>Уроков пока нету...</p>
+                        ) : (
+                            lessons.lessons.map((item, index) => (
+                                <Lesson
                                     key={index}
                                     item={item}
                                     index={index}
-                                    handler={handleOpenModalTests}
+                                    handler={handleOpenModalLessons}
                                 />
-
-
-                            ))}
-
+                            ))
+                        )}
                         </div>
                     </section>
 
-
-
-
-
+                    <section className={styles.lessons}>
+                        <h2 className={styles.lessons__title}>Список тестов</h2>
+                        <div className={styles.lessons__list}>
+                            {!tests.tests || tests.tests.length === 0 ? (
+                                <p className={styles.emptyMessage}>Тестов пока нету...</p>
+                            ) : (
+                                tests.tests.map((item, index) => (
+                                    <Test
+                                        key={index}
+                                        item={item}
+                                        index={index}
+                                        handler={handleOpenModalTests}
+                                    />
+                                ))
+                            )}
+                        </div>
+                    </section>
 
                     <button className={styles.panel__btn} type="button" onClick={() => handleOpenModal("lesson")}>
                         Добавить урок
@@ -360,10 +329,8 @@ const TutorEditCourse = ({ id }: Props) => {
                     </button>
                 </form>
             </div>
-
-
         </section>
     );
 };
 
-export default TutorEditCourse;
+export default TutorEditCourse; 

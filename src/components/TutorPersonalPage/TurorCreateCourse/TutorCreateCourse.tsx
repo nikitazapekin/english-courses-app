@@ -7,7 +7,7 @@ import CourseService from "../../../services/Course";
 import TutorPamel from "../TutorPanel/TutorPanel";
 import { setCourse } from "../../../store/slices/OpenCourseDetails/OpenCourseDetails";
 import { TutorSelector } from "../../../store/selectors/Tutor.selector";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import ErrorModal from "./ErrorModal/ErrorModal";
 
 interface FormState {
@@ -136,7 +136,7 @@ const TutorCreateCourseComponent: React.FC = () => {
         }
         return true;
     };
-
+const navigate = useNavigate()
     const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
 
@@ -147,6 +147,7 @@ const TutorCreateCourseComponent: React.FC = () => {
         try {
             const response = await CourseService.CreateCourse(formState);
             console.log("Курс создан:", response.data);
+            navigate(`/tutor/personal/courses`)
         } catch (error) {
             console.error("Ошибка при создании курса:", error);
             setIsError(true);

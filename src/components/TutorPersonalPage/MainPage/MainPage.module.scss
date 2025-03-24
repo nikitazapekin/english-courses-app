@@ -1,3 +1,4 @@
+ 
 @import "../../../theme/theme";
 
 .main {
@@ -137,3 +138,41 @@
     height: 29px;
 }
     }
+
+
+    .btn {
+    margin-top: 10px;
+        width: 100%;
+        height: auto;
+        padding: 5px 10px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        font-family: "Nunito", sans-serif;
+
+
+
+        background-color: $red ;
+        color: #fff;
+        border-radius: 10px;
+
+
+}
+/* 
+
+.panel {
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    border-radius: 33px;
+    display: inline-flex;
+    flex-direction: column;
+    // align-items: center;
+    align-items: center;
+    height: auto;
+    position: sticky;
+    align-self: flex-start;
+
+    &__btn {
+        border-radius: 6px;
+    } */

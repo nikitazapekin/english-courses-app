@@ -5,8 +5,13 @@ interface Lesson {
     title: string,
     description: string,
     durability: string,
-    video: String[],
-    materials: String[]
+ 
+  /*   video: File[];
+    materials: File[];  */
+
+    video: string[];  // Changed from File[] to string[]
+    materials: string[]; 
+
 }
 
 interface LessonsSliceTypes {
@@ -19,8 +24,8 @@ interface LessonFormData {
     title: string;
     description: string;
     durability: string;
-    video: File[];
-    materials: File[];
+    video: string[];  // Changed from File[] to string[]
+    materials: string[]; 
 }
 
 const initialState: LessonsSliceTypes = {
@@ -37,19 +42,14 @@ const LessonsSlice = createSlice({
             state.lessons = action.payload
         },
    
-        addLesson(state, action: PayloadAction<LessonFormData>) {
-            const newLesson: Lesson = {
-                id: Date.now(),  
-                title: action.payload.title,
-                description: action.payload.description,
-                durability: action.payload.durability,
-                video: [], 
-                materials: [] 
-            };
-            state.lessons.push(newLesson);
+   
+        addLesson(state, action: PayloadAction<Lesson>) {
+            if (!state.lessons) {
+                state.lessons = [];
+            }
+            state.lessons.push(action.payload);
         },
         
- 
 
 
         editLesson(state, action: PayloadAction<{id: number, data: LessonFormData}>) {

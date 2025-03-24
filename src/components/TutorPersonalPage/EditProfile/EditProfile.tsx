@@ -74,11 +74,7 @@ const EditProfile = () => {
             setErrorMessage("Пожалуйста, введите email");
             return false;
         }
-      /*   if (!emailRegex.test(formData.email)) {
-            setIsError(true);
-            setErrorMessage("Пожалуйста, введите корректный email");
-            return false;
-        } */
+    
 
      
         if (formData.password.length>0 && formData.password.length < 6) {
