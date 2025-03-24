@@ -1,9 +1,13 @@
 import { useState, ChangeEvent, useEffect } from "react";
 import styles from "./TutorCreateCourse.module.scss";
 import { dataPreview } from "./Consts";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setForm, setOpenModal } from "../../../store/slices/CreateCourseSlice/CreateCourseSlice";
 import CourseService from "../../../services/Course";
+import TutorPamel from "../TutorPanel/TutorPanel";
+import { setCourse } from "../../../store/slices/OpenCourseDetails/OpenCourseDetails";
+import { TutorSelector } from "../../../store/selectors/Tutor.selector";
+import { useLocation } from "react-router-dom";
 
 interface FormState {
     name: string;
@@ -81,14 +85,42 @@ const TutorCreateCourseComponent: React.FC = () => {
         }
     };
 
+
+ const location = useLocation();
+    const lastPathSegment = location.pathname.split("/").pop();
+       
+        useEffect(() => {
+            const handleGetUser = async () => {
+                try {
+                    const response = await CourseService.GetCourseInfo(lastPathSegment!)
+                    dispatch(setCourse(response.data.courses))
+    
+                } catch (err) {
+                    //   navigate("/sign-in")
+                }
+            };
+            handleGetUser();
+    
+        }, [])
+        const tutor = useSelector(TutorSelector)
+
+
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>
+
+
+                <TutorPamel   username={tutor.user.username}
+                    email={tutor.user.email}
+                />
+
+
+                <div className={styles.panel__content}>
+
                 <div className={styles.panel__header}>
                     <h1 className={styles.panel__header__title}>Создайте свой курс</h1>
                 </div>
                 <form className={styles.panel__fields}>
-                    {/* Добавляем datalist для автозаполнения */}
                     {dataPreview.map(item => item.options && (
                         <datalist key={`datalist-${item.id}`} id={item.list}>
                             {item.options.map((option, index) => (
@@ -96,7 +128,6 @@ const TutorCreateCourseComponent: React.FC = () => {
                             ))}
                         </datalist>
                     ))}
-
                     {dataPreview.map(item => (
                         <div key={item.id} className={styles.panel__field}>
                             <label className={styles.panel__field__title}>{item.title}</label>
@@ -123,8 +154,7 @@ const TutorCreateCourseComponent: React.FC = () => {
                                     )}
                                 </div>
                             )}
-
-                            {/* Остальные типы полей остаются без изменений */}
+ 
                             {item.type === "image" && (
                                 <div className={styles.panel__field__wrapper}>
                                     {formState.logo ? (
@@ -166,8 +196,8 @@ const TutorCreateCourseComponent: React.FC = () => {
                                             placeholder={`Добавить ${item.placeholder.toLowerCase()}`}
                                             value={selectInputs[item.name] || ""}
                                             onChange={(e) => setSelectInputs(prev => ({ ...prev, [item.name]: e.target.value }))}
-                                        />
-                                    )}
+                                            />
+                                        )}
                                     <button
                                         className={styles.addButton}
                                         type="button"
@@ -202,6 +232,7 @@ const TutorCreateCourseComponent: React.FC = () => {
                         Сохранить курс
                     </button>
                 </form>
+                                        </div>
             </div>
         </section>
     );

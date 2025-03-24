@@ -8,16 +8,21 @@
     display: flex;
     justify-content: center;
     height: 100%;
-
+&__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
     &__container {
         max-width: 1030px;
         width: 100%;
         margin: 0 auto;
         display: flex;
-        flex-direction: column;
+   
         align-items: center;
-        //   background-color: red;
+        column-gap: 50px;
+  
     }
 
     &__header {
@@ -39,6 +44,7 @@
         flex-direction: column;
         width: 100%;
         row-gap: 20px;
+   
 
     }
 
@@ -46,6 +52,7 @@
         display: flex;
         flex-direction: column;
         row-gap: 5px;
+        width: 100%;
 
 
         &__wrapper {
@@ -80,6 +87,7 @@
             color: $black;
             font-family: "Nunito", sans-serif;
             padding: 5px;
+            width: 100%;
         }
 
         &__imageInput {
@@ -129,4 +137,18 @@
 
 
 
+}
+
+.inputWithAutocomplete, .selectContainer {
+    display: flex;
+    column-gap: 20px;
+}
+
+.addButton {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
+    background-color: transparent;
 }
