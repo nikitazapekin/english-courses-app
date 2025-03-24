@@ -9,11 +9,15 @@ import { useSelector } from "react-redux";
 import { OpenCourseSelector } from "../../../../store/selectors/OpenCourseSelector";
 import LessonService from "../../../../services/Lesson";
 import Lesson from "./Lesson/Lesson";
- 
+
 import { setIsOpenEditModalLessons, setIsOpenTestsModal } from "../../../../store/slices/EditModalLesson/EditModalLesson";
 import TestService from "../../../../services/Test";
 import Test from "./Test/Test";
 import { useNavigate } from "react-router-dom";
+import { setTests } from "../../../../store/slices/TestSlice/TestSlice";
+import { TestSelector } from "../../../../store/selectors/TestSelector";
+import { setLessons } from "../../../../store/slices/Lessons/Lessons";
+import { LessonsSelector } from "../../../../store/selectors/LessonsSelector";
 
 interface FormState {
     name: string;
@@ -53,10 +57,12 @@ type Lesson = {
 type Lessons = Lesson[];
 const TutorEditCourse = ({ id }: Props) => {
     const editCourse = useSelector(OpenCourseSelector)
-    const [lessons, setLessons] = useState<Lessons>()
-    const [tests, setTests] = useState<Test[]>()
+    //  const [lessons, setLessons] = useState<Lessons>()
+    //   const [tests, setTests] = useState<Test[]>()
+    const tests = useSelector(TestSelector)
+    const lessons = useSelector(LessonsSelector)
     const dispatch = useDispatch();
-    
+
     const [formState, setFormState] = useState<FormState>({
         name: "", description: "", for: "",
         logo: "",
@@ -70,8 +76,8 @@ const TutorEditCourse = ({ id }: Props) => {
                 const repsonse = await LessonService.GetLessons(id)
                 console.log(repsonse)
                 if (repsonse.data.lessons) {
-
-                    setLessons(repsonse.data.lessons)
+                    dispatch(setLessons(repsonse.data.lessons))
+                    //   setLessons(repsonse.data.lessons)
                 }
             } catch {
 
@@ -87,8 +93,8 @@ const TutorEditCourse = ({ id }: Props) => {
                 const repsonse = await TestService.GetTest(id)
                 console.log("TEST", repsonse)
                 if (repsonse.data.tests) {
-                    setTests(repsonse.data.tests)
-
+                    //   setTests(repsonse.data.tests)
+                    dispatch(setTests(repsonse.data.tests))
                 }
             } catch {
 
@@ -288,9 +294,9 @@ const TutorEditCourse = ({ id }: Props) => {
                         <div className={styles.lessons__list}>
                             {!lessons && <p>Уроков к курсу нету</p>}
                             {
-                                lessons && (
+                                lessons.lessons && (
                                     <>
-                                        {lessons.length > 0 && lessons?.map((item, index) => (
+                                        {lessons.lessons.length > 0 && lessons.lessons?.map((item, index) => (
                                             <Lesson
                                                 key={index}
                                                 item={item}
@@ -317,7 +323,7 @@ const TutorEditCourse = ({ id }: Props) => {
                             Список тестов
                         </h2>
                         <div className={styles.lessons__list}>
-                            {tests?.map((item, index) => (
+                            {tests.tests.map((item, index) => (
                                 <Test
                                     key={index}
                                     item={item}

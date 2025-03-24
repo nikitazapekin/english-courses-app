@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styles from "./TutorModalLessons.module.scss";
 import LessonService from "../../../../services/Lesson";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
 
 interface LessonFormData {
     title: string;
@@ -55,7 +57,7 @@ const TutorModalLessons: React.FC = () => {
             [name]: (prev[name] as File[]).filter((_, i) => i !== index),
         }));
     };
-
+const dispatch = useDispatch()
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -75,6 +77,10 @@ const TutorModalLessons: React.FC = () => {
 
         try {
             await LessonService.CreateLesson(formDataToSend);
+
+             
+                    dispatch(setOpenModal({ type: ""  }));
+              
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
         }

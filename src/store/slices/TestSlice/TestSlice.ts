@@ -1,75 +1,82 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
- interface Test {
-   title_test: string,
+interface Test {
+    title_test: string,
     description: string,
     topics: String[],
     questions: Array<{
 
         title: string,
-        answers: String[], 
-        answer: string, 
-url: string
-    }>  
+        answers: String[],
+        answer: string,
+        url: string
+    }>
+
+}
+
+interface Tests {
+    
+    
+        id: number;
+        name:  string,
+        test_number:number;
+        duration:  string,
+        description: string,
+        topics: String[],
+        course_id: number;
+   
+}
+
  
- }
 interface TestSliceTypes {
     message: string;
-test: Test
+    test: Test
 
     loading: boolean;
     error: null | string;
     tutorPage: string;
+    tests: Tests[]
 }
+
 
 const initialState: TestSliceTypes = {
     message: "",
-   test: {
-    title_test: "",
-    description: "",
-    topics:[],
-    questions: [],
-   },
+    test: {
+        title_test: "",
+        description: "",
+        topics: [],
+        questions: [],
+    },
     loading: false,
     error: null,
     tutorPage: "",
+    tests: []
 };
 
 const TestSlice = createSlice({
-    name: "tutor", 
+    name: "tutor",
     initialState,
     reducers: {
-     /*    setTutor(state, action: PayloadAction<Partial<Tutor>>) {
-            state.user = { ...state.user, ...action.payload }; 
-        },
-        setTutorPage(state, action: PayloadAction<{ page: string }>) {
-            state.tutorPage = action.payload.page;
-        }, */
+  
 
-        setTest(state, action:PayloadAction<Test>) {
-state.test = action.payload
+        setTest(state, action: PayloadAction<Test>) {
+            state.test = action.payload
+        },
+        setTests(state, action: PayloadAction<Tests[]>) {
+            state.tests = action.payload
         }
+
+
+
     },
 });
 
-export const { 
+export const {
     //setTutorPage, setTutor 
 
-setTest
+    setTest,
+    setTests
 } = TestSlice.actions;
 export default TestSlice.reducer;
 
  
-
-
-
-/* export const modalTest = [
-
-    {id: 5, placeholder: "Введите название теста", title: "Название теста", type: "input", name: "title_test"},
-    {id: 6, placeholder: "Введите описание теста", title: "Описание теста", type: "input", name: "description_test"},
-    {id: 7, placeholder: "Добавьте темы теста", title: "Темы теста", type: "array", name: "topics"},
-    {id: 1, placeholder: "Введите вопрос", title: "Вопрос теста", type: "input", name: "title"},
-    {id: 2, placeholder: "Введите варианты ответов", title: "Ответы", type: "array", name: "answers"},
-    {id: 3, placeholder: "Ответ", title: "Ответ", type: "input", name: "answer"},
-    {id: 4, placeholder: "Изображение", title: "Изображение вопроса", type: "image", name: "url"},
-] */

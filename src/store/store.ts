@@ -15,6 +15,7 @@ import TestSlice from "./slices/TestSlice/TestSlice"
 import CourseModal from "./slices/CourseModal/CourseModal"
 import AddAchievementSlice from "./slices/AddAchievementSlice/AddAchievementSlice"
 import EditModalLesson from "./slices/EditModalLesson/EditModalLesson"
+import  Lessons from "./slices/Lessons/Lessons"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
     FormSlice: FormSlice,
@@ -28,7 +29,8 @@ export const rootReducer = combineReducers({
     CourseModal: CourseModal,
     TestSlice:  TestSlice,
     AddAchievementSlice: AddAchievementSlice,
-    EditModalLesson: EditModalLesson
+    EditModalLesson: EditModalLesson,
+    LessonsSlice: Lessons
 
 });
 export const store = configureStore({

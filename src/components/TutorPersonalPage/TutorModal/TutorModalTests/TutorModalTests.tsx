@@ -103,7 +103,7 @@ const TutorModalTests = () => {
         try {
             await TestService.CreateTest({ data: { ...formData, course_id: lastPathSegment } });
 
-
+       dispatch(setOpenModal({ type: ""  }));
         } catch {
 
         }

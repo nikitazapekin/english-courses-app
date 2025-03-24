@@ -157,9 +157,10 @@ const EditModalLessons: React.FC = () => {
 const navigate = useNavigate()
  const handleDelete =async ()=> {
 try {
+    
     const repsonce = await LessonService.DeleteLesson(editModal.lessonId)
     dispatch(setClose())
-    navigate(`/tutor/personal/courses/${editModal.lessonId}`)
+   navigate(`/tutor/personal/courses/${lastPathSegment}`)
 } catch(e) {
 
     console.log(e)
