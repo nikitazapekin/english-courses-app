@@ -17,7 +17,6 @@ interface Response {
    
 }
 export default class AchievementsService {
-
     static async createAchievement( data: Achievement  ): Promise<AxiosResponse<any>> {
         return $api.post<any>('/achievement/createAchievement', data)
     }

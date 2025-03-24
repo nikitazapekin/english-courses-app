@@ -18,7 +18,7 @@ interface AddAchievementSliceSliceTypes {
     isOpenModalAchievements: boolean,
     achievements: Achievement[],
     lastId: number,
-    selectedAchievement: Achievement | null, // Изменил на null для начального состояния
+    selectedAchievement: Achievement | null, 
     isOpenSelectedAchievement: boolean
 }
 
@@ -29,7 +29,7 @@ const initialState: AddAchievementSliceSliceTypes = {
     error: null,
     achievements: [],
     lastId: 0,
-    selectedAchievement: null, // Начальное значение null
+    selectedAchievement: null,  
     isOpenSelectedAchievement: false
 };
 
@@ -78,7 +78,41 @@ const AddAchievementSliceSlice = createSlice({
         closeAchievement(state) {
             state.selectedAchievement = null;
             state.isOpenSelectedAchievement = false;
+        }, 
+
+     /*    updateAchievement(state, action: PayloadAction<Achievement>) {
+
+        } */
+
+
+     updateAchievement(state, action: PayloadAction<{currentTitle: string; updatedData: Achievement}>) {
+        const { currentTitle, updatedData } = action.payload;
+        
+        // Находим индекс достижения с указанным currentTitle
+        const achievementIndex = state.achievements.findIndex(
+            ach => ach.title === currentTitle
+        );
+    
+        if (achievementIndex !== -1) {
+            // Обновляем найденное достижение
+            state.achievements[achievementIndex] = {
+                ...state.achievements[achievementIndex],
+                ...updatedData
+            };
+    
+            // Если обновляли выбранное достижение, обновляем и его
+            if (state.selectedAchievement?.title === currentTitle) {
+                state.selectedAchievement = {
+                    ...state.selectedAchievement,
+                    ...updatedData
+                };
+            }
+        } else {
+            console.error(`Achievement with title "${currentTitle}" not found`);
         }
+    }
+
+    
     },
 });
 
@@ -87,104 +121,7 @@ export const {
     setAchievements,
     addAchievement,
     selectAchievement,
-    closeAchievement
+    closeAchievement,
+    updateAchievement
 } = AddAchievementSliceSlice.actions;
-export default AddAchievementSliceSlice.reducer;
-/* import {
-    createSlice,
-    PayloadAction
-} from '@reduxjs/toolkit';
-
-
-
-
-interface Achievement {
-    logo: string,
-    title: string,
-    date: string,
-    id?: number
-
-}
-
-interface AddAchievementSliceSliceTypes {
-    message: string
-
-    loading: boolean,
-    error: null | string,
-    isOpenModalAchievements: boolean,
-
-    achievements: Achievement[],
-    lastId: number,
-    selectedAchievement: Achievement
-    isOpenSelectedAchievement: boolean
-}
-
-const initialState: AddAchievementSliceSliceTypes = {
-    message: "",
-    isOpenModalAchievements: false,
-
-    loading: false,
-    error: null,
-    achievements: [],
-    lastId: 0,
-    selectedAchievement: {
-        logo: '',
-        title: '',
-        date: ''
-    },
-    isOpenSelectedAchievement: false
-
-
-};
-const AddAchievementSliceSlice = createSlice({
-    name: 'list',
-    initialState,
-    reducers: {
-
-
-        setOpenModalAchievements(state) {
-            state.isOpenModalAchievements = !state.isOpenModalAchievements
-        },
-
-        setAchievements(state, action: PayloadAction<Achievement[]>) {
-
-            console.log("pay", action.payload)
-            const achiv = action.payload.map((item, index) => {
-                return { ...item, id: index }
-            })
-            console.log("ac", achiv)
-            state.achievements = achiv
-        },
-
-
-        addAchievement(state, action: PayloadAction<Achievement>) {
-            state.achievements.push(action.payload)
-        },
-
-
-        selectAchievement(state, action: PayloadAction<number>) {
-            //   state.selectedAchievement = action.payload
-            state.isOpenSelectedAchievement = true
-
-            //   console.log("id", action.payload, state.achievements)
-        },
-        closeAchievement(state) {
-            state.selectedAchievement = {  logo: '', title: '',  date: '' }
-                state.isOpenSelectedAchievement = false
-        }
-
-    },
-
-
-});
-
-export const {
-    setOpenModalAchievements,
-    setAchievements,
-    addAchievement,
-    selectAchievement,
-    closeAchievement
-
-} = AddAchievementSliceSlice.actions;
-export default AddAchievementSliceSlice.reducer;
- */
+export default AddAchievementSliceSlice.reducer; 
