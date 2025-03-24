@@ -46,7 +46,7 @@ const AddAchievementSliceSlice = createSlice({
                 return { ...item, id: item.id !== undefined ? item.id : index }
             });
             state.achievements = achiv;
-            // Обновляем lastId до максимального значения
+        
             if (achiv.length > 0) {
                 state.lastId = Math.max(...achiv.map(a => a.id || 0));
             }
