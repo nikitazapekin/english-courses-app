@@ -3,20 +3,20 @@ import styles from "./EditCourseCardsModal.module.scss";
 import LessonService from "../../../../../services/Lesson";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector"; 
+import { editModalSelector } from "../../../../../store/selectors/EditLessonModal.selector";
 import { useDispatch } from "react-redux";
 import { setClose } from "../../../../../store/slices/EditModalLesson/EditModalLesson";
 interface LessonFormData {
     title: string;
     description: string;
     durability: string;
-    video: File[]; 
-    materials: File[];  
+    video: File[];
+    materials: File[];
 }
 
 interface ServerData {
-    video: string;  
-    materials: string;  
+    video: string;
+    materials: string;
 }
 
 interface LessonResp {
@@ -41,10 +41,10 @@ const EditModalLessons: React.FC = () => {
     const lastPathSegment = location.pathname.split("/").pop();
 
 
-  //  const dispatch = useDispatch()
-  /*   const handleClose =() => {
-      //  dispatch(setClose())
-    } */
+    //  const dispatch = useDispatch()
+    /*   const handleClose =() => {
+        //  dispatch(setClose())
+      } */
     const [formData, setFormData] = useState<LessonFormData>({
         title: "",
         description: "",
@@ -92,7 +92,7 @@ const EditModalLessons: React.FC = () => {
         }));
     };
 
- 
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -101,24 +101,25 @@ const EditModalLessons: React.FC = () => {
         formDataToSend.append("description", formData.description);
         formDataToSend.append("durability", formData.durability);
         formDataToSend.append("id", lastPathSegment!);
-     
+
         if (!serverData.video) {
             formDataToSend.append("removeVideo", "true");
         }
         if (!serverData.materials) {
             formDataToSend.append("removeMaterials", "true");
         }
-    
+
         formData.video.forEach((file) => {
             formDataToSend.append("video", file);
         });
-    
+
         formData.materials.forEach((file) => {
             formDataToSend.append("materials", file);
         });
-    
+
         try {
             await LessonService.EditLesson(lastPathSegment!, editModal.lessonId, formDataToSend);
+            dispatch(setClose())
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
         }
@@ -150,22 +151,22 @@ const EditModalLessons: React.FC = () => {
 
         handleGet();
     }, [lastPathSegment, editModal.lessonId]);
- const dispatch = useDispatch()
- const handleClose =() => {
-    dispatch(setClose())
- }
-const navigate = useNavigate()
- const handleDelete =async ()=> {
-try {
-    
-    const repsonce = await LessonService.DeleteLesson(editModal.lessonId)
-    dispatch(setClose())
-   navigate(`/tutor/personal/courses/${lastPathSegment}`)
-} catch(e) {
+    const dispatch = useDispatch()
+    const handleClose = () => {
+        dispatch(setClose())
+    }
+    const navigate = useNavigate()
+    const handleDelete = async () => {
+        try {
 
-    console.log(e)
- }
-}
+            const repsonce = await LessonService.DeleteLesson(editModal.lessonId)
+            dispatch(setClose())
+            navigate(`/tutor/personal/courses/${lastPathSegment}`)
+        } catch (e) {
+
+            console.log(e)
+        }
+    }
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -199,7 +200,7 @@ try {
 
                                     <div className={styles.fileList}>
                                         {/* Отображаем видео с сервера */}
-                                        {serverData.video.length>100 && (
+                                        {serverData.video.length > 100 && (
                                             <div className={styles.fileItem}>
                                                 <video
                                                     className={styles.lesson__video}
@@ -219,8 +220,8 @@ try {
                                             </div>
                                         )}
 
-                                
-                                        {formData.video.length>0 && formData.video.map((file, index) => (
+
+                                        {formData.video.length > 0 && formData.video.map((file, index) => (
                                             <div key={index} className={styles.fileItem}>
                                                 {file.name}
                                                 <button
@@ -290,13 +291,13 @@ try {
                     <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}
                         onClick={handleDelete}
                     >
-                Удалить
+                        Удалить
                     </button>
                 </form>
             </div>
 
             <div className={styles.modal__overlay}
-        onClick={handleClose}
+                onClick={handleClose}
             />
         </div>
     );

@@ -2,7 +2,7 @@ import styles from "./TutorModalTests.module.scss";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { setTests, setOpenModal } from "../../../../store/slices/CreateCourseSlice/CreateCourseSlice";
-import { setTest } from "../../../../store/slices/TestSlice/TestSlice";
+import { addTest, setTest } from "../../../../store/slices/TestSlice/TestSlice";
 import TestService from "../../../../services/Test";
 import { useLocation } from "react-router-dom";
 
@@ -44,26 +44,26 @@ const TutorModalTests = () => {
             questions: [...prev.questions, { title: "", answers: [""], answer: "", url: "" }],
         }));
     };
-    
+
     const handleQuestionChange = (qIndex: number, value: string) => {
 
-            setFormData((prev) => {
-                const newQuestions = [...prev.questions];
+        setFormData((prev) => {
+            const newQuestions = [...prev.questions];
             newQuestions[qIndex].title = value;
             return { ...prev, questions: newQuestions };
         });
     };
     const handleAddAnswer = (qIndex: number) => {
         setFormData((prev) => {
-            const newQuestions = [...prev.questions]; 
+            const newQuestions = [...prev.questions];
             if (newQuestions[qIndex].answers.length === 0 || newQuestions[qIndex].answers[newQuestions[qIndex].answers.length - 1] !== "") {
                 newQuestions[qIndex].answers.push("");
             }
-    
+
             return { ...prev, questions: newQuestions };
         });
     };
-    
+
     const handleAnswerChange = (qIndex: number, aIndex: number, value: string) => {
         setFormData((prev) => {
             const newQuestions = [...prev.questions];
@@ -101,14 +101,16 @@ const TutorModalTests = () => {
     const handleSubmit = async () => {
 
         try {
-            await TestService.CreateTest({ data: { ...formData, course_id: lastPathSegment } });
+            dispatch(setOpenModal({ type: "" }));
+            dispatch(addTest({ test: formData }))
+       const response=     await TestService.CreateTest({ data: { ...formData, course_id: lastPathSegment } });
 
-       dispatch(setOpenModal({ type: ""  }));
+       //     dispatch(addTest({ test: {...formData}))
         } catch {
 
         }
- 
-        handleClose();
+
+      //  handleClose();
     };
 
     const handleClose = () => {

@@ -125,6 +125,9 @@ export default class TestService {
         return $api.put<any>(`/test/editTestById?id=${id}`, {formData: formData})
          
     }  
-
+    static async DeleteTestById(id: string): Promise<AxiosResponse<Response>> {
+        return $api.delete<any>(`/test/deleteTestById?id=${id}` )
+         
+    } 
 
 }

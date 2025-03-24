@@ -203,19 +203,19 @@ const EditTestModal: React.FC = () => {
             ],
         }));
     };
-/*
-  title_test: string,
-    description: string,
-    topics: String[],
-    questions: Array<{
-
-        title: string,
-        answers: String[],
-        answer: string,
-        url: string
-    }>
-
-    */
+    /*
+      title_test: string,
+        description: string,
+        topics: String[],
+        questions: Array<{
+    
+            title: string,
+            answers: String[],
+            answer: string,
+            url: string
+        }>
+    
+        */
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -223,15 +223,25 @@ const EditTestModal: React.FC = () => {
 
             const response = await TestService.EditTestById({ id: editModal.testId, formData: formData });
             console.log(response);
-            dispatch(editTest({updatedTest: formData,  id: Number(editModal.testId)}))
+            dispatch(editTest({ updatedTest: formData, id: Number(editModal.testId) }))
+            dispatch(setClose())
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
         }
     };
-const dispatch = useDispatch()
-const handleClose = ()=> {
-    dispatch(setClose())
-}
+    const dispatch = useDispatch()
+    const handleClose = () => {
+        dispatch(setClose())
+    }
+
+
+    const handleDelete = async () => {
+        try {
+            const reposnse = await TestService.DeleteTestById(editModal.testId)
+        } catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -384,18 +394,19 @@ const handleClose = ()=> {
                     <button type="submit" className={styles.modal__btn}>
                         Сохранить
                     </button>
-                    <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}>
-                     Удалить
+                    <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}
+                    onClick={handleDelete}
+                    >
+                        Удалить
                     </button>
                 </form>
             </div>
-            <div className={styles.modal__overlay} 
-            
-            onClick={handleClose}
+            <div className={styles.modal__overlay}
+
+                onClick={handleClose}
             />
         </div>
     );
 };
 
 export default EditTestModal;
- 
