@@ -38,7 +38,21 @@ interface TestSliceTypes {
     tests: Tests[]
 }
 
+interface Question {
+    id?: number;
+    question: string;
+    answers: string[];
+    correct_answer: string;
+    question_image: string | null;
+}
 
+interface TestFormData {
+    title: string;
+    duration: string;
+    description: string;
+    topics: string[];
+    questions: Question[];
+}
 const initialState: TestSliceTypes = {
     message: "",
     test: {
@@ -64,18 +78,45 @@ const TestSlice = createSlice({
         },
         setTests(state, action: PayloadAction<Tests[]>) {
             state.tests = action.payload
+        },
+        deleteTest(state, action: PayloadAction<{id: number}>) {
+            state.tests = state.tests.filter(test => test.id !== action.payload.id)
+        },
+ 
+        editTest(state, action: PayloadAction<{id: number, updatedTest: TestFormData}>) {
+            const index = state.tests.findIndex(test => test.id === action.payload.id);
+            if (index !== -1) {
+                state.tests[index] = {
+                    ...state.tests[index],
+                    name: action.payload.updatedTest.title,
+                    duration: action.payload.updatedTest.duration,
+                    description: action.payload.updatedTest.description,
+                    topics: action.payload.updatedTest.topics,
+                   
+                };
+            }
+        }
+   /*      editTest(state, action: PayloadAction<{id: number, updatedTest:TestFormData}>) {
+            const index = state.tests.findIndex(test => test.id === action.payload.id);
+            if (index !== -1) {
+                state.tests[index] = {
+                    ...state.tests[index],
+                    ...action.payload.updatedTest
+                };
+            }
         }
 
-
-
+ */
     },
 });
 
 export const {
-    //setTutorPage, setTutor 
-
+ 
     setTest,
-    setTests
+    setTests,
+    deleteTest, 
+    editTest
+    
 } = TestSlice.actions;
 export default TestSlice.reducer;
 

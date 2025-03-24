@@ -6,6 +6,7 @@ import { editModalSelector } from "../../../../../store/selectors/EditLessonModa
 import TestService from "../../../../../services/Test";
 import { useDispatch } from "react-redux";
 import { setClose } from "../../../../../store/slices/EditModalLesson/EditModalLesson";
+import { editTest } from "../../../../../store/slices/TestSlice/TestSlice";
 
 interface TestFormData {
     title: string;
@@ -202,7 +203,19 @@ const EditTestModal: React.FC = () => {
             ],
         }));
     };
+/*
+  title_test: string,
+    description: string,
+    topics: String[],
+    questions: Array<{
 
+        title: string,
+        answers: String[],
+        answer: string,
+        url: string
+    }>
+
+    */
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -210,6 +223,7 @@ const EditTestModal: React.FC = () => {
 
             const response = await TestService.EditTestById({ id: editModal.testId, formData: formData });
             console.log(response);
+            dispatch(editTest({updatedTest: formData,  id: Number(editModal.testId)}))
         } catch (error) {
             console.error("Ошибка при отправке данных:", error);
         }
@@ -367,7 +381,7 @@ const handleClose = ()=> {
                     <button type="button" className={styles.addBtn} onClick={handleAddQuestion}>
                         Добавить вопрос
                     </button>
-                    <button type="button" className={styles.modal__btn}>
+                    <button type="submit" className={styles.modal__btn}>
                         Сохранить
                     </button>
                     <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}>
