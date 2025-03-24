@@ -17,8 +17,8 @@ const videos = Array.from({ length: 16 }).map((_, index) => ({
 
 interface Props {
     items: {
-        id: number,
-        image: string,
+       id?: number,
+        logo: string,
         date: string,
         title: string
     }[]
@@ -115,7 +115,7 @@ function Swiper({ items }: Props) {
                             {group.map((video) => (
                                 <div key={video.id} className={styles.videoContainer}>
                                     <div className={styles.card}>
-                                        <img src={video.image}
+                                        <img src={video.logo}
                                             className={styles.card__image}
                                             alt="Logo"
                                         />

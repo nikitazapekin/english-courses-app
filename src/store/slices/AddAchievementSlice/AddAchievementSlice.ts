@@ -2,51 +2,75 @@ import {
     createSlice,
     PayloadAction
 } from '@reduxjs/toolkit';
- 
 
- 
+
+
+
+interface Achievement {
+    logo: string,
+    title: string,
+    date: string,
+    id?: number
+
+}
+
 interface AddAchievementSliceSliceTypes {
     message: string
- //   user: Admin,
+    //   user: Admin,
     loading: boolean,
     error: null | string,
- isOpenModalAchievements: boolean
+    isOpenModalAchievements: boolean,
+
+    achievements: Achievement[],
+    lastId: number
 }
 
 const initialState: AddAchievementSliceSliceTypes = {
     message: "",
     isOpenModalAchievements: false,
-  
+
     loading: false,
     error: null,
-   
+    achievements: [],
+    lastId: 0,
+
+
 };
 const AddAchievementSliceSlice = createSlice({
     name: 'list',
     initialState,
     reducers: {
-       
+
 
         setOpenModalAchievements(state) {
             state.isOpenModalAchievements = !state.isOpenModalAchievements
-        }
-   /*      setAdmin(state, action: PayloadAction<Admin>) {
-            state.user = action.payload
- 
         },
-        setAdminPage(state, action: PayloadAction<{ page: string }>) {
-            state.tutorPage = action.payload.page
+
+        setAchievements(state, action: PayloadAction<Achievement[]>) {
+
+            console.log("pay", action.payload)
+            const achiv = action.payload.map((item, index) => {
+                return { ...item, id: index }
+            })
+            console.log("ac", achiv)
+            state.achievements = achiv
+        },
+
+
+        addAchievement(state, action: PayloadAction<Achievement>) {
+
         }
- */
+
     },
 
 
 });
 
-export const {  
-    setOpenModalAchievements
-//setAdminPage,
-  //  setAdmin
+export const {
+    setOpenModalAchievements,
+    setAchievements,
+    addAchievement
+
 } = AddAchievementSliceSlice.actions;
 export default AddAchievementSliceSlice.reducer;
  

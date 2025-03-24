@@ -2,13 +2,15 @@ import Swiper from "./Swiper/Swiper"
 import styles from "./AddAchievements.module.scss"
 import Logo from "../../../assets/Tutor/course1.jpeg"
 import { useDispatch } from "react-redux"
-import { setOpenModalAchievements } from "../../../store/slices/AddAchievementSlice/AddAchievementSlice"
+import { setAchievements, setOpenModalAchievements } from "../../../store/slices/AddAchievementSlice/AddAchievementSlice"
 import Modal from "./Modal/Modal"
 import { useSelector } from "react-redux"
 import { AddAchievementSelectorPage } from "../../../store/selectors/AddAchievementSelector"
+import { useEffect } from "react"
+import AchievementsService from "../../../services/Achievements"
 //import { AddAchievementSelectorPage } from "../../../store/selectors/addAchievement"
 //import { AddAchievementSelectorPage } from "../../../store/selectors/AddAchievement"
-const achievements = [
+/* const achievements = [
     {
         id: 1,
         image: Logo,
@@ -39,19 +41,36 @@ const achievements = [
         date: "2022-12-12",
         title: "Test"
     },
-]
+] */
 const AddAchievements = () => {
+
+
+    const achievements = useSelector(AddAchievementSelectorPage)
     const dispatch = useDispatch()
     const handleSubmit = () => {
         dispatch(setOpenModalAchievements())
     }
+
+    useEffect(() => {
+        const handleGet = async () => {
+            try {
+                const response = await AchievementsService.getAchievement()
+                console.log("resp", response)
+                dispatch(setAchievements(response.data.achievements))
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        handleGet()
+    }, [])
     const addAchievementSlice = useSelector(AddAchievementSelectorPage)
     return (
 
         <div className={styles.edit}>
             <h1 className={styles.edit__title}>Ваши достижения</h1>
+         
             <div className={styles.edit__content}>
-                <Swiper items={achievements}
+                <Swiper items={achievements.achievements}
                 />
             </div>
             <button className={`${styles.edit__btn} ${styles.edit__pink}`} type="submit" onClick={handleSubmit}>
@@ -60,9 +79,6 @@ const AddAchievements = () => {
             <button className={styles.edit__btn} type="submit" onClick={handleSubmit}>
                 Сохранить изменения
             </button>
-
-
-
             {addAchievementSlice.isOpenModalAchievements && (
                 <Modal />
             )}

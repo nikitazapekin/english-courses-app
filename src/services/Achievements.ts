@@ -8,10 +8,22 @@ interface Achievement {
     date: string 
 
 }
+
+interface Response {
+ 
+        message: string,
+        achievements: Achievement[]
+   
+}
 export default class AchievementsService {
 
     static async createAchievement( data: Achievement  ): Promise<AxiosResponse<any>> {
         return $api.post<any>('/achievement/createAchievement', data)
     }
    
+
+
+    static async getAchievement(   ): Promise<AxiosResponse<Response>> {
+        return $api.get<Response>('/achievement/getAchievement')
+    }
 }
