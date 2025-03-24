@@ -36,10 +36,7 @@ const LessonsSlice = createSlice({
         setLessons(state, action: PayloadAction<Lesson[]>) {
             state.lessons = action.payload
         },
-       /*  addLesson(state, action: PayloadAction<LessonFormData>) {
-
-        }, */
-
+   
         addLesson(state, action: PayloadAction<LessonFormData>) {
             const newLesson: Lesson = {
                 id: Date.now(),  
