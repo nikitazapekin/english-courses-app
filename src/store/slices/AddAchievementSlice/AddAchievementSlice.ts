@@ -58,7 +58,7 @@ const AddAchievementSliceSlice = createSlice({
 
 
         addAchievement(state, action: PayloadAction<Achievement>) {
-
+            state.achievements.push(action.payload)
         }
 
     },
@@ -73,4 +73,3 @@ export const {
 
 } = AddAchievementSliceSlice.actions;
 export default AddAchievementSliceSlice.reducer;
- 

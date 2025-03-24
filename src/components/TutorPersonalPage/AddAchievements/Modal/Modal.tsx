@@ -2,7 +2,7 @@
 import { useDispatch } from "react-redux";
 import { fields } from "./Consts";
 import styles from "./Modal.module.scss"
-import { setOpenModalAchievements } from "../../../../store/slices/AddAchievementSlice/AddAchievementSlice";
+import { addAchievement, setOpenModalAchievements } from "../../../../store/slices/AddAchievementSlice/AddAchievementSlice";
 import AchievementsService from "../../../../services/Achievements";
 import { useState } from "react";
 
@@ -38,8 +38,7 @@ const Modal = () => {
             }
         };
         reader.readAsDataURL(file);
-
-        // Конвертируем в base64 для отправки на сервер
+ 
         const base64Reader = new FileReader();
         base64Reader.onload = () => {
             setFormData({
@@ -63,6 +62,8 @@ const Modal = () => {
                 logo: formData.logo
             });
             handleClose();
+
+            dispatch(addAchievement(formData))
         } catch (e) {
             console.error('Ошибка при добавлении достижения:', e);
             alert('Произошла ошибка при добавлении достижения');
