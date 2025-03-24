@@ -1,12 +1,11 @@
  
 import { useDispatch } from "react-redux";
 import { fields } from "./Consts";
-import styles from "./Modal.module.scss"
-import { addAchievement, setOpenModalAchievements } from "../../../../store/slices/AddAchievementSlice/AddAchievementSlice";
+import styles from "./AchievementModal.module.scss"
+import { addAchievement, closeAchievement, setOpenModalAchievements } from "../../../../store/slices/AddAchievementSlice/AddAchievementSlice";
 import AchievementsService from "../../../../services/Achievements";
 import { useState } from "react";
-
-const Modal = () => {
+const AchievementModal = () => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         title: '',
@@ -16,7 +15,8 @@ const Modal = () => {
     const [previewImage, setPreviewImage] = useState('');
 
     const handleClose = () => {
-        dispatch(setOpenModalAchievements());
+        dispatch(closeAchievement())
+     //   dispatch(setOpenModalAchievements());
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
@@ -73,7 +73,7 @@ const Modal = () => {
         <div className={styles.modal}>
             <div className={styles.modal__content}>
                 <h1 className={styles.modal__title}>
-                    Добавить достижение
+                  Редактировать достижение
                 </h1>
                 <form className={styles.modal__fields}>
                     <div className={styles.modal__field}>
@@ -91,7 +91,6 @@ const Modal = () => {
                                         onChange={(e) => handleChange(e, item.id === 1 ? 'title' : item.id === 2 ? 'date' : 'logo')}
                                     />
                                 )}
-                                
                                 {item.type === "file" && (
                                     <div>
                                         <input
@@ -120,7 +119,15 @@ const Modal = () => {
                         onClick={handleAdd}
                         type="button"
                     >
-                        Добавить
+                      Сохранить
+                    </button>
+
+                    <button
+                        className={`${styles.modal__btn} ${styles.modal__delete}`}
+                        onClick={handleAdd}
+                        type="button"
+                    >
+                     Удалить
                     </button>
                 </form>
             </div>
@@ -131,4 +138,4 @@ const Modal = () => {
     );
 }
 
-export default Modal; 
+export default AchievementModal; 
