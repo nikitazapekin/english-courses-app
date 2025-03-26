@@ -14,34 +14,34 @@ export const dataPreview = [
         type: "input",
         name: "description"
     },
-   /*  {
-        id: 3,
-        title: "Курс предназначен для",
-        placeholder: "Курс предназначен для",
-        type: "select",
-        name: "course_for"
-
-
-    },
- */
-/* 
-    {
-        id: 3,
-        title: "Курс предназначен для",
-        placeholder: "Для кого этот курс",
-        type: "autocomplete",
-        name: "course_for",
-        suggestions: [
-            "Школьников",
-            "Студентов",
-            "Взрослых",
-            "Начинающих",
-            "Опытных специалистов",
-            "IT-специалистов",
-            "Менеджеров",
-            "Маркетологов"
-        ]
-    }, */
+    /*  {
+         id: 3,
+         title: "Курс предназначен для",
+         placeholder: "Курс предназначен для",
+         type: "select",
+         name: "course_for"
+ 
+ 
+     },
+  */
+    /* 
+        {
+            id: 3,
+            title: "Курс предназначен для",
+            placeholder: "Для кого этот курс",
+            type: "autocomplete",
+            name: "course_for",
+            suggestions: [
+                "Школьников",
+                "Студентов",
+                "Взрослых",
+                "Начинающих",
+                "Опытных специалистов",
+                "IT-специалистов",
+                "Менеджеров",
+                "Маркетологов"
+            ]
+        }, */
     {
         id: 3,
         title: "Курс предназначен для",
@@ -49,7 +49,7 @@ export const dataPreview = [
         type: "input",
         name: "course_for",
         autocomplete: "on",
-        list: "courseForOptions",  
+        list: "courseForOptions",
         options: [
             "Школьников",
             "Студентов",
@@ -58,7 +58,15 @@ export const dataPreview = [
             "Опытных специалистов",
             "IT-специалистов",
             "Менеджеров",
-            "Маркетологов"
+            "Маркетологов",
+            "Для самых маленьких",
+            "Для новичков",
+            "Для студентов",
+            "Разговорный",
+            "Грамматика",
+            "Для программистов",
+            "Для бизнеса",
+            "Для преподавателей"
         ]
     },
 
@@ -98,7 +106,7 @@ export const dataPreview = [
         placeholder: "Тег курса",
         type: "select",
         name: "tag",
-      
+
         options: ["Начинающий", "Средний", "Продвинутый", "Бизнес", "Разговорный"]
 
     },

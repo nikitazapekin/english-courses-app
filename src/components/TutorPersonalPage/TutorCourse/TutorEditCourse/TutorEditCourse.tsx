@@ -48,10 +48,10 @@ type Lesson = {
     title: string;
     description: string;
     durability: string;
-    video: File[];
-    materials: File[]; 
-   /*  video: string[];
-    materials: string[]; */
+  /*   video: File[];
+    materials: File[];  */
+     video: string[] | null;
+    materials: string[] | null; 
 };
 
 type Lessons = Lesson[];

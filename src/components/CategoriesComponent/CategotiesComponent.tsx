@@ -6,26 +6,26 @@ import styles from "./CategoriesComponent.module.scss"
 import { useNavigate } from "react-router-dom";
 
 const CategoriesComponent = () => {
-   const [query, searchQuery] = useState("")
+    const [query, searchQuery] = useState("")
 
-   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    searchQuery(event.target.value);  
-};
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        searchQuery(event.target.value);
+    };
 
-const navigate = useNavigate()
-const handleSearch = ()=> {
-navigate(`/catalog/1/16/${query}`)
-}
+    const navigate = useNavigate()
+    const handleSearch = () => {
+        navigate(`/catalog/1/16/${query}`)
+    }
     return (
 
         <section className={styles.categories}>
             <div className={styles.categories__inner}>
                 <SearchToolbar />
-             
+
                 <div className={styles.categories__content}>
 
-                    <SearchPanel  handleChange={handleChange} 
-                    handleSearch={handleSearch}
+                    <SearchPanel handleChange={handleChange}
+                        handleSearch={handleSearch}
                     />
                     <CoursesList //query={query} 
                     />

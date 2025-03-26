@@ -34,7 +34,6 @@ const CoursesList = () => {
         const day = String(date.getDate()).padStart(2, '0');
         return `${year}.${month}.${day}`;
     };
-
     useEffect(() => {
         const fetchCourses = async () => {
             try {
@@ -53,31 +52,28 @@ const CoursesList = () => {
         };
         fetchCourses();
     }, [currentPage, itemsPerPage, query]);
-useEffect(()=> {
-    const fetchCourses = async () => {
-        try {
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try { 
+                if (selector.selectedType) {
+                    if(selector.selectedType=="Все") {
+                        const response = await CourseService.GetCourses(1, itemsPerPage);
+                        setCards(response.data.courses)
+                        setPages(1)
+                    } 
+                    else {
 
-          if(selector.selectedType) {
-            
-          }
-          /*   if (query) {
-                const response = await CourseService.GetCoursesQuery(currentPage, itemsPerPage, query);
-                setCards(response.data.courses)
-                setPages(response.data.pages)
-            } else {
-                const response = await CourseService.GetCourses(currentPage, itemsPerPage);
-                setCards(response.data.courses)
-                setPages(response.data.pages)
-            } */
-
-
-
-        } catch (error) {
-            console.error("Ошибка при загрузке курсов:", error);
-        }
-    };
-    fetchCourses();
-}, [selector.selectedType])
+                        const response = await CourseService.GetCoursesType(currentPage, itemsPerPage, selector.selectedType);
+                        setCards(response.data.courses)
+                        setPages(1)
+                    }
+                }
+            } catch (error) {
+                console.error("Ошибка при загрузке курсов:", error);
+            }
+        };
+        fetchCourses();
+    }, [selector.selectedType])
     const handlePageChange = (newPage: number) => {
         setCurrentPage(newPage);
         if (query) {
@@ -108,22 +104,22 @@ useEffect(()=> {
                             <div className={styles.card} key={item.id}>
                                 <Link to={`/card/${item.id}`}>
                                     <img className={styles.card__image} src={item.course_logo} alt={item.title} />
-                                                <div className={styles.card__wrapper}>
-                                    <h3 className={styles.card__title}>{item.title}</h3>
-                                    <h4 className={styles.card__description}>
-                                        {item.description}
-                                    </h4>
-                                    <p className={styles.card__rating}>Автор: {item.author}  </p>
-                                    <p className={styles.card__releaseDate}>
-                                        Дата выпуска: {formatDate(item.release_date)}
-                                    </p>
-                                    <div className={styles.card__line} />
-                                    <div className={styles.card__for}>
-                                        {item.course_for.map((it, index) => (
-                                            <div className={styles.card__item} key={index}>
-                                                {it}
-                                            </div>
-                                        ))}
+                                    <div className={styles.card__wrapper}>
+                                        <h3 className={styles.card__title}>{item.title}</h3>
+                                        <h4 className={styles.card__description}>
+                                            {item.description}
+                                        </h4>
+                                        <p className={styles.card__rating}>Автор: {item.author}  </p>
+                                        <p className={styles.card__releaseDate}>
+                                            Дата выпуска: {formatDate(item.release_date)}
+                                        </p>
+                                        <div className={styles.card__line} />
+                                        <div className={styles.card__for}>
+                                            {item.course_for.map((it, index) => (
+                                                <div className={styles.card__item} key={index}>
+                                                    {it}
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </Link>

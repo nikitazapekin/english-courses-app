@@ -84,12 +84,8 @@ interface CourseDetails {
     }
     }
 }
- 
- 
-
 interface FormTypes {
     data: {
- 
     id: string,
     name: string;
     description: string;
@@ -119,23 +115,15 @@ export default class CourseService {
     static async GetCourses(page: number, limit: number): Promise<AxiosResponse<GetCoursesResponse>> {
         return $api.get<GetCoursesResponse>(`/courses/getCourses?page=${page}&limit=${limit}`)
     }
-
-
     static async GetCoursesQuery(page: number, limit: number, query: string): Promise<AxiosResponse<GetCoursesResponse>> {
         return $api.get<GetCoursesResponse>(`/courses/getCoursesQuery?page=${page}&limit=${limit}&query=${query}`)
     }
-
-
     static async GetCoursesType(page: number, limit: number, type: string): Promise<AxiosResponse<GetCoursesResponse>> {
-        return $api.get<GetCoursesResponse>(`/courses/getCoursesType?page=${page}&limit=${limit}&type=${type}`)
+        return $api.get<GetCoursesResponse>(`/courses/getCoursesByType?page=${page}&limit=${limit}&type=${type}`)
     }
-
-
     static async SearchCourses(query: string): Promise<AxiosResponse<GetCoursesResponse>> {
         return $api.get<GetCoursesResponse>(`/courses/searchCourses?query=${query}`)
     }
-
-
     static async GetCourseInfo(query: string): Promise<AxiosResponse<CourseDetails>> {
         return $api.get<CourseDetails>(`/courses/getCourseInfo?id=${query}`)
     }

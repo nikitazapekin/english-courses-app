@@ -22,7 +22,7 @@ import TutorPersonalCourses from "../pages/TutorPersonalCourses";
 import TutorCreateCourse from "../pages/TutorCreateCourse";
 import TutorEditProfile from "../pages/TutorEditProfile";
 import FoundCoursesPage from "../pages/FoundCoursesPage";
-import CatalogPageQuery from "../pages/CatalogPageQuery";
+ 
 import AdminPage from "../pages/AdminPage";
 import TutorPersonalCourse from "../pages/TutorPersonalCourse";
 import TutorAchievementsPage from "../pages/TutorAchievements";
@@ -140,12 +140,12 @@ export const publicRoutes = [
     Component: FoundCoursesPage
 
   },
-  {
+  /* {
 
     path: CATALOG_QUERY,
     Component: CatalogPageQuery
 
-  },
+  }, */
   {
 
     path: ADMIN_PAGE,

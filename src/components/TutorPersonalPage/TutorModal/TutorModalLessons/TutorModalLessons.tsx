@@ -69,7 +69,6 @@ const dispatch = useDispatch()
         formDataToSend.append("description", formData.description);
         formDataToSend.append("durability", formData.durability);
         formDataToSend.append("id", lastPathSegment!);
-
         formData.video.forEach((file) => {
             formDataToSend.append("video", file);
         });
@@ -79,11 +78,10 @@ const dispatch = useDispatch()
         });
 
         try {
-         
-        dispatch(addLesson({
+       dispatch(addLesson({
             ...formData,
-            video: formData.video.map(file => file.name),
-            materials: formData.materials.map(file => file.name),
+            video: null,
+            materials: null,
             id: Number(lastPathSegment)  
         }));
 

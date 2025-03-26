@@ -5,12 +5,9 @@ interface Lesson {
     title: string,
     description: string,
     durability: string,
- 
-  /*   video: File[];
-    materials: File[];  */
-
-    video: string[];  // Changed from File[] to string[]
-    materials: string[]; 
+  
+    video: string[] | null;   
+    materials: string[] | null; 
 
 }
 
@@ -24,8 +21,8 @@ interface LessonFormData {
     title: string;
     description: string;
     durability: string;
-    video: string[];  // Changed from File[] to string[]
-    materials: string[]; 
+    video: string[] | null;  
+    materials: string[] | null; 
 }
 
 const initialState: LessonsSliceTypes = {

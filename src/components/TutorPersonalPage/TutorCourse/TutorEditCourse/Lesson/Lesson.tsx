@@ -7,8 +7,8 @@ interface Props {
         durability: string,
      /*    video: String[],
         materials: String[] */
-        video: string[];  // Changed to string[]
-        materials: string[];
+        video: string[] | null;  // Changed to string[]
+        materials: string[] | null;
     }
     index: number,
     handler: (lessonId: string) => void

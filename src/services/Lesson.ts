@@ -12,7 +12,7 @@ interface GetLessonsResponse {
                 title: string,
                 description: string,
                 durability: string,
-                video: string[];  // Changed from File[] to string[]
+                video: string[];   
     materials: string[]; 
             }>
         
