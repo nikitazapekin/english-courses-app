@@ -18,6 +18,9 @@ import Avatar1 from "../../assets/avatars/avatar1.png"
 import Avatar2 from "../../assets/avatars/avatar2.png"
 import Avatar3 from "../../assets/avatars/avatar3.png"
 import Avatar4 from "../../assets/avatars/avatar4.png"
+import { useEffect } from "react";
+import TutorService from "../../services/Tutor";
+import { useLocation } from "react-router-dom";
 
 
 const items = [
@@ -141,8 +144,19 @@ const items2 = [
 
 ];
 const TutorComponent = () => {
-
-
+    const location = useLocation();
+    const lastSegment = location.pathname.split('/').pop();
+    useEffect(() => {
+        const handleGet = async () => {
+            try {
+                const reponse = await TutorService.getTutorInfo(lastSegment!)
+                console.log(reponse.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        handleGet()
+    }, [])
     return (<div className={styles.tutor}>
         <div className={styles.tutor__inner}>
             <TutorAdd />

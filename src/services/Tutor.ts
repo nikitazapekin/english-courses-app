@@ -127,4 +127,8 @@ export default class TutorService {
         return $api.post<any>('/tutor/removeStudent', {studentEmail: studentEmail, courseId: courseId});
     }
 
+    static async  getTutorInfo(id: string): Promise<AxiosResponse<any>> {
+        return $api.get<any>(`/tutor/getTutorInfo?id=${id}`);
+    }
+
 }

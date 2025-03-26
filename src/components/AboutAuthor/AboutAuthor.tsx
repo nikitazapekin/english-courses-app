@@ -5,17 +5,11 @@ import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { OpenCourseSelector } from "../../store/selectors/OpenCourseSelector"
 const AboutAuthor = () => {
-    const data = [
-        "6  лет опыта",
-        "Стажировка edme (22.02.2022-5.06.2022)",
-        "Работала переводчиком в Epam Systems"
-    ]
+  
     const navigate = useNavigate()
     const handleNavigate = () => {
-        navigate(`/tutor/${"Кирилл"}`)
+        navigate(`/tutor/${course.tutor.id}`)
     }
-
-
     const course = useSelector(OpenCourseSelector)
     return (
         <section className={styles.about}>
@@ -33,29 +27,19 @@ const AboutAuthor = () => {
                             {course.tutor.username}
                         </h3>
                         <p className={styles.info__citate}>
-                          {course.tutor.description}
+                            {course.tutor.description}
                         </p>
                         <div className={styles.info__skills}>
-{
-    course.tutor.experience.map((item, index)=> (
-        <div className={styles.info__skill} key={index}>
-        <img src={Agree} alt="Agree" />
-        <p className={styles.info__text}>
-            {item}
-        </p>
-    </div>
-    ))
-}
-                        
-
-{
-  //  course.tutor.
-}
-
-
-{
-  //  course.tutor.
-}
+                            {
+                                course.tutor.experience.map((item, index) => (
+                                    <div className={styles.info__skill} key={index}>
+                                        <img src={Agree} alt="Agree" />
+                                        <p className={styles.info__text}>
+                                            {item}
+                                        </p>
+                                    </div>
+                                ))
+                            }
                         </div>
                         <div className={styles.info__btn}>
                             <p className={styles.info__btn__text} onClick={handleNavigate} >
