@@ -47,12 +47,13 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
             try {
                 const response = await AuthService.login({ email: data.email, password: data.password });
                 localStorage.setItem("accessToken", response.data.accessToken);
-                if(response.data.role == "user") {
+                if (response.data.role == "user") {
 
                     navigate("/personal/1/10");
-                } else if(response.data.role == "tutor") {
+                } else if (response.data.role == "tutor") {
                     navigate("/tutor/personal");
                 } else {
+                   // localStorage.setItem("isAdmin")
                     navigate("/admin")
                 }
             } catch (error: any) {
@@ -60,9 +61,9 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
                 if (error.response) {
                     console.log("err", JSON.stringify(error.response.data))
                     console.error('Ответ ошибки:', error.response);
-               
+
                     setErrorMessage(error.response?.data?.message || "Произошла ошибка");
- 
+
                 } else if (error.request) {
                     console.error('Запрос был отправлен, но не получен ответ:', error.request);
                 } else {

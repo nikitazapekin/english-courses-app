@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CoursesList from "../CoursesList/CoursesList";
 import SearchPanel from "../SearchPanel/SearchPanel";
 import SearchToolbar from "../SearchToolbar/SearchToolbar";
 import styles from "./CategoriesComponent.module.scss"
 import { useNavigate } from "react-router-dom";
+import TutorService from "../../services/Tutor";
+import adminService from "../../services/Admin";
 
 const CategoriesComponent = () => {
     const [query, searchQuery] = useState("")
@@ -16,6 +18,9 @@ const CategoriesComponent = () => {
     const handleSearch = () => {
         navigate(`/catalog/1/16/${query}`)
     }
+
+
+    
     return (
 
         <section className={styles.categories}>
@@ -27,7 +32,7 @@ const CategoriesComponent = () => {
                     <SearchPanel handleChange={handleChange}
                         handleSearch={handleSearch}
                     />
-                    <CoursesList //query={query} 
+                    <CoursesList
                     />
                 </div>
             </div>

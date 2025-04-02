@@ -33,6 +33,12 @@ const AdminComponent = () => {
                         <EditProfile />
                     )
                 }
+
+                {!lastPathSegment && (
+                       <AdminPersonalInfo />
+                )
+                
+                }
             </div>
         </div>);
 }

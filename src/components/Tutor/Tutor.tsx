@@ -113,8 +113,7 @@ const items1 = [
 
 
 ];
-
-
+ 
 const items2 = [
 
     {
@@ -157,6 +156,9 @@ const TutorComponent = () => {
         }
         handleGet()
     }, [])
+
+
+
     return (<div className={styles.tutor}>
         <div className={styles.tutor__inner}>
             <TutorAdd />

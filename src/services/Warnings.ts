@@ -19,15 +19,21 @@ export interface IsAdminResponse {
     message: string, 
     isAdmin: boolean
 }
-export default class adminService {
+export default class WarningsService {
 
-    static async getAdmin( ): Promise<AxiosResponse<AdminResponse>> {
+   /*  static async getAdmin( ): Promise<AxiosResponse<AdminResponse>> {
         return $api.get<AdminResponse>('/admin/getAdmin' )
     }
 
     static async isAdmin( ): Promise<AxiosResponse<IsAdminResponse>> {
         return $api.get<IsAdminResponse>('/admin/isAdmin' )
-    }
+        warningText, courseId
+    } */
+
+
+        static async AddWarning(courseId:number, warningText: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/admin/addWarning' , {courseId: courseId,warningText: warningText })
+        } 
     
 
 }

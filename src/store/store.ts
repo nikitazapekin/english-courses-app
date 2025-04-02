@@ -17,6 +17,7 @@ import AddAchievementSlice from "./slices/AddAchievementSlice/AddAchievementSlic
 import EditModalLesson from "./slices/EditModalLesson/EditModalLesson"
 import  Lessons from "./slices/Lessons/Lessons"
 import  Catalog from "./slices/Catalog/Catalog"
+import AddWarningModal from "./slices/AddWarningModal/AddWarningModal"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
     FormSlice: FormSlice,
@@ -32,7 +33,9 @@ export const rootReducer = combineReducers({
     AddAchievementSlice: AddAchievementSlice,
     EditModalLesson: EditModalLesson,
     LessonsSlice: Lessons,
-    Catalog: Catalog
+    Catalog: Catalog,
+    AddWarningModal: AddWarningModal
+    
 
 });
 export const store = configureStore({

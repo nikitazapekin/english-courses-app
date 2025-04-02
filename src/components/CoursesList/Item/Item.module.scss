@@ -1,4 +1,4 @@
-@import "../../theme/theme";
+@import "../../../theme/theme";
 
 .courses {
     @include pc {
@@ -106,6 +106,7 @@
     height: 100%;
     max-width: 300px;
     width: 100%;
+    cursor: pointer;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     &__title {
@@ -245,10 +246,4 @@
     margin: 0 auto;
 }
 
-/* 
-.card__image {
-    width: 100%;
-    max-width: 300px;
-    height: auto;
  
-} */

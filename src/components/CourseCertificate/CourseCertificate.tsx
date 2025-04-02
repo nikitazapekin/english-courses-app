@@ -21,5 +21,4 @@ const CourseCertificate = () => {
         </div>
     );
 }
-
 export default CourseCertificate;
