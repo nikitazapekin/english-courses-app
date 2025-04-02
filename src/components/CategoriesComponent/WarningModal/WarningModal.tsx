@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styles from "./WarningModal.module.scss"
 import { useDispatch } from "react-redux"
-import { setIsOpenAddWarningModal } from "../../../store/slices/AddWarningModal/AddWarningModal"
+import { setIsOpenAddWarningModal, setSelectBanCourse } from "../../../store/slices/AddWarningModal/AddWarningModal"
 import WarningsService from "../../../services/Warnings"
 import { useSelector } from "react-redux"
 import { AddWarningSelectorPage } from "../../../store/selectors/AddWarningModal.selector"
@@ -15,17 +15,20 @@ const WarningModal = () => {
     }
     const dispatch = useDispatch()
     const handleClose = () => {
-dispatch(setIsOpenAddWarningModal())
+        dispatch(setIsOpenAddWarningModal())
     }
 
-    const handleAdd =async () => {
-try {
-const response  = await WarningsService.AddWarning(selector.selectedCourse, text)
+    const handleAdd = async () => {
+        try {
+            const response = await WarningsService.AddWarning(selector.selectedCourse, text)
 
-} catch(e) {
-console.log(e)
-}
+        } catch (e) {
+            console.log(e)
+        }
     }
+
+    
+
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -40,31 +43,31 @@ console.log(e)
                                 Опишите что не так с заголовками курса
                             </p>
                             <textarea placeholder="Добавьте описание"
-                            className={styles.textarea}
-                            onChange={(e)=>handleChange(e.target.value)}
+                                className={styles.textarea}
+                                onChange={(e) => handleChange(e.target.value)}
                             ></textarea>
                         </div>
                     </div>
 
                     <button
                         className={styles.modal__btn}
-                       onClick={handleAdd}
+                        onClick={handleAdd}
                         type="button"
                     >
                         Добавить
                     </button>
 
 
-                    
+
                     <button
                         className={`${styles.modal__btn} ${styles.modal__btn__disabled}`}
-                       
+
                         type="button"
                     >
-                       Отмена
+                        Отмена
                     </button>
                 </form>
-             
+
             </div>
             <div className={styles.modal__overlay}
                 onClick={handleClose}

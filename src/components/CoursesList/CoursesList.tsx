@@ -8,6 +8,9 @@ import { CataljgSelectorPage } from "../../store/selectors/CatalogSelector";
 import adminService from "../../services/Admin";
  
 import Item from "./Item/Item";
+import { AddWarningSelectorPage } from "../../store/selectors/AddWarningModal.selector";
+import { useDispatch } from "react-redux";
+import { setIsBanned } from "../../store/slices/AddWarningModal/AddWarningModal";
 type SortOption = "price" | "rating" | "releaseDate";
 interface Course {
     id: number,
@@ -94,8 +97,14 @@ const CoursesList = () => {
     };
 
 
-   
-
+  const warningSelector = useSelector(AddWarningSelectorPage)
+const dispatch = useDispatch()
+  useEffect(()=> {
+    if(warningSelector.isBanned) {
+        setCards(prev=> prev.filter(item=>item.id!=warningSelector.selectedCourse))
+dispatch(setIsBanned({isBanned: false}))
+    }
+  }, [warningSelector])
     return (
         <div className={styles.courses}>
             <div className={styles.courses__inner}>

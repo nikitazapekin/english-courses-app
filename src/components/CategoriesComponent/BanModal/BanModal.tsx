@@ -1,7 +1,7 @@
 import { useState } from "react"
 import styles from "./BanModal.module.scss"
 import { useDispatch, useSelector } from "react-redux"
-import { setIsOpenAddWarningModal } from "../../../store/slices/AddWarningModal/AddWarningModal"
+import { setIsBanned, setIsOpenAddWarningModal, setIsOpenBanModal } from "../../../store/slices/AddWarningModal/AddWarningModal"
 import BanService from "../../../services/Ban"
 import { AddWarningSelectorPage } from "../../../store/selectors/AddWarningModal.selector"
 const BanModal = () => {
@@ -14,16 +14,18 @@ const BanModal = () => {
     }
     const dispatch = useDispatch()
     const handleClose = () => {
-        dispatch(setIsOpenAddWarningModal())
+        dispatch(setIsOpenBanModal())
+
     }
     const handleAdd = async () => {
         try {
             const response = await BanService.AddBan(selector.selectedCourse, text)
-
+            dispatch(setIsBanned({ isBanned: true }))
         } catch (e) {
             console.log(e)
         }
     }
+
 
     return (
         <div className={styles.modal}>

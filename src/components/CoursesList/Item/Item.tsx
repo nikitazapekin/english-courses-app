@@ -3,7 +3,7 @@ import styles from "./Item.module.scss"
 import Ban from "../../../assets/admin/courses/warning.png"
 import Edit from "../../../assets/admin/courses/pen.png"
 import { useDispatch } from "react-redux";
-import { setIsOpenAddWarningModal, setSelectBanCourse, setSelectWarningCourse } from "../../../store/slices/AddWarningModal/AddWarningModal";
+import { setIsOpenAddWarningModal, setIsOpenBanModal, setSelectBanCourse, setSelectWarningCourse } from "../../../store/slices/AddWarningModal/AddWarningModal";
 interface ItemProps {
     item: {
 
@@ -43,9 +43,11 @@ const Item = ({ item, isAdmin }: ItemProps) => {
 
     const handleAddBan =(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=> {
         e.stopPropagation()
-        dispatch(setSelectBanCourse())
+        dispatch(setIsOpenBanModal())
         dispatch(setSelectWarningCourse(item.id))
     }
+
+   
  
     return (
 

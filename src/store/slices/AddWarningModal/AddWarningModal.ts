@@ -7,13 +7,15 @@ interface AddWarningModalSliceTypes {
     isOpenAddWarningModal: boolean;
     selectedCourse: number;
     isOpenAddBanModal: boolean;
+    isBanned: boolean
    // selectedCourse: number;
 }
 
 const initialState: AddWarningModalSliceTypes = {
     isOpenAddWarningModal: false,
     selectedCourse: 0,
-    isOpenAddBanModal: false
+    isOpenAddBanModal: false,
+    isBanned: false
 };
 
 const AddWarningModalSlice = createSlice({
@@ -23,6 +25,14 @@ const AddWarningModalSlice = createSlice({
         setIsOpenAddWarningModal(state) {
             state.isOpenAddWarningModal = !state.isOpenAddWarningModal
         },
+
+
+        setIsOpenBanModal(state) {
+            state.isOpenAddBanModal = !state.isOpenAddBanModal
+        },
+
+
+
         setSelectWarningCourse(state, action: PayloadAction<number>) {
             state.selectedCourse = action.payload;
         },
@@ -33,6 +43,11 @@ const AddWarningModalSlice = createSlice({
             state.isOpenAddBanModal = !state.isOpenAddBanModal
             console.log("OPEN"  , state.isOpenAddBanModal)
         },
+
+
+        setIsBanned(state, action: PayloadAction<{isBanned: boolean}>) {
+state.isBanned = action.payload.isBanned
+        }
        
     }
 });
@@ -40,7 +55,9 @@ const AddWarningModalSlice = createSlice({
 export const {
     setIsOpenAddWarningModal,
     setSelectWarningCourse,
-    setSelectBanCourse
+    setSelectBanCourse,
+    setIsOpenBanModal,
+    setIsBanned
 } = AddWarningModalSlice.actions;
 export default AddWarningModalSlice.reducer; 
 
