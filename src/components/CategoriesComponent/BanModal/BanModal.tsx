@@ -1,8 +1,13 @@
 import { useState } from "react"
 import styles from "./BanModal.module.scss"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { setIsOpenAddWarningModal } from "../../../store/slices/AddWarningModal/AddWarningModal"
+import BanService from "../../../services/Ban"
+import { AddWarningSelectorPage } from "../../../store/selectors/AddWarningModal.selector"
 const BanModal = () => {
+
+
+    const selector = useSelector(AddWarningSelectorPage)
     const [text, setText] = useState("")
     const handleChange = (query: string) => {
         setText(query)
@@ -11,6 +16,15 @@ const BanModal = () => {
     const handleClose = () => {
         dispatch(setIsOpenAddWarningModal())
     }
+    const handleAdd = async () => {
+        try {
+            const response = await BanService.AddBan(selector.selectedCourse, text)
+
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -30,10 +44,9 @@ const BanModal = () => {
                             ></textarea>
                         </div>
                     </div>
-
                     <button
                         className={styles.modal__btn}
-
+                        onClick={handleAdd}
                         type="button"
                     >
                         Забанить

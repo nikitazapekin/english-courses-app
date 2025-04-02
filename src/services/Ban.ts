@@ -19,10 +19,10 @@ export interface IsAdminResponse {
     message: string, 
     isAdmin: boolean
 }
-export default class WarningsService {
+export default class BanService {
  
-        static async AddWarning(courseId:number, warningText: string): Promise<AxiosResponse<IsAdminResponse>> {
-            return $api.post<IsAdminResponse>('/warnings/addWarning' , {courseId: courseId,warningText: warningText })
+        static async AddBan(courseId:number, warningText: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/ban/addBan' , {courseId: courseId,banText: warningText })
         } 
     
 
