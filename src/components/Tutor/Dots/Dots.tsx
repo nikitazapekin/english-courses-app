@@ -18,7 +18,7 @@ const Dots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChan
     let endPage = startPage + maxVisibleDots - 1;
 
     if (endPage > totalPages) {
-      endPage = totalPages;
+      endPage = totalPages-1;
       startPage = Math.max(1, endPage - maxVisibleDots + 1);
     }
 

@@ -25,6 +25,65 @@ import { response } from "express";
 import TutorCoursesCarousel from "./TurorCoursesCarousel/TutorCarousel";
 
  
+
+interface TutorOtherInfoDetails {           
+    message:  string,
+    data: {
+        tutors:  {
+
+            id: number,
+            id_author: number,
+        username:  string,
+        email: string,
+        rate: string,
+        specialization: string,
+        english_level:  string,
+        full_description: string,
+        
+        
+        role: string,
+        number_of_students: number,
+        experience:  string[],
+        work_experience:number,
+        phone: string,
+        location: string,
+        price: number,
+        achievements: {
+            id: number,
+            title: string,
+            date: string,
+            logo:string
+        }[],
+        courses: {
+            id: number,
+            title:  string,
+            fulldescription: string,
+            course_for: string[],
+            course_suitable:string[],
+            for_what_reasons: string[],
+            about_course: string[],
+            tag: string,
+            course_rate:number,
+            release_date:  string,
+            course_logo: string,
+        }[],
+        
+        //[],
+        description: string,
+        avatar:  string,
+    }[] ,
+
+
+        pagination: {
+            total: number,
+            limit: number,
+            offset: number,
+            hasMore: boolean
+        }
+    
+    }
+
+}
  
 
 export interface TutorInfoDetails {
@@ -115,10 +174,45 @@ const TutorComponent = () => {
             }
         }
         handleGet()
-    }, [])
+    }, [lastSegment])
 
 
 
+
+
+
+const [offset, setOffset] = useState(0)
+    const [anotherTutors, setAnotherTutors] = useState<TutorOtherInfoDetails>({
+
+        message: "",
+        data: {
+            tutors: [],
+            pagination: {
+                total: 0,
+                limit: 10,
+                offset: 0,
+                hasMore: false
+            }
+        }
+      //  tutors: []
+    }
+    )
+    useEffect(() => {
+        const handleGet = async () => {
+            try {
+                const reponse = await TutorService.getOtherTutorInfo(lastSegment!, offset)
+               console.log("ANOT", reponse.data)
+                setAnotherTutors(reponse.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        handleGet()
+    }, [lastSegment])
+ 
+const handlePageOffset =(id: number) => {
+    setOffset(id)
+}
     return (<div className={styles.tutor}>
         <div className={styles.tutor__inner}>
             <TutorAdd />
@@ -134,7 +228,13 @@ const TutorComponent = () => {
             items={data.data.courses}
             />
        
-            <OtherTutors />
+            <OtherTutors
+            offset={offset}
+            handlePageOffset={handlePageOffset}
+            //others={anotherTutors.data.tutors}
+           //pagonat
+           data={anotherTutors.data}
+            />
 
         </div>
     </div>);

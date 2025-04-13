@@ -107,18 +107,8 @@ interface TutorCoursesResponse {
 
 
 
-/*
 
-                "id": 1,
-                "title": "wfq",
-                "date": "2025-04-19",
-                "logo": "data:image
-                */
-
-        interface TutorInfoDetails {
-
-
-           
+        interface TutorInfoDetails {           
                 message:  string,
                 data: {
                     id: number,
@@ -164,7 +154,104 @@ interface TutorCoursesResponse {
                 }
            
         }
-     
+     /*
+     {
+    "message": "Доступ разрешён",
+    "data": {
+        "tutors": [
+            {
+                "id": 2,
+                "id_author": 2,
+                "username": "Ffff",
+                "email": "fff@mail.ru",
+                "rate": "0.00",
+                "specialization": "",
+                "description": "",
+                "english_level": "",
+                "full_description": "",
+                "role": "tutor",
+                "number_of_students": 0,
+                "experience": null,
+                "work_experience": 0,
+                "phone": null,
+                "location": null,
+                "price": null,
+                "avatar": null
+            }
+        ],
+        "pagination": {
+            "total": 1,
+            "limit": 10,
+            "offset": 0,
+            "hasMore": false
+        }
+    }
+}
+    */
+
+
+
+
+
+
+interface TutorOtherInfoDetails {           
+    message:  string,
+    data: {
+        tutors:  {
+
+            id: number,
+            id_author: number,
+        username:  string,
+        email: string,
+        rate: string,
+        specialization: string,
+        english_level:  string,
+        full_description: string,
+        
+        
+        role: string,
+        number_of_students: number,
+        experience:  string[],
+        work_experience:number,
+        phone: string,
+        location: string,
+        price: number,
+        achievements: {
+            id: number,
+            title: string,
+            date: string,
+            logo:string
+        }[],
+        courses: {
+            id: number,
+            title:  string,
+            fulldescription: string,
+            course_for: string[],
+            course_suitable:string[],
+            for_what_reasons: string[],
+            about_course: string[],
+            tag: string,
+            course_rate:number,
+            release_date:  string,
+            course_logo: string,
+        }[],
+        
+        //[],
+        description: string,
+        avatar:  string,
+    }[] ,
+
+
+        pagination: {
+            total: number,
+            limit: number,
+            offset: number,
+            hasMore: boolean
+        }
+    
+    }
+
+}
 export default class TutorService {
     static async GetTutor(): Promise<AxiosResponse<GetTutorProps>> {
         return $api.get<GetTutorProps>('/tutor/getTutor');
@@ -189,5 +276,43 @@ export default class TutorService {
     static async  getTutorInfo(id: string): Promise<AxiosResponse<TutorInfoDetails>> {
         return $api.get<TutorInfoDetails>(`/tutor/getTutorInfo?id=${id}`);
     }
+    static async  getOtherTutorInfo(id: string, offset: number): Promise<AxiosResponse<TutorOtherInfoDetails>> {
+        return $api.get<TutorOtherInfoDetails>(`/tutor/getOtherTutorInfo?id=${id}&offset=${offset}`);
+    }
 
 }
+
+/*
+{
+    "message": "Доступ разрешён",
+    "data": {
+        "tutors": [
+            {
+                "id": 2,
+                "id_author": 2,
+                "username": "Ffff",
+                "email": "fff@mail.ru",
+                "rate": "0.00",
+                "specialization": "",
+                "description": "",
+                "english_level": "",
+                "full_description": "",
+                "role": "tutor",
+                "number_of_students": 0,
+                "experience": null,
+                "work_experience": 0,
+                "phone": null,
+                "location": null,
+                "price": null,
+                "avatar": null
+            }
+        ],
+        "pagination": {
+            "total": 1,
+            "limit": 10,
+            "offset": 0,
+            "hasMore": false
+        }
+    }
+}
+    */

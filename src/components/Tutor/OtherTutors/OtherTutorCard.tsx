@@ -1,17 +1,23 @@
 import styles from "./OtherTutors.module.scss"
 import Chat from "../../../assets/icons/chat.png"
+import { useNavigate } from "react-router-dom";
 interface OtherTutorCardProps {
     url: string,
     title: string,
     rate: number;
     rateNumber: number,
     describtion: string
+    id: number
 }
-const OtherTutorCard = ({ url, title, rate, rateNumber, describtion }: OtherTutorCardProps) => {
+const OtherTutorCard = ({ url, title, rate, rateNumber, describtion, id }: OtherTutorCardProps) => {
     const fullStars = Math.floor(rate);
+    const navigate = useNavigate()
+    const handleNavigate = ()=> {
+       navigate(`/tutor/${id}`)
+    }
     const hasHalfStar = rate % 1 === 0.5;
     return (
-        <div className={styles.card}>
+        <div className={styles.card} >
             <div className={styles.card__preview}>
                 <img src={url}
                     className={styles.card__image}
@@ -21,6 +27,7 @@ const OtherTutorCard = ({ url, title, rate, rateNumber, describtion }: OtherTuto
                     <h3 className={styles.card__title}>
                         {title}
                     </h3>
+                   
                     <div className={styles.card__rate}>
                         <p className={styles.card__rate__text}>
                             Рейтинг:
@@ -54,7 +61,9 @@ const OtherTutorCard = ({ url, title, rate, rateNumber, describtion }: OtherTuto
             </div>
             <div className={styles.card__footer}>
 
-                <button className={`${styles.card__btn} ${styles.card__btn__purple}`}>
+                <button className={`${styles.card__btn} ${styles.card__btn__purple}`}
+                 onClick={handleNavigate}
+                >
                     Подробнее
                 </button>
 
