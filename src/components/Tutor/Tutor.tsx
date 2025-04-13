@@ -18,9 +18,10 @@ import Avatar1 from "../../assets/avatars/avatar1.png"
 import Avatar2 from "../../assets/avatars/avatar2.png"
 import Avatar3 from "../../assets/avatars/avatar3.png"
 import Avatar4 from "../../assets/avatars/avatar4.png"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import TutorService from "../../services/Tutor";
 import { useLocation } from "react-router-dom";
+import { response } from "express";
 
 
 const items = [
@@ -113,7 +114,7 @@ const items1 = [
 
 
 ];
- 
+
 const items2 = [
 
     {
@@ -142,14 +143,72 @@ const items2 = [
     },
 
 ];
+
+
+ 
+
+export interface TutorInfoDetails {
+    message: string,
+    data: {
+        id: number,
+        id_author: number,
+        username: string,
+        email: string,
+        rate: string,
+        specialization: string,
+        english_level: string,
+        full_description: string,
+        role: string,
+        number_of_students: number,
+        experience: string[],
+        work_experience: number,
+        phone: string,
+        location: string,
+        price: number,
+        achievements: [],
+        description: string,
+        courses: [],
+        avatar: string,
+    }
+}
+
 const TutorComponent = () => {
     const location = useLocation();
     const lastSegment = location.pathname.split('/').pop();
+
+    const [data, setData] = useState<TutorInfoDetails>({
+
+        message: "",
+        data: {
+            id: 0,
+            id_author: 0,
+            username: "",
+            email: "",
+            rate: "",
+            specialization: "",
+            english_level: "",
+            full_description: "",
+            role: "",
+            number_of_students: 0,
+            experience: [],
+            work_experience: 0,
+            phone: "",
+            location: "",
+            description: "",
+            price: 0,
+            achievements: [],
+            courses: [],
+            avatar: "",
+        }
+    }
+
+    )
     useEffect(() => {
         const handleGet = async () => {
             try {
                 const reponse = await TutorService.getTutorInfo(lastSegment!)
                 console.log(reponse.data)
+                setData(reponse.data)
             } catch (e) {
                 console.log(e)
             }
@@ -164,7 +223,7 @@ const TutorComponent = () => {
             <TutorAdd />
 
 
-            <TutorPreview />
+            <TutorPreview  data={data.data} />
 
 
             <TutorCarousel items={items} title={"Курсы и сертификаты"} />

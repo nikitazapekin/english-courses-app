@@ -106,6 +106,39 @@ interface TutorCoursesResponse {
         }
 
 
+
+
+
+        interface TutorInfoDetails {
+
+
+           
+                message:  string,
+                data: {
+                    id: number,
+                    id_author: number,
+                    username:  string,
+                    email: string,
+                    rate: string,
+                    specialization: string,
+                    english_level:  string,
+                    full_description: string,
+                    
+                    
+                    role: string,
+                    number_of_students: number,
+                    experience:  string[],
+                    work_experience:number,
+                    phone: string,
+                    location: string,
+                    price: number,
+                    achievements: [],
+                    courses: [],
+                    description: string,
+                    avatar:  string,
+                }
+           
+        }
 export default class TutorService {
     static async GetTutor(): Promise<AxiosResponse<GetTutorProps>> {
         return $api.get<GetTutorProps>('/tutor/getTutor');
@@ -127,8 +160,8 @@ export default class TutorService {
         return $api.post<any>('/tutor/removeStudent', {studentEmail: studentEmail, courseId: courseId});
     }
 
-    static async  getTutorInfo(id: string): Promise<AxiosResponse<any>> {
-        return $api.get<any>(`/tutor/getTutorInfo?id=${id}`);
+    static async  getTutorInfo(id: string): Promise<AxiosResponse<TutorInfoDetails>> {
+        return $api.get<TutorInfoDetails>(`/tutor/getTutorInfo?id=${id}`);
     }
 
 }
