@@ -22,129 +22,9 @@ import { useEffect, useState } from "react";
 import TutorService from "../../services/Tutor";
 import { useLocation } from "react-router-dom";
 import { response } from "express";
+import TutorCoursesCarousel from "./TurorCoursesCarousel/TutorCarousel";
 
-
-const items = [
-
-    {
-        title: "Rs school B1 (Intermideate) course",
-        img: Course1,
-        experience: "22.10.2022-20.11.2022",
-
-    },
-    {
-        title: "Rs school B1 (Intermideate) course",
-        img: Course2,
-        experience: "22.10.2022-20.11.2022",
-
-    },
-    {
-        title: "Rs school B1 (Intermideate) course",
-        img: Course3,
-        experience: "22.10.2022-20.11.2022",
-
-    },
-
-    {
-        title: "Rs school B1 (Intermideate) course",
-        img: Course4,
-        experience: "22.10.2022-20.11.2022",
-
-    },
-
-
-
-];
-
-
-const items1 = [
-
-    {
-        title: "Английский для самых маленьких",
-        img: Prog1,
-        experience: "30 руб",
-
-    },
-    {
-        title: "Жаргонный английский для поддержания диалогов",
-        img: Prog2,
-        experience: "45 руб",
-
-    },
-    {
-        title: "Английский для детей дошкольного возраста",
-        img: Prog3,
-        experience: "44 руб",
-
-    },
-
-    {
-        title: "Английский для инженеров и студентов технических специальностей",
-        img: Prog4,
-        experience: "50 руб",
-
-    },
-
-    {
-        title: "Английский для самых маленьких",
-        img: Prog1,
-        experience: "30 руб",
-
-    },
-    {
-        title: "Жаргонный английский для поддержания диалогов",
-        img: Prog2,
-        experience: "45 руб",
-
-    },
-    {
-        title: "Английский для детей дошкольного возраста",
-        img: Prog3,
-        experience: "44 руб",
-
-    },
-
-    {
-        title: "Английский для инженеров и студентов технических специальностей",
-        img: Prog4,
-        experience: "50 руб",
-
-    },
-
-
-
-];
-
-const items2 = [
-
-    {
-        title: "Кирилл",
-        img: Avatar1,
-        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
-        rate: 4.5
-    },
-    {
-        title: "Кирилл",
-        img: Avatar2,
-        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
-        rate: 5
-    },
-    {
-        title: "Кирилл",
-        img: Avatar3,
-        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
-        rate: 5
-    },
-    {
-        title: "Кирилл",
-        img: Avatar4,
-        experience: "Замечательный репетитор с прекрасными курсами, позволяющие освоить сложный материал к короткое время",
-        rate: 4.5
-    },
-
-];
-
-
+ 
  
 
 export interface TutorInfoDetails {
@@ -165,9 +45,30 @@ export interface TutorInfoDetails {
         phone: string,
         location: string,
         price: number,
-        achievements: [],
+
+        achievements: {
+            id: number,
+            title: string,
+            date: string,
+            logo:string
+        }[],
+      
         description: string,
-        courses: [],
+
+        courses: {
+            id: number,
+            title:  string,
+            fulldescription: string,
+            course_for: string[],
+            course_suitable:string[],
+            for_what_reasons: string[],
+            about_course: string[],
+            tag: string,
+            course_rate:number,
+            release_date:  string,
+            course_logo: string,
+        }[],
+      //  courses: [],
         avatar: string,
     }
 }
@@ -207,7 +108,7 @@ const TutorComponent = () => {
         const handleGet = async () => {
             try {
                 const reponse = await TutorService.getTutorInfo(lastSegment!)
-                console.log(reponse.data)
+               
                 setData(reponse.data)
             } catch (e) {
                 console.log(e)
@@ -226,11 +127,13 @@ const TutorComponent = () => {
             <TutorPreview  data={data.data} />
 
 
-            <TutorCarousel items={items} title={"Курсы и сертификаты"} />
-            <TutorCarousel items={items1} title={"Курсы и сертификаты"} />
+            <TutorCarousel items={data.data.achievements} title={"Достижения"} />
 
-
-            <TutorCarousel items={items2} title={"Отзывы о репетиторе"} />
+            <TutorCoursesCarousel 
+            title="Курсы"
+            items={data.data.courses}
+            />
+       
             <OtherTutors />
 
         </div>

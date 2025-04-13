@@ -18,12 +18,8 @@ const TutorDescribtion = ({ title, country, citate, rate, level, specialization 
     return (
         <div className={styles.tutor}>
             <div className={styles.tutor__header}>
-                <h1 className={styles.tutor__header__title}>{title}</h1>
-                <img
-                    src={country}
-                    className={styles.tutor__header__image}
-                    alt="Country"
-                />
+                <h1 className={styles.tutor__header__title}>{title}, {country} </h1>
+             
             </div>
             <p className={styles.tutor__citate}>"{citate}"</p>
 

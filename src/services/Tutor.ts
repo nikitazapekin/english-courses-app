@@ -107,7 +107,13 @@ interface TutorCoursesResponse {
 
 
 
+/*
 
+                "id": 1,
+                "title": "wfq",
+                "date": "2025-04-19",
+                "logo": "data:image
+                */
 
         interface TutorInfoDetails {
 
@@ -132,13 +138,33 @@ interface TutorCoursesResponse {
                     phone: string,
                     location: string,
                     price: number,
-                    achievements: [],
-                    courses: [],
+                    achievements: {
+                        id: number,
+                        title: string,
+                        date: string,
+                        logo:string
+                    }[],
+                    courses: {
+                        id: number,
+                        title:  string,
+                        fulldescription: string,
+                        course_for: string[],
+                        course_suitable:string[],
+                        for_what_reasons: string[],
+                        about_course: string[],
+                        tag: string,
+                        course_rate:number,
+                        release_date:  string,
+                        course_logo: string,
+                    }[],
+                    
+                    //[],
                     description: string,
                     avatar:  string,
                 }
            
         }
+     
 export default class TutorService {
     static async GetTutor(): Promise<AxiosResponse<GetTutorProps>> {
         return $api.get<GetTutorProps>('/tutor/getTutor');

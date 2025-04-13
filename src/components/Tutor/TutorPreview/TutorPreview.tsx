@@ -36,28 +36,49 @@ interface Props {
         location: string,
         price: number,
         description: string,
-        achievements: [],
-        courses: [],
+        achievements: {
+            id: number,
+            title: string,
+            date: string,
+            logo:string
+        }[],
+      //  achievements: [],
+   //     courses: [],
+
+   courses: {
+    id: number,
+    title:  string,
+    fulldescription: string,
+    course_for: string[],
+    course_suitable:string[],
+    for_what_reasons: string[],
+    about_course: string[],
+    tag: string,
+    course_rate:number,
+    release_date:  string,
+    course_logo: string,
+}[],
         avatar: string,
     }
 }
 const TutorPreview = ({data}: Props) => {
 
-    console.log("AVA", data.avatar)
+   
     return (<section className={styles.tutor}>
         <div className={styles.tutor__info}>
 
             <TutorAvatar 
-            //url={tutor.url} 
+         
             url={data.avatar}
             
             />
-            <TutorDescribtion title={data.username} country={data.location} citate={data.description} rate={tutor.rate} level={tutor.level} specialization={tutor.specialization} describtion={tutor.descibtion} />
+            <TutorDescribtion title={data.username} country={data.location} citate={data.description} rate={Number(data.rate)} level={data.english_level} specialization={data.specialization} describtion={""}
+             />
 
 
         </div>
         <p className={styles.tutor__describtion}>
-            {tutor.descibtion}
+            {data.full_description}
         </p>
     </section>);
 }
