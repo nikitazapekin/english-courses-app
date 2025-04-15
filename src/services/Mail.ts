@@ -18,7 +18,7 @@ export default class MailService {
             author 
         }, {
             headers: {
-                'Content-Type': 'application/json' // Изменено на правильный тип
+                'Content-Type': 'application/json'
             }
         });
     }
