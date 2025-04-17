@@ -74,7 +74,14 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         }
         };
 
-    const passwordValue = watch("password", "");
+
+const handleGoogleAuth = () => {
+    window.location.href = "http://localhost:5000/auth/google";
+   
+}
+        const passwordValue = watch("password", "");
+
+
 
     return (
         <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
@@ -257,15 +264,14 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                 <p className={styles.form__or__text}>
                     Регистрация через социальные сети
                 </p>
-
                 <div className={styles.form__networks}>
-                    <div className={styles.form__network}>
+                    <div className={styles.form__network} style={{display: "none"}}>
                         <img className={styles.form__network__image} src={Discord} alt="discord" />
                     </div>
-                    <div className={styles.form__network}>
-                        <img className={styles.form__network__image} src={Google} alt="discord" />
+                    <div className={styles.form__network} onClick={handleGoogleAuth} >
+                        <img className={styles.form__network__image} src={Google} alt="discord"  />
                     </div>
-                    <div className={styles.form__network}>
+                    <div className={styles.form__network}  style={{display: "none"}}>
                         <img className={styles.form__network__image} src={Vk} alt="discord" />
                     </div>
                 </div>

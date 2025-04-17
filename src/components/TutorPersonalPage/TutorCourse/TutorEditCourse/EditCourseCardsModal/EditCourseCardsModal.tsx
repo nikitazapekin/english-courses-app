@@ -11,11 +11,7 @@ interface LessonFormData {
     title: string;
     description: string;
     durability: string;
-   /*  video: File[];
-    materials: File[]; */
- /*    video: string[],
-    materials: string[] */
-
+ 
 
     video: string[];   
     materials: string[];
