@@ -42,6 +42,16 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
             addToast("Пожалуйста, исправьте ошибки в форме.");
         }
     }, [errors])
+
+
+
+    const handleGoogleAuth = () => {
+        window.location.href = "http://localhost:5000/auth/google";
+       
+    }
+
+
+
     const handleClick = async (data: SignInData) => {
         if (Object.keys(errors).length == 0) {
             try {
@@ -53,7 +63,7 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
                 } else if (response.data.role == "tutor") {
                     navigate("/tutor/personal");
                 } else {
-                   // localStorage.setItem("isAdmin")
+                
                     navigate("/admin")
                 }
             } catch (error: any) {
@@ -142,13 +152,13 @@ const SignInForm = ({ toasts, addToast }: SignInProps) => {
 
 
                 <div className={styles.form__networks}>
-                    <div className={styles.form__network}>
+                    <div className={styles.form__network} style={{display: "none"}}>
                         <img className={styles.form__network__image} src={Discord} alt="discord" />
                     </div>
-                    <div className={styles.form__network}>
+                    <div className={styles.form__network} onClick={handleGoogleAuth}>
                         <img className={styles.form__network__image} src={Google} alt="discord" />
                     </div>
-                    <div className={styles.form__network}>
+                    <div className={styles.form__network}  style={{display: "none"}}>
                         <img className={styles.form__network__image} src={Vk} alt="discord" />
                     </div>
                 </div>

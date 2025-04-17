@@ -74,12 +74,14 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         }
         };
 
+   const handleGoogleAuth = () => {
+    const isTutor = watch("isTutor");  
+    window.location.href = `http://localhost:5000/auth/google?isTutor=${isTutor}`;
 
-const handleGoogleAuth = () => {
-    window.location.href = "http://localhost:5000/auth/google";
-   
+    console.log( `http://localhost:5000/auth/google?isTutor=${isTutor}`)
 }
-        const passwordValue = watch("password", "");
+
+   const passwordValue = watch("password", "");
 
 
 
