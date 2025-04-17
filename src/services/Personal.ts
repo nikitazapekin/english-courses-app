@@ -111,7 +111,7 @@ export default class PersonalService {
 
 
     static async UnSubscribeToCourse( courseId: string): Promise<AxiosResponse<any>> {
-        return  $api.put<any>('/personal/unSubscribedCourse', {courseId: courseId});
+        return  $api.post<any>('/personal/unSubscribedCourse', {courseId: courseId});
     }
 ///unSubscribedCourse
 

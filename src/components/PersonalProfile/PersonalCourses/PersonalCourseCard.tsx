@@ -3,17 +3,7 @@ import { useNavigate } from "react-router-dom"
 import styles from "./PersonalCourseCard.module.scss"
 import PersonalService from "../../../services/Personal"
 interface PersonalCourseProps {
-    /*  item: {
  
-         id: number,
-         author: string,
-         title: string,
-         description: string,
-         course_for: String[],
-         release_date: string,
-         course_logo: string,
-     } */
-
     item: {
 
         id: number,
@@ -30,19 +20,22 @@ interface PersonalCourseProps {
         course_rate: string,
         release_date: string,
         course_logo: string,
-    }
+    },
+    handleFilterCards: (id: number)=> void
 }
-const PersonalCourse = ({ item }: PersonalCourseProps) => {
+const PersonalCourse = ({ item, handleFilterCards }: PersonalCourseProps) => {
     const navigate = useNavigate()
     const handleRedirect = () => {
         navigate(`/card/lessons/${item.id}`)
     }
-    const handleUnsubscribe = async () => {
+    const handleUnsubscribe = async (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.stopPropagation()
         try {
             const resp = await PersonalService.UnSubscribeToCourse(String(item.id))
-
+handleFilterCards(item.id)
 
         } catch (e) {
+            console.log(e)
 
         }
     }
@@ -77,7 +70,7 @@ const PersonalCourse = ({ item }: PersonalCourseProps) => {
                     }
                 </div>
 
-                <div className={styles.unsubscribe} onClick={handleUnsubscribe}>
+                <div className={styles.unsubscribe} onClick={(e) =>handleUnsubscribe(e)}>
                     Отписаться от курса
                 </div>
 

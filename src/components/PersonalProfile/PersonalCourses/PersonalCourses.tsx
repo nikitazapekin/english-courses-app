@@ -26,19 +26,15 @@ interface CoursesProps {
   total: number;
   limit: number;
   handlePageChange: (page: number) => void;
-  currentPage: number
+  currentPage: number,
+  handleFilterCards: (id: number)=> void
 }
 
-const PersonalCourses: React.FC<CoursesProps> = ({ cards, total, limit, handlePageChange, currentPage }) => {
+const PersonalCourses: React.FC<CoursesProps> = ({ cards, total, limit, handlePageChange, currentPage, handleFilterCards }) => {
   const location = useLocation();
-  const navigate = useNavigate();
-
-
-  const lastPathSegment = parseInt(location.pathname.split("/").pop() || "1", 10);
-
-
+ 
   const totalPages = Math.ceil(total / limit);
-  const startIndex = (currentPage - 1) * limit;
+ 
 
   const currentData = cards
 
@@ -55,7 +51,9 @@ const PersonalCourses: React.FC<CoursesProps> = ({ cards, total, limit, handlePa
       </div>
       <div className={styles.courses__cards}>
         {currentData.map((item) => (
-          <PersonalCourseCard key={item.id} item={item} />
+          <PersonalCourseCard key={item.id} item={item}
+          handleFilterCards={handleFilterCards}
+          />
         ))}
       </div>
       <PersonalDots totalPages={totalPages} currentPage={currentPage} onPageChange={handlePageChange} />

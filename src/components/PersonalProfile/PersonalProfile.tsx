@@ -61,8 +61,7 @@ const PersonalProfile = () => {
     useEffect(() => {
         const handleGet = async () => {
             try {
-                console.log("last", Number(currentPage))
-                // const response = await PersonalService.GetPersonalCourses( Number(1) , 5)
+
                 const response = await PersonalService.GetPersonalCourses(Number(currentPage), 5)
                 setCards(response.data.courses.courses)
 
@@ -85,10 +84,14 @@ const PersonalProfile = () => {
 
 
         window.scrollTo(0, 0)
-        console.log("handle page",page)
+        console.log("handle page", page)
         setCurrentPage(page);
     };
 
+
+    const handleFilterCards = (id: number) => {
+        setCards(prev => prev.filter(card => card.id !== id));
+    }
 
     return (
         <section className={styles.personal}>
@@ -117,6 +120,7 @@ const PersonalProfile = () => {
                     limit={limit}
                     handlePageChange={handlePageChange}
                     currentPage={Number(currentPage)}
+                    handleFilterCards={handleFilterCards}
 
 
                 />
