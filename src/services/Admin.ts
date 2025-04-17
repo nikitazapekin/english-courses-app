@@ -28,6 +28,10 @@ export default class adminService {
     static async isAdmin( ): Promise<AxiosResponse<IsAdminResponse>> {
         return $api.get<IsAdminResponse>('/admin/isAdmin' )
     }
+
+    static async GetBannedCourses( ): Promise<AxiosResponse<any>> {
+        return $api.get<any>('/admin/getBannedCourses' )
+    }
     
 
 }

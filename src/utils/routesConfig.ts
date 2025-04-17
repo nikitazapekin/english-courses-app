@@ -1,6 +1,6 @@
 
 import { Component } from "react";
-import { ADMIN_EDIT_PAGE, ADMIN_PAGE, CARD_PAGE, CATALOG, CATALOG_QUERY, CHAT_PAGE, FOUND_COURSES, HELP_PAGE, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TESTING_PAGE, TUTOR_ACHIEVEMENTS_PAGE, TUTOR_CREATE_COURSES, TUTOR_EDIT, TUTOR_PAGE, TUTOR_PERSONAL_COURSE, TUTOR_PERSONAL_COURSES, TUTOR_PERSONAL_PAGE, TUTOR_PERSONAL_STUDENTS } from "./consts";
+import { ADMIN_DELETED_COURSES, ADMIN_EDIT_PAGE, ADMIN_PAGE, CARD_PAGE, CATALOG, CATALOG_QUERY, CHAT_PAGE, FOUND_COURSES, HELP_PAGE, LESSONS_EDUCATE_PAGE, LESSONS_PAGE, MAIN_PAGE, PERSONAL_PAGE, PERSONAL_PAGE_EDIT, SEARCH_PAGE, SIGN_IN, SIGN_UP, TESTING_EDUCATE_PAGE, TESTING_PAGE, TUTOR_ACHIEVEMENTS_PAGE, TUTOR_CREATE_COURSES, TUTOR_EDIT, TUTOR_PAGE, TUTOR_PERSONAL_COURSE, TUTOR_PERSONAL_COURSES, TUTOR_PERSONAL_PAGE, TUTOR_PERSONAL_STUDENTS } from "./consts";
 import Homepage from "../pages/Homepage";
 import SignInPage from "../pages/SignIn";
 import SignUpPage from "../pages/SignUp";
@@ -22,7 +22,7 @@ import TutorPersonalCourses from "../pages/TutorPersonalCourses";
 import TutorCreateCourse from "../pages/TutorCreateCourse";
 import TutorEditProfile from "../pages/TutorEditProfile";
 import FoundCoursesPage from "../pages/FoundCoursesPage";
- 
+
 import AdminPage from "../pages/AdminPage";
 import TutorPersonalCourse from "../pages/TutorPersonalCourse";
 import TutorAchievementsPage from "../pages/TutorAchievements";
@@ -94,18 +94,18 @@ export const publicRoutes = [
   },
   {
     path: TUTOR_PAGE,
-    Component:  TutorPage
+    Component: TutorPage
 
   },
   {
     path: HELP_PAGE,
-    Component:  HelpPage
+    Component: HelpPage
 
   },
 
   {
     path: CHAT_PAGE,
-    Component:  ChatPage
+    Component: ChatPage
 
   },
   {
@@ -130,13 +130,13 @@ export const publicRoutes = [
 
   {
 
-    path: TUTOR_EDIT, 
+    path: TUTOR_EDIT,
     Component: TutorEditProfile
 
   },
   {
 
-    path:  FOUND_COURSES,
+    path: FOUND_COURSES,
     Component: FoundCoursesPage
 
   },
@@ -155,15 +155,23 @@ export const publicRoutes = [
     Component: AdminPage
   },
 
-  
+  {
+    path: ADMIN_DELETED_COURSES,
+    Component: AdminPage
+  },
+  /*
+  export const ADMIN_EDIT_PAGE = "/admin/edit"
+
+export const ADMIN_DELETED_COURSES = "/admin/deleteCourses"
+*/
   {
 
     path: TUTOR_PERSONAL_COURSE,
-    Component: TutorPersonalCourse 
+    Component: TutorPersonalCourse
   },
   {
 
-    path:TESTING_PAGE,
+    path: TESTING_PAGE,
     Component: TestingPage
   },
 
@@ -171,14 +179,14 @@ export const publicRoutes = [
 
   {
 
-    path:TUTOR_ACHIEVEMENTS_PAGE,
+    path: TUTOR_ACHIEVEMENTS_PAGE,
     Component: TutorAchievementsPage
   },
 
 
   {
 
-    path:TUTOR_PERSONAL_STUDENTS,
+    path: TUTOR_PERSONAL_STUDENTS,
     Component: TutorStudentsPage
   },
 

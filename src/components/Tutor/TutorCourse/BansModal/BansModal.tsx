@@ -1,17 +1,17 @@
-   import styles from "./WarningsModal.module.scss";
+import styles from "./ErrorsModal.module.scss"
 
 interface Warning {
     id: number,
-    warning_text: string,
-    warning_date: string,
+    ban_text: string,
+    ban_date: string,
     is_active: boolean
 }
 
 interface Props {
-    warnings: Warning[],
+    bans: Warning[],
     handler: (e: React.MouseEvent) => void
 }
-const WarningsModal = ({ warnings, handler }: Props) => {
+const BansModal = ({ bans, handler }: Props) => {
     const handleClose = (e: React.MouseEvent) => {
         e.stopPropagation();
         handler(e);
@@ -39,13 +39,13 @@ const WarningsModal = ({ warnings, handler }: Props) => {
                 <h1 className={styles.modal__title}>
                     Предупреждения курса:
                 </h1>
-                {warnings && warnings.map(item => (
+                { bans && bans.map(item => (
                     <div key={item.id} className={styles.card}>
                         <div className={styles.card__text}>
-                            {formatWarningText(item.warning_text)}
+                            {formatWarningText(item.ban_text)}
                         </div>
                         <p className={styles.card__date}>
-                            {formatDate(item.warning_date)}
+                            {formatDate(item.ban_date)}
                         </p>
                     </div>
                 ))}
@@ -76,4 +76,4 @@ const WarningsModal = ({ warnings, handler }: Props) => {
     );
 };
 
-export default WarningsModal;
+export default BansModal;

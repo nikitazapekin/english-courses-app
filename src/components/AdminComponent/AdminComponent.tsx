@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AdminSelectorUser } from "../../store/selectors/AdminSelector";
 import EditProfile from "./EditProfile/EditProfile";
+import DeletedCourses from "./DeletedCourses/DeletedCourses";
 const AdminComponent = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
@@ -29,15 +30,22 @@ const AdminComponent = () => {
                 }
 
                 {
-                    lastPathSegment=="edit" && (
+                    lastPathSegment == "edit" && (
                         <EditProfile />
                     )
                 }
 
+                {
+                    lastPathSegment == "deleteCourses" && (
+                       <DeletedCourses />
+                    )
+                }
+
+
                 {!lastPathSegment && (
-                       <AdminPersonalInfo />
+                    <AdminPersonalInfo />
                 )
-                
+
                 }
             </div>
         </div>);

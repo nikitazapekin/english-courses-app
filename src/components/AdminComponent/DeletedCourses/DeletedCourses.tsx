@@ -1,3 +1,36 @@
+import { useEffect } from "react";
+import styles from "./DeletedCourses.module.scss"
+import adminService from "../../../services/Admin";
+const DeletedCourses = () => {
+    useEffect(() => {
+        const handleGet = async () => {
+            try {
+                const resp = await adminService.GetBannedCourses()
+                console.log(resp.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        handleGet()
+    }, [])
+    return (
+        <div className={styles.banned}>
+            <h1 className={styles.banned__title}>
+                Заблокированные курсы
+            </h1>
+            <div className={styles.cards}>
+
+            </div>
+        </div>);
+}
+
+export default DeletedCourses;
+
+
+
+/*
+
 import TutorCourse from "../TutorCourse/TutorCourse";
 import styles from "./TutorsCourses.module.scss"
  
@@ -63,4 +96,22 @@ const TutorsCourses = ({ cards }: TutorCoursesProps) => {
 
 export default TutorsCourses;
 
+/*
+@import "../../../theme/theme";
+
+.cards {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
  
+}
+
+.nothing {
+  font-weight: 700;
+  @include fontSize(32px);
+  color: $black;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+  */
