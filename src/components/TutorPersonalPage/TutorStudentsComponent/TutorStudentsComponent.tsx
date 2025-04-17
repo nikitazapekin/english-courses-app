@@ -37,17 +37,17 @@ const TutorStudentsComponent = () => {
     const [data, setData] = useState<Students | null>(null);
     const handleRemove = async (email: string, courseId: string) => {
         try {
-          
+
             const response = await TutorService.removeStudentsCourse(email, courseId);
 
             if (response.data && response.data.success) {
-              
+
                 setData(prevData => {
                     if (!prevData) return prevData;
- 
+
                     const updatedStudents = prevData.students.students.map(student => {
                         if (student.email === email) {
-                           
+
                             const updatedCourses = student.courses.filter(id => id !== courseId);
                             return {
                                 ...student,
@@ -56,7 +56,7 @@ const TutorStudentsComponent = () => {
                         }
                         return student;
                     });
- 
+
                     return {
                         ...prevData,
                         students: {
@@ -75,7 +75,7 @@ const TutorStudentsComponent = () => {
         }
     };
 
- 
+
     useEffect(() => {
         const handleGet = async () => {
             try {
@@ -96,7 +96,7 @@ const TutorStudentsComponent = () => {
     if (!data) return <div>Loading...</div>;
 
     const { courses, students } = data.students;
- 
+
     const coursesWithStudents = courses.map(course => {
         const studentsInCourse = students.filter(student =>
             student.courses.includes(course.id.toString())
@@ -106,17 +106,6 @@ const TutorStudentsComponent = () => {
             students: studentsInCourse
         };
     });
- 
-
-
-
-
-
-
-
-
-
- 
 
     return (
         <div className={styles.students}>

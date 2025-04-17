@@ -29,6 +29,13 @@ const TutorsCourses = ({ cards }: TutorCoursesProps) => {
                     ))}
                 </>
             )}
+
+
+            {cards.length == 0 && (
+                <div className={styles.nothing}>
+У вас еще нету ваших курсов
+                    </div>
+            )}
         </div>);
 }
 

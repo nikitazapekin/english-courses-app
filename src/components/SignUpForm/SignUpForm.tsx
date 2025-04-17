@@ -45,7 +45,6 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         localStorage.setItem("isAuthorized", JSON.stringify({ isAuthorized: true }));
         navigate("/personal")
         reset();
-
     };
     useEffect(() => {
         if (Object.keys(errors).length != 0) {
@@ -54,13 +53,13 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
         console.log(errors)
     }, [errors])
 
-        const handleClick = async (data: RegisterInterface) => {  
-            if (Object.keys(errors).length == 0) {
+    const handleClick = async (data: RegisterInterface) => {
+        if (Object.keys(errors).length == 0) {
             try {
-                const { confirmPassword, ...registrationData } = data; 
+                const { confirmPassword, ...registrationData } = data;
                 const response = await AuthService.registration(registrationData);
                 console.log('Ответ сервера:', response.data);
-                navigate("/sign-in");  
+                navigate("/sign-in");
             } catch (error: any) {
                 console.error('Ошибка при регистрации:', error);
                 if (error.response) {
@@ -72,19 +71,14 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                 }
             }
         }
-        };
+    };
 
-   const handleGoogleAuth = () => {
-    const isTutor = watch("isTutor");  
-    window.location.href = `http://localhost:5000/auth/google?isTutor=${isTutor}`;
-
-    console.log( `http://localhost:5000/auth/google?isTutor=${isTutor}`)
-}
-
-   const passwordValue = watch("password", "");
-
-
-
+    const handleGoogleAuth = () => {
+        const isTutor = watch("isTutor");
+        window.location.href = `http://localhost:5000/auth/google?isTutor=${isTutor}`;
+        console.log(`http://localhost:5000/auth/google?isTutor=${isTutor}`)
+    }
+    const passwordValue = watch("password", "");
     return (
         <form className={styles.form} onSubmit={handleSubmit(submitForm)}>
             <div className={styles.form__inner}>
@@ -232,7 +226,7 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
 
 
                     <div className={styles.form__field}>
-                       
+
                         <div
                             className={`${styles.form__input__wrapper} ${styles.form__confirm}`}>
 
@@ -244,7 +238,7 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                                 required
                             />
                             <p className={styles.form__text}>
-                               Вы учитель?
+                                Вы учитель?
                             </p>
                         </div>
                     </div>
@@ -256,7 +250,7 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                 <button className={styles.form__submit}
                     type="submit"
                     onClick={handleSubmit(handleClick)}
-              
+
                 >Зарегистрироваться</button>
                 <div className={styles.form__or}>
                     <hr className={styles.form__line} />
@@ -267,13 +261,13 @@ const SignUpForm = ({ toasts, addToast }: SignUpProps) => {
                     Регистрация через социальные сети
                 </p>
                 <div className={styles.form__networks}>
-                    <div className={styles.form__network} style={{display: "none"}}>
+                    <div className={styles.form__network} style={{ display: "none" }}>
                         <img className={styles.form__network__image} src={Discord} alt="discord" />
                     </div>
                     <div className={styles.form__network} onClick={handleGoogleAuth} >
-                        <img className={styles.form__network__image} src={Google} alt="discord"  />
+                        <img className={styles.form__network__image} src={Google} alt="discord" />
                     </div>
-                    <div className={styles.form__network}  style={{display: "none"}}>
+                    <div className={styles.form__network} style={{ display: "none" }}>
                         <img className={styles.form__network__image} src={Vk} alt="discord" />
                     </div>
                 </div>

@@ -108,7 +108,12 @@ export default class PersonalService {
         console.log("offset", offset)
         return  $api.get<CoursesResponse>(`/personal/getSubscribedCourses?limit=${limit}&offset=${offset}`);
     }
- 
+
+
+    static async UnSubscribeToCourse( courseId: string): Promise<AxiosResponse<any>> {
+        return  $api.put<any>('/personal/unSubscribedCourse', {courseId: courseId});
+    }
+///unSubscribedCourse
 
 
 }

@@ -34,7 +34,7 @@ const PersonalProfile = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
     const [cards, setCards] = useState<CoursesResponse["courses"]>([])
- 
+
     const [total, setTotal] = useState(0)
 
     const [page, setPage] = useState(0)
@@ -54,19 +54,19 @@ const PersonalProfile = () => {
         }
     }
     const location = useLocation();
-    
-    let lastPathSegment = location.pathname.split("/")  
+
+    let lastPathSegment = location.pathname.split("/")
     const [currentPage, setCurrentPage] = useState(isNaN(Number(lastPathSegment)) ? 1 : lastPathSegment);
- 
+
     useEffect(() => {
         const handleGet = async () => {
             try {
-                console.log("last",Number(currentPage) )
-                const response = await PersonalService.GetPersonalCourses( Number(currentPage) , 5)
+                console.log("last", Number(currentPage))
+                // const response = await PersonalService.GetPersonalCourses( Number(1) , 5)
+                const response = await PersonalService.GetPersonalCourses(Number(currentPage), 5)
                 setCards(response.data.courses.courses)
-                console.log(response.data)
 
-        
+
                 setTotal(response.data.courses.total)
             } catch {
 
@@ -77,15 +77,19 @@ const PersonalProfile = () => {
     }, [currentPage])
 
     useEffect(() => {
-   
-          navigate(`/personal/${currentPage}/${limit}`);
- 
-      }, [ currentPage]);
-      const handlePageChange = (page: number) => {
+
+        navigate(`/personal/${currentPage}/${limit}`);
+
+    }, [currentPage]);
+    const handlePageChange = (page: number) => {
+
+
+        window.scrollTo(0, 0)
+        console.log("handle page",page)
         setCurrentPage(page);
-      };
-    
-     
+    };
+
+
     return (
         <section className={styles.personal}>
             <PaymentModal isOpenModal={isOpenModal} handleOpenModal={handleOpenModal} />
@@ -106,18 +110,18 @@ const PersonalProfile = () => {
                     <PersonalDescribtion />
 
                 </div>
- 
+
                 <PersonalCourses
                     cards={cards}
                     total={total}
                     limit={limit}
                     handlePageChange={handlePageChange}
                     currentPage={Number(currentPage)}
-                 
-            
+
+
                 />
 
-                {currentPage}
+
             </div>
         </section>
     );

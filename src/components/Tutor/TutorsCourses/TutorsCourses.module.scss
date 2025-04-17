@@ -1,7 +1,18 @@
+@import "../../../theme/theme";
+
 .cards {
     width: 100%;
     display: flex;
     flex-direction: column;
   // flex-direction: column-reverse;
  //background-color: red;
+}
+
+.nothing {
+  font-weight: 700;
+  @include fontSize(32px);
+  color: $black;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  margin-top: 50px;
 }
