@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./DeletedCourses.module.scss"
 import adminService from "../../../services/Admin";
 import DeletedCard from "./DeletedCard/DeletedCard";
-
-
-
-
-
-
+import EditModal from "./EditModal/EditModal";
 
 interface Ban {
     id: number;
@@ -38,14 +33,9 @@ interface CourseDetails {
     bans_data: Ban[];
 }
 
-interface BannedResp {
-    banned: CourseDetails[]
-}
-
-
-
 const DeletedCourses = () => {
     const [cards, setCards] = useState<CourseDetails[]>()
+    const [selected, setSelected] = useState<CourseDetails>()
     useEffect(() => {
         const handleGet = async () => {
             try {
@@ -56,10 +46,19 @@ const DeletedCourses = () => {
                 console.log(e)
             }
         }
-
         handleGet()
     }, [])
+    const [isOpenEdit, setIsOpenEdit] = useState(false)
 
+    const handleOpen = (item: CourseDetails) => {
+        setIsOpenEdit(prev => !prev)
+        setSelected(item)
+    }
+    const handleClose = () => {
+        setIsOpenEdit(prev => !prev)
+
+    }
+   
     return (
         <div className={styles.banned}>
             <h1 className={styles.banned__title}>
@@ -71,11 +70,21 @@ const DeletedCourses = () => {
                     <DeletedCard
                         key={item.id}
                         item={item}
+                        handleOpen={handleOpen}
+
                     />
                 ))}
             </div>
+            {isOpenEdit && (
+
+                <EditModal
+                    handler={handleClose}
+                    bans={selected!.bans_data}
+                />
+            )}
+            {/*
+            */}
         </div>);
 }
 
 export default DeletedCourses;
- 
