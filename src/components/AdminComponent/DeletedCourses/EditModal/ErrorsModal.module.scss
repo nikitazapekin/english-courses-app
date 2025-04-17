@@ -1,5 +1,39 @@
 @import "../../../../theme/theme";
 
+.card {
+    &__input {
+        width: 100%;
+        min-height: 100px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        resize: vertical;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    &__action {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4px;
+        line-height: 1;
+    }
+}
+ 
 .modal {
     position: fixed;
     left: 0;
@@ -74,7 +108,7 @@
         opacity: 0.4;
     }
 }
-
+/*
 .card {
     background: #f9f9f9;
     border-radius: 12px;
@@ -111,4 +145,4 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
-}
+} */
