@@ -24,6 +24,18 @@ export default class BanService {
         static async AddBan(courseId:number, warningText: string): Promise<AxiosResponse<IsAdminResponse>> {
             return $api.post<IsAdminResponse>('/ban/addBan' , {courseId: courseId,banText: warningText })
         } 
+
+        
+        
+        static async UpdateBan(idBan: string, text: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.put<IsAdminResponse>('/ban/updateBan' , {idBan: idBan,text: text })
+        } 
+        static async DeleteBan(idBan: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/ban/deleteBan' , {idBan: idBan,})
+        }
+        static async DeleteBans(idCourse:string, ): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/ban/deleteBans' , {idCourse: idCourse })
+        }
     
 
 }

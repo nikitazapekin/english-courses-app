@@ -3,6 +3,7 @@ import styles from "./DeletedCourses.module.scss";
 import adminService from "../../../services/Admin";
 import DeletedCard from "./DeletedCard/DeletedCard";
 import EditModal from "./EditModal/EditModal";
+import BanService from "../../../services/Ban";
 
 interface Ban {
     id: number;
@@ -65,59 +66,33 @@ const DeletedCourses = () => {
         setSelected(null);
     };
 
-   /*  const handleDeleteBan = async (banId: number) => {
-        try {
-           
-           
-            setCards(prev => prev.map(course => ({
-                ...course,
-                bans_data: course.bans_data.filter(ban => ban.id !== banId)
-            })));
-            
-           
-            if (selected && selected.bans_data.length === 1) {
-                fetchBannedCourses();
-                handleClose();
-            }
-        } catch (e) {
-            console.error("Ошибка при удалении блокировки:", e);
-        }
-    };
 
-    const handleUpdateBan = async (banId: number, newText: string) => {
-        try {
+    /*
         
-            setCards(prev => prev.map(course => ({
-                ...course,
-                bans_data: course.bans_data.map(ban =>
-                    ban.id === banId ? { ...ban, ban_text: newText } : ban
-                )
-            })));
-        } catch (e) {
-            console.error("Ошибка при обновлении блокировки:", e);
+        static async UpdateBan(idBan: string, text: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.put<IsAdminResponse>('/ban/updateBan' , {idBan: idBan,text: text })
+        } 
+        static async DeleteBan(idBan: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/ban/deleteBan' , {idBan: idBan,})
         }
-    }; */
-
-
-
+        static async DeleteBans(idCourse:string, ): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/ban/deleteBans' , {idCourse: idCourse })
+        }
+            */
     const handleDeleteBan = async (banId: number) => {
         try {
-            // Обновляем состояние cards
+          await BanService.DeleteBan(String(banId))
             const updatedCards = cards.map(course => ({
                 ...course,
                 bans_data: course.bans_data.filter(ban => ban.id !== banId)
             }));
             
             setCards(updatedCards);
-            
-            // Обновляем состояние selected, если это тот же курс
             if (selected) {
                 setSelected({
                     ...selected,
                     bans_data: selected.bans_data.filter(ban => ban.id !== banId)
                 });
-                
-                // Если это был последний бан, закрываем модальное окно
                 if (selected.bans_data.length === 1) {
                     fetchBannedCourses();
                     handleClose();
@@ -130,7 +105,7 @@ const DeletedCourses = () => {
     
     const handleUpdateBan = async (banId: number, newText: string) => {
         try {
-            // Обновляем состояние cards
+await BanService.UpdateBan(String(banId), newText)
             const updatedCards = cards.map(course => ({
                 ...course,
                 bans_data: course.bans_data.map(ban =>
@@ -140,7 +115,7 @@ const DeletedCourses = () => {
             
             setCards(updatedCards);
             
-            // Обновляем состояние selected, если это тот же курс
+       
             if (selected) {
                 setSelected({
                     ...selected,
@@ -152,16 +127,14 @@ const DeletedCourses = () => {
         } catch (e) {
             console.error("Ошибка при обновлении блокировки:", e);
         }
-    };
+    };  
 
+ 
 
-    
-useEffect(()=> {
-console.log("CARS", cards)
-}, [cards])
     const handleDeleteAllBans = async (courseId: number) => {
+
         try {
-          
+         await BanService.DeleteBans(String(courseId))  
             fetchBannedCourses();
             handleClose();
         } catch (e) {
