@@ -1,6 +1,6 @@
 import TutorCourse from "../TutorCourse/TutorCourse";
 import styles from "./TutorsCourses.module.scss"
-
+/* 
 interface TutorCoursesProps {
     cards: {
 
@@ -11,9 +11,52 @@ interface TutorCoursesProps {
         course_for: String[],
         release_date: string,
         course_logo: string,
+
+
+        
+        bans:  number[],
+        isvisible: boolean,
+        warnings_data:  number[],
     }[]
 
 
+} */
+
+    
+interface Warning {
+    id: number,
+    warning_text:string,
+    warning_date: string,
+    is_active: boolean
+}
+
+interface Ban {
+
+    id: number,
+    ban_text:string,
+    ban_date: string,
+    is_active: boolean
+   
+}
+interface TutorCoursesProps {
+    cards: {
+    id: number,
+    author: string,
+    title: string,
+    description: string,
+    course_for: String[],
+    release_date: string,
+    course_logo: string,
+
+
+    bans: number[],
+    isvisible: boolean,
+    warnings: number[],
+
+
+    warnings_data: Warning[],
+    bans_data:  Ban[],
+}[]
 }
 const TutorsCourses = ({ cards }: TutorCoursesProps) => {
     return (
@@ -33,8 +76,8 @@ const TutorsCourses = ({ cards }: TutorCoursesProps) => {
 
             {cards.length == 0 && (
                 <div className={styles.nothing}>
-У вас еще нету ваших курсов
-                    </div>
+                    У вас еще нету ваших курсов
+                </div>
             )}
         </div>);
 }

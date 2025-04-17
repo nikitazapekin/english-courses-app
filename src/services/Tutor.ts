@@ -52,8 +52,21 @@ interface FormTypes {
     phone: string
     }
 }
+interface Warning {
+    id: number,
+    warning_text:string,
+    warning_date: string,
+    is_active: boolean
+}
 
+interface Ban {
 
+    id: number,
+    ban_text:string,
+    ban_date: string,
+    is_active: boolean
+   
+}
 interface TutorCoursesResponse {
     
         message: string,
@@ -66,10 +79,81 @@ interface TutorCoursesResponse {
                     course_for:  String[],
                     release_date:string,
                     course_logo:string,
-                
+
+
+                    bans:  number[],
+                    isvisible: boolean,
+                    warnings: number[]
+                    warnings_data: Warning[],
+                 bans_data:  Ban[],
                 }[]
 
 }
+/*
+    {
+                    "id": 1,
+                    "warning_text": "avdvad",
+                    "warning_date": "2025-04-17T15:08:44.900139+03:00",
+                    "is_active": true
+                },
+                */
+
+/*
+   "isvisible": false,
+            "warnings_data": null,
+            "bans_data": [
+                {
+                    "id": 2,
+                    "ban_text": "advvadvad",
+                    "ban_date": "2025-04-17T15:08:39.065706+03:00",
+                    "is_active": true
+                },
+                {
+                    "id": 3,
+                    "ban_text": "advvadvad",
+                    "ban_date": "2025-04-17T15:08:39.068905+03:00",
+                    "is_active": true
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "course_id": null,
+            "author": "fff@mail.ru",
+            "title": "ehtheheh",
+            "description": "herhre",
+            "fulldescription": "ehr",
+            "course_for": [
+                "hre"
+            ],
+            "course_suitable": [
+                "hre"
+            ],
+            "for_what_reasons": [
+                "her"
+            ],
+            "about_course": [
+                "hre"
+            ],
+            "tag": "Средний",
+            "course_rate": "0",
+            "release_date": "2025-04-16T21:00:00.000Z",
+            "warnings": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "bans": null,
+            "isvisible": true,
+            "warnings_data": [
+                {
+                    "id": 1,
+                    "warning_text": "avdvad",
+                    "warning_date": "2025-04-17T15:08:44.900139+03:00",
+                    "is_active": true
+                },
+                */
 
  
 
@@ -154,41 +238,7 @@ interface TutorCoursesResponse {
                 }
            
         }
-     /*
-     {
-    "message": "Доступ разрешён",
-    "data": {
-        "tutors": [
-            {
-                "id": 2,
-                "id_author": 2,
-                "username": "Ffff",
-                "email": "fff@mail.ru",
-                "rate": "0.00",
-                "specialization": "",
-                "description": "",
-                "english_level": "",
-                "full_description": "",
-                "role": "tutor",
-                "number_of_students": 0,
-                "experience": null,
-                "work_experience": 0,
-                "phone": null,
-                "location": null,
-                "price": null,
-                "avatar": null
-            }
-        ],
-        "pagination": {
-            "total": 1,
-            "limit": 10,
-            "offset": 0,
-            "hasMore": false
-        }
-    }
-}
-    */
-
+     
 
 
 

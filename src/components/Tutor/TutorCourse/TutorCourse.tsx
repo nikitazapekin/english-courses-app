@@ -1,5 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./TutorCourse.module.scss";
+import { useState } from "react";
+import WarningModal from "../../CategoriesComponent/WarningModal/WarningModal";
+import WarningsModal from "./WarningsModal/WarningsModal";
+
+
+interface Warning {
+    id: number,
+    warning_text: string,
+    warning_date: string,
+    is_active: boolean
+}
+
+interface Ban {
+
+    id: number,
+    ban_text: string,
+    ban_date: string,
+    is_active: boolean
+
+}
+
 
 interface TutorCourseProps {
     item: {
@@ -10,6 +31,14 @@ interface TutorCourseProps {
         course_for: String[];
         release_date: string;
         course_logo: string;
+
+        bans: number[],
+        isvisible: boolean,
+        warnings: number[],
+
+
+        warnings_data: Warning[],
+        bans_data: Ban[],
     };
 }
 
@@ -17,7 +46,7 @@ const TutorCourse = ({ item }: TutorCourseProps) => {
     const navigate = useNavigate();
 
     const handleRedirect = (event: React.MouseEvent) => {
-        event.stopPropagation(); 
+        event.stopPropagation();
         navigate(`/tutor/personal/courses/${item.id}`);
     };
 
@@ -25,6 +54,16 @@ const TutorCourse = ({ item }: TutorCourseProps) => {
         navigate(`/card/lessons/${item.id}`);
     };
 
+
+    const [isOpenBansInfo, setIsOpenBansInfo] = useState(false)
+    const [isOpenWarningsInfo, setIsOpenWarningsInfo] = useState(false)
+    const handleOpenBansInfo = () => {
+        setIsOpenBansInfo(prev => !prev)
+    }
+    const handleOpenWarningsInfo = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        e.stopPropagation()
+        setIsOpenWarningsInfo(prev => !prev)
+    }
     return (
         <div
             className={styles.card}
@@ -51,18 +90,46 @@ const TutorCourse = ({ item }: TutorCourseProps) => {
                             </div>
                         ))}
                     </div>
+
+                    <div>
+                        <p className={styles.vis}>
+                            Курс виден другим пользователям:  {item.isvisible ? "Да" : "Нет"}
+                        </p>
+                        {item.bans != null && item.bans.length > 0 && (
+                            <div className={styles.bans}>
+                                Ващ курс заблокирован. <span className={`${styles.bans}   ${styles.underline}`}>
+                                    Узнать причину
+                                </span>
+                            </div>
+                        )}
+                        {item.warnings_data != null && item.warnings_data.length > 0 && (
+                            <div className={styles.warnings} >
+                                У вашего курса есть предупреждения.  <span className={`${styles.warnings} ${styles.underline}`}
+                                    onClick={(e)=> handleOpenWarningsInfo(e)}
+                                >
+                                    Подробнее
+                                </span>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 
             <p
                 className={styles.card__edit}
-                onClick={handleRedirect} 
+                onClick={handleRedirect}
             >
                 Редактировать
             </p>
+
+
+            {isOpenWarningsInfo && (
+                <WarningsModal warnings={item.warnings_data} 
+                handler={handleOpenWarningsInfo}
+                />
+            )}
         </div>
     );
 };
 
 export default TutorCourse;
- 

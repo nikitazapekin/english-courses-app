@@ -6,6 +6,23 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TutorService from "../../../services/Tutor";
 import TutorsCourses from "../../Tutor/TutorsCourses/TutorsCourses";
+
+
+interface Warning {
+    id: number,
+    warning_text:string,
+    warning_date: string,
+    is_active: boolean
+}
+
+interface Ban {
+
+    id: number,
+    ban_text:string,
+    ban_date: string,
+    is_active: boolean
+   
+}
 interface TutorCoursesResponse {
     id: number,
     author: string,
@@ -14,6 +31,15 @@ interface TutorCoursesResponse {
     course_for: String[],
     release_date: string,
     course_logo: string,
+
+
+    bans: number[],
+    isvisible: boolean,
+    warnings: number[],
+
+
+    warnings_data: Warning[],
+    bans_data:  Ban[],
 }
 const TutorPersonalCoursesComponent = () => {
     const tutor = useSelector(TutorSelector)
