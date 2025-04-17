@@ -140,12 +140,7 @@ export const publicRoutes = [
     Component: FoundCoursesPage
 
   },
-  /* {
 
-    path: CATALOG_QUERY,
-    Component: CatalogPageQuery
-
-  }, */
   {
 
     path: ADMIN_PAGE,

@@ -24,10 +24,10 @@ const PersonalDescribtion = () => {
             <p className={styles.describtion__text}>
                 {user.describtion ?  <>{user.describtion} </> : <>Добавьте описание...</>}
             </p>
-            <p className={styles.describtion__subtitle}>
+            <p className={styles.describtion__subtitle} style={{display: "none"}}> 
                 Привязать аккаунт к социальным сетям:
             </p>
-            <div className={styles.describtion__networks}>
+            <div className={styles.describtion__networks} style={{display: "none"}}>
                 <div className={`${styles.describtion__network}  ${styles.describtion__network__purple}`}>
                     <img src={Discord} alt="Discord" className={`${styles.describtion__network__image} `} />
                 </div>

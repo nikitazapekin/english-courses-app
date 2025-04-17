@@ -26,13 +26,8 @@ const PersonalPage = () => {
             }
         };
         handleGetUser();  
-    
-
-
     }, []);
-
     return (
-
         <div className={styles.wrapper}>
             <Header />
             <div className={styles.content}>

@@ -25,8 +25,6 @@ const CatalogPage = () => {
 
                     <WarningModal />
                 )}
-
-            
                 {isOpenWarningModal.isOpenAddBanModal && (
 
                     <BanModal />

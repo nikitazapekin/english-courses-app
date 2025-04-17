@@ -1,4 +1,4 @@
- 
+
 
 
 import React from "react";
@@ -11,7 +11,7 @@ interface PersonalDotsProps {
 }
 
 const SearchDots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPageChange }) => {
-  const maxVisibleDots = 3; 
+  const maxVisibleDots = 3;
 
   const getVisiblePages = () => {
     let startPage = Math.max(1, currentPage - Math.floor(maxVisibleDots / 2));
@@ -56,4 +56,3 @@ const SearchDots: React.FC<PersonalDotsProps> = ({ totalPages, currentPage, onPa
 
 export default SearchDots;
 
- 

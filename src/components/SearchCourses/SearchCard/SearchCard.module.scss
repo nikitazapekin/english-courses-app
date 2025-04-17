@@ -1,4 +1,4 @@
-@import "../../../theme/theme";
+/* @import "../../../theme/theme";
 
 .card {
     max-width: 300px;
@@ -20,4 +20,147 @@
     &__image {
         max-width: 200px;
     }
+} */
+
+
+@import "../../../theme/theme";
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    height: auto;
+    height: 100%;
+    max-width: 300px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    &__title {
+        font-size: 24px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        //   margin-bottom: 20px;
+        text-align: center;
+
+    }
+
+    &__description {
+        font-size: 20px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        //   margin-bottom: 20px;
+        font-weight: 400;
+        text-align: left;
+
+    }
+
+    @include pc {
+
+        width: 100%;
+
+    }
+
+
+
+   
+    &__preview {
+        border-radius: 8px;
+        min-height: 176px;
+    }
+
+    &__image {
+        //  padding: 40px 0 14px 11px;
+        //  margin: 0 auto;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        width: 100%;
+        height: 300px;
+    }
+
+   
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    &__price {
+        font-weight: 700;
+        @include fontSize(20px);
+        color: $black;
+        font-family: "Inter", sans-serif;
+    }
+
+    &__name {
+        color: $white;
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-weight: 700;
+        @include fontSize(40px);
+        color: $white;
+        font-family: "Inter", sans-serif;
+        padding: 11px 22px 0 0;
+        transform: rotate(7deg);
+    }
+
+    &__rating,
+    &__releaseDate {
+        font-weight: 400;
+        @include fontSize(16px);
+        color: $black;
+        font-family: "Nunito", sans-serif;
+       
+    }
+
+    &__line {
+        width: 100%;
+        height: 0.75px;
+        background-color: #000;
+    }
+
+    &__for {
+        display: flex;
+        column-gap: 5px;
+        margin-top: 5px;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        font-size: 16px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        display: flex;
+
+        white-space: nowrap;
+    }
+}
+
+.card {
+    &__image {
+
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+        &__wrapper {
+            width: 100%;
+            height: 250px;
+
+        }
+    }
+
+    &__btns {
+        display: flex;
+        margin-top: 10px;
+        column-gap: 10px;
+    }
+}
+
+
+.card__image {
+    margin: 0 auto;
 }

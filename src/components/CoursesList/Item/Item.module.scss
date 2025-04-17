@@ -136,10 +136,7 @@
 
 
 
-   /*  &:hover {
-        transform: rotateY(20deg) rotateX(10deg);
-    }
- */
+   
     &__preview {
         border-radius: 8px;
         min-height: 176px;
@@ -155,13 +152,7 @@
         height: 300px;
     }
 
-    /*   &__title {
-        font-weight: 400;
-        @include fontSize(20px);
-        color: $black;
-        font-family: "Inter", sans-serif;
-    }
- */
+   
     &__wrapper {
         display: flex;
         flex-direction: column;
@@ -194,7 +185,7 @@
         @include fontSize(16px);
         color: $black;
         font-family: "Nunito", sans-serif;
-        // font-family: "Inter", sans-serif;
+       
     }
 
     &__line {
