@@ -1,4 +1,53 @@
 import { useEffect, useState } from "react";
+import styles from "./WarningCourses.module.scss"
+import adminService from "../../../services/Admin";
+const WarningCourses = () => {
+   // const [cards, setCards] = useState<CourseDetails[]>([]);
+  //  const [selected, setSelected] = useState<CourseDetails | null>(null);
+    const [isOpenEdit, setIsOpenEdit] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const fetchBannedCourses = async () => {
+        setIsLoading(true);
+        try {
+            const resp = await adminService.GetWarningCourses();
+            console.log("res", resp.data)
+//setCards(resp.data.banned || []);
+        } catch (e) {
+            console.error("Ошибка при загрузке заблокированных курсов:", e);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchBannedCourses();
+    }, []);
+
+ /*    const handleOpen = (item: CourseDetails) => {
+        setSelected(item);
+        setIsOpenEdit(true);
+    };
+
+    const handleClose = () => {
+        setIsOpenEdit(false);
+        setSelected(null);
+    };
+ */
+
+    
+
+    return (<div>
+        svdsdvv
+
+    </div>);
+}
+
+export default WarningCourses;  
+
+
+/*
+import { useEffect, useState } from "react";
 import styles from "./DeletedCourses.module.scss";
 import adminService from "../../../services/Admin";
 import DeletedCard from "./DeletedCard/DeletedCard";
@@ -166,3 +215,5 @@ const DeletedCourses = () => {
 };
 
 export default DeletedCourses;
+
+*/

@@ -18,7 +18,7 @@ import Ban from "../../../assets/admin/ban-circle-symbol.png"
 ] */
 export const panelBtns = [
     {id: 1, text: "Мой профиль", icon: User, link: "/", page: "profile" },
-    {id: 2, text: "Редактированные курсы", icon: Edit, link: "/editCourses", page: "editCourses" },
+    {id: 2, text: "Редактированные курсы", icon: Edit, link: "/warningsCourses", page: "editCourses" },
     {id: 3, text: "Удаленные курсы", icon:  Delete, link: "/deleteCourses", page: "deleteCourses"},
     {id: 4, text: "Заблокированные пользователи", icon: Ban, link: "/deleteUsers", page: "deleteUsers" },
     {id: 5, text: "Редактировать профиль", icon: Pencil, link: "/edit", page: "edit" },

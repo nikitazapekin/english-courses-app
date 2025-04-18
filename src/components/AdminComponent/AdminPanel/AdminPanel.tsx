@@ -23,10 +23,7 @@ const AdminPamel = ({ username, email }: TutorPanelProps) => {
     return (
         <div className={styles.panel}>
 
-            {/*
-            <AvatarComponent
-            />
-            */}
+          
             <AvatarComponent />
             <h2 className={styles.panel__title}>
               Admin

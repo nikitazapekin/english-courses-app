@@ -20,7 +20,7 @@ interface courseMaterialsTypes {
     }[];
 }
 
- 
+
 export const courseMaterials: courseMaterialsTypes[] = [
     {
         id: 0,
