@@ -73,11 +73,8 @@ const CoursePage = () => {
             <Header />
             <div className={styles.content}>
 
-
-
                 <Course />
                 <CoursePreview />
-
                 <ForWhatSection />
                 <AboutCourse />
                 <CourseCertificate />
@@ -106,20 +103,4 @@ const CoursePage = () => {
 }
 
 export default CoursePage;
-/*
-    const isOpenWarningModal = useSelector(AddWarningSelectorPage)
-
-   return (
-       <>
-           <div className={styles.wrapper}>
-
-               <Header />
-               {isOpenWarningModal.isOpenAddWarningModal && (
-
-                   <WarningModal />
-               )}
-               {isOpenWarningModal.isOpenAddBanModal && (
-
-                   <BanModal />
-               )}
-                   */
+ 
