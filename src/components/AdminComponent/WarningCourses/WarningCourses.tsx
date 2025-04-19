@@ -1,9 +1,49 @@
 import { useEffect, useState } from "react";
 import styles from "./WarningCourses.module.scss"
 import adminService from "../../../services/Admin";
+import WarningCard from "./WarningCard/WarningCard";
+ 
+
+interface WarningsDetails {
+    id: number;
+    course_id: number;
+    author: string;
+    title: string;
+    description: string;
+    fulldescription: string;
+    course_for: string[];
+    course_suitable: string[];
+    for_what_reasons: string[];
+    about_course: string[];
+    tag: string;
+    course_rate: string;
+    release_date: string;
+    course_logo: string;
+    warnings:
+    {
+        id: number,
+        course_id: number,
+        warning_text: string;
+        warning_date: string;
+        is_active: boolean
+    }[];
+
+
+
+    warnings_data: {
+        id: number,
+        course_id: number,
+        warning_text: string;
+        warning_date: string;
+        is_active: boolean
+    }[];
+    isvisible: boolean;
+
+}
+
 const WarningCourses = () => {
-   // const [cards, setCards] = useState<CourseDetails[]>([]);
-  //  const [selected, setSelected] = useState<CourseDetails | null>(null);
+    const [cards, setCards] = useState<WarningsDetails[]>([]);
+    const [selected, setSelected] = useState<WarningsDetails | null>(null);
     const [isOpenEdit, setIsOpenEdit] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -12,7 +52,7 @@ const WarningCourses = () => {
         try {
             const resp = await adminService.GetWarningCourses();
             console.log("res", resp.data)
-//setCards(resp.data.banned || []);
+            setCards(resp.data.banned || []);
         } catch (e) {
             console.error("Ошибка при загрузке заблокированных курсов:", e);
         } finally {
@@ -24,26 +64,64 @@ const WarningCourses = () => {
         fetchBannedCourses();
     }, []);
 
- /*    const handleOpen = (item: CourseDetails) => {
+    const handleOpen = (item: WarningsDetails) => {
         setSelected(item);
         setIsOpenEdit(true);
-    };
+        };
+        
+        const handleClose = () => {
+            setIsOpenEdit(false);
+            setSelected(null);
+            };
+            /*
+    */
 
-    const handleClose = () => {
-        setIsOpenEdit(false);
-        setSelected(null);
-    };
- */
 
+
+    return (<div className={styles.banned}>
     
+    
+         <h1 className={styles.banned__title}>
+                  Курсы с правками
+                </h1>
+    
+                {isLoading ? (
+                    <div>Загрузка...</div>
+                ) : (
+                    <div className={styles.cards}>
+                        {cards.length > 0 ? (
+                            cards.map(item => (
+                                <WarningCard
+                                    key={item.id}
+                                    item={item}
+                                    handleOpen={handleOpen}
+                                />
+                            ))
+                        ) : (
+                            <div>Нет заблокированных курсов</div>
+                        )}
+                    </div>
+                )}
 
-    return (<div>
-        svdsdvv
+                    {/*
+                
+                {isOpenEdit && selected && (
+                    <EditModal
+                        handler={handleClose}
+                        bans={selected.bans_data}
+                        onDelete={handleDeleteBan}
+                        onUpdate={handleUpdateBan}
+                        onDeleteAll={() => handleDeleteAllBans(selected.course_id)}
+                    />
+                )}
+
+                    */}
+
 
     </div>);
 }
 
-export default WarningCourses;  
+export default WarningCourses;
 
 
 /*
