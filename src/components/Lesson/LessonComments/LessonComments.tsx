@@ -1,5 +1,8 @@
 import styles from "./LessonComments.module.scss";
 import LessonCommentCard from "./LessonCommentCard";
+ 
+import { useEffect, useState } from "react";
+import adminService from "../../../services/Admin";
 
 interface Comment {
     id: number;
@@ -63,28 +66,45 @@ interface User {
 interface LessonCommentsProps {
     data: Comment[];
     user: User;
-    handleUpdateLike: (id: number,  comment_id: number) => void,
+    handleUpdateLike: (id: number, comment_id: number) => void,
     setComments: React.Dispatch<React.SetStateAction<Comment[]>>;
     userAvatar: string
 }
 
 
- 
-const LessonComments = ({ data, user, handleUpdateLike, setComments , userAvatar}: LessonCommentsProps) => {
-    console.log("DATA", data);
+
+const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar }: LessonCommentsProps) => {
+
+
+    const [isUserAdmin, setIsAdmin] = useState(false)
+    useEffect(() => {
+        const handleGet = async () => {
+
+            try {
+                const resp = await adminService.isAdmin()
+                console.log(resp.data.isAdmin)
+                setIsAdmin(resp.data.isAdmin)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        handleGet()
+    }, [])
+
+
     return (
         <div className={styles.comments}>
             {data && (
                 <>
                     {data.map((item, index) => (
-                        <LessonCommentCard 
-                        handleUpdateLike={handleUpdateLike}
-                        setComments={setComments}
-                     //   setComments={setComments}
-                  //     setComments={setComments}
-                  userAvatar={userAvatar}
-                        item={item} user={user.user}
-                        key={index}   />
+                        <LessonCommentCard
+                            handleUpdateLike={handleUpdateLike}
+                            setComments={setComments}
+                            isAdmin={isUserAdmin}
+                            userAvatar={userAvatar}
+                            item={item} user={user.user}
+                            key={index} />
                     ))}
                 </>
             )}
@@ -93,4 +113,3 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments , userAvatar
 };
 
 export default LessonComments;
- 

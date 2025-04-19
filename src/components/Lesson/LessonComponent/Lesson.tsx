@@ -20,7 +20,7 @@ import Pptx from "../../../assets/download/ppt.png"
 import Word from "../../../assets/download/word.png"
 import PersonalService from "../../../services/Personal";
 import CommentsService from "../../../services/Comments";
- 
+
 
 interface User {
 
@@ -47,7 +47,7 @@ interface LessonTypes {
 
   materials: { filename: string; data: string };
 }
- 
+
 
 interface Comments {
 
@@ -100,24 +100,24 @@ interface Comments {
 
 }
 const getIcon = (filename: string) => {
-  if(filename) {
+  if (filename) {
 
     const extension = filename.split(".").pop()?.toLowerCase();
     switch (extension) {
-    case "txt":
-      return Txt;
-    case "ppt":
-    case "pptx":
-      return Pptx;
-    case "doc":
-    case "docx":
-      return Word;
-    default:
-      return Txt;
+      case "txt":
+        return Txt;
+      case "ppt":
+      case "pptx":
+        return Pptx;
+      case "doc":
+      case "docx":
+        return Word;
+      default:
+        return Txt;
     }
   }
 
-return ""
+  return ""
 };
 
 const LessonComponent = () => {
@@ -154,7 +154,7 @@ const LessonComponent = () => {
       }, 0);
       const newComment = {
         id: maxId + 1,
-     
+
         lesson_id: 0,
         author_id: 0,
         author_name: user.data.user.username,
@@ -182,50 +182,50 @@ const LessonComponent = () => {
       console.error("Error adding comment:", error);
     }
   };
- 
-const handleUpdateLike = (id: number, comment_id: number) => {
-  setComments((prevComments) =>
+
+  const handleUpdateLike = (id: number, comment_id: number) => {
+    setComments((prevComments) =>
       prevComments.map((comment) => {
-  
-          if (comment.id === comment_id) {
-              const isLiked = comment.liked_by.includes(id);
 
-             
-              return {
-                  ...comment,
-                  likes: isLiked ? comment.likes - 1 : comment.likes + 1,
+        if (comment.id === comment_id) {
+          const isLiked = comment.liked_by.includes(id);
+
+
+          return {
+            ...comment,
+            likes: isLiked ? comment.likes - 1 : comment.likes + 1,
+            liked_by: isLiked
+              ? comment.liked_by.filter((userId) => userId !== id)
+              : [...comment.liked_by, id],
+          };
+        }
+
+
+        if (comment.replies && comment.replies.length > 0) {
+          return {
+            ...comment,
+            replies: comment.replies.map((reply) => {
+              if (reply.id === comment_id) {
+                const isLiked = reply.liked_by.includes(id);
+
+
+                return {
+                  ...reply,
+                  likes: isLiked ? reply.likes - 1 : reply.likes + 1,
                   liked_by: isLiked
-                      ? comment.liked_by.filter((userId) => userId !== id)  
-                      : [...comment.liked_by, id],  
-              };
-          }
+                    ? reply.liked_by.filter((userId) => userId !== id)
+                    : [...reply.liked_by, id],
+                };
+              }
+              return reply;
+            }),
+          };
+        }
 
-         
-          if (comment.replies && comment.replies.length > 0) {
-              return {
-                  ...comment,
-                  replies: comment.replies.map((reply) => {
-                      if (reply.id === comment_id) {
-                          const isLiked = reply.liked_by.includes(id);
-
-                      
-                          return {
-                              ...reply,
-                              likes: isLiked ? reply.likes - 1 : reply.likes + 1,
-                              liked_by: isLiked
-                                  ? reply.liked_by.filter((userId) => userId !== id)  
-                                  : [...reply.liked_by, id],  
-                          };
-                      }
-                      return reply;
-                  }),
-              };
-          }
-
-          return comment;
+        return comment;
       })
-  );
-};
+    );
+  };
   useEffect(() => {
 
     const handleFetch = async () => {
@@ -243,9 +243,6 @@ const handleUpdateLike = (id: number, comment_id: number) => {
     handleFetch()
 
   }, [])
-  //const { avatar, userId, username, date, comment, likes, isYourComment, to, commentId } = useSelector(ReplyToSelector);
-
-
 
   useEffect(() => {
     const handleGet = async () => {
@@ -281,7 +278,7 @@ const handleUpdateLike = (id: number, comment_id: number) => {
     const handleGetAvatar = async () => {
       try {
         const response = await PersonalService.GetAvatar()
-    
+
         setUserAvatar(response.data.avatar)
       } catch {
 
@@ -310,7 +307,7 @@ const handleUpdateLike = (id: number, comment_id: number) => {
     document.body.removeChild(link);
   };
 
- 
+
 
   return (
     <div className={styles.lesson}>
@@ -336,7 +333,7 @@ const handleUpdateLike = (id: number, comment_id: number) => {
             </video>
           )}
 
-         
+
 
           <div className={styles.lesson__testing}>Тематический тест по теме</div>
 
@@ -367,10 +364,10 @@ const handleUpdateLike = (id: number, comment_id: number) => {
 
           <LessonCommentsHeader />
 
-          <LessonComments data={comments!}  user={{user:user!}}
-          handleUpdateLike={handleUpdateLike}
-       setComments={setComments}
-       userAvatar={userAvatar!}
+          <LessonComments data={comments!} user={{ user: user! }}
+            handleUpdateLike={handleUpdateLike}
+            setComments={setComments}
+            userAvatar={userAvatar!}
           />
         </div>
       </div>
