@@ -62,7 +62,6 @@ const TutorModalLessons: React.FC = () => {
     };
 const dispatch = useDispatch()
     const handleSubmit = async (e: React.FormEvent) => {
-        console.log(111)
         e.preventDefault();
 
         const formDataToSend = new FormData();
@@ -79,13 +78,13 @@ const dispatch = useDispatch()
         });
 
         try {
-     /*   dispatch(addLesson({
+      dispatch(addLesson({
             ...formData,
             video: null,
             materials: null,
             id: Number(lastPathSegment)  
-        }));
- */
+        })); 
+ 
             await LessonService.CreateLesson(formDataToSend);
 
              

@@ -21,12 +21,15 @@ import adminService from "../services/Admin";
 
 import Ban from "../assets/admin/courses/warning.png"
 import Edit from "../assets/admin/courses/pen.png"
+
+import CourseIco from "../assets/admin/courses/Course.png"
 import BanBtn from "../components/AdminBtns/BanBtn/BanBtn";
 import WarningBtn from "../components/AdminBtns/WarningBtn/WarningBtn";
 
 import { AddWarningSelectorPage } from "../store/selectors/AddWarningModal.selector";
 import WarningModal from "../components/CategoriesComponent/WarningModal/WarningModal";
 import BanModal from "../components/CategoriesComponent/BanModal/BanModal";
+import CheckMaterialBtn from "../components/AdminBtns/CheckMaterials/CheckMaterials";
 const CoursePage = () => {
 
     const dispatch = useDispatch()
@@ -85,6 +88,7 @@ const CoursePage = () => {
                 <NavigateBtn />
                 {isUserAdmin && <BanBtn logo={Ban} id={Number(lastPathSegment!)} />}
                 {isUserAdmin && <WarningBtn logo={Edit} id={Number(lastPathSegment!)} />}
+                {isUserAdmin && <CheckMaterialBtn logo={CourseIco} id={Number(lastPathSegment!)} />}
 
 
                 {isOpenWarningModal.isOpenAddWarningModal && (
