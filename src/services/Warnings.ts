@@ -24,6 +24,20 @@ export default class WarningsService {
         static async AddWarning(courseId:number, warningText: string): Promise<AxiosResponse<IsAdminResponse>> {
             return $api.post<IsAdminResponse>('/warnings/addWarning' , {courseId: courseId,warningText: warningText })
         } 
+
+
+
+
+            // idWarning, text
+        static async UpdateWarning(idBan: string, text: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.put<IsAdminResponse>('/warnings/updateWarning' , {idWarning: idBan,text: text })
+        } 
+        static async DeleteWarning(idBan: string): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/warnings/deleteWarning' , {idWarning: idBan,})
+        }
+        static async DeleteWarnings(idCourse:string, ): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.post<IsAdminResponse>('/warnings/deleteWarnings' , {idCourse: idCourse })
+        }
     
 
 }
