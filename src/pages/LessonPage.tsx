@@ -72,7 +72,6 @@ const LessonPage = () => {
         <div className={styles.content}>
             <LessonComponent />
             <HelpBtn />
-
             {isUserAdmin && <BanBtn logo={Ban} id={Number(lastPathSegment!)} />}
             {isUserAdmin && <WarningBtn logo={Edit} id={Number(lastPathSegment!)} />}
             {isOpenWarningModal.isOpenAddWarningModal && (
