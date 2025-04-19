@@ -1,8 +1,9 @@
 import styles from "./LessonComments.module.scss";
 import LessonCommentCard from "./LessonCommentCard";
- 
+
 import { useEffect, useState } from "react";
 import adminService from "../../../services/Admin";
+import BanModal from "../BanModal/BanModal";
 
 interface Comment {
     id: number;
@@ -74,25 +75,32 @@ interface LessonCommentsProps {
 
 
 const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar }: LessonCommentsProps) => {
-
-
     const [isUserAdmin, setIsAdmin] = useState(false)
     useEffect(() => {
         const handleGet = async () => {
-
             try {
                 const resp = await adminService.isAdmin()
-                console.log(resp.data.isAdmin)
                 setIsAdmin(resp.data.isAdmin)
             } catch (e) {
                 console.log(e)
             }
         }
-
         handleGet()
     }, [])
 
 
+
+    const [isOpenWarning, setIsOpenWaring] = useState(false)
+    const [isOpenWBan, setIsOpenBan] = useState(false)
+
+
+    const handleOpenWarning = () => {
+        setIsOpenWaring(prev => !prev)
+    }
+
+    const handleOpenBan = () => {
+        setIsOpenBan(prev => !prev)
+    }
     return (
         <div className={styles.comments}>
             {data && (
@@ -104,10 +112,24 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
                             isAdmin={isUserAdmin}
                             userAvatar={userAvatar}
                             item={item} user={user.user}
+                            handleOpenBan={handleOpenBan}
+                            handleOpenWarning={handleOpenWarning}
                             key={index} />
                     ))}
                 </>
             )}
+
+
+            {isOpenWBan && (
+
+                <BanModal
+
+
+                handleClose={handleOpenBan}
+                />
+            )}
+
+
         </div>
     );
 };

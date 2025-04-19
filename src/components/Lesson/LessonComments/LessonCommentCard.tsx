@@ -9,7 +9,7 @@ import LessonComponentReply from "./LessonComponentReply/LessonComponentReply";
 
 import Ban from "../../../assets/admin/courses/warning.png"
 import Edit from "../../../assets/admin/courses/pen.png"
-
+import Delete from "../../../assets/admin/courses/delete.png"
 interface Commentt {
     id: number;
     lesson_id: number;
@@ -112,15 +112,18 @@ interface LessonCommentCardProps {
         describtion: string;
     };
     handleUpdateLike: (id: number, comment_id: number) => void,
+
+    handleOpenBan: ()=> void ;
+    handleOpenWarning: ()=> void;
     setComments: React.Dispatch<React.SetStateAction<Commentt[]>>;
     userAvatar: string
 }
 
-const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments, userAvatar }: LessonCommentCardProps) => {
+const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments, userAvatar, handleOpenBan, handleOpenWarning }: LessonCommentCardProps) => {
     const [isOpen, setIsOpen] = useState<boolean>(false)
     const [isShowResponces, setIsShowResponces] = useState(false)
     const [liked, setLiked] = useState(false);
-    
+
     const handleOpen = () => {
         setIsOpen(prev => true)
     }
@@ -138,9 +141,7 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
         }
         handleUpdateLike(Number(id), item.id)
     };
-
     const formattedDate = new Date(item.created_at).toLocaleDateString("ru-RU").replace(/\//g, ".");
-
     return (
         <>
             <div className={`${styles.comment}`}>
@@ -151,7 +152,7 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                     <div className={styles.comment__header}>
                         <div className={styles.wrapper}>
                             <h4 className={styles.comment__title}>
-                                {item.author.username} 
+                                {item.author.username}
                                 {isAdmin ? (
                                     item.author.role === "tutor" ? " (Администратор)" : ""
                                 ) : (
@@ -166,6 +167,12 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                                         alt="icon"
                                     />
                                     <img src={Ban}
+                                    onClick={handleOpenBan}
+                                        className={styles.ban}
+                                        alt="icon"
+                                    />
+
+                                    <img src={Delete}
                                         className={styles.ban}
                                         alt="icon"
                                     />
@@ -215,8 +222,8 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                 </div>
             </div>
             {isOpen && (
-                <ResponsePanel 
-                    id={item.id} 
+                <ResponsePanel
+                    id={item.id}
                     to={item.author.username}
                     user={user}
                     setComments={setComments}

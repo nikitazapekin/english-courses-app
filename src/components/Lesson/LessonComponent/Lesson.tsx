@@ -131,15 +131,6 @@ const LessonComponent = () => {
   const [user, setUser] = useState<User>()
   const location = useLocation();
   const lastPathSegment = location.pathname.split("/")
-  console.log(lastPathSegment[lastPathSegment.length - 2])
-
-
-
-
-
-
-
-
 
   const handleAddComment = async (text: string) => {
     try {
@@ -166,7 +157,7 @@ const LessonComponent = () => {
       }
  
       const tempId = Date.now(); 
-      
+
       const newComment = {
         id: tempId,
         lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
@@ -189,8 +180,6 @@ const LessonComponent = () => {
         repliesCount: 0,
         replies: [],
       };
-  
-  
       setComments([newComment, ...comments]);
  
       try {
@@ -237,8 +226,6 @@ const LessonComponent = () => {
             replies: comment.replies.map((reply) => {
               if (reply.id === comment_id) {
                 const isLiked = reply.liked_by.includes(id);
-
-
                 return {
                   ...reply,
                   likes: isLiked ? reply.likes - 1 : reply.likes + 1,
@@ -362,11 +349,7 @@ const LessonComponent = () => {
               Ваш браузер не поддерживает видео.
             </video>
           )}
-
-
-
           <div className={styles.lesson__testing}>Тематический тест по теме</div>
-
           {lesson?.materials && (
             <div
               className={styles.lesson__files}
@@ -374,8 +357,6 @@ const LessonComponent = () => {
               <img
                 className={styles.lesson__icon}
                 src={getIcon(lesson.materials.filename)} alt="File Icon" />
-
-
               <button
                 className={styles.lesson__download}
                 onClick={() => handleDownload(lesson.materials)}
