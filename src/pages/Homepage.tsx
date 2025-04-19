@@ -35,8 +35,7 @@ const Homepage = () => {
                 
                 </div>
                 <Footer />
-            {/*
-                */}
+        
         </div>
     );
 }

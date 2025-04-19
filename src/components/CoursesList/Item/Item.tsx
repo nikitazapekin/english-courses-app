@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { setIsOpenAddWarningModal, setIsOpenBanModal, setSelectBanCourse, setSelectWarningCourse } from "../../../store/slices/AddWarningModal/AddWarningModal";
 interface ItemProps {
     item: {
-
         id: number,
         author: string,
         title: string,
@@ -31,7 +30,6 @@ const Item = ({ item, isAdmin }: ItemProps) => {
         dispatch(setIsOpenAddWarningModal())
         dispatch(setSelectWarningCourse(item.id))
     }
-
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate(`/card/${item.id}`)

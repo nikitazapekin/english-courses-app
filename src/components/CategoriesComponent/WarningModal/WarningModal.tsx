@@ -21,6 +21,7 @@ const WarningModal = () => {
     const handleAdd = async () => {
         try {
             const response = await WarningsService.AddWarning(selector.selectedCourse, text)
+            dispatch(setIsOpenAddWarningModal())
 
         } catch (e) {
             console.log(e)

@@ -21,6 +21,7 @@ const BanModal = () => {
         try {
             const response = await BanService.AddBan(selector.selectedCourse, text)
             dispatch(setIsBanned({ isBanned: true }))
+            dispatch(setIsOpenBanModal())
         } catch (e) {
             console.log(e)
         }

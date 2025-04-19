@@ -69,8 +69,6 @@ const WarningCourses = () => {
         setIsOpenEdit(false);
         setSelected(null);
     };
-
-    
     const handleDeleteAllWarnings = async (courseId: number) => {
         try {
             await WarningsService.DeleteWarnings(String(courseId))

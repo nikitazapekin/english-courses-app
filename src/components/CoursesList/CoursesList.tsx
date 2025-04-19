@@ -6,7 +6,7 @@ import CoursesListDots from "./CoursesListDots";
 import { useSelector } from "react-redux";
 import { CataljgSelectorPage } from "../../store/selectors/CatalogSelector";
 import adminService from "../../services/Admin";
- 
+
 import Item from "./Item/Item";
 import { AddWarningSelectorPage } from "../../store/selectors/AddWarningModal.selector";
 import { useDispatch } from "react-redux";
@@ -27,13 +27,12 @@ const CoursesList = () => {
     const selector = useSelector(CataljgSelectorPage)
     const { page, limit, query } = useParams<{ page?: string; limit?: string, query?: string }>();
     const navigate = useNavigate();
-
     const [cards, setCards] = useState<Course[]>([]);
     const [sortOption, setSortOption] = useState<SortOption>("price");
     const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
     const [pages, setPages] = useState<number>(1);
     const itemsPerPage = Number(limit) || 16;
-   
+
     useEffect(() => {
         const fetchCourses = async () => {
             try {
@@ -95,16 +94,14 @@ const CoursesList = () => {
             navigate(`/catalog/${newPage}/${itemsPerPage}`);
         }
     };
-
-
-  const warningSelector = useSelector(AddWarningSelectorPage)
-const dispatch = useDispatch()
-  useEffect(()=> {
-    if(warningSelector.isBanned) {
-        setCards(prev=> prev.filter(item=>item.id!=warningSelector.selectedCourse))
-dispatch(setIsBanned({isBanned: false}))
-    }
-  }, [warningSelector])
+    const warningSelector = useSelector(AddWarningSelectorPage)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if (warningSelector.isBanned) {
+            setCards(prev => prev.filter(item => item.id != warningSelector.selectedCourse))
+            dispatch(setIsBanned({ isBanned: false }))
+        }
+    }, [warningSelector])
     return (
         <div className={styles.courses}>
             <div className={styles.courses__inner}>
@@ -123,10 +120,10 @@ dispatch(setIsBanned({isBanned: false}))
                 <div className={styles.courses__cards}>
                     {cards.length > 0 ? (
                         cards.map((item) => (
-                           <Item 
-                           item={item}
-                           isAdmin={isAdmin}
-                           />
+                            <Item
+                                item={item}
+                                isAdmin={isAdmin}
+                            />
                         ))
                     ) : (
                         <div className={styles.courses__text}>Курсы не найдены</div>
