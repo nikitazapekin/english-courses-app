@@ -23,7 +23,6 @@ interface Course {
 }
 
 const CoursesList = () => {
-
     const selector = useSelector(CataljgSelectorPage)
     const { page, limit, query } = useParams<{ page?: string; limit?: string, query?: string }>();
     const navigate = useNavigate();
@@ -32,7 +31,6 @@ const CoursesList = () => {
     const [currentPage, setCurrentPage] = useState<number>(Number(page) || 1);
     const [pages, setPages] = useState<number>(1);
     const itemsPerPage = Number(limit) || 16;
-
     useEffect(() => {
         const fetchCourses = async () => {
             try {

@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import TutorAdd from "../components/Tutor/TutorAdd/TutorAdd";
 import HelpBtn from "../components/HelpBtn/HelpBtn";
 import NavigateBtn from "../components/NavigateBtn/NavigateBtn";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import CourseService from "../services/Course";
 import { setCourse } from "../store/slices/OpenCourseDetails/OpenCourseDetails";
@@ -23,6 +23,10 @@ import Ban from "../assets/admin/courses/warning.png"
 import Edit from "../assets/admin/courses/pen.png"
 import BanBtn from "../components/AdminBtns/BanBtn/BanBtn";
 import WarningBtn from "../components/AdminBtns/WarningBtn/WarningBtn";
+
+import { AddWarningSelectorPage } from "../store/selectors/AddWarningModal.selector";
+import WarningModal from "../components/CategoriesComponent/WarningModal/WarningModal";
+import BanModal from "../components/CategoriesComponent/BanModal/BanModal";
 const CoursePage = () => {
 
     const dispatch = useDispatch()
@@ -62,6 +66,8 @@ const CoursePage = () => {
 
         handleGet()
     }, [])
+
+    const isOpenWarningModal = useSelector(AddWarningSelectorPage)
     return (
         <div className={styles.wrapper}>
             <Header />
@@ -80,9 +86,18 @@ const CoursePage = () => {
                 <CourseConsultation />
                 <HelpBtn />
                 <NavigateBtn />
+                {isUserAdmin && <BanBtn logo={Ban} id={Number(lastPathSegment!)} />}
+                {isUserAdmin && <WarningBtn logo={Edit} id={Number(lastPathSegment!)} />}
 
-                {isUserAdmin && <BanBtn logo={Ban} />}
-              {isUserAdmin && <WarningBtn logo={Edit} />}
+
+                {isOpenWarningModal.isOpenAddWarningModal && (
+
+                    <WarningModal />
+                )}
+                {isOpenWarningModal.isOpenAddBanModal && (
+
+                    <BanModal />
+                )}
             </div>
 
             <Footer />
@@ -91,8 +106,20 @@ const CoursePage = () => {
 }
 
 export default CoursePage;
-
 /*
-import Ban from "../../../assets/admin/courses/warning.png"
-import Edit from "../../../assets/admin/courses/pen.png"
-*/
+    const isOpenWarningModal = useSelector(AddWarningSelectorPage)
+
+   return (
+       <>
+           <div className={styles.wrapper}>
+
+               <Header />
+               {isOpenWarningModal.isOpenAddWarningModal && (
+
+                   <WarningModal />
+               )}
+               {isOpenWarningModal.isOpenAddBanModal && (
+
+                   <BanModal />
+               )}
+                   */

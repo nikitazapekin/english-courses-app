@@ -17,7 +17,7 @@ const CategoriesComponent = () => {
     const navigate = useNavigate()
     const handleSearch = () => {
         
-//navigate(`/catalog/1/16/${query}`)
+ 
     }
 
 
