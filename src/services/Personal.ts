@@ -44,20 +44,7 @@ interface EditAvatarProps {
  
 }
 
-interface Test {
-    title_test: string,
-     description: string,
-     topics: String[],
-     questions: Array<{
  
-         title: string,
-         answers: String[], 
-         answer: string, 
- url: string
-     }>  
-  
-  }
-
  
 interface CoursesResponse {
     message:string,

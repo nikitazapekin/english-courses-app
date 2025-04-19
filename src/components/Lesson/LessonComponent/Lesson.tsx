@@ -136,52 +136,82 @@ const LessonComponent = () => {
 
 
 
+
+
+
+
+
   const handleAddComment = async (text: string) => {
     try {
-      const response = await CommentsService.CreateComment({
-        lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
-        text: text,
-      });
-
-      const user = await PersonalService.GetUser();
-      const userAvatarResponse = await PersonalService.GetAvatar();
-      const userAvatar = userAvatarResponse.data.avatar;
-
-
-      const maxId = comments.reduce((max, comment) => {
-        const maxReplyId = comment.replies.reduce((replyMax, reply) => Math.max(replyMax, reply.id), 0);
-        return Math.max(max, comment.id, maxReplyId);
-      }, 0);
+    
+      let userData = {
+        id: 0,
+        username: "Аноним",
+        email: "",
+        role: "",
+        country: "",
+        city: ""
+      };
+      let userAvatar = Avatar; 
+  
+ 
+      try {
+        const userResponse = await PersonalService.GetUser();
+        userData = userResponse.data.user;
+        
+        const avatarResponse = await PersonalService.GetAvatar();
+        userAvatar = avatarResponse.data.avatar || Avatar;
+      } catch (userError) {
+        console.warn("Не удалось получить данные пользователя, используем значения по умолчанию", userError);
+      }
+ 
+      const tempId = Date.now(); 
+      
       const newComment = {
-        id: maxId + 1,
-
-        lesson_id: 0,
-        author_id: 0,
-        author_name: user.data.user.username,
+        id: tempId,
+        lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
+        author_id: userData.id,
+        author_name: userData.username,
         text: text,
-        created_at: Date.now().toString(),
+        created_at: new Date().toISOString(),
         likes: 0,
         parent_comment_id: null,
         liked_by: [],
         author: {
-          id: 0,
-          username: user.data.user.username,
-          email: user.data.user.email,
+          id: userData.id,
+          username: userData.username,
+          email: userData.email,
           avatar: userAvatar,
-          role: user.data.user.role,
-          country: user.data.user.country,
-          city: user.data.user.city,
+          role: userData.role,
+          country: userData.country,
+          city: userData.city,
         },
         repliesCount: 0,
         replies: [],
       };
-
-
+  
+  
       setComments([newComment, ...comments]);
+ 
+      try {
+        const response = await CommentsService.CreateComment({
+          lesson_id: Number(lastPathSegment[lastPathSegment.length - 2]),
+          text: text,
+        });
+ 
+        const serverComments = await CommentsService.GetComments(lastPathSegment[lastPathSegment.length - 2]);
+        setComments(serverComments.data.comments);
+      } catch (serverError) {
+        console.error("Ошибка синхронизации с сервером", serverError);
+ 
+      }
+  
     } catch (error) {
-      console.error("Error adding comment:", error);
+      console.error("Неожиданная ошибка при добавлении комментария", error);
     }
   };
+ 
+
 
   const handleUpdateLike = (id: number, comment_id: number) => {
     setComments((prevComments) =>
