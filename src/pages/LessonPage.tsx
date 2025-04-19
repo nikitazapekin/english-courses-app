@@ -62,9 +62,6 @@ const LessonPage = () => {
     }, [])
 
     const isOpenWarningModal = useSelector(AddWarningSelectorPage)
-
-
-
     return (<div className={styles.wrapper}>
         <div className={styles.darken} />
         <Header />
@@ -81,7 +78,6 @@ const LessonPage = () => {
 
                 <BanModal />
             )}
-
         </div>
         <Footer />
     </div>);
