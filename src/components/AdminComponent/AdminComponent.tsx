@@ -11,12 +11,7 @@ import DeletedUsers from "./DeletedUsers/DeletedUsers";
 const AdminComponent = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
-    console.log("segment", lastPathSegment);
-
-
     const admin = useSelector(AdminSelectorUser)
-
-
     return (
         <div className={styles.admin}>
             <div className={styles.admin__container}>

@@ -9,20 +9,22 @@ interface Warning {
 }
 
 interface Props {
-    bans: Warning[];
+ /*    bans: Warning[];
     handler: (e: React.MouseEvent) => void;
     onDelete: (id: number) => void;
     onUpdate: (id: number, newText: string) => void;
-    onDeleteAll: () => void;
+    onDeleteAll: () => void; */
 }
 
-const EditModal = ({ bans, handler, onDelete, onUpdate, onDeleteAll }: Props) => {
+const EditModal =  ( //{ bans, handler, onDelete, onUpdate, onDeleteAll }: Props
+
+) => {
     const [editingId, setEditingId] = useState<number | null>(null);
     const [editedText, setEditedText] = useState<string>("");
 
     const handleClose = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        handler(e);
+    /*     e.stopPropagation();
+        handler(e); */
     };
 
     const handleContentClick = (e: React.MouseEvent) => {
@@ -44,7 +46,7 @@ const EditModal = ({ bans, handler, onDelete, onUpdate, onDeleteAll }: Props) =>
 
     const handleSaveClick = (id: number) => {
         if (editedText.trim()) {
-            onUpdate(id, editedText);
+//onUpdate(id, editedText);
         }
         setEditingId(null);
     };
@@ -54,21 +56,21 @@ const EditModal = ({ bans, handler, onDelete, onUpdate, onDeleteAll }: Props) =>
     };
 
     const handleDeleteAll = () => {
-      //  if (window.confirm("Вы уверены, что хотите удалить все блокировки этого курса?")) {
-            onDeleteAll();
-//}
+     
+       //     onDeleteAll();
+       
     };
 
     return (
         <div className={styles.modal} onClick={handleClose}>
             <div className={styles.modal__content} onClick={handleContentClick}>
                 <h1 className={styles.modal__title}>
-                    Блокировки курса:
+                    Блокировка пользователя:
                 </h1>
-                
+                {/*
                 {bans.length === 0 ? (
                     <div>Нет активных блокировок</div>
-                ) : (
+                    ) : (
                     bans.map(item => (
                         <div key={item.id} className={styles.card}>
                             <div className={styles.card__text}>
@@ -130,14 +132,16 @@ const EditModal = ({ bans, handler, onDelete, onUpdate, onDeleteAll }: Props) =>
                                                 ❌
                                             </button>
                                         </>
-                                    )}
-                                </div>
+                                        )}
+                                        </div>
                             </div>
                         </div>
                     ))
                 )}
+                        */}
                 
                 <div className={styles.btns}>
+                    {/*
                     {bans.length > 0 && (
                         <button
                             className={styles.modal__btn}
@@ -147,6 +151,7 @@ const EditModal = ({ bans, handler, onDelete, onUpdate, onDeleteAll }: Props) =>
                             Удалить все
                         </button>
                     )}
+                    */}
                     
                     <button
                         className={`${styles.modal__btn} ${styles.modal__delete}`}

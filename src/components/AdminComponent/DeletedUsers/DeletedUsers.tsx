@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./DeletedUsers.module.scss"
 import adminService from "../../../services/Admin";
 import DeletedCard from "./DeletedCard/DeletedCard";
+import EditModal from "./EditModal/EditModal";
 
 /*
 interface BannedUsersResp {
@@ -33,7 +34,7 @@ interface Cards {
 }
 const DeletedUsers = () => {
     const [isLoading, setIsLoading] = useState(false);
-
+    const [isOpenModal, setIsOpenModal] = useState(false)
     const [cards, setCards] = useState<Cards[]>([])
     const fetchBannedCourses = async () => {
         setIsLoading(true);
@@ -53,9 +54,9 @@ const DeletedUsers = () => {
         fetchBannedCourses();
     }, []);
 
-const handleOpen =() => {
-
-}
+    const handleOpen = () => {
+setIsOpenModal(prev=> !prev)
+    }
 
     return (
         <div className={styles.banned}>
@@ -67,13 +68,20 @@ const handleOpen =() => {
 
                 {cards.map(item => (
                     <DeletedCard
-                    handleOpen={handleOpen}
-                    item={item}
+                        handleOpen={handleOpen}
+                        item={item}
                     />
                 ))}
             </div>
 
-
+{
+    isOpenModal && (
+        <EditModal 
+        
+        
+        />
+    )
+}
 
             {/*
         {isOpenEdit && selected && (

@@ -17,6 +17,8 @@ interface Props {
 }
 
 const DeletedCard = ({ item, handleOpen }: Props) => {
+
+    
     return (
         <div className={styles.card}>
             <div className={styles.card__content}>
