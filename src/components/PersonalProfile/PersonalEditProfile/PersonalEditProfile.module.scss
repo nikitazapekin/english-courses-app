@@ -16,7 +16,7 @@
 
         @include tablets {
             width: 100%;
-         
+
         }
 
 
@@ -27,7 +27,7 @@
         min-height: 200px;
         cursor: pointer;
         resize: none;
-  
+
 
 
         cursor: pointer;
@@ -64,6 +64,7 @@
         justify-items: center;
         width: 100%;
         margin-top: 20px;
+
         @include smPc {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -177,6 +178,7 @@
             color: $black;
 
             @include fontSize(20px);
+
             @include tablets {
                 @include fontSize(16px);
             }
@@ -206,11 +208,11 @@
 
 
 
- 
+
 
 .edit {
     width: 100%;
-
+   
     &__title {
         margin-bottom: 20px;
         font-weight: 700;
@@ -225,8 +227,9 @@
         row-gap: 20px;
         width: 100%;
     }
-
+    
     &__btn {
+        margin-bottom: 40px;
         cursor: pointer;
         border-radius: 20px;
         border: none;

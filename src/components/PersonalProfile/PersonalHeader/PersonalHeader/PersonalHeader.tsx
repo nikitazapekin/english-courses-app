@@ -2,8 +2,8 @@ import { useNavigate } from "react-router-dom";
 import styles from "./PersonalHeader.module.scss"
 const btns = [
     {
-        text: "История покупок",
-        link: "/personal/history"
+        text: "Профиль",
+        link: "/personal/1/5"
     },
     {
         text: "Редактировать",

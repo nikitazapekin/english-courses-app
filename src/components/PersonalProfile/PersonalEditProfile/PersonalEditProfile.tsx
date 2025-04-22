@@ -79,71 +79,7 @@ const PersonalEditProfile = () => {
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
             <div className={styles.form__inner}>
                 <PersonalHeader title={"Настройки"} />
-{/*
-                <div className={styles.form__forms}>
-                    {[
-                        { label: "Имя", name: "name", type: "text", placeholder: "Введите имя" },
-                        { label: "Страна", name: "country", type: "text", placeholder: "Введите страну" },
-                        { label: "Город", name: "city", type: "text", placeholder: "Введите город" },
-                        { label: "Телефон", name: "phone", type: "text", placeholder: "Введите телефон" },
-                        { label: "Короткое имя", name: "shortName", type: "text", placeholder: "Введите короткое имя" },
-                        { label: "Почта", name: "email", type: "email", placeholder: "Введите почту" },
-                        { label: "Пароль", name: "password", type: "password", placeholder: "Введите пароль" },
-                        { label: "Подтвердите пароль", name: "confirmPassword", type: "password", placeholder: "Введите пароль" },
-                    ].map(({ label, name, type, placeholder }) => (
-                        <div className={styles.form__field} key={name}>
-                            <p className={styles.form__text}>{label}</p>
-                            <div className={styles.form__wrapper}>
-                                <img className={styles.form__icon} src="" alt="Icon" />
-                                <input
-                                    className={styles.form__input}
-                                    type={type}
-                                    name={name}
-                                    value={data[name as keyof EditProps]}
-                                    placeholder={placeholder}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </div>
-                    ))}
 
-                    <div className={`${styles.form__field} ${styles.form__desc}`}>
-                        <p className={styles.form__text}>Введите описание</p>
-                        <div className={styles.form__wrapper}>
-                            <textarea
-                                className={styles.form__textarea}
-                                name="describtion"
-                                value={data.describtion}
-                                placeholder="Введите ваше описание"
-                                onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div className={styles.form__theme}>
-                    <select
-                        name="theme"
-                        id="theme"
-                        className={styles.form__theme__select}
-                        value={data.theme}
-                        onChange={handleChange}
-                    >
-                        <option value="dark">Темная</option>
-                        <option value="light">Светлая</option>
-                    </select>
-                    <p className={styles.form__theme__text}>Выберите тему</p>
-                </div>
-
-                <div className={styles.form__btns}>
-                    <button className={`${styles.form__btn} ${styles.form__btn__purple}`} onClick={handleEdit}>
-                        Сохранить
-                    </button>
-                    <button className={`${styles.form__btn} ${styles.form__btn__red}`} type="button">
-                        Отмена
-                    </button>
-                </div>
-                                */}
 
 
 
