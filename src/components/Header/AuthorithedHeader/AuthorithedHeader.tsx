@@ -143,7 +143,7 @@ const AuthorithedHeader = () => {
                         </li>
 
 
-                        <li className={styles.navigation__item}>
+                        <li className={styles.navigation__item} style={{display: "none"}}>
                             <div className={styles.navigation__image__wrapper}>
 
                                 <img className={styles.navigation__image}

@@ -118,11 +118,14 @@ export default class CommentsService {
 
 
 
+    static async DeleteComment( commentId: number, lessonId: number): Promise<AxiosResponse<any>> {
+        return $api.post<any>('/comments/deleteComment',
+            {
+                commentId, lessonId
+            }
+        );
+    }
+
+
 }
-
-/*
-
-
-CommentsRouter.post('/likeComment', Comments.likeComment)
-CommentsRouter.post('/likeReply', Comments.likeReply)
-*/
+ 
