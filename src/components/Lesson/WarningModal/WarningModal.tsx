@@ -1,20 +1,20 @@
 import { useState } from "react"
 import BanService from "../../../services/Ban"
-import styles from "./BanModal.module.scss"
+import styles from "./WarningModal.module.scss"
+import WarningsService from "../../../services/Warnings"
 interface Props {
     handleClose: (id: number) => void
     selectedUser: number,
-    handleFilterComments: (authorId: number)=> void
+    
 }
-const BanModal = ({ handleClose, selectedUser , handleFilterComments}: Props) => {
-    const [date, setDate] = useState("")
+const WarningModal = ({ handleClose, selectedUser  }: Props) => {
+   
     const [message, setMessage] = useState("")
     const handleBan = async () => {
       
         try {
-            const resp = await BanService.AddBanUser(selectedUser, date, message)
-            handleFilterComments(selectedUser)
-
+         //   const resp = await BanService.AddBanUser(selectedUser, , message)
+           const resp = await WarningsService.AddUserWarnings(message, selectedUser)
             handleClose(0)
         } catch (e) {
             console.log(e)
@@ -24,31 +24,18 @@ const BanModal = ({ handleClose, selectedUser , handleFilterComments}: Props) =>
         <div className={styles.modal}>
             <div className={styles.modal__content}>
                 <h1 className={styles.modal__title}>
-                    Забанить пользователя
+                  Добавить предупреждение
                 </h1>
                 <form className={styles.modal__fields}>
                     <div className={styles.modal__field}>
                         <div className={styles.modal__input__wrapper}>
                             <p className={styles.modal__field__title}>
-                                Опишите причину блокировки
+                                Опишите причину жалобы
                             </p>
                             <textarea placeholder="Добавьте описание блокировки"
                                 onChange={(e) => setMessage(e.target.value)}
                                 className={styles.textarea}
                             ></textarea>
-                        </div>
-                    </div>
-                    <div className={styles.modal__field}>
-                        <div className={styles.modal__input__wrapper}>
-                            <p className={styles.modal__field__title}>
-                                Укажите дату разблокировки пользователя
-                            </p>
-                            <input
-                                onChange={(e) => setDate(e.target.value)}
-                                className={styles.date}
-                                alt="date"
-                                type="date"
-                            />
                         </div>
                     </div>
                     <button
@@ -57,7 +44,7 @@ const BanModal = ({ handleClose, selectedUser , handleFilterComments}: Props) =>
                         className={styles.modal__btn}
                         type="button"
                     >
-                        Забанить
+                       Добавить жалобу
                     </button>
                     <button
                         className={`${styles.modal__btn} ${styles.modal__btn__disabled}`}
@@ -76,4 +63,4 @@ const BanModal = ({ handleClose, selectedUser , handleFilterComments}: Props) =>
     );
 }
 
-export default BanModal;
+export default WarningModal;

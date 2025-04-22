@@ -181,6 +181,7 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                             {isAdmin && (
                                 <>
                                     <img src={Edit}
+                                        onClick={() => handleOpenWarning(item.author_id)}
                                         className={styles.edit}
                                         alt="icon"
                                     />

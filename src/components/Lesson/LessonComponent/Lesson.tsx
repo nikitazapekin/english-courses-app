@@ -249,7 +249,7 @@ const LessonComponent = () => {
       try {
 
         const response = await CommentsService.GetComments(lastPathSegment[lastPathSegment.length - 2])
-        console.log("RESP", response.data.comments)
+     
         setComments(response.data.comments)
 
       } catch {

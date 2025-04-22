@@ -32,5 +32,9 @@ export default class WarningsService {
         return $api.post<IsAdminResponse>('/warnings/deleteWarnings', { idCourse: idCourse })
     }
 
+    static async AddUserWarnings(warningText: string, userId: number): Promise<AxiosResponse<IsAdminResponse>> {
+        return $api.post<IsAdminResponse>('/warnings/addUserWarnings', {warningText, userId })
+    }
+
 
 }

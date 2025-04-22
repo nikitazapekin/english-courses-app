@@ -4,6 +4,7 @@ import LessonCommentCard from "./LessonCommentCard";
 import { useEffect, useState } from "react";
 import adminService from "../../../services/Admin";
 import BanModal from "../BanModal/BanModal";
+import WarningModal from "../WarningModal/WarningModal"
 
 interface Comment {
     id: number;
@@ -108,10 +109,10 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
 
     const handleCommentsFilter = (authorId: number) => {
         setComments(prev => {
-    
+
             const filteredMainComments = prev.filter(comment => comment.author_id !== authorId);
-            
-        
+
+
             return filteredMainComments.map(comment => ({
                 ...comment,
                 replies: comment.replies.filter(reply => reply.author_id !== authorId)
@@ -119,7 +120,7 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
         });
     }
 
- 
+
     return (
         <div className={styles.comments}>
             {data && (
@@ -143,11 +144,19 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
 
                 <BanModal
 
-              handleFilterComments={handleCommentsFilter}
+                    handleFilterComments={handleCommentsFilter}
                     selectedUser={selectedUser}
 
                     handleClose={handleOpenBan}
                 />
+            )}
+            {isOpenWarning && (
+                <WarningModal
+                    selectedUser={selectedUser}
+
+                    handleClose={handleOpenWarning}
+                />
+
             )}
 
 
