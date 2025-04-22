@@ -39,5 +39,5 @@ export const ADMIN_EDIT_PAGE = "/admin/edit"
 export const ADMIN_DELETED_COURSES = "/admin/deleteCourses"
 
 export const ADMIN_WARNINGS_COURSES = "/admin/warningsCourses"
-
+export const ADMIN_DELETE_USERS= "/admin/deleteUsers"
 export const TUTOR_ACHIEVEMENTS_PAGE = "/tutor/personal/achievements"

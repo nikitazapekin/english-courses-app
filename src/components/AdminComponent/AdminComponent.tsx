@@ -7,6 +7,7 @@ import { AdminSelectorUser } from "../../store/selectors/AdminSelector";
 import EditProfile from "./EditProfile/EditProfile";
 import DeletedCourses from "./DeletedCourses/DeletedCourses";
 import WarningCourses from "./WarningCourses/WarningCourses";
+import DeletedUsers from "./DeletedUsers/DeletedUsers";
 const AdminComponent = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
@@ -47,6 +48,14 @@ const AdminComponent = () => {
                 {
                     lastPathSegment == "warningsCourses" && (
                         <WarningCourses />
+                    )
+                }
+
+
+
+                {
+                    lastPathSegment == "deleteUsers" && (
+                        <DeletedUsers />
                     )
                 }
 

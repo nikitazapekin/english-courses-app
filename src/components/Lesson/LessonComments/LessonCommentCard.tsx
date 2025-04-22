@@ -177,7 +177,7 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                                     item.author.role === "tutor" && " (Репетитор)"
                                 )}
                             </h4>
-                            {item.id}
+                         
                             {isAdmin && (
                                 <>
                                     <img src={Edit}

@@ -49,10 +49,6 @@ interface CourseDetails {
 interface BannedResp {
     banned: CourseDetails[]
 }
-
-
-
-
 interface WarningsDetails {
     id: number;
     course_id: number;
@@ -77,7 +73,7 @@ interface WarningsDetails {
         is_active: boolean
     }[];
 
- 
+
     warnings_data: {
         id: number,
         course_id: number,
@@ -86,11 +82,25 @@ interface WarningsDetails {
         is_active: boolean
     }[];
     isvisible: boolean;
-   
-}
 
+}
 interface WarningsResp {
     banned: WarningsDetails[]
+}
+interface BannedUsersResp {
+    success: boolean,
+    bannedUsers:
+    {
+        user_id: number,
+        username: string,
+        email: string,
+        role: string,
+        ban_id: number,
+        ban_text: string,
+        ban_date: string,
+        is_active: boolean,
+    }[]
+
 }
 export interface IsAdminResponse {
     message: string,
@@ -113,4 +123,9 @@ export default class adminService {
         return $api.get<WarningsResp>('/admin/getWarningCourses')
     }
 
-} 
+    static async GetBannedUsers(): Promise<AxiosResponse<BannedUsersResp>> {
+        return $api.get<BannedUsersResp>('/admin/getBannedUsers')
+    }
+
+}
+ 
