@@ -92,14 +92,16 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
 
     const [isOpenWarning, setIsOpenWaring] = useState(false)
     const [isOpenWBan, setIsOpenBan] = useState(false)
+    const [selectedUser, setSelectedUser] = useState(0)
 
-
-    const handleOpenWarning = () => {
+    const handleOpenWarning = (id: number) => {
         setIsOpenWaring(prev => !prev)
+        setSelectedUser(id)
     }
 
-    const handleOpenBan = () => {
+    const handleOpenBan = (id: number) => {
         setIsOpenBan(prev => !prev)
+        setSelectedUser(id)
     }
     return (
         <div className={styles.comments}>
@@ -123,9 +125,9 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
             {isOpenWBan && (
 
                 <BanModal
+                    selectedUser={selectedUser}
 
-
-                handleClose={handleOpenBan}
+                    handleClose={handleOpenBan}
                 />
             )}
 

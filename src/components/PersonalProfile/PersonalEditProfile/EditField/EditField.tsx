@@ -49,11 +49,13 @@ interface EditFieldProps {
         type: string;
     };
     handleChange: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void;
-    obj: FormTypes; 
+//    obj: FormTypes; 
 }
 
-const EditField = ({ item, handleChange, obj }: EditFieldProps) => {
-    const defaultValue = obj[item.name] || "";  
+const EditField = ({ item, handleChange, // obj
+
+ }: EditFieldProps) => {
+ //   const defaultValue = obj[item.name] || "";  
     return (
         <div className={styles.item}>
             <label className={styles.item__title}>
@@ -64,7 +66,7 @@ const EditField = ({ item, handleChange, obj }: EditFieldProps) => {
                     name={item.name}
                     className={styles.item__input}
                     placeholder={item.placeholder}
-                    defaultValue={Array.isArray(defaultValue) ? defaultValue.join(", ") : defaultValue}
+//defaultValue={Array.isArray(defaultValue) ? defaultValue.join(", ") : defaultValue}
                  
                     onChange={handleChange}
                 />
@@ -73,7 +75,7 @@ const EditField = ({ item, handleChange, obj }: EditFieldProps) => {
                     name={item.name}
                     className={styles.item__textarea}
                     placeholder={item.placeholder}
-                    defaultValue={typeof defaultValue=="string" ? defaultValue : "" }
+              //      defaultValue={typeof defaultValue=="string" ? defaultValue : "" }
                     onChange={handleChange}
                 />
             )}
@@ -84,17 +86,4 @@ const EditField = ({ item, handleChange, obj }: EditFieldProps) => {
 };
 
 export default EditField;
-
-
-
-
-
-
- 
-
-
-
-
-
-
  

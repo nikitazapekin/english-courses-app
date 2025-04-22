@@ -164,11 +164,7 @@ export const publicRoutes = [
     path: ADMIN_WARNINGS_COURSES,
     Component: AdminPage
   },
-  /*
-  export const ADMIN_EDIT_PAGE = "/admin/edit"
-
-export const ADMIN_DELETED_COURSES = "/admin/deleteCourses"
-*/
+ 
   {
 
     path: TUTOR_PERSONAL_COURSE,

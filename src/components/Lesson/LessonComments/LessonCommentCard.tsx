@@ -113,8 +113,8 @@ interface LessonCommentCardProps {
     };
     handleUpdateLike: (id: number, comment_id: number) => void,
 
-    handleOpenBan: ()=> void ;
-    handleOpenWarning: ()=> void;
+    handleOpenBan: (id: number) => void;
+    handleOpenWarning: (id: number) => void;
     setComments: React.Dispatch<React.SetStateAction<Commentt[]>>;
     userAvatar: string
 }
@@ -159,7 +159,6 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                                     item.author.role === "tutor" && " (Репетитор)"
                                 )}
                             </h4>
-
                             {isAdmin && (
                                 <>
                                     <img src={Edit}
@@ -167,11 +166,10 @@ const LessonCommentCard = ({ isAdmin, item, user, handleUpdateLike, setComments,
                                         alt="icon"
                                     />
                                     <img src={Ban}
-                                    onClick={handleOpenBan}
+                                        onClick={()=>handleOpenBan(item.author_id)}
                                         className={styles.ban}
                                         alt="icon"
                                     />
-
                                     <img src={Delete}
                                         className={styles.ban}
                                         alt="icon"
