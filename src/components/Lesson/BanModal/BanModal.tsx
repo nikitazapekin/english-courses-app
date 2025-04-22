@@ -1,9 +1,25 @@
+import { useState } from "react"
+import BanService from "../../../services/Ban"
 import styles from "./BanModal.module.scss"
 interface Props {
     handleClose: (id: number) => void
-    selectedUser: number
+    selectedUser: number,
+    handleFilterComments: (authorId: number)=> void
 }
-const BanModal = ({ handleClose }: Props) => {
+const BanModal = ({ handleClose, selectedUser , handleFilterComments}: Props) => {
+    const [date, setDate] = useState("")
+    const [message, setMessage] = useState("")
+    const handleBan = async () => {
+      
+        try {
+            const resp = await BanService.AddBanUser(selectedUser, date, message)
+            handleFilterComments(selectedUser)
+
+            handleClose(0)
+        } catch (e) {
+            console.log(e)
+        }
+    }
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -17,6 +33,7 @@ const BanModal = ({ handleClose }: Props) => {
                                 Опишите что не так с заголовками курса
                             </p>
                             <textarea placeholder="Добавьте описание блокировки"
+                                onChange={(e) => setMessage(e.target.value)}
                                 className={styles.textarea}
                             ></textarea>
                         </div>
@@ -27,6 +44,7 @@ const BanModal = ({ handleClose }: Props) => {
                                 Укажите дату разблокировки пользователя
                             </p>
                             <input
+                                onChange={(e) => setDate(e.target.value)}
                                 className={styles.date}
                                 alt="date"
                                 type="date"
@@ -34,6 +52,8 @@ const BanModal = ({ handleClose }: Props) => {
                         </div>
                     </div>
                     <button
+
+                        onClick={handleBan}
                         className={styles.modal__btn}
                         type="button"
                     >

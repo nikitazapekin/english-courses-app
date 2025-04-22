@@ -103,6 +103,23 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
         setIsOpenBan(prev => !prev)
         setSelectedUser(id)
     }
+
+
+
+    const handleCommentsFilter = (authorId: number) => {
+        setComments(prev => {
+    
+            const filteredMainComments = prev.filter(comment => comment.author_id !== authorId);
+            
+        
+            return filteredMainComments.map(comment => ({
+                ...comment,
+                replies: comment.replies.filter(reply => reply.author_id !== authorId)
+            }));
+        });
+    }
+
+ 
     return (
         <div className={styles.comments}>
             {data && (
@@ -125,6 +142,8 @@ const LessonComments = ({ data, user, handleUpdateLike, setComments, userAvatar 
             {isOpenWBan && (
 
                 <BanModal
+
+              handleFilterComments={handleCommentsFilter}
                     selectedUser={selectedUser}
 
                     handleClose={handleOpenBan}
