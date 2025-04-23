@@ -12,10 +12,9 @@ interface Cards {
     ban_date: string,
     is_active: boolean,
 }
-
 interface Props {
     items: Cards[],
-    onDelete: (id: number) => void;
+    onDelete: (banId: number, userId: number) => void;
     onUpdate: (id: number, newText: string, newDate: string) => void;
     handler: (e: React.MouseEvent) => void;
 }
@@ -27,7 +26,7 @@ const EditModal = ({ items, onDelete, onUpdate, handler }: Props) => {
 
     const handleClose = (e: React.MouseEvent) => {
         e.stopPropagation();
-        handler(e); 
+        handler(e);
     };
 
     const handleContentClick = (e: React.MouseEvent) => {
@@ -46,7 +45,6 @@ const EditModal = ({ items, onDelete, onUpdate, handler }: Props) => {
         }
         setEditingId(null);
     };
-
     const handleCancelEdit = () => {
         setEditingId(null);
     };
@@ -94,7 +92,7 @@ const EditModal = ({ items, onDelete, onUpdate, handler }: Props) => {
                                             ))}
                                         </div>
                                         <div className={styles.infoGroup}>
-                                                    <strong className={styles.label}>Причина:</strong>
+                                            <strong className={styles.label}>Причина:</strong>
                                             <p key="date" className={styles.card__paragraph}>{item.ban_date}</p>
                                         </div>
                                     </>
@@ -130,7 +128,7 @@ const EditModal = ({ items, onDelete, onUpdate, handler }: Props) => {
                                             </button>
                                             <button
                                                 className={styles.card__action}
-                                                onClick={() => onDelete(item.ban_id)}
+                                                onClick={() => onDelete(item.ban_id, item.user_id)}
                                                 title="Удалить"
                                             >
                                                 ❌

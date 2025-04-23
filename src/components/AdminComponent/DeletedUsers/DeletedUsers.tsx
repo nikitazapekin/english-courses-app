@@ -4,6 +4,8 @@ import styles from "./DeletedUsers.module.scss";
 import adminService from "../../../services/Admin";
 import DeletedCard from "./DeletedCard/DeletedCard";
 import EditModal from "./EditModal/EditModal";
+import BanUserService from "../../../services/BanUserService";
+import Item from "../../CoursesList/Item/Item";
 
 interface Cards {
     user_id: number,
@@ -42,9 +44,11 @@ const DeletedUsers = () => {
         setIsOpenModal(prev => !prev);
     }
 
-    const handleDelete = async (id: number) => {
+    const handleDelete = async (banId: number, userId: number ) => {
         try {
-            setCards(prev => prev.filter(item => item.ban_id !== id));
+
+        await BanUserService.DeleteBan(banId, userId)
+            setCards(prev => prev.filter(item => item.ban_id !== banId));
         } catch (e) {
             console.error("Ошибка при удалении блокировки:", e);
         }
