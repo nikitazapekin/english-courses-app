@@ -2,8 +2,7 @@
 import { useEffect, useState } from "react";
 import styles from "./DeletedUsers.module.scss";
 import adminService from "../../../services/Admin";
-import DeletedCard from "./DeletedCard/DeletedCard";
-import EditModal from "./EditModal/EditModal";
+ 
 import BanUserService from "../../../services/BanUserService";
 import Item from "../../CoursesList/Item/Item";
 
@@ -18,7 +17,7 @@ interface Cards {
     is_active: boolean,
 }
 
-const DeletedUsers = () => {
+const EditUsers = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [cards, setCards] = useState<Cards[]>([]);
@@ -67,11 +66,11 @@ const DeletedUsers = () => {
     return (
         <div className={styles.banned}>
             <h1 className={styles.banned__title}>
-                Заблокированные пользователи
+               Редактируемые пользователи
             </h1>
             <div className={styles.cards}>
                 {isLoading && <div>Загрузка...</div>}
-
+{/*
                 {cards.map(item => (
                     <DeletedCard
                         key={item.ban_id}
@@ -79,8 +78,9 @@ const DeletedUsers = () => {
                         item={item}
                     />
                 ))}
+                */}
             </div>
-
+{/*
             {isOpenModal && (
                 <EditModal 
                     items={cards}
@@ -88,10 +88,11 @@ const DeletedUsers = () => {
                     onDelete={handleDelete}
                     onUpdate={handleUpdate}
                 />
-            )}
+                )}
+                */}
         </div>
     );
 }
 
-export default DeletedUsers;
+export default EditUsers;
  

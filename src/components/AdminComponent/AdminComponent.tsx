@@ -8,10 +8,13 @@ import EditProfile from "./EditProfile/EditProfile";
 import DeletedCourses from "./DeletedCourses/DeletedCourses";
 import WarningCourses from "./WarningCourses/WarningCourses";
 import DeletedUsers from "./DeletedUsers/DeletedUsers";
+import EditUsers from "./EditUsers/EditUsers";
 const AdminComponent = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
     const admin = useSelector(AdminSelectorUser)
+
+    //export const ADMIN_EDIT_USERS= "/admin/editUsers" 
     return (
         <div className={styles.admin}>
             <div className={styles.admin__container}>
@@ -45,9 +48,11 @@ const AdminComponent = () => {
                         <WarningCourses />
                     )
                 }
-
-
-
+                {
+                    lastPathSegment == "editUsers" && (
+                      <EditUsers />
+                    )
+                }
                 {
                     lastPathSegment == "deleteUsers" && (
                         <DeletedUsers />
