@@ -3,7 +3,7 @@
 .panel {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     padding: 20px;
-    border-radius: 33px;
+    border-radius: 10px;
     display: inline-flex;
     flex-direction: column;
     // align-items: center;
@@ -11,6 +11,8 @@
     height: auto;
     position: sticky;
     align-self: flex-start;
+    max-width: 300px;
+    width: 100%;
 
     &__btn {
         border-radius: 6px;

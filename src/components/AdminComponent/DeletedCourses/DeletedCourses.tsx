@@ -33,13 +33,11 @@ interface CourseDetails {
     isvisible: boolean;
     bans_data: Ban[];
 }
-
 const DeletedCourses = () => {
     const [cards, setCards] = useState<CourseDetails[]>([]);
     const [selected, setSelected] = useState<CourseDetails | null>(null);
     const [isOpenEdit, setIsOpenEdit] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
     const fetchBannedCourses = async () => {
         setIsLoading(true);
         try {
@@ -51,23 +49,17 @@ const DeletedCourses = () => {
             setIsLoading(false);
         }
     };
-
     useEffect(() => {
         fetchBannedCourses();
     }, []);
-
     const handleOpen = (item: CourseDetails) => {
         setSelected(item);
         setIsOpenEdit(true);
     };
-
     const handleClose = () => {
         setIsOpenEdit(false);
         setSelected(null);
     };
-
-
-
     const handleDeleteBan = async (banId: number) => {
         try {
             await BanService.DeleteBan(String(banId))
@@ -100,7 +92,6 @@ const DeletedCourses = () => {
                     ban.id === banId ? { ...ban, ban_text: newText } : ban
                 )
             }));
-
             setCards(updatedCards);
             if (selected) {
                 setSelected({
@@ -114,11 +105,7 @@ const DeletedCourses = () => {
             console.error("Ошибка при обновлении блокировки:", e);
         }
     };
-
-
-
     const handleDeleteAllBans = async (courseId: number) => {
-
         try {
             await BanService.DeleteBans(String(courseId))
             fetchBannedCourses();
@@ -127,13 +114,11 @@ const DeletedCourses = () => {
             console.error("Ошибка при удалении всех блокировок:", e);
         }
     };
-
     return (
         <div className={styles.banned}>
             <h1 className={styles.banned__title}>
                 Заблокированные курсы
             </h1>
-
             {isLoading ? (
                 <div>Загрузка...</div>
             ) : (

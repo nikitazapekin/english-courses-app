@@ -9,17 +9,7 @@ interface TutorPanelProps {
     email: string
 }
 const AdminPamel = ({ username, email }: TutorPanelProps) => {
-    
-    const navigate = useNavigate()
-    const handleLogout = async () => {
-        try {
-
-            const response = await AuthService.logout()
-            navigate("/sign-in")
-        } catch {
-
-        }
-    }
+   
     return (
         <div className={styles.panel}>
 
@@ -33,11 +23,14 @@ const AdminPamel = ({ username, email }: TutorPanelProps) => {
             </h3>
             
             <PanelBtns />
+
+            {/*
             <div className={styles.panel__btn}
-                onClick={handleLogout}
+            onClick={handleLogout}
             >
                 Выйти
             </div>
+            */}
 
         </div>);
 }

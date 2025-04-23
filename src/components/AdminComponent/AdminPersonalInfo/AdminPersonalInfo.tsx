@@ -1,24 +1,40 @@
 import { useSelector } from "react-redux";
 import styles from "./AdminPersonalInfo.module.scss"
 import { useEffect, useState } from "react";
- interface AdminResponse {
+import { useNavigate } from "react-router-dom";
+import AuthService from "../../../services/Auth";
+interface AdminResponse {
     message: string,
     user: {
         id: number,
         admin_id: number,
-        email:string,
+        email: string,
         role: string,
-    banned_courses: [],
+        banned_courses: [],
         banned_users: [],
         edited_courses: []
     }
 }
- 
-const AdminPersonalInfo = () => {
-   
-   // const [data, setData]= useState<AdminResponse>()
 
- 
+const AdminPersonalInfo = () => {
+
+    // const [data, setData]= useState<AdminResponse>()
+
+
+
+
+
+    const navigate = useNavigate()
+    const handleLogout = async () => {
+        try {
+
+            const response = await AuthService.logout()
+            navigate("/sign-in")
+        } catch {
+
+        }
+    }
+
     return (
         <div className={styles.main}>
             <h1 className={styles.main__title}>
@@ -47,18 +63,17 @@ const AdminPersonalInfo = () => {
                 </div>
 
 
+
+                <div className={styles.panel__btn}
+            onClick={handleLogout}
+            >
+                Выйти
+            </div>
+
             </div>
 
         </div>);
 }
 
 export default AdminPersonalInfo;
-/* const AdminPersonalInfo = () => {
-    return ( 
-    <div>
-Indo
-    </div> 
-    );
-}
  
-export default AdminPersonalInfo; */
