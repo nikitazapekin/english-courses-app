@@ -24,7 +24,7 @@
         padding: 53px 122px;
         max-width: 828px;
         width: 100%;
-        border-radius: 48px;
+        border-radius: 20px;
         background-color: $blue;
         display: flex;
         flex-direction: column;
@@ -155,7 +155,7 @@
     &__submit {
         cursor: pointer;
         display: flex;
-        border-radius: 20px;
+        border-radius: 10px;
         background-color: $grayForm;
         width: 100%;
         border: none;

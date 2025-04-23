@@ -4,10 +4,11 @@ import defaultAvatar from "../../../assets/Personal/Avatar.png";
 import PersonalService from "../../../services/Personal";
 const AvatarComponent = () => {
     const [avatar, setAvatar] = useState<string>(defaultAvatar);
+    const [ isNoAvatar, setIsNoAvatar] = useState(true)
     const handleSetAvatar = async (url: string) => {
         try {
             const response = await PersonalService.EditUserAvatar({ avatar: url });
-
+            setIsNoAvatar(false)
         } catch (error) {
             console.error(error);
         }
@@ -52,9 +53,12 @@ const AvatarComponent = () => {
                 onChange={handleFileChange}
                 accept="image/*"
             />
-            <div className={styles.avatar__add} onClick={handleClickAdd}>
-                +
-            </div>
+            {isNoAvatar  && (
+
+                <div className={styles.avatar__add} onClick={handleClickAdd}>
+                    +
+                </div>
+            )}
         </div>
     );
 };

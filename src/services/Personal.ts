@@ -74,6 +74,18 @@ interface CoursesResponse {
     }
 }
  
+interface Bans {
+   
+        message: string,
+        courses: 
+            {
+                id:number,
+                ban_text:string,
+                ban_date: string,
+                is_active: true
+            }[]
+        
+    }
  
 export default class PersonalService {
     static async GetUser(): Promise<AxiosResponse<PersonalResponse>> {
@@ -95,10 +107,12 @@ export default class PersonalService {
         console.log("offset", offset)
         return  $api.get<CoursesResponse>(`/personal/getSubscribedCourses?limit=${limit}&offset=${offset}`);
     }
-
-
     static async UnSubscribeToCourse( courseId: string): Promise<AxiosResponse<any>> {
         return  $api.post<any>('/personal/unSubscribedCourse', {courseId: courseId});
+    }
+
+    static async GetUserBans(): Promise<AxiosResponse<Bans>> {
+        return  $api.get<Bans>('/personal/getUserBans' );
     }
 ///unSubscribedCourse
 

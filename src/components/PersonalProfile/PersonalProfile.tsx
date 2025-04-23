@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AuthService from "../../services/Auth";
 import PersonalService from "../../services/Personal";
+import BanModal from "./BanModal/BanModal";
 
 interface CoursesResponse {
 
@@ -30,6 +31,17 @@ interface CoursesResponse {
     }>
 }
 
+interface Ban {
+
+
+    id: number,
+    ban_text: string,
+    ban_date: string,
+    is_active: true
+
+
+}
+
 const PersonalProfile = () => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
@@ -37,7 +49,7 @@ const PersonalProfile = () => {
 
     const [total, setTotal] = useState(0)
 
-    const [page, setPage] = useState(0)
+
     const [limit, setLimit] = useState(5)
 
     const handleOpenModal = () => {
@@ -81,10 +93,7 @@ const PersonalProfile = () => {
 
     }, [currentPage]);
     const handlePageChange = (page: number) => {
-
-
         window.scrollTo(0, 0)
-        console.log("handle page", page)
         setCurrentPage(page);
     };
 
@@ -92,7 +101,20 @@ const PersonalProfile = () => {
     const handleFilterCards = (id: number) => {
         setCards(prev => prev.filter(card => card.id !== id));
     }
+    const [bans, setBans] = useState<Ban[]>([])
 
+    const handleGetPersonalBans = async () => {
+        try {
+            const resp = await PersonalService.GetUserBans()
+
+            setBans(resp.data.courses)
+        } catch (e) {
+
+        }
+    }
+    useEffect(() => {
+        handleGetPersonalBans()
+    }, [])
     return (
         <section className={styles.personal}>
             <PaymentModal isOpenModal={isOpenModal} handleOpenModal={handleOpenModal} />
@@ -127,6 +149,13 @@ const PersonalProfile = () => {
 
 
             </div>
+
+            {bans.length > 0 && (
+                <BanModal
+
+                    ban={bans[0]}
+                />
+            )}
         </section>
     );
 }

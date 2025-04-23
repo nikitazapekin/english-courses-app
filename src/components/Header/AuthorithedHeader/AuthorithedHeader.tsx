@@ -18,6 +18,7 @@ import { useState, ChangeEvent } from "react";
 import ChatIcon from "../../../assets/icons/chat1.png"
 import TutorService from "../../../services/Tutor";
 import PersonalService from "../../../services/Personal";
+import adminService from "../../../services/Admin";
 const courses = [
     { id: 1, title: "Курс для программистов" },
     { id: 2, title: "Английский для начинающих" },
@@ -31,7 +32,22 @@ const courses = [
 ];
 const AuthorithedHeader = () => {
 
-
+    /*
+    
+    export interface IsAdminResponse {
+        message: string,
+        isAdmin: boolean
+    }
+    export default class adminService {
+    
+        static async getAdmin(): Promise<AxiosResponse<AdminResponse>> {
+            return $api.get<AdminResponse>('/admin/getAdmin')
+        }
+    
+        static async isAdmin(): Promise<AxiosResponse<IsAdminResponse>> {
+            return $api.get<IsAdminResponse>('/admin/isAdmin')
+        }
+            */
 
     const navigate = useNavigate()
     const isOpen = useSelector(HomepageSelector)
@@ -45,6 +61,9 @@ const AuthorithedHeader = () => {
     const handleOpen = () => {
         dispatch(setOpenBurger(!isOpen))
     }
+
+
+    const [isAdmin, setIsAdmin] = useState(false)
 
     const [searchQuery, setSearchQuery] = useState("");
     const [filteredCourses, setFilteredCourses] = useState<Array<{ id: number, title: string }>>([]);
@@ -80,26 +99,43 @@ const AuthorithedHeader = () => {
 
     const handleSearch = () => {
         navigate(`/catalog/${searchQuery}`)
-       // navigate(`/search/${searchQuery}`)
+
     }
 
     useEffect(() => {
         const handleGetUser = async () => {
             try {
-                     const response = await PersonalService.GetUser()
-             
-                   setRole(response.data.user.role)
-            
+                const response = await PersonalService.GetUser()
+
+                setRole(response.data.user.role)
+
             } catch (err) {
-           //     navigate("/sign-in")
+
             }
         };
         handleGetUser();
+
+
+        const handleAdminUser = async () => {
+            try {
+                const response = await adminService.isAdmin()
+                setRole("admin")
+                // setRole(response.data.user.role)
+
+            } catch (err) {
+
+            }
+        };
+        handleAdminUser();
     }, [])
     const handlePersonal = () => {
         if (role == "user") {
             navigate(`/personal/1/10`)
-        } else {
+        } 
+        if(role=="admin") {
+            navigate(`/admin`)
+        }
+        else {
             navigate(`/tutor/personal`)
         }
     }
@@ -143,7 +179,7 @@ const AuthorithedHeader = () => {
                         </li>
 
 
-                        <li className={styles.navigation__item} style={{display: "none"}}>
+                        <li className={styles.navigation__item} style={{ display: "none" }}>
                             <div className={styles.navigation__image__wrapper}>
 
                                 <img className={styles.navigation__image}

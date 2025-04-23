@@ -24,13 +24,7 @@ const AdminPamel = ({ username, email }: TutorPanelProps) => {
             
             <PanelBtns />
 
-            {/*
-            <div className={styles.panel__btn}
-            onClick={handleLogout}
-            >
-                Выйти
-            </div>
-            */}
+        
 
         </div>);
 }

@@ -14,8 +14,7 @@ import OtherTutors from "./OtherTutors/OtherTutors";
 import TutorAdd from "./TutorAdd/TutorAdd";
 import TutorCarousel from "./TutorCarousel/TutorCarousel";
 
-import Avatar1 from "../../assets/avatars/avatar1.png"
-import Avatar2 from "../../assets/avatars/avatar2.png"
+ import Avatar2 from "../../assets/avatars/avatar2.png"
 import Avatar3 from "../../assets/avatars/avatar3.png"
 import Avatar4 from "../../assets/avatars/avatar4.png"
 import { useEffect, useState } from "react";
@@ -104,7 +103,6 @@ export interface TutorInfoDetails {
         phone: string,
         location: string,
         price: number,
-
         achievements: {
             id: number,
             title: string,
@@ -113,7 +111,6 @@ export interface TutorInfoDetails {
         }[],
       
         description: string,
-
         courses: {
             id: number,
             title:  string,
@@ -194,7 +191,7 @@ const [offset, setOffset] = useState(0)
                 hasMore: false
             }
         }
-      //  tutors: []
+   
     }
     )
     useEffect(() => {
@@ -231,8 +228,7 @@ const handlePageOffset =(id: number) => {
             <OtherTutors
             offset={offset}
             handlePageOffset={handlePageOffset}
-            //others={anotherTutors.data.tutors}
-           //pagonat
+          
            data={anotherTutors.data}
             />
 
