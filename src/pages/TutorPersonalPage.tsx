@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import TutorService from "../services/Tutor";
 import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 import TutorPersonalPageComponent from "../components/TutorPersonalPage/TutorPersonalPage";
+import { AxiosError } from "axios";
 const TutorPersonalPage = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -21,8 +22,11 @@ const TutorPersonalPage = () => {
                 const response = await TutorService.GetTutor()
                dispatch(setTutor(response.data.user))
             
-            } catch (err) {
-             
+            } catch (error) {
+                const err = error as AxiosError  
+                if (err.response?.status === 401) {
+                    navigate('/sign-in')
+                }
             }
         };
         handleGetUser();  

@@ -10,6 +10,7 @@ import EditProfile from "./EditProfile/EditProfile";
 import MainPage from "./MainPage/MainPage";
 import AddAchievements from "./AddAchievements/AddAchievements";
 import TutorStudentsComponent from "./TutorStudentsComponent/TutorStudentsComponent";
+import RatesComponent from "./Rates/Rates";
 
 
 const TutorPersonalPageComponent: React.FC = () => {
@@ -57,6 +58,33 @@ const TutorPersonalPageComponent: React.FC = () => {
                     <TutorStudentsComponent />
                         
                        
+                  
+                 
+
+                    )
+
+
+
+                    
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+                    lastPathSegment == "rates" && (
+                       
+                <RatesComponent />
                   
                  
 
