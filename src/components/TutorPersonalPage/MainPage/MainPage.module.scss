@@ -73,7 +73,7 @@
 
 }
 
-
+/* 
 .star {
 
     &__stars {
@@ -137,8 +137,56 @@
     width: 50%;
     height: 29px;
 }
+    } */
+    .star {
+        &__stars {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    
+        &__star {
+            width: 20px;
+            height: 20px;
+            background: orange;
+            clip-path: polygon(
+                50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%
+            );
+        }
+    
+        &__starSliced {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(90deg, orange 50%, #ccc 50%);
+            clip-path: polygon(
+                50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%
+            );
+        }
     }
-
+    
+    .ratingCount {
+        margin-left: 8px;
+        font-size: 14px;
+        color: #666;
+    }
 
     .btn {
     margin-top: 10px;
