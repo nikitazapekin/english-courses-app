@@ -5,6 +5,7 @@ import TutorPamel from "../TutorPanel/TutorPanel";
 import { useSelector } from "react-redux";
 import { TutorSelector } from "../../../store/selectors/Tutor.selector";
 import RatesCard from "../RatesCard/RatesCard";
+import RatesService from "../../../services/Rates";
 
 
 interface FormState {
@@ -27,6 +28,17 @@ for (let i = 0; i < 10; i++) {
 
 const RatesComponent: React.FC = () => {
     const tutor = useSelector(TutorSelector);
+    const handleGet = async () => {
+        try {
+            const resp = await RatesService.GetRates(tutor.user.id)
+            console.log(resp.data)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    useEffect(() => {
+        handleGet()
+    }, [])
     return (
         <section className={styles.panel}>
             <div className={styles.panel__container}>

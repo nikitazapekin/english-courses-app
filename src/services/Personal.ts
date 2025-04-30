@@ -75,7 +75,6 @@ interface CoursesResponse {
 }
  
 interface Bans {
-   
         message: string,
         courses: 
             {
@@ -114,7 +113,6 @@ export default class PersonalService {
     static async GetUserBans(): Promise<AxiosResponse<Bans>> {
         return  $api.get<Bans>('/personal/getUserBans' );
     }
-///unSubscribedCourse
-
+ 
 
 }

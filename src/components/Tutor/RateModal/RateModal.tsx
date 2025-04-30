@@ -1,13 +1,8 @@
 import { useState } from "react";
 import styles from "./ErrorsModal.module.scss";
-
-interface Warning {
-    id: number;
-    ban_text: string;
-    ban_date: string;
-    is_active: boolean;
-}
-
+import RatesService from "../../../services/Rates";
+import { useLocation } from "react-router-dom";
+ 
 interface Props {
     handler: () => void;
 }
@@ -127,7 +122,16 @@ const RateModal = ({ handler }: Props) => {
         
         return stars;
     };
+    const location = useLocation(); 
+    const lastPathSegment = location.pathname.split('/').filter(Boolean).pop();
+    const handleAdd = async ()=> {
+        try {
+await RatesService.CreateRate(Number(lastPathSegment),rating, editedText )
+handler();
+        } catch(e) {
 
+        }
+    }
     return (
         <div className={styles.modal} onClick={handleClose}>
             <div className={styles.modal__content} onClick={handleContentClick}>
@@ -138,7 +142,7 @@ const RateModal = ({ handler }: Props) => {
                 <div className={styles.modal__fields}>
                     <div className={styles.stars}>
                         {renderPreciseStars()}
-                        <div style={{ marginTop: '10px' }}>
+                        <div style={{ marginLeft: '10px' }}>
                             Текущая оценка: {rating.toFixed(1)}
                         </div>
                     </div>
@@ -154,7 +158,7 @@ const RateModal = ({ handler }: Props) => {
                     <button
                         className={`${styles.modal__btn}`}
                         type="button"
-                        onClick={handleClose}
+                        onClick={handleAdd}
                     >
                         Добавить отзыв
                     </button>
@@ -174,87 +178,3 @@ const RateModal = ({ handler }: Props) => {
 };
 
 export default RateModal;
-/* import { useState } from "react";
-import styles from "./ErrorsModal.module.scss";
-
-interface Warning {
-    id: number;
-    ban_text: string;
-    ban_date: string;
-    is_active: boolean;
-}
-
-interface Props {
-
-    handler: () => void;
-
-}
-
-const RateModal = ({ handler }: Props) => {
-    const [editingId, setEditingId] = useState<number | null>(null);
-    const [editedText, setEditedText] = useState<string>("");
-
-    const handleClose = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        handler();
-    };
-
-    const handleContentClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-    };
-
-    const formatDate = (dateString: string) => {
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        return `${year}.${month}.${day}`;
-    };
-
-
-
-    return (
-        <div className={styles.modal} onClick={handleClose}>
-            <div className={styles.modal__content} onClick={handleContentClick}>
-                <h1 className={styles.modal__title}>
-                    Добавить отзыв репетитору
-                </h1>
-
-                <div className={styles.modal__fields}>
-                    <div className={styles.stars}>
-
-                    </div>
-                    <textarea
-
-                        placeholder="Добавьте отзыв репетитору"
-                        className={styles.textarea}
-                    />
-                </div>
-
-                <div className={styles.btns}>
-
-
-                    <button
-                        className={`${styles.modal__btn}`}
-                        type="button"
-                        onClick={handleClose}
-                    >
-                        Добавить отзыв
-                    </button>
-
-
-                    <button
-                        className={`${styles.modal__btn} ${styles.modal__delete}`}
-                        type="button"
-                        onClick={handleClose}
-                    >
-                        Закрыть
-                    </button>
-                </div>
-            </div>
-            <div className={styles.modal__overlay} />
-        </div>
-    );
-};
-
-export default RateModal;  */
