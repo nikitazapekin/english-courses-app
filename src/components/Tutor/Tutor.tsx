@@ -216,10 +216,7 @@ const handlePageOffset =(id: number) => {
 
 
             <TutorPreview  data={data.data} />
-
-
             <TutorCarousel items={data.data.achievements} title={"Достижения"} />
-
             <TutorCoursesCarousel 
             title="Курсы"
             items={data.data.courses}

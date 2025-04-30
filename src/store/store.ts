@@ -18,6 +18,7 @@ import EditModalLesson from "./slices/EditModalLesson/EditModalLesson"
 import  Lessons from "./slices/Lessons/Lessons"
 import  Catalog from "./slices/Catalog/Catalog"
 import AddWarningModal from "./slices/AddWarningModal/AddWarningModal"
+import RateSlice from "./slices/RateSlice/RateSlice"
 export const rootReducer = combineReducers({
     HomepageSlice: HomepageSlice,
     FormSlice: FormSlice,
@@ -34,8 +35,8 @@ export const rootReducer = combineReducers({
     EditModalLesson: EditModalLesson,
     LessonsSlice: Lessons,
     Catalog: Catalog,
-    AddWarningModal: AddWarningModal
-    
+    AddWarningModal: AddWarningModal,
+    RateSlice: RateSlice
 
 });
 export const store = configureStore({

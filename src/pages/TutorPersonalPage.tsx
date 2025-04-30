@@ -30,9 +30,6 @@ const TutorPersonalPage = () => {
             }
         };
         handleGetUser();  
-    
-
-
     }, []);
 
     return (<div className={styles.wrapper}>

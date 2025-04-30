@@ -1,0 +1,242 @@
+@import "../../../theme/theme";
+
+.card {
+    &__input {
+        width: 100%;
+        min-height: 100px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-family: "Nunito", sans-serif;
+        font-size: 16px;
+        resize: vertical;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    &__actions {
+        display: flex;
+        gap: 8px;
+    }
+
+    &__action {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        padding: 4px;
+        line-height: 1;
+    }
+}
+ 
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999999;
+
+
+    &__btn {
+        cursor: pointer;
+        border-radius: 20px;
+        border: none;
+        outline: none;
+        padding: 5px;
+        background-color: $sliderGreen;
+        color: $white;
+        font-size: 20px;
+
+        font-family: "Nunito", sans-serif;
+        //     margin-top: 20px;
+        width: 100%;
+
+    }
+
+    &__delete {
+        color: #000;
+        background-color: transparent;
+    }
+
+
+
+
+    &__title {
+        font-weight: 700;
+        font-size: 36px;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+        margin-bottom: 20px;
+    }
+
+    &__content {
+        background-color: $white;
+        z-index: 9999999;
+        max-width: 1030px;
+        width: 100%;
+        height: auto;
+        position: relative;
+        border-radius: 20px;
+        padding: 30px;
+        overflow-y: scroll;
+        max-height: 90vh;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    &__overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $black;
+        opacity: 0.4;
+    }
+} 
+
+
+/* 
+.stars {
+    align-self: center;
+    white-space: nowrap;
+    
+    &__star {
+
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: $orange;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+    border-radius: 1px;
+
+}
+
+&__starSliced {
+
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: $orange;
+    clip-path: polygon(50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%);
+
+
+    &::after {
+        border: 2px solid $orange;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+
+        background-color: $blue;
+        z-index: 1;
+        border: none;
+        outline: none;
+        background-color: $gray;
+    }
+}
+
+} */
+
+
+.stars {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    
+    &__starContainer {
+        cursor: pointer;
+        position: relative;
+        width: 30px;
+        height: 30px;
+    }
+    
+    &__star {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $orange;
+        clip-path: polygon(
+            50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%
+        );
+    }
+    
+    &__starSliced {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $orange;
+        clip-path: polygon(
+            50% 0%,
+            61% 35%,
+            98% 35%,
+            68% 57%,
+            79% 91%,
+            50% 70%,
+            21% 91%,
+            32% 57%,
+            2% 35%,
+            39% 35%
+        );
+        
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 50%;
+            background-color: #ccc;
+            z-index: 1;
+        }
+    }
+}
