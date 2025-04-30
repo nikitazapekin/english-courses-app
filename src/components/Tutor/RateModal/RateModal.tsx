@@ -146,7 +146,7 @@ const RateModal = ({ handler }: Props) => {
                         value={editedText}
                         onChange={(e) => setEditedText(e.target.value)}
                         placeholder="Добавьте отзыв репетитору"
-                        className={styles.textarea}
+                        className={styles.modal__input}
                     />
                 </div>
 
