@@ -135,18 +135,24 @@ const PersonalProfile = () => {
                     <PersonalDescribtion />
 
                 </div>
+                {cards.length > 0 && (
 
-                <PersonalCourses
-                    cards={cards}
-                    total={total}
-                    limit={limit}
-                    handlePageChange={handlePageChange}
-                    currentPage={Number(currentPage)}
-                    handleFilterCards={handleFilterCards}
+                    <PersonalCourses
+                        cards={cards}
+                        total={total}
+                        limit={limit}
+                        handlePageChange={handlePageChange}
+                        currentPage={Number(currentPage)}
+                        handleFilterCards={handleFilterCards}
 
 
-                />
-
+                    />
+                )}
+                {cards.length == 0 && (
+                    <p className={styles.none}>
+                        У вас еще нету курсов
+                    </p>
+                )}
 
             </div>
 

@@ -17,6 +17,8 @@
         display: flex;
         column-gap: 14px;
         &__text {
+            display: flex;
+            column-gap: 10px;
             font-weight: 400;
             @include fontSize(24px);
             color: $black;
@@ -90,4 +92,8 @@
 
 
     }
+}
+
+.bold {
+    font-weight: 700;
 }
