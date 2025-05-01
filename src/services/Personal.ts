@@ -113,6 +113,11 @@ export default class PersonalService {
     static async GetUserBans(): Promise<AxiosResponse<Bans>> {
         return  $api.get<Bans>('/personal/getUserBans' );
     }
+    static async UpdateStudent( email: string, password: string, phone: string, country: string, city: string, name: string,  description: string): Promise<AxiosResponse<Bans>> {
+        return  $api.put<Bans>('/personal/updateStudents', {email, password, phone, country, city, name,  description} );
+    }
  
 
 }
+// email, password, phone, country, city, name,  description
+//updateStudents

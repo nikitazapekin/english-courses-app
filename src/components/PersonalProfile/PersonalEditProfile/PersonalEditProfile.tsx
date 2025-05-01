@@ -3,108 +3,131 @@ import PersonalHeader from "../PersonalHeader/PersonalHeader/PersonalHeader";
 import styles from "./PersonalEditProfile.module.scss";
 import EditField from "./EditField/EditField";
 import { editArray } from "./consts";
+import PersonalService from "../../../services/Personal";
+import { useNavigate } from "react-router-dom";
 
 interface EditProps {
-  email: string;
-  password: string;
-  phone: string;
-  country: string;
-  city: string;
-  name: string;
-  shortName: string;
-  description: string;
-  theme: string;
+    email: string;
+    password: string;
+    phone: string;
+    country: string;
+    city: string;
+    name: string;
+    shortName: string;
+    description: string;
+    theme: string;
 }
 
 interface Data {
-  id: number;
-  email: string;
-  auth_date: string;
-  user_id: number;
-  courses: string;
-  phone: string;
-  country: string;
-  city: string;
-  role: string;
-  username: string;
-  description: string;
+    id: number;
+    email: string;
+    auth_date: string;
+    user_id: number;
+    courses: string;
+    phone: string;
+    country: string;
+    city: string;
+    role: string;
+    username: string;
+    description: string;
 }
 
 interface Props {
-  dataUser?: Data;
+    dataUser?: Data;
 }
 
 const PersonalEditProfile = ({ dataUser }: Props) => {
-  const defaultData = {
-    email: "",
-    password: "",
-    phone: "",
-    country: "",
-    city: "",
-    name: "",
-    shortName: "",
-    description: "",
-    theme: ""
-  };
+    const defaultData = {
+        email: "",
+        password: "",
+        phone: "",
+        country: "",
+        city: "",
+        name: "",
+        shortName: "",
+        description: "",
+        theme: ""
+    };
 
-  const [data, setData] = useState<EditProps>({
-    ...defaultData,
-    email: dataUser?.email || "",
-    phone: dataUser?.phone || "",
-    country: dataUser?.country || "",
-    city: dataUser?.city || "",
-    name: dataUser?.username || "",
-    description: dataUser?.description || "",
-  });
+    const [data, setData] = useState<EditProps>({
+        ...defaultData,
+        email: dataUser?.email || "",
+        phone: dataUser?.phone || "",
+        country: dataUser?.country || "",
+        city: dataUser?.city || "",
+        name: dataUser?.username || "",
+        description: dataUser?.description || "",
+    });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    if (name !== "confirmPassword") {
-      setData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    ) => {
+        const { name, value } = e.target;
+
+        setData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+
+    };
+    //email, password, phone, country, city, name,  
+    const navigate = useNavigate()
+    const handleSave = async () => {
+        try {
+            const resp = await PersonalService.UpdateStudent(data.email, data.password, data.phone, data.country, data.city, data.name, data.description)
+      
+      navigate(`/personal/1/5`)
+        } catch (e) {
+            console.log(e)
+        }
     }
-  };
+    if (!dataUser) {
+        return <div className={styles.loading}>Загрузка данных пользователя...</div>;
+    }
 
-  if (!dataUser) {
-    return <div className={styles.loading}>Загрузка данных пользователя...</div>;
-  }
-
-  return (
-    <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
-      <div className={styles.form__inner}>
-        <PersonalHeader title={"Настройки"} />
-        <div className={styles.edit__content}>
-          {editArray.map((item) => {
-            const fieldName = item.name as keyof Data;
-            return (
-              <EditField
-                key={item.id}
-                handleChange={handleChange}
-                item={{
-                  id: item.id,
-                  title: item.title,
-                  placeholder: item.placeholder,
-                  name: item.name,
-                  type: item.type,
-                }}
-                defaultValue={dataUser[fieldName]?.toString() || ""}
-              />
-            );
-          })}
-        </div>
-        <button className={styles.edit__btn} type="submit">
-          Сохранить изменения
-        </button>
-      </div>
-    </form>
-  );
+    return (
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <div className={styles.form__inner}>
+                <PersonalHeader title={"Настройки"} />
+                <div className={styles.edit__content}>
+                    {editArray.map((item) => {
+                        const fieldName = item.name as keyof Data;
+                        return (
+                            <EditField
+                                key={item.id}
+                                handleChange={handleChange}
+                                item={{
+                                    id: item.id,
+                                    title: item.title,
+                                    placeholder: item.placeholder,
+                                    name: item.name,
+                                    type: item.type,
+                                }}
+                                defaultValue={dataUser[fieldName]?.toString() || ""}
+                            />
+                        );
+                    })}
+                </div>
+                <button className={styles.edit__btn} type="button"
+                    onClick={handleSave}
+                >
+                    Сохранить изменения
+                </button>
+            </div>
+        </form>
+    );
 };
 
 export default PersonalEditProfile;
+
+
+
+
+
+
+
+
+
 /* import { useState } from "react";
 import PersonalService from "../../../services/Personal";
 import PersonalHeader from "../PersonalHeader/PersonalHeader/PersonalHeader";
