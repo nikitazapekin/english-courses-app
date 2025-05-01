@@ -9,6 +9,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import AuthService from "../../services/Auth";
 import PersonalService from "../../services/Personal";
 import BanModal from "./BanModal/BanModal";
+import WarningsUserService from "../../services/WarningsUser";
 
 interface CoursesResponse {
 
@@ -115,6 +116,16 @@ const PersonalProfile = () => {
     useEffect(() => {
         handleGetPersonalBans()
     }, [])
+    const handleGetWarnings = async () => {
+        try {
+            const resp = await WarningsUserService.GetUserWarnings()
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    useEffect(() => {
+        handleGetWarnings()
+    }, [])
     return (
         <section className={styles.personal}>
             <PaymentModal isOpenModal={isOpenModal} handleOpenModal={handleOpenModal} />
@@ -166,4 +177,17 @@ const PersonalProfile = () => {
     );
 }
 
-export default PersonalProfile; 
+export default PersonalProfile;
+
+/*
+export default class WarningsUserService {
+    static async GetWarnings(): Promise<AxiosResponse<AdminResponse>> {
+        return $api.get<AdminResponse>('/warningsuser/getWarnings')
+    }
+    static async GetUserWarnings(): Promise<AxiosResponse<AdminResponse>> {
+        return $api.get<AdminResponse>('/warningsuser/getUserWarnings')
+    }
+
+  //getUserWarnings
+
+}*/

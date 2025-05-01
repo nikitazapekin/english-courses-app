@@ -14,8 +14,8 @@ const WarningModal = ({ handleClose, selectedUser  }: Props) => {
       
         try {
          //   const resp = await BanService.AddBanUser(selectedUser, , message)
+         handleClose(0)
            const resp = await WarningsService.AddUserWarnings(message, selectedUser)
-            handleClose(0)
         } catch (e) {
             console.log(e)
         }
@@ -44,7 +44,7 @@ const WarningModal = ({ handleClose, selectedUser  }: Props) => {
                         className={styles.modal__btn}
                         type="button"
                     >
-                       Добавить жалобу
+                       Добавить предупреждение
                     </button>
                     <button
                         className={`${styles.modal__btn} ${styles.modal__btn__disabled}`}

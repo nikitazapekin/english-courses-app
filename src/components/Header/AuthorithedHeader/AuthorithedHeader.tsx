@@ -135,7 +135,7 @@ const AuthorithedHeader = () => {
         if(role=="admin") {
             navigate(`/admin`)
         }
-        else {
+        if(role=="tutor") {
             navigate(`/tutor/personal`)
         }
     }
