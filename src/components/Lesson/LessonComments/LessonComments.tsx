@@ -61,7 +61,7 @@ interface User {
         city: string;
         role: string;
         username: string;
-        describtion: string;
+        description: string;
     };
 }
 

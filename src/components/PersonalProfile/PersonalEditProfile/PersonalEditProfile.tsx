@@ -1,4 +1,111 @@
 import { useState } from "react";
+import PersonalHeader from "../PersonalHeader/PersonalHeader/PersonalHeader";
+import styles from "./PersonalEditProfile.module.scss";
+import EditField from "./EditField/EditField";
+import { editArray } from "./consts";
+
+interface EditProps {
+  email: string;
+  password: string;
+  phone: string;
+  country: string;
+  city: string;
+  name: string;
+  shortName: string;
+  description: string;
+  theme: string;
+}
+
+interface Data {
+  id: number;
+  email: string;
+  auth_date: string;
+  user_id: number;
+  courses: string;
+  phone: string;
+  country: string;
+  city: string;
+  role: string;
+  username: string;
+  description: string;
+}
+
+interface Props {
+  dataUser?: Data;
+}
+
+const PersonalEditProfile = ({ dataUser }: Props) => {
+  const defaultData = {
+    email: "",
+    password: "",
+    phone: "",
+    country: "",
+    city: "",
+    name: "",
+    shortName: "",
+    description: "",
+    theme: ""
+  };
+
+  const [data, setData] = useState<EditProps>({
+    ...defaultData,
+    email: dataUser?.email || "",
+    phone: dataUser?.phone || "",
+    country: dataUser?.country || "",
+    city: dataUser?.city || "",
+    name: dataUser?.username || "",
+    description: dataUser?.description || "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    if (name !== "confirmPassword") {
+      setData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
+  };
+
+  if (!dataUser) {
+    return <div className={styles.loading}>Загрузка данных пользователя...</div>;
+  }
+
+  return (
+    <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+      <div className={styles.form__inner}>
+        <PersonalHeader title={"Настройки"} />
+        <div className={styles.edit__content}>
+          {editArray.map((item) => {
+            const fieldName = item.name as keyof Data;
+            return (
+              <EditField
+                key={item.id}
+                handleChange={handleChange}
+                item={{
+                  id: item.id,
+                  title: item.title,
+                  placeholder: item.placeholder,
+                  name: item.name,
+                  type: item.type,
+                }}
+                defaultValue={dataUser[fieldName]?.toString() || ""}
+              />
+            );
+          })}
+        </div>
+        <button className={styles.edit__btn} type="submit">
+          Сохранить изменения
+        </button>
+      </div>
+    </form>
+  );
+};
+
+export default PersonalEditProfile;
+/* import { useState } from "react";
 import PersonalService from "../../../services/Personal";
 import PersonalHeader from "../PersonalHeader/PersonalHeader/PersonalHeader";
 import styles from "./PersonalEditProfile.module.scss";
@@ -13,7 +120,7 @@ interface EditProps {
     city: string;
     name: string;
     shortName: string;
-    describtion: string;
+    description: string;
     theme: string;
 }
 
@@ -36,103 +143,116 @@ interface FormTypes {
     price: number;
     phone: string;
 }
+interface Data {
+    id: number,
+    email: string,
+    auth_date: string,
+    user_id: number,
+    courses: string,
+    phone: string,
+    country: string,
+    city: string,
+    role: string,
+    username: string,
+    description: string
+}
+interface Props {
+    dataUser: Data
+}
 
-
-const PersonalEditProfile = () => {
+const PersonalEditProfile = ({ dataUser }: Props) => {
     const [data, setData] = useState<EditProps>({
-        email: "",
+        email: dataUser.email || "",
         password: "",
-        phone: "",
-        country: "",
-        city: "",
-        name: "",
+        phone: dataUser.phone || "",
+        country: dataUser.country || "",
+        city: dataUser.city || "",
+        name: dataUser.username || "",
         shortName: "",
-        describtion: "",
+        description: dataUser.description || "",
         theme: ""
     });
- 
+
     const handleEdit = async () => {
-        try {
-            const response = await PersonalService.EditUser({ data });
-            console.log("Данные обновлены:", response.data);
-        } catch (error) {
-            console.error("Ошибка при редактировании профиля", error);
-        }
-    }; 
-    
+        // Реализация сохранения изменений
+    };
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         if (name != "confirmPassword") {
-
             setData(prevData => ({
                 ...prevData,
                 [name]: value
             }));
         }
     };
-
-
-
     
-
     return (
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
             <div className={styles.form__inner}>
                 <PersonalHeader title={"Настройки"} />
-
-
-
-
-
-<div className={styles.edit__content}>
-                {editArray.map((item) => (
-                    <EditField 
-                        key={item.id} 
-                      //  obj={obj} 
-                        handleChange={handleChange}
-                        item={item as { 
-                            id: number; 
-                            title: string; 
-                            placeholder: string; 
-                            name: keyof FormTypes; 
-                            type: string 
-                        }}
-                    />
-                ))}
-            </div>
-            <button className={styles.edit__btn} type="submit" //onClick={handleSubmit}
-            >
-                Сохранить изменения
-            </button>
-            
-
-
-
-
-
-
-
-
-
+                <div className={styles.edit__content}>
+                    {editArray.map((item) => (
+                        <EditField
+                            key={item.id}
+                            handleChange={handleChange}
+                            item={item as {
+                                id: number;
+                                title: string;
+                                placeholder: string;
+                                name: keyof FormTypes;
+                                type: string
+                            }}
+                            defaultValue={String(dataUser[item.name as keyof Data]) || ""}
+                        />
+                    ))}
+                </div>
+                <button className={styles.edit__btn} type="submit">
+                    Сохранить изменения
+                </button>
             </div>
         </form>
     );
 };
 
 export default PersonalEditProfile;
- 
 
-/* 
 
-  import styles from "./EditProfile.module.scss";
-import { editArray } from "./Consts";
-import EditField from "../EditField/EditField";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import TutorService from "../../../services/Tutor";
-import { useSelector } from "react-redux";
-import { TutorSelector } from "../../../store/selectors/Tutor.selector";
-import ErrorModal from "../TurorCreateCourse/ErrorModal/ErrorModal";
+
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* import { useState } from "react";
+import PersonalService from "../../../services/Personal";
+import PersonalHeader from "../PersonalHeader/PersonalHeader/PersonalHeader";
+import styles from "./PersonalEditProfile.module.scss";
+import EditField from "./EditField/EditField";
+import { editArray } from "./consts";
+
+interface EditProps {
+    email: string;
+    password: string;
+    phone: string;
+    country: string;
+    city: string;
+    name: string;
+    shortName: string;
+    description: string;
+    theme: string;
+}
+
 interface FormTypes {
     id: number;
     id_author: number;
@@ -152,177 +272,80 @@ interface FormTypes {
     price: number;
     phone: string;
 }
+interface Data {
+    id: number,
+    email: string,
+    auth_date: string,
+    user_id: number,
+    courses: string,
+    phone: string,
+    country: string,
+    city: string,
+    role: string,
+    username: string,
+    description: string
+}
+interface Props {
+    dataUser: Data
+}
 
-const EditProfile = () => {
-    const [formData, setFormData] = useState<FormTypes>({
-        id: 0,
-        id_author: 0,
-        username: "",
-        description: "",
-        full_description: "",
+const PersonalEditProfile = ({ dataUser }: Props) => {
+    const [data, setData] = useState<EditProps>({
         email: "",
         password: "",
-        specialization: "",
-        english_level: "",
-        number_of_students: "",
-        experience: [],
-        work_experience: "",
-        location: "",
-        price: 0,
-        rate: "",
-        role: "",
-        phone: ""
+        phone: "",
+        country: "",
+        city: "",
+        name: "",
+        shortName: "",
+        description: "",
+        theme: ""
     });
 
-    const [isError, setIsError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState("");
+    const handleEdit = async () => {
 
-    const handleError = () => setIsError(prev => !prev);
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const validateForm = (): boolean => {
-         
-        if (!formData.username.trim() && !obj.username) {
-            console.log("FORM", formData)
-            setIsError(true);
-            setErrorMessage("Пожалуйста, введите ваше имя");
-            return false;
-        }
-    
-        
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!formData.email.trim() && !obj.email) {
-            console.log("FORM", formData)
-            setIsError(true);
-            setErrorMessage("Пожалуйста, введите email");
-            return false;
-        }
-    
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        if (name != "confirmPassword") {
 
-     
-        if (formData.password.length>0 && formData.password.length < 6) {
-            setIsError(true);
-            setErrorMessage("Пароль должен содержать минимум 6 символов");
-            return false;
-        }
-
-        return true;
-    };
-
-    const handleSubmit = async () => {
-        if (!validateForm()) {
-            return;
-        }  
-
-        try {
-            await TutorService.EditTutor({ data: { ...formData } });
-       
-        } catch (error) {
-            console.error("Ошибка при редактировании профиля:", error);
-            setIsError(true);
-            setErrorMessage("Произошла ошибка при сохранении изменений");
+            setData(prevData => ({
+                ...prevData,
+                [name]: value
+            }));
         }
     };
-
-    const tutor = useSelector(TutorSelector);
-    const obj: FormTypes = {
-        id: tutor.user.id,
-        id_author: tutor.user.id_author,
-        username: tutor.user.username,
-        email: tutor.user.email,
-        description: tutor.user.description,
-        rate: tutor.user.rate,
-        specialization: tutor.user.specialization,
-        english_level: tutor.user.english_level,
-        full_description: tutor.user.full_description,
-        role: tutor.user.role,
-        number_of_students: tutor.user.number_of_students,
-        experience: tutor.user.experience,
-        work_experience: tutor.user.work_experience,
-        password: tutor.user.password,
-        location: tutor.user.location,
-        price: tutor.user.price,
-        phone: tutor.user.phone
-    };
-
     return (
-        <div className={styles.edit}>
-            <h1 className={styles.edit__title}>Редактировать профиль</h1>
-            <div className={styles.edit__content}>
-                {editArray.map((item) => (
-                    <EditField 
-                        key={item.id} 
-                        obj={obj} 
-                        handleChange={handleChange}
-                        item={item as { 
-                            id: number; 
-                            title: string; 
-                            placeholder: string; 
-                            name: keyof FormTypes; 
-                            type: string 
-                        }}
-                    />
-                ))}
+        <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <div className={styles.form__inner}>
+                <PersonalHeader title={"Настройки"} />
+                <div className={styles.edit__content}>
+                    {editArray.map((item) => (
+                        <EditField
+                            key={item.id}
+                            //  obj={obj} 
+                            handleChange={handleChange}
+                            item={item as {
+                                id: number;
+                                title: string;
+                                placeholder: string;
+                                name: keyof FormTypes;
+                                type: string
+                            }}
+                        />
+                    ))}
+                </div>
+                <button className={styles.edit__btn} type="submit"
+                >
+                    Сохранить изменения
+                </button>
+
             </div>
-            <button className={styles.edit__btn} type="submit" onClick={handleSubmit}>
-                Сохранить изменения
-            </button>
-            
-            {isError && (
-                <ErrorModal
-                    message={errorMessage}
-                    handler={handleError}
-                />
-            )}
-        </div>
+        </form>
     );
 };
 
-export default EditProfile; */
-  /*
+export default PersonalEditProfile;
 
-
-  @import "../../../theme/theme";
-
-.edit {
-    width: 100%;
-
-    &__title {
-        margin-bottom: 20px;
-        font-weight: 700;
-        font-size: 36px;
-        color: #3a3a3a;
-        font-family: "Nunito", sans-serif;
-    }
-
-    &__content {
-        display: flex;
-        flex-direction: column;
-        row-gap: 20px;
-        width: 100%;
-    }
-
-    &__btn {
-        cursor: pointer;
-        border-radius: 20px;
-        border: none;
-        outline: none;
-        padding: 5px;
-        background-color: $sliderGreen;
-        color: $white;
-        font-size: 20px;
-
-        font-family: "Nunito", sans-serif;
-        margin-top: 20px;
-        width: 100%;
-
-    }
-
-
-
-
-}
-    */
+ */

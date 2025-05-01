@@ -110,7 +110,7 @@ interface LessonCommentCardProps {
         city: string;
         role: string;
         username: string;
-        describtion: string;
+        description: string;
     };
     handleUpdateLike: (id: number, comment_id: number) => void,
 

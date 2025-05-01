@@ -11,11 +11,12 @@ import MainPage from "./MainPage/MainPage";
 import AddAchievements from "./AddAchievements/AddAchievements";
 import TutorStudentsComponent from "./TutorStudentsComponent/TutorStudentsComponent";
 import RatesComponent from "./Rates/Rates";
-
+ 
 
 const TutorPersonalPageComponent: React.FC = () => {
     const tutor = useSelector(TutorSelector)
     const tutorPage = useSelector(TutorPageSelector)
+ 
 
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();

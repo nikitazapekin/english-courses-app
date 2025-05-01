@@ -14,9 +14,6 @@ import TutorPersonalPageComponent from "../components/TutorPersonalPage/TutorPer
 import TutorService from "../services/Tutor";
 import { setTutor } from "../store/slices/TutorSlice/TutorSlice";
 const TutorEditProfile = () => {
-
-
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
     useEffect(() => {

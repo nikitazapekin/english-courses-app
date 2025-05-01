@@ -14,7 +14,7 @@ interface User {
     city: string,
     role: string,
     username: string,
-    describtion: string | null | "Добавьте описание..."
+    description: string | null | "Добавьте описание..."
 }
 interface PersonalSliceTypes {
     message: string
@@ -35,7 +35,7 @@ const initialState: PersonalSliceTypes = {
         city: "",
         role: "",
         username: "",
-        describtion:  "Добавьте описание..."
+        description:  "Добавьте описание..."
     },
     loading: false,
     error: null

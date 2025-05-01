@@ -21,7 +21,7 @@ interface PersonalResponse {
     city: string,
     role: string,
     username: string,
-    describtion: string
+    description: string
 
 }
 
@@ -111,9 +111,9 @@ const PersonalDescribtion = () => {
                         Описание:
                     </span>
                     {" "}
-                    {data?.describtion}
+                    {data?.description}
                     
-                    {!data?.describtion   && <p>Не указано</p>}
+                    {!data?.description   && <p>Не указано</p>}
                 </div>
 
 
