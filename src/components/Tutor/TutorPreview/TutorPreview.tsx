@@ -4,6 +4,9 @@ import styles from "./TutorPreview.module.scss"
 import Tutor from "../../../assets/Tutor/tutor.jpeg"
 import TutorDescribtion from "../TutorDescribtion/TutorDescribtion";
 import Belarus from "../../../assets/Countries/Belarus.png"
+import { useEffect, useState } from "react";
+import RatesService from "../../../services/Rates";
+import { useLocation } from "react-router-dom";
 
 
 const tutor = {
@@ -40,40 +43,55 @@ interface Props {
             id: number,
             title: string,
             date: string,
-            logo:string
+            logo: string
         }[],
-      //  achievements: [],
-   //     courses: [],
+        //  achievements: [],
+        //     courses: [],
 
-   courses: {
-    id: number,
-    title:  string,
-    fulldescription: string,
-    course_for: string[],
-    course_suitable:string[],
-    for_what_reasons: string[],
-    about_course: string[],
-    tag: string,
-    course_rate:number,
-    release_date:  string,
-    course_logo: string,
-}[],
+        courses: {
+            id: number,
+            title: string,
+            fulldescription: string,
+            course_for: string[],
+            course_suitable: string[],
+            for_what_reasons: string[],
+            about_course: string[],
+            tag: string,
+            course_rate: number,
+            release_date: string,
+            course_logo: string,
+        }[],
         avatar: string,
     }
 }
-const TutorPreview = ({data}: Props) => {
 
-   
+const TutorPreview = ({ data }: Props) => {
+   const location = useLocation();
+    const lastPathSegment = location.pathname.split("/").pop();
+
+    const [rate, setRate] = useState(0)
+    const handleGet = async () => {
+        try {
+            const resp = await RatesService.GetMediumRates(Number(lastPathSegment))
+            setRate(resp.data.rates.average)
+        } catch (e) {
+            console.log(e)
+        }
+    }
+    useEffect(() => {
+        handleGet()
+    }, [])
+
     return (<section className={styles.tutor}>
         <div className={styles.tutor__info}>
 
-            <TutorAvatar 
-         
-            url={data.avatar}
-            
+            <TutorAvatar
+
+                url={data.avatar}
+
             />
-            <TutorDescribtion title={data.username} country={data.location} citate={data.description} rate={Number(data.rate)} level={data.english_level} specialization={data.specialization} describtion={""}
-             />
+            <TutorDescribtion title={data.username} country={data.location} citate={data.description} rate={rate} level={data.english_level} specialization={data.specialization} describtion={""}
+            />
 
 
         </div>

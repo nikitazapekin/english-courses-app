@@ -1,11 +1,7 @@
 import styles from "./WarningsModal.module.scss";
 
 interface Warning {
-    /*   id: number,
-      warning_text: string,
-      warning_date: string,
-      is_active: boolean */
-
+ 
 
     id: number,
     user_id: number,
@@ -30,7 +26,9 @@ const WarningsUserModal = ({ warnings, handler }: Props) => {
                     Ваши предупреждения:
                 </h1>
                 {warnings.map((item, index) => (
-                    <div className={styles.card}>
+                    <div className={styles.card}
+                    key={index}
+                    >
                         <div className={styles.card__content}>
                             {item.warning_text} 
                         </div>

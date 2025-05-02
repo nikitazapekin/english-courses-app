@@ -55,6 +55,7 @@
     &__stars {
         align-self: center;
         white-space: nowrap;
+        display: flex;
     }
 
     &__star {
