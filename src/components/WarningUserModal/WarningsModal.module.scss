@@ -112,3 +112,130 @@
     flex-direction: column;
     row-gap: 20px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+.card {
+    margin-top: 20px;
+    display: flex;
+    column-gap: 40px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 15px;
+    min-height: 80px;
+   // height: 100%;
+    align-items: center;
+cursor: pointer;
+justify-content: space-between;
+ 
+
+&__content {
+    display: flex;
+    column-gap: 20px;
+}
+    &__image {
+        min-width: 100px;
+        width: 100%;
+        max-height: 100px;
+        border-radius: 5px;
+        // align-self: center;
+    }
+
+    &__preview {
+        display: flex;
+        flex-direction: column;
+        row-gap: 5px;
+    }
+    &__title {
+        
+        font-size: 24px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        font-weight: 700;
+    }
+    &__describtion {
+        font-size: 20px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+       
+    }
+
+    &__for {
+        font-size: 20px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        color: $white;
+        align-self: flex-start;
+        
+        display: flex;
+        column-gap: 10px;
+        &__item {
+            
+            border-radius: 5px;
+            padding: 2px 5px;
+            background-color: $sliderGreen;
+        }
+    }
+
+
+    &__edit {
+        justify-self: flex-end;
+        align-self: flex-start;
+        font-size: 20px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        cursor: pointer;
+    }
+}
+
+
+.vis {
+    font-size: 24px;
+    color: $black;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+
+.warnings {
+    font-size: 24px;
+    color: rgb(167, 167, 44);
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+.bans {
+    font-size: 24px;
+    color: rgb(133, 11, 11);
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+}
+
+.underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+

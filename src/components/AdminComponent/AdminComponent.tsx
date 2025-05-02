@@ -13,8 +13,7 @@ const AdminComponent = () => {
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
     const admin = useSelector(AdminSelectorUser)
-
-    //export const ADMIN_EDIT_USERS= "/admin/editUsers" 
+ 
     return (
         <div className={styles.admin}>
             <div className={styles.admin__container}>
