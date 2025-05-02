@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./PersonalHeader.module.scss"
+import { WarningUser } from "../../../../services/WarningsUser";
 const btns = [
     {
         text: "Профиль",
@@ -13,9 +14,11 @@ const btns = [
 ]
 
 interface HeaderProps {
-    title: string
+    title: string,
+    warnings: WarningUser[],
+    handleOpen: () => void
 }
-const PersonalHeader = ({title}:HeaderProps) => {
+const PersonalHeader = ({ title, warnings, handleOpen }: HeaderProps) => {
     const navigate = useNavigate()
     const handleNavigate = (link: string) => {
         navigate(link)
@@ -32,6 +35,16 @@ const PersonalHeader = ({title}:HeaderProps) => {
                     {item.text}
                 </li>
             ))}
+
+            {warnings.length > 0 && (
+                <li
+                    onClick={handleOpen}
+                    className={styles.header__btn} key={9999}>
+                    Предупреждения
+                </li>
+
+
+            )}
         </ul>
     </div>);
 }

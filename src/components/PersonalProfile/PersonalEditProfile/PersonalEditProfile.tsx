@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PersonalHeader from "../PersonalHeader/PersonalHeader/PersonalHeader";
 import styles from "./PersonalEditProfile.module.scss";
 import EditField from "./EditField/EditField";
 import { editArray } from "./consts";
 import PersonalService from "../../../services/Personal";
 import { useNavigate } from "react-router-dom";
+import WarningsUserService, { WarningUser } from "../../../services/WarningsUser";
 
 interface EditProps {
     email: string;
@@ -81,14 +82,36 @@ const PersonalEditProfile = ({ dataUser }: Props) => {
             console.log(e)
         }
     }
+
+
+
+
+
+
+
+
+     const [warnings,setWarnings] = useState<WarningUser[]>([])
+        const handleGetWarnings = async () => {
+            try {
+                const resp = await WarningsUserService.GetUserWarnings()
+                setWarnings(resp.data)
+            } catch (e) {
+                console.log(e)
+            }
+        }
+        useEffect(() => {
+            handleGetWarnings()
+        }, [])   
     if (!dataUser) {
         return <div className={styles.loading}>Загрузка данных пользователя...</div>;
     }
-
     return (
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
             <div className={styles.form__inner}>
-                <PersonalHeader title={"Настройки"} />
+                <PersonalHeader title={"Настройки"}
+                handleOpen={()=> {}}
+                warnings={warnings}
+                />
                 <div className={styles.edit__content}>
                     {editArray.map((item) => {
                         const fieldName = item.name as keyof Data;

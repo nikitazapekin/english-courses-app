@@ -10,7 +10,7 @@ import AuthService from "../../services/Auth";
 import PersonalService from "../../services/Personal";
 import BanModal from "./BanModal/BanModal";
 import WarningsUserService from "../../services/WarningsUser";
-
+import { WarningUser } from "../../services/WarningsUser";
 interface CoursesResponse {
 
     courses: Array<{
@@ -43,7 +43,11 @@ interface Ban {
 
 }
 
-const PersonalProfile = () => {
+interface Props {
+    handleOpen: ()=> void
+}
+
+const PersonalProfile = ({handleOpen}: Props) => {
 
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
     const [cards, setCards] = useState<CoursesResponse["courses"]>([])
@@ -116,9 +120,12 @@ const PersonalProfile = () => {
     useEffect(() => {
         handleGetPersonalBans()
     }, [])
+
+    const [warnings,setWarnings] = useState<WarningUser[]>([])
     const handleGetWarnings = async () => {
         try {
             const resp = await WarningsUserService.GetUserWarnings()
+            setWarnings(resp.data)
         } catch (e) {
             console.log(e)
         }
@@ -126,11 +133,16 @@ const PersonalProfile = () => {
     useEffect(() => {
         handleGetWarnings()
     }, [])
+    
     return (
         <section className={styles.personal}>
             <PaymentModal isOpenModal={isOpenModal} handleOpenModal={handleOpenModal} />
             <div className={styles.personal__inner}>
-                <PersonalHeader title={"Мой профиль"} />
+                <PersonalHeader title={"Мой профиль"}
+                warnings={warnings}
+
+                handleOpen={handleOpen}
+                />
                 <div className={styles.personal__info}>
                     <div className={styles.personal__actions}>
                         <AvatarComponent />
@@ -178,16 +190,32 @@ const PersonalProfile = () => {
 }
 
 export default PersonalProfile;
-
 /*
+
+export interface WarningUser {
+    
+       
+        
+            id: number,
+            user_id: number,
+            warning_text:string,
+            is_active: boolean
+        
+    
+}
+export interface IsAdminResponse {
+    message: string,
+    isAdmin: boolean
+}
 export default class WarningsUserService {
     static async GetWarnings(): Promise<AxiosResponse<AdminResponse>> {
         return $api.get<AdminResponse>('/warningsuser/getWarnings')
     }
-    static async GetUserWarnings(): Promise<AxiosResponse<AdminResponse>> {
-        return $api.get<AdminResponse>('/warningsuser/getUserWarnings')
+    static async GetUserWarnings(): Promise<AxiosResponse<WarningUser>> {
+        return $api.get<WarningUser>('/warningsuser/getWarningUser')
     }
 
   //getUserWarnings
 
-}*/
+}
+  */
