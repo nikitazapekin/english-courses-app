@@ -6,13 +6,26 @@
     border-radius: 10px;
     display: inline-flex;
     flex-direction: column;
-    // align-items: center;
+ 
     align-items: center;
     height: auto;
     position: sticky;
     max-width: 300px;
     width: 100%;
     align-self: flex-start;
+
+    @include tablets {
+
+      //  flex-direction: row;
+        display: flex;
+        width: 100%;
+        min-width: 100%;
+  
+       
+    }
+    @media screen and (max-width: 768px) {
+
+    }
 
     &__btn {
         border-radius: 6px;
@@ -30,3 +43,18 @@
         justify-content: center;
     }
 }
+
+/*
+ &__container {
+    max-width: 1430px;
+    width: 100%;
+    display: flex;
+    height: auto;
+    column-gap: 40px;
+    position: relative;
+    padding: 0 15px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+      */

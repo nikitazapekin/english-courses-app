@@ -139,7 +139,6 @@ const AuthorithedHeader = () => {
             navigate(`/tutor/personal`)
         }
     }
-
     return (
 
         <header className={styles.header}>

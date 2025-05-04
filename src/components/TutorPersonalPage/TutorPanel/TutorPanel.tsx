@@ -10,15 +10,7 @@ interface TutorPanelProps {
 const TutorPamel = ({ username, email }: TutorPanelProps) => {
     
     const navigate = useNavigate()
-    const handleLogout = async () => {
-        try {
-
-            const response = await AuthService.logout()
-            navigate("/sign-in")
-        } catch {
-
-        }
-    }
+    
     return (
         <div className={styles.panel}>
             <AvatarComponent

@@ -4,10 +4,12 @@
     position: relative;
     cursor: pointer;
     max-width: 179px;
+display: flex;
+justify-content: center;
     @include tablets {
         max-width: 100%;
         width: 100%;
-        
+
     }
 
     &__input {
@@ -19,20 +21,25 @@
         opacity: 0;
         cursor: pointer;
     }
-&__image {
-    border-radius: 50%;
-    max-width: 179px;
-    width: 100%;
-    object-fit: cover;
-    aspect-ratio: 1 / 1;
 
-    @include tablets {
-        max-width: 100%;
+    &__image {
+        border-radius: 50%;
+        max-width: 179px;
         width: 100%;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+
+
+      
+        @include tablets {
+            max-width: 300px;
+            width: 100%;
+   //   align-self: center;
+
+        }
 
     }
 
-}
     &__add {
         width: 39px;
         height: 39px;
@@ -51,5 +58,10 @@
         color: $white;
         font-family: "Inter", sans-serif;
         transform: translateX(-10px) translateY(-10px);
+
+        @include tablets {
+
+         display: none;
+        }      
     }
 }
