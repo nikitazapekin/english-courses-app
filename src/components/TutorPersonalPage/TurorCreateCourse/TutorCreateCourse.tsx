@@ -319,3 +319,15 @@ const navigate = useNavigate()
 
 export default TutorCreateCourseComponent;
  
+
+
+/*
+  padding: 0 15px;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+     
+    }
+
+    */

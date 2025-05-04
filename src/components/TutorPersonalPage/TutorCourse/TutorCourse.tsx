@@ -12,6 +12,13 @@ import { setCourse } from "../../../store/slices/OpenCourseDetails/OpenCourseDet
 
 
 const TutorCourse = () => {
+
+
+    const obj = {
+        user: "1",
+        val: "ddd"
+    }
+    let obj2 = {...obj, val: 222}
     const location = useLocation();
     const lastPathSegment = location.pathname.split("/").pop();
     console.log("segment", lastPathSegment);

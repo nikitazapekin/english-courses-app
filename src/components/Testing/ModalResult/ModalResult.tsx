@@ -5,13 +5,13 @@ import { formatTime } from "../../../helpers/formatTime"
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom"
 import Bird from "../../../assets/Bird1.png"
-interface ModalResultProps {
+/* interface ModalResultProps {
     isDisplay: boolean,
     time: number,
     count: number,
     length: number
 }
-
+ */
 
 const TypingDialog = ({ text }: { text: string }) => {
     const [displayedText, setDisplayedText] = useState('');
@@ -41,8 +41,16 @@ const TypingDialog = ({ text }: { text: string }) => {
     );
 };
 
+interface ModalResultProps {
+    isDisplay: boolean,
+    time: number,
+    count: number,
+    length: number,
+    onViewErrors: () => void
+}
 
-const ModalResult = ({ isDisplay, time, count, length }: ModalResultProps) => {
+const ModalResult = ({ isDisplay, time, count, length, onViewErrors }: ModalResultProps) => {
+/* const ModalResult = ({ isDisplay, time, count, length }: ModalResultProps) => { */
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate(-1)
@@ -70,7 +78,7 @@ const ModalResult = ({ isDisplay, time, count, length }: ModalResultProps) => {
                     <button className={styles.modal__btn} onClick={handleNavigate}>
                         Продолжить
                     </button>
-                    <p className={styles.modal__errors}>
+                    <p className={styles.modal__errors} onClick={onViewErrors}>
                         Посмотреть ошибки
                     </p>
                     <TypingDialog text="Отличный результат!" />

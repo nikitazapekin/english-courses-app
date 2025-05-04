@@ -10,6 +10,7 @@
     align-items: center;
     justify-content: center;
     z-index: 99999;
+    padding: 0 15px;
 
     &__title {
         font-weight: 700;
@@ -30,6 +31,7 @@
         z-index: 9999;
         max-height: 90vh;
         overflow-y: scroll;
+     
     }
 
     &__overlay {

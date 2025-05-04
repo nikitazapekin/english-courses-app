@@ -50,7 +50,7 @@ const TestingAnswer = ({
         setTimeout(() => {
 
             handleIncrementQuestion();
-            console.log("clicked")
+        
         }, 2000)
         // }
     };

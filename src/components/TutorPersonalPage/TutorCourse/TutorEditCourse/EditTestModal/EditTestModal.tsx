@@ -203,19 +203,7 @@ const EditTestModal: React.FC = () => {
             ],
         }));
     };
-    /*
-      title_test: string,
-        description: string,
-        topics: String[],
-        questions: Array<{
-    
-            title: string,
-            answers: String[],
-            answer: string,
-            url: string
-        }>
-    
-        */
+   
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -396,7 +384,9 @@ const EditTestModal: React.FC = () => {
                     <button type="submit" className={styles.modal__btn}>
                         Сохранить
                     </button>
-                    <button type="button" className={`${styles.modal__btn} ${styles.modal__delete}`}
+                    <button type="button" className={`${styles.modal__btn} ${styles.modal__delete} ${styles.non}`}
+
+                 
                     onClick={handleDelete}
                     >
                         Удалить

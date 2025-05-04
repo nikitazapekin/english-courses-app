@@ -228,22 +228,7 @@ const EditModalLessons: React.FC = () => {
                                                 </button>
                                             </div>
                                         )}
-
-{/*
-                                        {formData.video.length > 0 && formData.video.map((file, index) => (
-                                            <div key={index} className={styles.fileItem}>
-                                                {file.name}
-                                                <button
-                                                    type="button"
-                                                    className={styles.removeBtn}
-                                                    onClick={() => handleRemoveFile("video", index)}
-                                                >
-                                                    ❌
-                                                </button>
-                                            </div>
-                                        ))}
-                                        */}
-
+ 
 
 
  
