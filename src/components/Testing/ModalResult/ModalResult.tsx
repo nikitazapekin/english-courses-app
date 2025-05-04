@@ -67,7 +67,7 @@ const ModalResult = ({ isDisplay, time, count, length, onViewErrors }: ModalResu
                         Результат
                     </h2>
                     <p className={styles.modal__result}>
-                        {count} из {length} верно!
+                        {count} из {length-1} верно!
                     </p>
                     <p className={styles.modal__time}>
                         Время: {formatTime(time)}!
