@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+  import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./CoursesList.module.scss";
 import CourseService from "../../services/Course";
@@ -20,9 +20,11 @@ interface Course {
     course_for: String[],
     release_date: string,
     course_logo: string,
+} 
+interface Props {
+    courses: Course[]
 }
-
-const CoursesList = () => {
+const CoursesList = ({courses}: Props) => {
     const selector = useSelector(CataljgSelectorPage)
     const { page, limit, query } = useParams<{ page?: string; limit?: string, query?: string }>();
     const navigate = useNavigate();
@@ -51,6 +53,10 @@ const CoursesList = () => {
     }, [currentPage, itemsPerPage, query]);
 
     const [isAdmin, setIsAdmin] = useState(false)
+
+    useEffect(()=> {
+setCards(courses)
+    }, [courses])
     useEffect(() => {
         const handleGet = async () => {
             try {
@@ -104,14 +110,14 @@ const CoursesList = () => {
         <div className={styles.courses}>
             <div className={styles.courses__inner}>
                 <div className={styles.courses__header}>
-                    <h2 className={styles.courses__title}>Новинки</h2>
+                    <h2 className={styles.courses__title}>{selector.selectedType}</h2>
                     <select
                         className={styles.courses__select}
                         value={sortOption}
                         onChange={(e) => setSortOption(e.target.value as SortOption)}
                     >
-                        <option value="price">Сортировать по стоимости</option>
-                        <option value="rating">Сортировать по рейтингу</option>
+                        <option value="price">По умолчанию</option>
+                      
                         <option value="releaseDate">Сортировать по выпуску</option>
                     </select>
                 </div>
@@ -135,3 +141,4 @@ const CoursesList = () => {
 };
 
 export default CoursesList;
+ 

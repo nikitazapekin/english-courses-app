@@ -8,40 +8,7 @@ import { useSelector } from "react-redux"
 import { AddAchievementSelectorPage } from "../../../store/selectors/AddAchievementSelector"
 import { useEffect } from "react"
 import AchievementsService from "../../../services/Achievements"
-//import { AddAchievementSelectorPage } from "../../../store/selectors/addAchievement"
-//import { AddAchievementSelectorPage } from "../../../store/selectors/AddAchievement"
-/* const achievements = [
-    {
-        id: 1,
-        image: Logo,
-        date: "2022-12-12",
-        title: "Test"
-    },
-    {
-        id: 2,
-        image: Logo,
-        date: "2022-12-12",
-        title: "Test"
-    },
-    {
-        id: 1,
-        image: Logo,
-        date: "2022-12-12",
-        title: "Test"
-    },
-    {
-        id: 1,
-        image: Logo,
-        date: "2022-12-12",
-        title: "Test"
-    },
-    {
-        id: 1,
-        image: Logo,
-        date: "2022-12-12",
-        title: "Test"
-    },
-] */
+ 
 const AddAchievements = () => {
 
 
