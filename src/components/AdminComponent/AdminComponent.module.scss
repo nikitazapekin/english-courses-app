@@ -16,9 +16,18 @@
         height: auto;
         column-gap: 40px;
         position: relative;
-      
-       // margin-top: 40px;
 
-     //   background-color: red;
+
+
+
+        padding: 0 15px;
+
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+          width: 100%;
+         
+        }
+      
+    
     }
 }

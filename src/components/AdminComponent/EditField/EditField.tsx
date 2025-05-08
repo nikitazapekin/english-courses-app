@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styles from "./EditField.module.scss"
 interface EditFieldProps {
     item:
@@ -8,18 +9,27 @@ interface EditFieldProps {
         name: string,
         type: string
     },
-    handleChange: (e:  React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>)=> void,
+    handleChange: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => void,
     obj: {
-        username:  string,
-        describtion:   string,
-        fulldescribtion:  string,
-       email:  string,
-       specialization:   string,
-       level:   string,
+        username: string,
+        describtion: string,
+        fulldescribtion: string,
+        email: string,
+        specialization: string,
+        level: string,
     }
 }
-const EditField = ({ item , handleChange, obj}: EditFieldProps) => {
+const EditField = ({ item, handleChange, obj }: EditFieldProps) => {
     const defaultValue = obj[item.name as keyof typeof obj] || "";
+    const [val, setVal] = useState("")  
+    useEffect(() => {
+        if (item.type == "email") {
+            setVal("admin@example.com")
+        }
+        if (item.type == "tel") {
+            setVal("+375297216547")
+        }
+    }, [item.name])
     return (
         <div className={styles.item}>
             <label
@@ -30,22 +40,28 @@ const EditField = ({ item , handleChange, obj}: EditFieldProps) => {
             {item.type != "textarea" ? (
 
                 <input
-                name={item.name}
-                className={styles.item__input}
-                placeholder={item.placeholder}
-                defaultValue={defaultValue}
-                onChange={(e)=>handleChange(e)}
+                    name={item.name}
+                    className={styles.item__input}
+                    placeholder={item.placeholder}
+                  
+                    defaultValue={
+                        item.name === "email" ? "admin@example.com" :
+                        item.name === "tel" ? "+375297216547" :
+                        obj[item.name as keyof typeof obj] || ""
+                    }
+                    //  defaultValue={item.name == "email" || item.name=="tel" ? val :  defaultValue}
+                    onChange={(e) => handleChange(e)}
                 />
-            )  : 
-            (
-                <textarea 
-                name={item.name}
-                className={styles.item__textarea}
-                placeholder={item.placeholder}
-                onChange={(e)=>handleChange(e)}
-                />
-            )
-        }
+            ) :
+                (
+                    <textarea
+                        name={item.name}
+                        className={styles.item__textarea}
+                        placeholder={item.placeholder}
+                        onChange={(e) => handleChange(e)}
+                    />
+                )
+            }
         </div>);
 }
 

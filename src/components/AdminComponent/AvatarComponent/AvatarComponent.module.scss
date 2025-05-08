@@ -9,7 +9,12 @@
         width: 100%;
         
     }
+    @include tablets {
+        max-width: 300px;
+        width: 100%;
+//   align-self: center;
 
+    }
     &__input {
         position: absolute;
         left: 0;
@@ -51,5 +56,9 @@
         color: $white;
         font-family: "Inter", sans-serif;
         transform: translateX(-10px) translateY(-10px);
+        @include tablets {
+   display: none;
+
+        }
     }
 }

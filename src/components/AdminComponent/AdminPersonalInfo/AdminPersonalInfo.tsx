@@ -48,7 +48,7 @@ const AdminPersonalInfo = () => {
                     <h4 className={styles.main__field__title}>
                         Телефон
                     </h4>
-                    <p className={styles.main__field__value}>  sac </p>
+                    <p className={styles.main__field__value}> +375297216547 </p>
 
                 </div>
 
@@ -58,7 +58,7 @@ const AdminPersonalInfo = () => {
                         Почта
                     </h4>
 
-                    <p className={styles.main__field__value}>  sca </p>
+                    <p className={styles.main__field__value}> admin@example.com </p>
 
                 </div>
 

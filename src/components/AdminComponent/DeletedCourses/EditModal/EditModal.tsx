@@ -54,7 +54,7 @@ const EditModal = ({ bans, handler, onDelete, onUpdate, onDeleteAll }: Props) =>
     };
 
     const handleDeleteAll = () => {
-      //  if (window.confirm("Вы уверены, что хотите удалить все блокировки этого курса?")) {
+ 
             onDeleteAll();
 //}
     };

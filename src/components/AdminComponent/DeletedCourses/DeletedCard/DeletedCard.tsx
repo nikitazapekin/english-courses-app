@@ -73,5 +73,4 @@ const DeletedCard = ({ item, handleOpen }: Props) => {
 };
 
 export default DeletedCard;
-
  
