@@ -75,6 +75,18 @@
         color: #3a3a3a;
         font-family: "Nunito", sans-serif;
         width: 100%;
+
+        &::-webkit-file-upload-button {
+            display: none;
+
+        }
+ 
+
+
+    &__imageInput[type="file"] {
+        color: transparent;
+
+    }
     }
 
 

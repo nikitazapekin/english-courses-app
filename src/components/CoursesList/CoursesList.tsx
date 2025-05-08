@@ -106,6 +106,10 @@ setCards(courses)
             dispatch(setIsBanned({ isBanned: false }))
         }
     }, [warningSelector])
+
+
+
+    
     return (
         <div className={styles.courses}>
             <div className={styles.courses__inner}>
