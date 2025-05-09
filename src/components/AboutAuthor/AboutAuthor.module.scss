@@ -26,8 +26,9 @@
 
     &__author {
         &__wrapper {
-
-            max-width: 435px;
+            max-width: 500px;
+            width: 100%;
+            //  max-width: 435px;
             height: 100%;
             align-self: center;
         }
@@ -55,12 +56,14 @@
 
 .info {
     align-self: center;
-@include tablets {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
+
+    @include tablets {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
     &__title {
         font-weight: 700;
         @include fontSize(36px);

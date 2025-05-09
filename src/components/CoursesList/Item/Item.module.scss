@@ -30,7 +30,7 @@
 
     &__title {
         margin-top: 35px;
-        @include fontSize(24px);
+        @include fontSize(20px);
         font-family: "Inter", sans-serif;
 
         @include mobiles {
@@ -119,11 +119,20 @@
     }
 
     &__description {
-        font-size: 20px;
+        font-size: 16px;
         color: $black;
         font-family: "Nunito", sans-serif;
         //   margin-bottom: 20px;
         font-weight: 400;
+        text-align: left;
+
+    }
+     &__descriptionn {
+        font-size: 16px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        //   margin-bottom: 20px;
+        font-weight: 700;
         text-align: left;
 
     }
@@ -156,7 +165,7 @@
     &__wrapper {
         display: flex;
         flex-direction: column;
-        padding: 5px;
+        padding: 8px;
     }
 
     &__price {
@@ -197,7 +206,7 @@
     &__for {
         display: flex;
         column-gap: 5px;
-        margin-top: 5px;
+   //     margin-top: 5px;
         flex-wrap: wrap;
     }
 

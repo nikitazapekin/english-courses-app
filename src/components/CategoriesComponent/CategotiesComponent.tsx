@@ -54,18 +54,7 @@ const CategoriesComponent = () => {
     };
 
     const navigate = useNavigate()
-
-    /*
-    interface Course {
-    id: number,
-    author: string,
-    title: string,
-    description: string,
-    course_for: String[],
-    release_date: string,
-    course_logo: string,
-} 
-    */
+ 
     const handleSearch = async () => {
         try {
             const resp = await CourseService.GetCoursesQuery(1, 5, query)
@@ -89,23 +78,7 @@ const CategoriesComponent = () => {
 useEffect(()=> {
 handleNewItem(newCards)
 }, [newCards])
-    /*  const simplifyCourse = (course: Course): SimplifiedCourse => {
-         return {
-             id: course.id,
-             author: course.author,
-             title: course.title,
-             description: course.description,
-             course_for: course.course_for,
-             release_date: course.release_date,
-             course_logo: course.course_logo
-         }
-     }
-     
- 
-     // Преобразуем курсы перед передачей в CoursesList
-     const simplifiedCourses = newCards.map(simplifyCourse);
-     const simplifiedNewCards = newCards.map(simplifyCourse);
-  */
+    
     return (
 
         <section className={styles.categories}>

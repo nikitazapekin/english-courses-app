@@ -5,7 +5,89 @@ import Ban from "../../../assets/admin/courses/warning.png"
 import Edit from "../../../assets/admin/courses/pen.png"
 import { useDispatch } from "react-redux";
 import { setIsOpenAddWarningModal, setIsOpenBanModal, setSelectBanCourse, setSelectWarningCourse } from "../../../store/slices/AddWarningModal/AddWarningModal";
+
+
+
 interface ItemProps {
+    item: {
+        id: number,
+        author: string,
+        title: string,
+        description: string,
+        course_for: String[],
+        release_date: string,
+        course_logo: string,
+    }
+  
+}
+const SearchCard = ({ item }: ItemProps) => {
+    const formatDate = (dateString: string) => {
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}.${month}.${day}`;
+    };
+
+    const handleAddWarning = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.stopPropagation()
+        dispatch(setIsOpenAddWarningModal())
+        dispatch(setSelectWarningCourse(item.id))
+    }
+    const navigate = useNavigate()
+    const handleNavigate = () => {
+        navigate(`/card/${item.id}`)
+    }
+
+    const dispatch = useDispatch()
+
+
+
+    const handleAddBan = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        e.stopPropagation()
+        dispatch(setIsOpenBanModal())
+        dispatch(setSelectWarningCourse(item.id))
+    }
+
+
+
+    return (
+
+        <div className={styles.card} key={item.id} onClick={handleNavigate}>
+
+            <div className={styles.card__image__wrapper}>
+                <img className={styles.card__image} src={item.course_logo} alt={item.title} />
+            </div>
+            <div className={styles.card__wrapper}>
+                <h3 className={styles.card__title}>{item.title}</h3>
+                <h4 className={styles.card__description}>
+                    {item.description}
+                </h4>
+                <p className={styles.card__rating}>Автор: {item.author}  </p>
+                <p className={styles.card__releaseDate}>
+                    Дата выпуска: {formatDate(item.release_date)}
+                </p>
+                <div className={styles.card__line} />
+                <h4 className={styles.card__descriptionn}>
+                    Курс предназначен для:
+                </h4>
+                <div className={styles.card__for}>
+                    {item.course_for.map((it, index) => (
+                        <div className={styles.card__item} key={index}>
+                            {it}{index < item.course_for.length - 1 ? ', ' : ''}
+                        </div>
+                    ))}
+                </div>
+
+             
+            </div>
+
+        </div>
+    );
+}
+
+export default SearchCard;
+/* interface ItemProps {
     item: {
 
         id: number,
@@ -100,57 +182,9 @@ const SearchCard = ({ item, isAdmin }: ItemProps) => {
     );
 }
 
-export default SearchCard;
-/* import { formatDate } from "../../../helpers/formatDate";
-import styles from "./SearchCard.module.scss"
+export default SearchCard;  */
 
-
-interface Course {
-    item: {
-
-        id: number,
-        author: string,
-        title: string,
-        description: string,
-        course_for: String[],
-        release_date: string,
-        course_logo: string,
-    }
-}
-
-const SearchCard = ({ item }: Course) => {
-    return (
-        <div className={styles.card}>
-            <img
-                className={styles.card__image}
-                alt="logo"
-                src={item.course_logo}
-            />
-            <h3 className={styles.card__title}>
-                {item.title}
-            </h3>
-            <h4 className={styles.card__date}>
-                {formatDate(item.release_date)}
-            </h4>
-
-        </div>);
-}
-
-export default SearchCard;
-
-
- */
-
-
-
-
-
-
-
-
-
-
-/* 
+/*
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Item.module.scss"
 import Ban from "../../../assets/admin/courses/warning.png"
@@ -159,7 +193,6 @@ import { useDispatch } from "react-redux";
 import { setIsOpenAddWarningModal, setIsOpenBanModal, setSelectBanCourse, setSelectWarningCourse } from "../../../store/slices/AddWarningModal/AddWarningModal";
 interface ItemProps {
     item: {
-
         id: number,
         author: string,
         title: string,
@@ -184,7 +217,6 @@ const Item = ({ item, isAdmin }: ItemProps) => {
         dispatch(setIsOpenAddWarningModal())
         dispatch(setSelectWarningCourse(item.id))
     }
-
     const navigate = useNavigate()
     const handleNavigate = () => {
         navigate(`/card/${item.id}`)
@@ -194,14 +226,14 @@ const Item = ({ item, isAdmin }: ItemProps) => {
 
 
 
-    const handleAddBan =(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=> {
+    const handleAddBan = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation()
         dispatch(setIsOpenBanModal())
         dispatch(setSelectWarningCourse(item.id))
     }
 
-   
- 
+
+
     return (
 
         <div className={styles.card} key={item.id} onClick={handleNavigate}>
@@ -219,10 +251,13 @@ const Item = ({ item, isAdmin }: ItemProps) => {
                     Дата выпуска: {formatDate(item.release_date)}
                 </p>
                 <div className={styles.card__line} />
+                <h4 className={styles.card__descriptionn}>
+                    Курс предназначен для:
+                </h4>
                 <div className={styles.card__for}>
                     {item.course_for.map((it, index) => (
                         <div className={styles.card__item} key={index}>
-                            {it}
+                            {it}{index < item.course_for.length - 1 ? ', ' : ''}
                         </div>
                     ))}
                 </div>
@@ -236,7 +271,7 @@ const Item = ({ item, isAdmin }: ItemProps) => {
                             />
                         </div>
                         <div className={styles.card__btn}
-                        onClick={(e) => handleAddBan(e)}
+                            onClick={(e) => handleAddBan(e)}
                         >
                             <img src={Ban} alt="icon"
                                 className={styles.card__btn__icon}
@@ -253,8 +288,7 @@ const Item = ({ item, isAdmin }: ItemProps) => {
 }
 
 export default Item;
- */
-/*
+
 
 @import "../../../theme/theme";
 
@@ -288,7 +322,7 @@ export default Item;
 
     &__title {
         margin-top: 35px;
-        @include fontSize(24px);
+        @include fontSize(20px);
         font-family: "Inter", sans-serif;
 
         @include mobiles {
@@ -377,11 +411,20 @@ export default Item;
     }
 
     &__description {
-        font-size: 20px;
+        font-size: 16px;
         color: $black;
         font-family: "Nunito", sans-serif;
         //   margin-bottom: 20px;
         font-weight: 400;
+        text-align: left;
+
+    }
+     &__descriptionn {
+        font-size: 16px;
+        color: $black;
+        font-family: "Nunito", sans-serif;
+        //   margin-bottom: 20px;
+        font-weight: 700;
         text-align: left;
 
     }
@@ -414,7 +457,7 @@ export default Item;
     &__wrapper {
         display: flex;
         flex-direction: column;
-        padding: 5px;
+        padding: 8px;
     }
 
     &__price {
@@ -455,7 +498,7 @@ export default Item;
     &__for {
         display: flex;
         column-gap: 5px;
-        margin-top: 5px;
+   //     margin-top: 5px;
         flex-wrap: wrap;
     }
 
@@ -495,5 +538,4 @@ export default Item;
     margin: 0 auto;
 }
 
- 
-*/
+ */

@@ -39,14 +39,14 @@ const Item = ({ item, isAdmin }: ItemProps) => {
 
 
 
-    const handleAddBan =(e: React.MouseEvent<HTMLDivElement, MouseEvent>)=> {
+    const handleAddBan = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation()
         dispatch(setIsOpenBanModal())
         dispatch(setSelectWarningCourse(item.id))
     }
 
-   
- 
+
+
     return (
 
         <div className={styles.card} key={item.id} onClick={handleNavigate}>
@@ -64,10 +64,13 @@ const Item = ({ item, isAdmin }: ItemProps) => {
                     Дата выпуска: {formatDate(item.release_date)}
                 </p>
                 <div className={styles.card__line} />
+                <h4 className={styles.card__descriptionn}>
+                    Курс предназначен для:
+                </h4>
                 <div className={styles.card__for}>
                     {item.course_for.map((it, index) => (
                         <div className={styles.card__item} key={index}>
-                            {it}
+                            {it}{index < item.course_for.length - 1 ? ', ' : ''}
                         </div>
                     ))}
                 </div>
@@ -81,7 +84,7 @@ const Item = ({ item, isAdmin }: ItemProps) => {
                             />
                         </div>
                         <div className={styles.card__btn}
-                        onClick={(e) => handleAddBan(e)}
+                            onClick={(e) => handleAddBan(e)}
                         >
                             <img src={Ban} alt="icon"
                                 className={styles.card__btn__icon}
@@ -98,3 +101,5 @@ const Item = ({ item, isAdmin }: ItemProps) => {
 }
 
 export default Item;
+
+
