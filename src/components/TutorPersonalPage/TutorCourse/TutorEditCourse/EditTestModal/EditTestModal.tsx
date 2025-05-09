@@ -6,8 +6,8 @@ import { editModalSelector } from "../../../../../store/selectors/EditLessonModa
 import TestService from "../../../../../services/Test";
 import { useDispatch } from "react-redux";
 import { setClose } from "../../../../../store/slices/EditModalLesson/EditModalLesson";
-import { editTest , deleteTest} from "../../../../../store/slices/TestSlice/TestSlice";
- 
+import { editTest, deleteTest } from "../../../../../store/slices/TestSlice/TestSlice";
+
 interface TestFormData {
     title: string;
     duration: string;
@@ -203,7 +203,7 @@ const EditTestModal: React.FC = () => {
             ],
         }));
     };
-   
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
@@ -226,7 +226,7 @@ const EditTestModal: React.FC = () => {
     const handleDelete = async () => {
         try {
             dispatch(setClose())
-            dispatch(deleteTest({id: Number(editModal.testId)}))
+            dispatch(deleteTest({ id: Number(editModal.testId) }))
             const reposnse = await TestService.DeleteTestById(editModal.testId)
         } catch (e) {
             console.log(e)
@@ -345,16 +345,41 @@ const EditTestModal: React.FC = () => {
                                     </div>
 
                                     <label className={styles.modal__field__title}>Изображение</label>
+                               {/* 
                                     <input
-                                        type="file"
+                                    type="file"
                                         accept="image/*"
+placeholder="Выюрать файл"
+                                        className={styles.file}
+
                                         onChange={(e) =>
                                             handleImageChange(
                                                 questionIndex,
                                                 e.target.files ? e.target.files[0] : null
-                                            )
-                                        }
-                                    />
+                                                )
+                                                }
+                                                />
+                                                */}
+
+
+                                                  <input
+    type="file"
+    id={`file-upload-${questionIndex}`}
+    accept="image/*"
+    className={styles.file}
+    onChange={(e) => 
+      handleImageChange(
+        questionIndex,
+        e.target.files ? e.target.files[0] : null
+      )
+    }
+  />
+  <label htmlFor={`file-upload-${questionIndex}`} className={styles.fileLabel}>
+    Выбрать файл
+  </label>
+
+
+
                                     {question.question_image && (
                                         <div className={styles.imagePreview}>
                                             <img src={question.question_image} alt="Question" />
@@ -386,8 +411,8 @@ const EditTestModal: React.FC = () => {
                     </button>
                     <button type="button" className={`${styles.modal__btn} ${styles.modal__delete} ${styles.non}`}
 
-                 
-                    onClick={handleDelete}
+
+                        onClick={handleDelete}
                     >
                         Удалить
                     </button>

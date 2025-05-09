@@ -69,7 +69,7 @@ const EditModal = ({ warnings, handler, onDelete, onUpdate, onDeleteAll }: Props
         <div className={styles.modal} onClick={handleClose}>
             <div className={styles.modal__content} onClick={handleContentClick}>
                 <h1 className={styles.modal__title}>
-                    Блокировки курса:
+                    Правки курса:
                 </h1>
                 
                 {warnings.length === 0 ? (

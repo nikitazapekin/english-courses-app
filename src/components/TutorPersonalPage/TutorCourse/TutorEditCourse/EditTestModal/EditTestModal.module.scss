@@ -182,9 +182,20 @@
     background-color: transparent;
     outline: none;
     cursor: pointer;
+    font-size: 20px;
+    color: rgb(190, 86, 86);
+    margin-left: 20px;
 }
 
 .non {
     background-color: #fff;
     color: #000
+}
+
+.file {
+      &::-webkit-file-upload-button {
+         
+            position: absolute;
+            opacity: 0;
+        }
 }

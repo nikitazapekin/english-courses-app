@@ -112,19 +112,33 @@
  
 
 .reason {
+    display: flex;
+    column-gap: 5px;
     &__title {
         font-weight: 700;
-        font-size: 20px;
+        font-size: 24px;
         color: #3a3a3a;
         font-family: "Nunito", sans-serif;
         margin-bottom: 10px;
     } 
     &__text {
-        font-weight: 700;
-        font-size: 16px;
+        font-weight: 400;
+        font-size: 24px;
         color: #3a3a3a;
         font-family: "Nunito", sans-serif;
         margin-bottom: 10px;
        
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
