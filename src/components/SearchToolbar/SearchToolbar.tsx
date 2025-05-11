@@ -5,7 +5,17 @@ import { setType } from "../../store/slices/Catalog/Catalog";
 const SearchToolbar = () => {
     const dispatch = useDispatch()
 const handleSelect = (type: string) => {
-    dispatch(setType({type: type}))
+    if(type=="Для студентов") {
+
+        dispatch(setType({type: "Студентов"}))
+    } 
+    else if (type=="Для программистов") {
+dispatch(setType({type: "IT-специалистов"}))
+    }
+    else {
+
+        dispatch(setType({type: type}))
+    }
 }
     return (
         <div className={styles.search}>

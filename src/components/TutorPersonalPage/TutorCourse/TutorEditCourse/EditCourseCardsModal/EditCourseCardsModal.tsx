@@ -176,6 +176,7 @@ const EditModalLessons: React.FC = () => {
 
 
     }
+    
     return (
         <div className={styles.modal}>
             <div className={styles.modal__content}>
@@ -208,7 +209,7 @@ const EditModalLessons: React.FC = () => {
                                     />
 
                                     <div className={styles.fileList}>
-                                        {/* Отображаем видео с сервера */}
+                                    
                                         {serverData.video.length > 100 && (
                                             <div className={styles.fileItem}>
                                                 <video

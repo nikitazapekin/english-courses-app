@@ -1,5 +1,11 @@
 @import "../../../theme/theme";
-
+.edit__title {
+      margin-bottom: 20px;
+        font-weight: 700;
+        font-size: 36px;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+}
 .edit {
     width: 100%;
 
@@ -38,7 +44,25 @@
 
 
 }
+/*
+      <div key={student.id} className={styles.list__item}>
+                                    <span className={styles.list__item__text}>
+                                        {index + 1}. {student.username} ({student.email})
+                                    </span>
+                                    <p
+                                        className={styles.list__item__remove}
+                                        onClick={() => handleRemove(student.email, String(course.id))}
+                                    >
+                                        Удалить
+                                    </p>
+                                    */
 
+.title {
+    font-weight: 700;
+        font-size: 24px;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
+}
 .list {
     width: 100%;
     &__item {
@@ -50,6 +74,14 @@
             color: rgb(182, 65, 65);
             cursor: pointer;
             
+        }
+
+        &__text {
+                  
+        font-weight: 400;
+        font-size: 20px;
+        color: #3a3a3a;
+        font-family: "Nunito", sans-serif;
         }
     }
 }

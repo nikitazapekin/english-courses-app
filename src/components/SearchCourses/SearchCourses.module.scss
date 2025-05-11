@@ -20,6 +20,9 @@
     &__cards {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 20px
+        grid-gap: 20px;
+        @include mobiles {
+   grid-template-columns: repeat(1, 1fr);
+        }
     }
 }

@@ -31,6 +31,12 @@
         z-index: 9999;
         max-height: 90vh;
         overflow-y: scroll;
+
+
+          scrollbar-width: none;
+
+
+        -ms-overflow-style: none;
      
     }
 
@@ -123,4 +129,19 @@
 .modal__delete {
     background-color: transparent;
     color: #000
+}
+
+.lesson__video {
+
+    margin-top: 30px;
+    max-width: 100%;
+
+}
+
+.removeBtn {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 20px;
 }

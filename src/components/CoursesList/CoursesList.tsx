@@ -1,4 +1,4 @@
-  import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import styles from "./CoursesList.module.scss";
 import CourseService from "../../services/Course";
@@ -20,11 +20,11 @@ interface Course {
     course_for: String[],
     release_date: string,
     course_logo: string,
-} 
+}
 interface Props {
     courses: Course[]
 }
-const CoursesList = ({courses}: Props) => {
+const CoursesList = ({ courses }: Props) => {
     const selector = useSelector(CataljgSelectorPage)
     const { page, limit, query } = useParams<{ page?: string; limit?: string, query?: string }>();
     const navigate = useNavigate();
@@ -54,8 +54,8 @@ const CoursesList = ({courses}: Props) => {
 
     const [isAdmin, setIsAdmin] = useState(false)
 
-    useEffect(()=> {
-setCards(courses)
+    useEffect(() => {
+        setCards(courses)
     }, [courses])
     useEffect(() => {
         const handleGet = async () => {
@@ -78,7 +78,7 @@ setCards(courses)
                         setPages(1)
                     }
                     else {
-
+                        console.log("TYPE", selector.selectedType)
                         const response = await CourseService.GetCoursesType(currentPage, itemsPerPage, selector.selectedType);
                         setCards(response.data.courses)
                         setPages(1)
@@ -109,7 +109,7 @@ setCards(courses)
 
 
 
-    
+
     return (
         <div className={styles.courses}>
             <div className={styles.courses__inner}>
@@ -121,7 +121,7 @@ setCards(courses)
                         onChange={(e) => setSortOption(e.target.value as SortOption)}
                     >
                         <option value="price">По умолчанию</option>
-                      
+
                         <option value="releaseDate">Сортировать по выпуску</option>
                     </select>
                 </div>
@@ -145,4 +145,3 @@ setCards(courses)
 };
 
 export default CoursesList;
- 

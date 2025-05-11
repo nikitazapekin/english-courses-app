@@ -49,7 +49,7 @@ const DeletedCard = ({ item, handleOpen }: Props) => {
                             Дата разблокировки:
                         </p>
                         <p className={styles.card__date}>
-                            {item.ban_date}
+                            {item.ban_text}
                         </p>
                     </div>
                     <div className={styles.item}>
@@ -57,7 +57,7 @@ const DeletedCard = ({ item, handleOpen }: Props) => {
                             Сообщение блокировки:
                         </p>
                         <p className={styles.card__date}>
-                            {item.ban_text}
+                            {item.ban_date}
                         </p>
                     </div>
                 </div>

@@ -108,7 +108,7 @@ const PersonalEditProfile = ({ dataUser }: Props) => {
     return (
         <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
             <div className={styles.form__inner}>
-                <PersonalHeader title={"Настройки"}
+                <PersonalHeader title={"Редактировать профиль"}
                 handleOpen={()=> {}}
                 warnings={warnings}
                 />

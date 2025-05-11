@@ -6,6 +6,7 @@ import { useSelector } from "react-redux"
 import { OpenCourseSelector } from "../../store/selectors/OpenCourseSelector"
 import { useDispatch } from "react-redux"
 import { setOpenCourseModal } from "../../store/slices/CourseModal/CourseModal"
+import getCourseKeyword from "../../helpers/getCourseKeyword"
 const CoursePreview = () => {
     const dispatch = useDispatch()
     const course = useSelector(OpenCourseSelector)
@@ -39,7 +40,7 @@ const CoursePreview = () => {
                             <div className={styles.course__category}>
                                 <p className={styles.course__category__text}>
 
-                                    {item}
+                                    {getCourseKeyword(item.toString())}
                                 </p>
                                 <img className={styles.course__category__icon}
                                     src={CourseIcon1}

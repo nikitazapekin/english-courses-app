@@ -1,5 +1,5 @@
 import styles from "./DeletedCard.module.scss";
-
+import getCourseKeyword from "../../../../helpers/getCourseKeyword";
 /* interface Ban {
     id: number;
     course_id: number;
@@ -94,7 +94,7 @@ const WarningCard = ({ item, handleOpen }: Props) => {
                     <div className={styles.card__for}>
                         {item.course_for.map((item_for, index) => (
                             <div className={styles.card__for__item} key={index}>
-                                {item_for}
+                                {getCourseKeyword(item_for)}
                             </div>
                         ))}
                     </div>

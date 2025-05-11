@@ -4,7 +4,7 @@ import { useState } from "react";
 import WarningModal from "../../CategoriesComponent/WarningModal/WarningModal";
 import WarningsModal from "./WarningsModal/WarningsModal";
 import BansModal from "./BansModal/BansModal";
-
+import getCourseKeyword from "../../../helpers/getCourseKeyword";
 interface Warning {
     id: number,
     warning_text: string,
@@ -84,7 +84,7 @@ const TutorCourse = ({ item }: TutorCourseProps) => {
                     <div className={styles.card__for}>
                         {item.course_for.map((item_for, index) => (
                             <div className={styles.card__for__item} key={index}>
-                                {item_for}
+                                {getCourseKeyword(item_for.toString())}
                             </div>
                         ))}
                     </div>

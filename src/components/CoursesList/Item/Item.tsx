@@ -3,6 +3,7 @@ import styles from "./Item.module.scss"
 import Ban from "../../../assets/admin/courses/warning.png"
 import Edit from "../../../assets/admin/courses/pen.png"
 import { useDispatch } from "react-redux";
+import getCourseKeyword from "../../../helpers/getCourseKeyword";
 import { setIsOpenAddWarningModal, setIsOpenBanModal, setSelectBanCourse, setSelectWarningCourse } from "../../../store/slices/AddWarningModal/AddWarningModal";
 interface ItemProps {
     item: {
@@ -65,12 +66,12 @@ const Item = ({ item, isAdmin }: ItemProps) => {
                 </p>
                 <div className={styles.card__line} />
                 <h4 className={styles.card__descriptionn}>
-                    Курс предназначен для:
+                 Cпециализация курса:
                 </h4>
                 <div className={styles.card__for}>
                     {item.course_for.map((it, index) => (
                         <div className={styles.card__item} key={index}>
-                            {it}{index < item.course_for.length - 1 ? ', ' : ''}
+                            {getCourseKeyword(it.toString())}{index < item.course_for.length - 1 ? ', ' : ''}
                         </div>
                     ))}
                 </div>

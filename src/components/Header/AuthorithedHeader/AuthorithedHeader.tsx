@@ -31,28 +31,9 @@ const courses = [
     { id: 9, title: "Английский для инженеров" },
 ];
 const AuthorithedHeader = () => {
-
-    /*
-    
-    export interface IsAdminResponse {
-        message: string,
-        isAdmin: boolean
-    }
-    export default class adminService {
-    
-        static async getAdmin(): Promise<AxiosResponse<AdminResponse>> {
-            return $api.get<AdminResponse>('/admin/getAdmin')
-        }
-    
-        static async isAdmin(): Promise<AxiosResponse<IsAdminResponse>> {
-            return $api.get<IsAdminResponse>('/admin/isAdmin')
-        }
-            */
-
     const navigate = useNavigate()
     const isOpen = useSelector(HomepageSelector)
     const dispatch = useDispatch()
-
     const [role, setRole] = useState("")
     const handleNavigate = () => {
         navigate("/")
@@ -140,7 +121,6 @@ const AuthorithedHeader = () => {
         }
     }
     return (
-
         <header className={styles.header}>
             <div className={styles.header__inner}>
                 <div className={styles.header__preview}>
@@ -152,7 +132,6 @@ const AuthorithedHeader = () => {
                             placeholder="Найти..."
                             onChange={handleSearchChange}
                             className={styles.search__input} />
-
                         <div className={styles.search__params}>
                             {filteredCourses!.slice(0, 5).map((item) => (
                                 <div className={styles.search__param} key={item.id}>
@@ -170,17 +149,12 @@ const AuthorithedHeader = () => {
                 <nav className={styles.navigation}>
                     <ul className={styles.navigation__list}>
                         <li className={styles.navigation__item}>
-
                             <div className={styles.navigation__text} onClick={handleCatalog}>
                                 Каталог
                             </div>
-
                         </li>
-
-
                         <li className={styles.navigation__item} style={{ display: "none" }}>
                             <div className={styles.navigation__image__wrapper}>
-
                                 <img className={styles.navigation__image}
 
                                     onClick={handleChat}
@@ -190,42 +164,28 @@ const AuthorithedHeader = () => {
 
                             </div>
                         </li>
-
-
-
                         <li className={styles.navigation__item}>
-
                             <div className={styles.navigation__text} onClick={handlePersonal}   >
                                 Профиль
                             </div>
 
                         </li>
-
-
-
-
                     </ul>
                 </nav>
             </div>
-
-
-
             <div className={styles.burger}>
                 <div className={styles.burger__inner}>
                     <div className={styles.burger__btn} onClick={handleOpen}>
-
                         <div className={styles.burger__line} />
                         <div className={styles.burger__line} />
                         <div className={styles.burger__line} />
                     </div>
                     <div className={styles.search}>
                         <input type="text"
-
                             placeholder="Найти..."
                             className={styles.search__input}
                             onChange={handleSearchChange}
                         />
-
                         <div className={styles.search__params}>
                             {filteredCourses!.slice(0, 5).map((item) => (
                                 <div className={styles.search__param} key={item.id}>
@@ -240,7 +200,6 @@ const AuthorithedHeader = () => {
                         </div>
                     </div>
                 </div>
-
                 <div className={`${styles.panel} ${isOpen ? styles.panel__open : ""}`}>
                     <div className={styles.panel__header}>
                         <img src={Logo} alt="logo" className={styles.panel__logo} />
@@ -261,9 +220,7 @@ const AuthorithedHeader = () => {
                             </li>
                         ))}
                     </ul>
-
                     <img src={BirdPanel} alt="Bird" className={styles.panel__image} />
-
                 </div>
             </div>
         </header>

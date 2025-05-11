@@ -32,3 +32,17 @@ export default class AchievementsService {
         return $api.post<Response>('/achievement/deleteAchievement',{currentTitle: currentTitle})
     }
 }
+
+
+/*
+import $api from "../http";
+import axios, { AxiosResponse } from 'axios';
+ 
+export default class AchievementsService {
+    static async createAchievement( data  ) {
+        return $api.post('/achievement/createAchievement', data)
+    }
+   
+   
+}
+    */

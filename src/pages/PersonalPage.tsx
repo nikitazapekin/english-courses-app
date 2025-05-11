@@ -32,13 +32,6 @@ const PersonalPage = () => {
 
 
 
-
-
-
-
-
-
-
     const [warnings, setWarnings] = useState<WarningUser[]>([])
     const handleGetWarnings = async () => {
         try {

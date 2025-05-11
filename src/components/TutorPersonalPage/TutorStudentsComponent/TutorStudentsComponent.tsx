@@ -113,12 +113,12 @@ const TutorStudentsComponent = () => {
             <div className={styles.edit__content}>
                 {coursesWithStudents.map(course => (
                     <div key={course.id} className={styles.course}>
-                        <h2>{course.title}</h2>
+                        <h2 className={styles.title}>{course.title}</h2>
                         <div className={styles.list}>
                             {course.students.map((student, index) => (
                                 <div key={student.id} className={styles.list__item}>
                                     <span className={styles.list__item__text}>
-                                        {index + 1}. {student.username}
+                                        {index + 1}. {student.username} ({student.email})
                                     </span>
                                     <p
                                         className={styles.list__item__remove}
@@ -131,7 +131,9 @@ const TutorStudentsComponent = () => {
                         </div>
 
                         {course.students.length === 0 && (
-                            <div>На данный курс еще никто не записался</div>
+                            <div
+                            className={styles.list__item__text}
+                            >На данный курс еще никто не записался</div>
                         )}
                     </div>
                 ))}
